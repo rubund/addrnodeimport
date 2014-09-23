@@ -1,9 +1,15 @@
 #include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
 #include <libxml/parser.h>
 #include <libxml/tree.h>
 
 
 char verbose = 0;
+char *xmlfilename;
+double addTo = 0;
 
 void iterate_and_get_elements(xmlNode * a_node){
 	xmlNode *cur_node = NULL;
@@ -44,12 +50,43 @@ void iterate_and_get_elements(xmlNode * a_node){
 		printf("The minimum longitude is: %8.8f\n",minLongitude);
 	}
 	printf("(");
-	printf("%8.7f,",minLatitude);
-	printf("%8.7f,",minLongitude);
-	printf("%8.7f,",maxLatitude);
-	printf("%8.7f",maxLongitude);
+	printf("%8.7f,",minLatitude-addTo);
+	printf("%8.7f,",minLongitude-addTo);
+	printf("%8.7f,",maxLatitude+addTo);
+	printf("%8.7f",maxLongitude+addTo);
 	printf(")\n");
 
+}
+
+int parse_cmdline(int argc, char **argv){
+	int s;
+	opterr = 0;
+	while((s = getopt(argc, argv, "vm:")) != -1) {
+		switch (s) {
+			case 'm':
+				addTo = atof(optarg);
+				break;
+			case 'v':
+				verbose = 1;
+				break;
+			case '?':
+				if(optopt == 'm')
+					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
+				else if(isprint(optopt)) 
+					fprintf(stderr, "Unknown option '-%c'.\n",optopt);
+				return -1;
+			default:
+				abort();
+		}
+	}
+
+	if(argc != (optind + 1)){
+		fprintf(stderr,"Usage: %s <arguments> inputfile.osm\n",argv[0]);
+		return -1;
+	}
+	xmlfilename = (char*) malloc(strlen(argv[optind])+1);
+	snprintf(xmlfilename,strlen(argv[optind])+1,"%s",argv[optind]);
+	return 0;
 }
 
 int main(int argc, char **argv){
@@ -57,17 +94,16 @@ int main(int argc, char **argv){
 	xmlDoc *doc = NULL;
 	xmlNode *root_element = NULL;
 	
-	if(argc != 2){
-		fprintf(stderr, "Usage: %s <osm-file>\n",argv[0]);
-		return(-1);
+	if(parse_cmdline(argc, argv) != 0){
+	 	return -1;
 	}
 
 	LIBXML_TEST_VERSION
 
-	doc = xmlReadFile(argv[1],NULL, 0);
+	doc = xmlReadFile(xmlfilename,NULL, 0);
 
 	if(doc == NULL) {
-		printf("error: could not parse file %s\n", argv[1]);
+		printf("error: could not parse file %s\n", xmlfilename);
 	}
 
 	root_element = xmlDocGetRootElement(doc);
