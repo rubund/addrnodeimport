@@ -52,4 +52,6 @@ os.system(" wget \"http://overpass-api.de/api/interpreter?data=((way[\\\"addr:ho
 os.system(" wget \"http://overpass-api.de/api/interpreter?data=((node[\\\"addr:housenumber\\\"] "+boundarea+";<;););out meta;\" -O nodes.osm")
 
 
+os.system("getmissingandreport nodes.osm "+osmfilename+"")
+
 
