@@ -34,6 +34,11 @@ char *xmlfilename2;
 double addTo = 0;
 
 static int sql_callback(void *NotUsed, int argc, char **argv, char **azColName){
+	int i;
+	printf("Node already exists: ");
+	for(i=0;i<argc;i++){
+		printf("%s = %s\n",azColName[i],argv[i] ? argv[i] : "NULL");
+	}
 	return 0;
 }
 
@@ -51,6 +56,60 @@ void basic_query(sqlite3 *db,char *query){
 	}
 }
 
+void compare_to_database(xmlNode * a_node, sqlite3 *db){
+	xmlNode *cur_node = NULL;
+	xmlChar *text;
+	xmlNode *child_node = NULL;
+
+	char addr_housenumber[100];
+	char addr_street[256];
+	char addr_postcode[10];
+	char addr_city[256];
+
+	char * querybuffer;
+
+	char hasfound = 0;
+
+	for(cur_node = a_node->children; cur_node; cur_node = cur_node->next){
+		if(cur_node->type == XML_ELEMENT_NODE) {
+			hasfound = 0;
+			for(child_node = cur_node->children; child_node ; child_node = child_node->next){
+				if(cur_node->type == XML_ELEMENT_NODE) {
+					text = xmlGetProp(child_node, "k");
+					if(text != 0){
+						if(verbose)
+							printf("This node: %s\n",text);
+						if(strcmp(text,"addr:housenumber") == 0){
+							text = xmlGetProp(child_node, "v");
+							strncpy(addr_housenumber,text,99);
+						}
+						else if(strcmp(text,"addr:street") == 0){
+							text = xmlGetProp(child_node, "v");
+							strncpy(addr_street,text,255);
+							hasfound = 1;
+						}
+						else if(strcmp(text,"addr:postcode") == 0){
+							text = xmlGetProp(child_node, "v");
+							strncpy(addr_postcode,text,9);
+						}
+						else if(strcmp(text,"addr:city") == 0){
+							text = xmlGetProp(child_node, "v");
+							strncpy(addr_city,text,255);
+						}
+						if(verbose)
+							printf("   value: %s\n",text);
+					}
+				}
+			}
+			if(hasfound) {
+				querybuffer = sqlite3_mprintf("select id from existing where addr_street='%q' and addr_housenumber='%q'",addr_street,addr_housenumber);
+				basic_query(db,querybuffer);
+				sqlite3_free(querybuffer);
+			}
+		}
+	}
+}
+
 void populate_database(xmlNode * a_node, sqlite3 *db){
 	xmlNode *cur_node = NULL;
 	xmlAttr *attribute;
@@ -60,7 +119,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db){
 	double latitude;
 	double longitude;
 	int rowcounter = 0;
-	char querybuffer[256];
+	char *querybuffer;
 
 	char addr_housenumber[100];
 	char addr_street[256];
@@ -109,7 +168,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db){
 			}
 			if(hasfound) {
 				char isway = 0;
-				snprintf(querybuffer,255,"insert into existing (id,osm_id,addr_housenumber,addr_street,addr_postcode,addr_city,isway) values (%d,'%s','%s','%s','%s','%s','%d');",rowcounter,osmid,addr_housenumber,addr_street,addr_postcode,addr_city,isway);
+				querybuffer = sqlite3_mprintf("insert into existing (id,osm_id,addr_housenumber,addr_street,addr_postcode,addr_city,isway) values (%d,'%q','%q','%q','%q','%q','%q');",rowcounter,osmid,addr_housenumber,addr_street,addr_postcode,addr_city,isway);
 				basic_query(db,querybuffer);
 				rowcounter++;
 			}
@@ -184,6 +243,15 @@ int main(int argc, char **argv){
 	}
 	root_element = xmlDocGetRootElement(doc);
 	populate_database(root_element,db);
+	xmlFreeDoc(doc);
+
+	doc = xmlReadFile(xmlfilename2,NULL, 0);
+	if(doc == NULL) {
+		printf("error: could not parse file %s\n", xmlfilename2);
+	}
+	root_element = xmlDocGetRootElement(doc);
+	compare_to_database(root_element,db);
+
 	xmlFreeDoc(doc);
 
 
