@@ -52,6 +52,11 @@ os.system(" wget \"http://overpass-api.de/api/interpreter?data=((way[\\\"addr:ho
 os.system(" wget \"http://overpass-api.de/api/interpreter?data=((node[\\\"addr:housenumber\\\"] "+boundarea+";<;););out meta;\" -O nodes.osm")
 
 
-os.system("getmissingandreport -o newnodes.osm nodes.osm "+osmfilename+"")
+reportcontent = os.popen("getmissingandreport -o newnodes.osm nodes.osm "+osmfilename+"").read()
+
+os.system("mkdir -p reports")
+reportfile = open("reports/report_"+munipnumberpadded+".txt","w")
+reportfile.write(reportcontent)
+reportfile.close()
 
 
