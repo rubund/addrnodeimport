@@ -37,10 +37,12 @@ char exists = 0;
 static int sql_callback(void *info, int argc, char **argv, char **azColName){
 	int i;
 	exists = 1;
-	printf("\n\n");
-	printf("Node already exists: \n");
-	for(i=0;i<argc;i++){
-		printf("%s = %s\n",azColName[i],argv[i] ? argv[i] : "NULL");
+	if(verbose){
+		printf("\n\n");
+		printf("Node already exists: \n");
+		for(i=0;i<argc;i++){
+			printf("%s = %s\n",azColName[i],argv[i] ? argv[i] : "NULL");
+		}
 	}
 	return 0;
 }
@@ -108,9 +110,12 @@ void compare_to_database(xmlNode * a_node, sqlite3 *db){
 			if(hasfound) {
 				querybuffer = sqlite3_mprintf("select id,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and addr_housenumber='%q'",addr_street,addr_housenumber);
 				exists = 0;
-				basic_query(db,querybuffer,(void*)number);
-				if(exists)
-					printf("Got the status also in main \"thread\"\n");
+				basic_query(db,querybuffer,0);
+				if(exists && verbose)
+					printf("Got the status also in the main \"thread\"\n");
+				if(!exists){
+					printf("This node is missing:\n %s\n %s\n %s\n %s\n\n",addr_housenumber,addr_street,addr_postcode,addr_city);
+				}
 				sqlite3_free(querybuffer);
 				number++;
 			}
