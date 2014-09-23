@@ -29,7 +29,8 @@
 
 
 char verbose = 0;
-char *xmlfilename;
+char *xmlfilename1;
+char *xmlfilename2;
 double addTo = 0;
 
 static int sql_callback(void *NotUsed, int argc, char **argv, char **azColName){
@@ -50,7 +51,7 @@ void basic_query(sqlite3 *db,char *query){
 	}
 }
 
-void iterate_and_get_elements(xmlNode * a_node, sqlite3 *db){
+void populate_database(xmlNode * a_node, sqlite3 *db){
 	xmlNode *cur_node = NULL;
 	xmlAttr *attribute;
 	xmlChar *text;
@@ -141,12 +142,14 @@ int parse_cmdline(int argc, char **argv){
 		}
 	}
 
-	if(argc != (optind + 1)){
-		fprintf(stderr,"Usage: %s <arguments> inputfile.osm\n",argv[0]);
+	if(argc != (optind + 2)){
+		fprintf(stderr,"Usage: %s <arguments> existingnodes.osm newnodes.osm\n",argv[0]);
 		return -1;
 	}
-	xmlfilename = (char*) malloc(strlen(argv[optind])+1);
-	snprintf(xmlfilename,strlen(argv[optind])+1,"%s",argv[optind]);
+	xmlfilename1 = (char*) malloc(strlen(argv[optind])+1);
+	snprintf(xmlfilename1,strlen(argv[optind])+1,"%s",argv[optind]);
+	xmlfilename2 = (char*) malloc(strlen(argv[optind+1])+1);
+	snprintf(xmlfilename2,strlen(argv[optind+1])+1,"%s",argv[optind+1]);
 	return 0;
 }
 
@@ -164,14 +167,6 @@ int main(int argc, char **argv){
 
 	LIBXML_TEST_VERSION
 
-	doc = xmlReadFile(xmlfilename,NULL, 0);
-
-	if(doc == NULL) {
-		printf("error: could not parse file %s\n", xmlfilename);
-	}
-
-	root_element = xmlDocGetRootElement(doc);
-
 	ret = sqlite3_open(":memory:", &db);
 	if(ret){
 		fprintf(stderr, "Cannot open database: %s\n",sqlite3_errmsg(db));
@@ -183,13 +178,16 @@ int main(int argc, char **argv){
 	}
 
 
-	// Here iterate
-	iterate_and_get_elements(root_element,db);
-
-	sqlite3_close(db);
-
+	doc = xmlReadFile(xmlfilename1,NULL, 0);
+	if(doc == NULL) {
+		printf("error: could not parse file %s\n", xmlfilename1);
+	}
+	root_element = xmlDocGetRootElement(doc);
+	populate_database(root_element,db);
 	xmlFreeDoc(doc);
 
+
+	sqlite3_close(db);
 	xmlCleanupParser();
 
 	return 0;
