@@ -45,7 +45,8 @@ void basic_query(sqlite3 *db,char *query){
 		sqlite3_free(zErrMsg);
 	}
 	else{
-		fprintf(stdout, "Successfull query! (%s)\n",query);
+		if(verbose)
+			fprintf(stdout, "Successfull query! (%s)\n",query);
 	}
 }
 
@@ -53,28 +54,68 @@ void iterate_and_get_elements(xmlNode * a_node, sqlite3 *db){
 	xmlNode *cur_node = NULL;
 	xmlAttr *attribute;
 	xmlChar *text;
+	xmlNode *child_node = NULL;
 
 	double latitude;
 	double longitude;
+	int rowcounter = 0;
+	char querybuffer[256];
 
-	basic_query(db,"drop table if exists testing;");
-	basic_query(db,"create table testing(id int auto_increment primary key not null, name varchar(100), test varchar(100));");
+	char addr_housenumber[100];
+	char addr_street[256];
+	char addr_postcode[10];
+	char addr_city[256];
+	char osmid[100];
+
+	char hasfound = 0;
+
+	//basic_query(db,"drop table if exists existing;");
+	basic_query(db,"create table existing (id int auto_increment primary key not null, osm_id bigint, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), isway boolean, foundindataset boolean default 0);");
 
 	for(cur_node = a_node->children; cur_node; cur_node = cur_node->next){
 		if(cur_node->type == XML_ELEMENT_NODE) {
-			attribute = cur_node->properties;
-			if(verbose)
-				printf("node type: Element, name: %s\n", cur_node->name);
-			text = xmlGetProp(cur_node,"lat");
-			latitude = atof(text);
-			if(verbose)
-				printf("  latitude: %s\n", text);
-			text = xmlGetProp(cur_node,"lon");
-			longitude = atof(text);
-			if(verbose)
-				printf("  longitude: %s\n", text);
+			hasfound = 0;
+			text = xmlGetProp(cur_node, "id");
+			if(text == 0) continue;
+			strncpy(osmid,text,99);
+			for(child_node = cur_node->children; child_node ; child_node = child_node->next){
+				if(cur_node->type == XML_ELEMENT_NODE) {
+					text = xmlGetProp(child_node, "k");
+					if(text != 0){
+						if(verbose)
+							printf("This node: %s\n",text);
+						if(strcmp(text,"addr:housenumber") == 0){
+							text = xmlGetProp(child_node, "v");
+							strncpy(addr_housenumber,text,99);
+						}
+						else if(strcmp(text,"addr:street") == 0){
+							text = xmlGetProp(child_node, "v");
+							strncpy(addr_street,text,255);
+							hasfound = 1;
+						}
+						else if(strcmp(text,"addr:postcode") == 0){
+							text = xmlGetProp(child_node, "v");
+							strncpy(addr_postcode,text,9);
+						}
+						else if(strcmp(text,"addr:city") == 0){
+							text = xmlGetProp(child_node, "v");
+							strncpy(addr_city,text,255);
+						}
+						if(verbose)
+							printf("   value: %s\n",text);
+					}
+				}
+			}
+			if(hasfound) {
+				char isway = 0;
+				snprintf(querybuffer,255,"insert into existing (id,osm_id,addr_housenumber,addr_street,addr_postcode,addr_city,isway) values (%d,'%s','%s','%s','%s','%s','%d');",rowcounter,osmid,addr_housenumber,addr_street,addr_postcode,addr_city,isway);
+				basic_query(db,querybuffer);
+				rowcounter++;
+			}
 		} 
 	}
+	basic_query(db,"create index addr_street_index on existing (addr_street ASC);");
+	basic_query(db,"create index addr_housenumber_index on existing (addr_housenumber ASC);");
 
 }
 
@@ -131,13 +172,14 @@ int main(int argc, char **argv){
 
 	root_element = xmlDocGetRootElement(doc);
 
-	ret = sqlite3_open(".temporary.db", &db);
+	ret = sqlite3_open(":memory:", &db);
 	if(ret){
 		fprintf(stderr, "Cannot open database: %s\n",sqlite3_errmsg(db));
 		return -1;
 	}
 	else {
-		printf("Opened database successfully\n");
+		if(verbose)
+			printf("Opened database successfully\n");
 	}
 
 
