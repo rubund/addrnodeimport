@@ -34,6 +34,10 @@ char *xmlfilename2;
 char *outputxmlfilename = NULL;
 double addTo = 0;
 char exists = 0;
+char only_info = 0;
+int number_new = 0;
+int number_old = 0;
+int number_nonexisting = 0;
 
 static int sql_callback(void *info, int argc, char **argv, char **azColName){
 	int i;
@@ -116,15 +120,18 @@ void compare_to_database(xmlNode * a_node, sqlite3 *db, xmlDoc *doc_output){
 				if(exists && verbose)
 					printf("Got the status also in the main \"thread\"\n");
 				if(!exists){
-					printf("This node is missing:\n %s\n %s\n %s\n %s\n\n",addr_housenumber,addr_street,addr_postcode,addr_city);
+					if(!only_info)
+						printf("This node is missing:\n %s\n %s\n %s\n %s\n\n",addr_housenumber,addr_street,addr_postcode,addr_city);
 					if(outputxmlfilename){
 						newNode = xmlCopyNode(cur_node, 1);
 						xmlNode *root_element = xmlDocGetRootElement(doc_output);
 						xmlAddChild(root_element,newNode);
 					}
+					number_nonexisting++;
 				}
 				sqlite3_free(querybuffer);
 				number++;
+				number_new++;
 			}
 		}
 	}
@@ -191,6 +198,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db){
 				querybuffer = sqlite3_mprintf("insert into existing (id,osm_id,addr_housenumber,addr_street,addr_postcode,addr_city,isway) values (%d,'%q','%q','%q','%q','%q','%q');",rowcounter,osmid,addr_housenumber,addr_street,addr_postcode,addr_city,isway);
 				basic_query(db,querybuffer,0);
 				rowcounter++;
+				number_old++;
 			}
 		} 
 	}
@@ -202,10 +210,10 @@ void populate_database(xmlNode * a_node, sqlite3 *db){
 int parse_cmdline(int argc, char **argv){
 	int s;
 	opterr = 0;
-	while((s = getopt(argc, argv, "vs:o:")) != -1) {
+	while((s = getopt(argc, argv, "vso:")) != -1) {
 		switch (s) {
 			case 's':
-				addTo = atof(optarg);
+				only_info = 1;
 				break;
 			case 'v':
 				verbose = 1;
@@ -215,8 +223,6 @@ int parse_cmdline(int argc, char **argv){
 				snprintf(outputxmlfilename,strlen(optarg)+1,"%s",optarg);
 				break;
 			case '?':
-				if(optopt == 's')
-					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
 				if(optopt == 'o')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
 				else if(isprint(optopt)) 
@@ -305,6 +311,10 @@ int main(int argc, char **argv){
 	free(xmlfilename1);
 	free(xmlfilename2);
 	free(outputxmlfilename);
+
+	printf("Existing:\t%d\n",number_old);
+	printf("New:\t\t%d\n",number_new);
+	printf("Missing:\t%d\n",number_nonexisting);
 
 	return 0;
 
