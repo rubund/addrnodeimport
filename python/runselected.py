@@ -3,9 +3,9 @@
 import os
 
 
-zipfile = "/lager2/ruben/kartverket/Vegdata_Norge_UTM33_Geometri_SOSI.zip"
+zipfile = "/home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip"
 
-munips = [1121,1120,1119,1122]
+munips = range(0,2000)
 
 
 for m in munips:
