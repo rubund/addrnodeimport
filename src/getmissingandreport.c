@@ -31,6 +31,7 @@
 char verbose = 0;
 char *xmlfilename1;
 char *xmlfilename2;
+char *outputxmlfilename = NULL;
 double addTo = 0;
 char exists = 0;
 
@@ -61,10 +62,11 @@ void basic_query(sqlite3 *db,char *query, void *info){
 	}
 }
 
-void compare_to_database(xmlNode * a_node, sqlite3 *db){
+void compare_to_database(xmlNode * a_node, sqlite3 *db, xmlDoc *doc_output){
 	xmlNode *cur_node = NULL;
 	xmlChar *text;
 	xmlNode *child_node = NULL;
+	xmlNode *newNode = NULL;
 
 	char addr_housenumber[100];
 	char addr_street[256];
@@ -115,6 +117,11 @@ void compare_to_database(xmlNode * a_node, sqlite3 *db){
 					printf("Got the status also in the main \"thread\"\n");
 				if(!exists){
 					printf("This node is missing:\n %s\n %s\n %s\n %s\n\n",addr_housenumber,addr_street,addr_postcode,addr_city);
+					if(outputxmlfilename){
+						newNode = xmlCopyNode(cur_node, 1);
+						xmlNode *root_element = xmlDocGetRootElement(doc_output);
+						xmlAddChild(root_element,newNode);
+					}
 				}
 				sqlite3_free(querybuffer);
 				number++;
@@ -195,7 +202,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db){
 int parse_cmdline(int argc, char **argv){
 	int s;
 	opterr = 0;
-	while((s = getopt(argc, argv, "vs:")) != -1) {
+	while((s = getopt(argc, argv, "vs:o:")) != -1) {
 		switch (s) {
 			case 's':
 				addTo = atof(optarg);
@@ -203,8 +210,14 @@ int parse_cmdline(int argc, char **argv){
 			case 'v':
 				verbose = 1;
 				break;
+			case 'o':
+				outputxmlfilename = (char*) malloc(strlen(optarg)+1);
+				snprintf(outputxmlfilename,strlen(optarg)+1,"%s",optarg);
+				break;
 			case '?':
 				if(optopt == 's')
+					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
+				if(optopt == 'o')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
 				else if(isprint(optopt)) 
 					fprintf(stderr, "Unknown option '-%c'.\n",optopt);
@@ -227,11 +240,13 @@ int parse_cmdline(int argc, char **argv){
 
 int main(int argc, char **argv){
 
+	xmlDoc *doc_old = NULL;
 	xmlDoc *doc = NULL;
 	xmlNode *root_element = NULL;
 
 	sqlite3 *db = NULL;
 	int ret;
+
 	
 	if(parse_cmdline(argc, argv) != 0){
 	 	return -1;
@@ -250,26 +265,46 @@ int main(int argc, char **argv){
 	}
 
 
-	doc = xmlReadFile(xmlfilename1,NULL, 0);
-	if(doc == NULL) {
+	doc_old = xmlReadFile(xmlfilename1,NULL, 0);
+	if(doc_old == NULL) {
 		printf("error: could not parse file %s\n", xmlfilename1);
 	}
-	root_element = xmlDocGetRootElement(doc);
+	root_element = xmlDocGetRootElement(doc_old);
 	populate_database(root_element,db);
-	xmlFreeDoc(doc);
+
+	// Remove all nodes from this one
+	xmlNode *cur_node;
+	for(cur_node = root_element->children;cur_node;){
+		xmlNode *tmp_node;
+		tmp_node = cur_node;
+		cur_node = cur_node->next;	
+		xmlUnlinkNode(tmp_node);
+		xmlFreeNode(tmp_node);	
+	}
 
 	doc = xmlReadFile(xmlfilename2,NULL, 0);
 	if(doc == NULL) {
 		printf("error: could not parse file %s\n", xmlfilename2);
 	}
 	root_element = xmlDocGetRootElement(doc);
-	compare_to_database(root_element,db);
+	compare_to_database(root_element,db,doc_old);
 
+	
+	if(outputxmlfilename){
+		xmlSaveFileEnc(outputxmlfilename, doc_old, "UTF-8");
+	}
+
+
+	xmlFreeDoc(doc_old);
 	xmlFreeDoc(doc);
 
 
 	sqlite3_close(db);
 	xmlCleanupParser();
+
+	free(xmlfilename1);
+	free(xmlfilename2);
+	free(outputxmlfilename);
 
 	return 0;
 
