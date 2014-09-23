@@ -32,20 +32,23 @@ char verbose = 0;
 char *xmlfilename1;
 char *xmlfilename2;
 double addTo = 0;
+char exists = 0;
 
-static int sql_callback(void *NotUsed, int argc, char **argv, char **azColName){
+static int sql_callback(void *info, int argc, char **argv, char **azColName){
 	int i;
-	printf("Node already exists: ");
+	exists = 1;
+	printf("\n\n");
+	printf("Node already exists: \n");
 	for(i=0;i<argc;i++){
 		printf("%s = %s\n",azColName[i],argv[i] ? argv[i] : "NULL");
 	}
 	return 0;
 }
 
-void basic_query(sqlite3 *db,char *query){
+void basic_query(sqlite3 *db,char *query, void *info){
 	int ret;
 	char *zErrMsg = 0;
-	ret = sqlite3_exec(db,query,sql_callback,0, &zErrMsg);
+	ret = sqlite3_exec(db,query,sql_callback, info, &zErrMsg);
 	if(ret != SQLITE_OK){
 		fprintf(stderr, "SQL error: %s\n", zErrMsg);
 		sqlite3_free(zErrMsg);
@@ -69,6 +72,7 @@ void compare_to_database(xmlNode * a_node, sqlite3 *db){
 	char * querybuffer;
 
 	char hasfound = 0;
+	int number = 0;
 
 	for(cur_node = a_node->children; cur_node; cur_node = cur_node->next){
 		if(cur_node->type == XML_ELEMENT_NODE) {
@@ -102,9 +106,13 @@ void compare_to_database(xmlNode * a_node, sqlite3 *db){
 				}
 			}
 			if(hasfound) {
-				querybuffer = sqlite3_mprintf("select id from existing where addr_street='%q' and addr_housenumber='%q'",addr_street,addr_housenumber);
-				basic_query(db,querybuffer);
+				querybuffer = sqlite3_mprintf("select id,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and addr_housenumber='%q'",addr_street,addr_housenumber);
+				exists = 0;
+				basic_query(db,querybuffer,(void*)number);
+				if(exists)
+					printf("Got the status also in main \"thread\"\n");
 				sqlite3_free(querybuffer);
+				number++;
 			}
 		}
 	}
@@ -130,7 +138,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db){
 	char hasfound = 0;
 
 	//basic_query(db,"drop table if exists existing;");
-	basic_query(db,"create table existing (id int auto_increment primary key not null, osm_id bigint, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), isway boolean, foundindataset boolean default 0);");
+	basic_query(db,"create table existing (id int auto_increment primary key not null, osm_id bigint, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), isway boolean, foundindataset boolean default 0);",0);
 
 	for(cur_node = a_node->children; cur_node; cur_node = cur_node->next){
 		if(cur_node->type == XML_ELEMENT_NODE) {
@@ -169,13 +177,13 @@ void populate_database(xmlNode * a_node, sqlite3 *db){
 			if(hasfound) {
 				char isway = 0;
 				querybuffer = sqlite3_mprintf("insert into existing (id,osm_id,addr_housenumber,addr_street,addr_postcode,addr_city,isway) values (%d,'%q','%q','%q','%q','%q','%q');",rowcounter,osmid,addr_housenumber,addr_street,addr_postcode,addr_city,isway);
-				basic_query(db,querybuffer);
+				basic_query(db,querybuffer,0);
 				rowcounter++;
 			}
 		} 
 	}
-	basic_query(db,"create index addr_street_index on existing (addr_street ASC);");
-	basic_query(db,"create index addr_housenumber_index on existing (addr_housenumber ASC);");
+	basic_query(db,"create index addr_street_index on existing (addr_street ASC);",0);
+	basic_query(db,"create index addr_housenumber_index on existing (addr_housenumber ASC);",0);
 
 }
 
