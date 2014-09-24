@@ -40,6 +40,7 @@ char only_info = 0;
 int number_new = 0;
 int number_old = 0;
 int number_nonexisting = 0;
+int number_veivegfixes = 0;
 char foundid[20];
 char foundisway;
 FILE *tmpfile_handle;
@@ -253,6 +254,7 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 									newNode = xmlCopyNode(tmp_node, 1);
 									xmlNode *root_element = xmlDocGetRootElement(doc_output2);
 									xmlAddChild(root_element,newNode);
+									number_veivegfixes++;
 								}
 							}
 						}
@@ -506,9 +508,11 @@ int main(int argc, char **argv){
 	free(xmlfilename2);
 	free(outputxmlfilename);
 
-	printf("Existing:\t%d\n",number_old);
-	printf("New:\t\t%d\n",number_new);
-	printf("Missing:\t%d\n",number_nonexisting);
+	printf("Existing:\t\t%d\n",number_old);
+	printf("New:\t\t\t%d\n",number_new);
+	printf("Missing:\t\t%d\n",number_nonexisting);
+	if(veivegfilename != NULL)
+		printf("Veivegfixes:\t%d\n",number_veivegfixes);
 	return 0;
 
 }

@@ -53,7 +53,7 @@ os.system(" wget \"http://overpass-api.de/api/interpreter?data=((node[\\\"addr:h
 
 
 os.system("mkdir -p reports")
-reportcontent = os.popen("getmissingandreport -s -o reports/newnodes_"+munipnumberpadded+".osm -w ways.osm nodes.osm "+osmfilename+"").read()
+reportcontent = os.popen("getmissingandreport -s -t reports/veivegfixes_"+munipnumberpadded+".osm -o reports/newnodes_"+munipnumberpadded+".osm -w ways.osm nodes.osm "+osmfilename+"").read()
 
 reportfile = open("reports/report_"+munipnumberpadded+".txt","w")
 reportfile.write(reportcontent)
