@@ -34,6 +34,7 @@ char *xmlfilename2;
 char *xmlfilename3 = NULL;
 char *outputxmlfilename = NULL;
 char *veivegfilename = NULL;
+char *duplicatefilename = NULL;
 double addTo = 0;
 char exists = 0;
 char only_info = 0;
@@ -212,6 +213,28 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 				const char *result = (const char*)sqlite3_column_text(stmt,0);
 				basicnumber = atoi(result);
 				sqlite3_finalize(stmt);	
+
+				if(basicnumber > 1 && duplicatefilename != NULL){
+					querybuffer = sqlite3_mprintf("select file_index,isway from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street,addr_housenumber);
+					ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+					if (ret){
+						fprintf(stderr,"SQL Error");
+						return;
+					}
+					sqlite3_free(querybuffer);
+					while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+						const char *resultLoop = (const char*)sqlite3_column_text(stmt,0);
+						xmlNode *newNode_intern;
+						if(strcmp(sqlite3_column_text(stmt,1),"1") == 0)
+							newNode_intern = xmlCopyNode(get_xml_node(doc_old2,atoi(resultLoop),1), 1);
+						else
+							newNode_intern = xmlCopyNode(get_xml_node(doc_old1,atoi(resultLoop),0), 1);
+						xmlNode *root_element_intern = xmlDocGetRootElement(doc_output3);
+						xmlAddChild(root_element_intern,newNode_intern);
+					}
+					sqlite3_finalize(stmt);	
+				}
+
 				//sqlite3_free(result);
 				if(exists && verbose)
 					printf("Got the status also in the main \"thread\"\n");
@@ -444,7 +467,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 int parse_cmdline(int argc, char **argv){
 	int s;
 	opterr = 0;
-	while((s = getopt(argc, argv, "vso:w:t:")) != -1) {
+	while((s = getopt(argc, argv, "vso:w:t:d:")) != -1) {
 		switch (s) {
 			case 's':
 				only_info = 1;
@@ -464,10 +487,16 @@ int parse_cmdline(int argc, char **argv){
 				veivegfilename = (char*) malloc(strlen(optarg)+1);
 				snprintf(veivegfilename,strlen(optarg)+1,"%s",optarg);
 				break;
+			case 'd':
+				duplicatefilename = (char*) malloc(strlen(optarg)+1);
+				snprintf(duplicatefilename,strlen(optarg)+1,"%s",optarg);
+				break;
 			case '?':
 				if(optopt == 'o')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
 				else if(optopt == 'w')
+					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
+				else if(optopt == 'd')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
 				else if(optopt == 't')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
@@ -573,8 +602,12 @@ int main(int argc, char **argv){
 	if(veivegfilename){
 		xmlSaveFileEnc(veivegfilename, doc_output2, "UTF-8");
 	}
-	xmlSaveFileEnc("test3.osm", doc_output3, "UTF-8");
-	xmlSaveFileEnc("test4.osm", doc_output4, "UTF-8");
+	if(duplicatefilename){
+		xmlSaveFileEnc(duplicatefilename, doc_output3, "UTF-8");
+	}
+	if(NULL){
+		xmlSaveFileEnc("test4.osm", doc_output4, "UTF-8");
+	}
 
 
 	xmlFreeDoc(doc_output);
