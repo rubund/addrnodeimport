@@ -175,7 +175,7 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 							if(verbose)
 								printf("Has changed %s to %s\n",addr_street,addr_street_2);
 							exists = 0;
-							querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and addr_housenumber='%q'",addr_street_2,addr_housenumber);
+							querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q')",addr_street_2,addr_housenumber);
 							basic_query(db,querybuffer,0);
 							sqlite3_free(querybuffer);
 							if(exists) {
