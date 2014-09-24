@@ -146,7 +146,7 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 				}
 			}
 			if(hasfound) {
-				querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q')",addr_street,addr_housenumber);
+				querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street,addr_housenumber);
 				exists = 0;
 				basic_query(db,querybuffer,0);
 				sqlite3_free(querybuffer);
@@ -191,7 +191,7 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 							if(verbose)
 								printf("Has changed %s to %s\n",addr_street,addr_street_2);
 							exists = 0;
-							querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q')",addr_street_2,addr_housenumber);
+							querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street_2,addr_housenumber);
 							basic_query(db,querybuffer,0);
 							sqlite3_free(querybuffer);
 							if(exists) {
@@ -366,6 +366,22 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 							//strncpy(addr_city,text,255);
 							xmlFree(text);
 							isbuilding = 1;
+						}
+						else if(strcmp(text,"source") == 0){
+							xmlFree(text);
+							tag_number--;
+						}
+						else if(strcmp(text,"addr:country") == 0){
+							xmlFree(text);
+							tag_number--;
+						}
+						else if(strcmp(text,"operator") == 0){
+							xmlFree(text);
+							tag_number--;
+						}
+						else if(strcmp(text,"entrance") == 0){
+							xmlFree(text);
+							tag_number--;
 						}
 						else {
 							xmlFree(text);
