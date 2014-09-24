@@ -146,7 +146,7 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 				}
 			}
 			if(hasfound) {
-				querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and addr_housenumber='%q'",addr_street,addr_housenumber);
+				querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q')",addr_street,addr_housenumber);
 				exists = 0;
 				basic_query(db,querybuffer,0);
 				sqlite3_free(querybuffer);
@@ -159,15 +159,31 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 						char hasfoundvei;
 						hasfoundvei = 0;
 						strncpy(addr_street_2,addr_street,255);
-						mysubstr = strstr(addr_street_2,"veg");
-						if(mysubstr != NULL){
-							*(mysubstr+2) = 'i';
-							hasfoundvei = 1;
+						if(!hasfoundvei){
+							mysubstr = strstr(addr_street_2,"veg");
+							if(mysubstr != NULL){
+								*(mysubstr+2) = 'i';
+								hasfoundvei = 1;
+							}
 						}
-						else {
+						if(!hasfoundvei){
 							mysubstr = strstr(addr_street_2,"vei");
 							if(mysubstr != NULL){
 								*(mysubstr+2) = 'g';
+								hasfoundvei = 1;
+							}
+						}
+						if(!hasfoundvei){
+							mysubstr = strstr(addr_street_2,"Vei");
+							if(mysubstr != NULL){
+								*(mysubstr+2) = 'g';
+								hasfoundvei = 1;
+							}
+						}
+						if(!hasfoundvei){
+							mysubstr = strstr(addr_street_2,"veg");
+							if(mysubstr != NULL){
+								*(mysubstr+2) = 'i';
 								hasfoundvei = 1;
 							}
 						}
