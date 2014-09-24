@@ -236,14 +236,19 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 								if(tmp_node != NULL) {
 									//printf("tmp_node: %d: %s\n",(int)tmp_node,tmp_node->name);
 									xmlNode *tag_node;
-									//for(tag_node = tmp_node->children; tag_node ; tag_node = tag_node->next){
-									//	if(tag_node->type == XML_ELEMENT_NODE) {
-									//		text = xmlGetProp(tag_node, "v");
-									//		if(text != 0){
-									//			printf("text here: %s\n",text);
-									//		}
-									//	}
-									//}
+									for(tag_node = tmp_node->children; tag_node ; tag_node = tag_node->next){
+										if(tag_node->type == XML_ELEMENT_NODE) {
+											text = xmlGetProp(tag_node, "k");
+											if(text != 0){
+												if(strcmp(text,"addr:street") == 0){
+													//printf("text here: %s\n",text);
+													xmlFree(text);
+													xmlSetProp(tag_node, "v",addr_street);
+												}
+											}
+										}
+									}
+									xmlSetProp(tmp_node,"action","modify");
 									//printf("At %s %s (%s):\n",addr_street,addr_housenumber,addr_street_2);
 									newNode = xmlCopyNode(tmp_node, 1);
 									xmlNode *root_element = xmlDocGetRootElement(doc_output2);
