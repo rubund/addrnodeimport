@@ -33,12 +33,14 @@ char *xmlfilename1;
 char *xmlfilename2;
 char *xmlfilename3 = NULL;
 char *outputxmlfilename = NULL;
+char *veivegfilename = NULL;
 double addTo = 0;
 char exists = 0;
 char only_info = 0;
 int number_new = 0;
 int number_old = 0;
 int number_nonexisting = 0;
+FILE *tmpfile_handle;
 
 static int sql_callback(void *info, int argc, char **argv, char **azColName){
 	int i;
@@ -127,9 +129,45 @@ void compare_to_database(xmlNode * a_node, sqlite3 *db, xmlDoc *doc_output){
 				querybuffer = sqlite3_mprintf("select id,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and addr_housenumber='%q'",addr_street,addr_housenumber);
 				exists = 0;
 				basic_query(db,querybuffer,0);
+				sqlite3_free(querybuffer);
 				if(exists && verbose)
 					printf("Got the status also in the main \"thread\"\n");
 				if(!exists){
+					if(veivegfilename != NULL){
+						char addr_street_2[256];
+						char *mysubstr = NULL;
+						char hasfoundvei;
+						hasfoundvei = 0;
+						strncpy(addr_street_2,addr_street,255);
+						mysubstr = strstr(addr_street_2,"veg");
+						if(mysubstr != NULL){
+							*(mysubstr+2) = 'i';
+							hasfoundvei = 1;
+						}
+						else {
+							mysubstr = strstr(addr_street_2,"vei");
+							if(mysubstr != NULL){
+								*(mysubstr+2) = 'g';
+								hasfoundvei = 1;
+							}
+						}
+						if(hasfoundvei){
+							if(verbose)
+								printf("Has changed %s to %s\n",addr_street,addr_street_2);
+							exists = 0;
+							querybuffer = sqlite3_mprintf("select id,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and addr_housenumber='%q'",addr_street_2,addr_housenumber);
+							basic_query(db,querybuffer,0);
+							sqlite3_free(querybuffer);
+							if(exists) {
+								if(verbose)
+									printf("There is probably a veg/vei mistake\n");
+								tmpfile_handle = fopen(veivegfilename,"a");
+								fprintf(tmpfile_handle,"%s %s, %s %s\n",addr_street,addr_housenumber,addr_postcode,addr_city);	
+								fclose(tmpfile_handle);
+							}
+						}
+					}
+					
 					if(!only_info)
 						printf("This node is missing:\n %s\n %s\n %s\n %s\n\n",addr_housenumber,addr_street,addr_postcode,addr_city);
 					if(outputxmlfilename){
@@ -139,7 +177,6 @@ void compare_to_database(xmlNode * a_node, sqlite3 *db, xmlDoc *doc_output){
 					}
 					number_nonexisting++;
 				}
-				sqlite3_free(querybuffer);
 				number++;
 				number_new++;
 			}
@@ -233,7 +270,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 int parse_cmdline(int argc, char **argv){
 	int s;
 	opterr = 0;
-	while((s = getopt(argc, argv, "vso:w:")) != -1) {
+	while((s = getopt(argc, argv, "vso:w:t:")) != -1) {
 		switch (s) {
 			case 's':
 				only_info = 1;
@@ -249,10 +286,18 @@ int parse_cmdline(int argc, char **argv){
 				xmlfilename3 = (char*) malloc(strlen(optarg)+1);
 				snprintf(xmlfilename3,strlen(optarg)+1,"%s",optarg);
 				break;
+			case 't':
+				veivegfilename = (char*) malloc(strlen(optarg)+1);
+				snprintf(veivegfilename,strlen(optarg)+1,"%s",optarg);
+				tmpfile_handle = fopen(veivegfilename,"w");
+				fclose(tmpfile_handle);
+				break;
 			case '?':
 				if(optopt == 'o')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
 				else if(optopt == 'w')
+					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
+				else if(optopt == 't')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
 				else if(isprint(optopt)) 
 					fprintf(stderr, "Unknown option '-%c'.\n",optopt);
