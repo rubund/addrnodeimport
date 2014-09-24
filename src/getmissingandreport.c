@@ -41,6 +41,8 @@ int number_new = 0;
 int number_old = 0;
 int number_nonexisting = 0;
 int number_veivegfixes = 0;
+int number_nodeswithotherthings = 0;
+int number_duplicates = 0;
 char foundid[20];
 char foundisway;
 FILE *tmpfile_handle;
@@ -89,10 +91,12 @@ void basic_query(sqlite3 *db,char *query, void *info){
 
 void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, sqlite3 *db, xmlDoc *doc_output, xmlDoc *doc_output2){
 	int i;
+	int ret;
 	xmlNode *cur_node = NULL;
 	xmlChar *text;
 	xmlNode *child_node = NULL;
 	xmlNode *newNode = NULL;
+	sqlite3_stmt *stmt;
 
 	char addr_housenumber[100];
 	char addr_street[256];
@@ -145,11 +149,24 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 					}
 				}
 			}
+			int basicnumber=0;
 			if(hasfound) {
 				querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street,addr_housenumber);
 				exists = 0;
 				basic_query(db,querybuffer,0);
 				sqlite3_free(querybuffer);
+				querybuffer = sqlite3_mprintf("select count(*) from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street,addr_housenumber);
+				ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+				if (ret){
+					fprintf(stderr,"SQL Error");
+					return;
+				}
+				sqlite3_free(querybuffer);
+				sqlite3_step(stmt);
+				const char *result = (const char*)sqlite3_column_text(stmt,0);
+				basicnumber = atoi(result);
+				sqlite3_finalize(stmt);	
+				//sqlite3_free(result);
 				if(exists && verbose)
 					printf("Got the status also in the main \"thread\"\n");
 				if(!exists){
@@ -285,6 +302,20 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 					}
 					number_nonexisting++;
 				}
+				querybuffer = sqlite3_mprintf("select count(*) from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q')",addr_street,addr_housenumber);
+				ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+				if (ret){
+					fprintf(stderr,"SQL Error");
+					return;
+				}
+				sqlite3_free(querybuffer);
+				sqlite3_step(stmt);
+				const char *result2 = (const char*)sqlite3_column_text(stmt,0);
+				number_nodeswithotherthings	+= atoi(result2) - basicnumber;
+				sqlite3_finalize(stmt);	
+				if(basicnumber > 1)
+					number_duplicates++;
+
 				number++;
 				number_new++;
 			}
@@ -550,9 +581,11 @@ int main(int argc, char **argv){
 	free(xmlfilename2);
 	free(outputxmlfilename);
 
-	printf("Existing:\t\t%d\n",number_old);
-	printf("New:\t\t\t%d\n",number_new);
-	printf("Missing:\t\t%d\n",number_nonexisting);
+	printf("Existing:\t%d\n",number_old);
+	printf("New:\t\t%d\n",number_new);
+	printf("Missing:\t%d\n",number_nonexisting);
+	printf("Otherthings:\t%d\n",number_nodeswithotherthings);
+	printf("Duplicates:\t%d\n",number_duplicates);
 	if(veivegfilename != NULL)
 		printf("Veivegfixes:\t%d\n",number_veivegfixes);
 	return 0;
