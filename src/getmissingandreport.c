@@ -92,24 +92,33 @@ void compare_to_database(xmlNode * a_node, sqlite3 *db, xmlDoc *doc_output){
 						if(verbose)
 							printf("This node: %s\n",text);
 						if(strcmp(text,"addr:housenumber") == 0){
+							xmlFree(text);
 							text = xmlGetProp(child_node, "v");
 							strncpy(addr_housenumber,text,99);
+							xmlFree(text);
 						}
 						else if(strcmp(text,"addr:street") == 0){
+							xmlFree(text);
 							text = xmlGetProp(child_node, "v");
 							strncpy(addr_street,text,255);
+							xmlFree(text);
 							hasfound = 1;
 						}
 						else if(strcmp(text,"addr:postcode") == 0){
+							xmlFree(text);
 							text = xmlGetProp(child_node, "v");
 							strncpy(addr_postcode,text,9);
+							xmlFree(text);
 						}
 						else if(strcmp(text,"addr:city") == 0){
+							xmlFree(text);
 							text = xmlGetProp(child_node, "v");
 							strncpy(addr_city,text,255);
+							xmlFree(text);
 						}
-						if(verbose)
-							printf("   value: %s\n",text);
+						else {
+							xmlFree(text);
+						}
 					}
 				}
 			}
@@ -165,6 +174,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db){
 			text = xmlGetProp(cur_node, "id");
 			if(text == 0) continue;
 			strncpy(osmid,text,99);
+			xmlFree(text);
 			for(child_node = cur_node->children; child_node ; child_node = child_node->next){
 				if(cur_node->type == XML_ELEMENT_NODE) {
 					text = xmlGetProp(child_node, "k");
@@ -172,24 +182,33 @@ void populate_database(xmlNode * a_node, sqlite3 *db){
 						if(verbose)
 							printf("This node: %s\n",text);
 						if(strcmp(text,"addr:housenumber") == 0){
+							xmlFree(text);
 							text = xmlGetProp(child_node, "v");
 							strncpy(addr_housenumber,text,99);
+							xmlFree(text);
 						}
 						else if(strcmp(text,"addr:street") == 0){
+							xmlFree(text);
 							text = xmlGetProp(child_node, "v");
 							strncpy(addr_street,text,255);
 							hasfound = 1;
+							xmlFree(text);
 						}
 						else if(strcmp(text,"addr:postcode") == 0){
+							xmlFree(text);
 							text = xmlGetProp(child_node, "v");
 							strncpy(addr_postcode,text,9);
+							xmlFree(text);
 						}
 						else if(strcmp(text,"addr:city") == 0){
+							xmlFree(text);
 							text = xmlGetProp(child_node, "v");
 							strncpy(addr_city,text,255);
+							xmlFree(text);
 						}
-						if(verbose)
-							printf("   value: %s\n",text);
+						else {
+							xmlFree(text);
+						}
 					}
 				}
 			}
@@ -197,6 +216,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db){
 				char isway = 0;
 				querybuffer = sqlite3_mprintf("insert into existing (id,osm_id,addr_housenumber,addr_street,addr_postcode,addr_city,isway) values (%d,'%q','%q','%q','%q','%q','%q');",rowcounter,osmid,addr_housenumber,addr_street,addr_postcode,addr_city,isway);
 				basic_query(db,querybuffer,0);
+				sqlite3_free(querybuffer);
 				rowcounter++;
 				number_old++;
 			}
