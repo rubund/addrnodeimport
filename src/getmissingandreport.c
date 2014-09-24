@@ -40,6 +40,8 @@ char only_info = 0;
 int number_new = 0;
 int number_old = 0;
 int number_nonexisting = 0;
+char foundid[20];
+char foundisway;
 FILE *tmpfile_handle;
 
 static int sql_callback(void *info, int argc, char **argv, char **azColName){
@@ -48,8 +50,23 @@ static int sql_callback(void *info, int argc, char **argv, char **azColName){
 	if(verbose){
 		printf("\n\n");
 		printf("Node already exists: \n");
-		for(i=0;i<argc;i++){
+	}
+	foundid[0] = 0;	
+	foundisway = 0;	
+	for(i=0;i<argc;i++){
+		if(verbose)
 			printf("%s = %s\n",azColName[i],argv[i] ? argv[i] : "NULL");
+		if(strcmp(azColName[i],"file_index") == 0) {
+			strncpy(foundid,argv[i],19);
+			//printf("found and copy %s\n",argv[i]);
+		}
+		else if(strcmp(azColName[i],"isway") == 0) {
+			//printf("Isway: %s\n",argv[i]);
+			if(strcmp(argv[i],"1") == 0)
+				foundisway = 1;
+			else
+				foundisway = 0;
+			//printf("Isway set: %d\n",foundisway);
 		}
 	}
 	return 0;
@@ -69,7 +86,8 @@ void basic_query(sqlite3 *db,char *query, void *info){
 	}
 }
 
-void compare_to_database(xmlNode * a_node, sqlite3 *db, xmlDoc *doc_output){
+void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, sqlite3 *db, xmlDoc *doc_output, xmlDoc *doc_output2){
+	int i;
 	xmlNode *cur_node = NULL;
 	xmlChar *text;
 	xmlNode *child_node = NULL;
@@ -83,6 +101,7 @@ void compare_to_database(xmlNode * a_node, sqlite3 *db, xmlDoc *doc_output){
 	char * querybuffer;
 
 	char hasfound = 0;
+	char hasfound2 = 0;
 	int number = 0;
 
 	for(cur_node = a_node->children; cur_node; cur_node = cur_node->next){
@@ -126,7 +145,7 @@ void compare_to_database(xmlNode * a_node, sqlite3 *db, xmlDoc *doc_output){
 				}
 			}
 			if(hasfound) {
-				querybuffer = sqlite3_mprintf("select id,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and addr_housenumber='%q'",addr_street,addr_housenumber);
+				querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and addr_housenumber='%q'",addr_street,addr_housenumber);
 				exists = 0;
 				basic_query(db,querybuffer,0);
 				sqlite3_free(querybuffer);
@@ -155,15 +174,81 @@ void compare_to_database(xmlNode * a_node, sqlite3 *db, xmlDoc *doc_output){
 							if(verbose)
 								printf("Has changed %s to %s\n",addr_street,addr_street_2);
 							exists = 0;
-							querybuffer = sqlite3_mprintf("select id,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and addr_housenumber='%q'",addr_street_2,addr_housenumber);
+							querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and addr_housenumber='%q'",addr_street_2,addr_housenumber);
 							basic_query(db,querybuffer,0);
 							sqlite3_free(querybuffer);
 							if(exists) {
-								if(verbose)
+								if(verbose) {
 									printf("There is probably a veg/vei mistake\n");
-								tmpfile_handle = fopen(veivegfilename,"a");
-								fprintf(tmpfile_handle,"%s %s, %s %s\n",addr_street,addr_housenumber,addr_postcode,addr_city);	
-								fclose(tmpfile_handle);
+									printf("Copy at %s in %d\n",foundid, foundisway);
+								}
+								xmlNode *tmp_node;
+								int foundid_int;
+								foundid_int = atoi(foundid);
+								if(foundisway)
+									tmp_node = xmlDocGetRootElement(doc_old2)->children;
+								else
+									tmp_node = xmlDocGetRootElement(doc_old1)->children;
+
+								i = 0;
+								//char latest[50];
+								//printf("\nId to find: %d\n",foundid_int);
+								//printf("Copy at %d in %d\n",foundid_int, foundisway);
+								while(tmp_node->next != NULL){
+									tmp_node = tmp_node->next;
+									char bool_tmp;
+									if(foundisway)
+										bool_tmp = (strcmp(tmp_node->name,"way") == 0);
+									else
+										bool_tmp = (strcmp(tmp_node->name,"node") == 0);
+	
+									if(tmp_node->type == XML_ELEMENT_NODE && bool_tmp) {
+										//printf("Here\n");
+										xmlNode *tag_node;
+										hasfound2 = 0;
+										for(tag_node = tmp_node->children; tag_node ; tag_node = tag_node->next){
+											if(tag_node->type == XML_ELEMENT_NODE) {
+												text = xmlGetProp(tag_node, "k");
+												if(text != 0){
+													//printf(" found key: %s\n",text);
+													if(strcmp(text,"addr:street") == 0){
+														xmlFree(text);
+														text = xmlGetProp(tag_node,"v");
+														//printf(" %d: found text: %s\n",i,text);
+														//strncpy(latest,text,49);
+														xmlFree(text);
+														hasfound2 = 1;
+													}
+													else
+														xmlFree(text);
+												}
+											}
+										}
+										if(hasfound2) {
+											if(i==foundid_int){
+												break;
+											}
+											i++;	
+										}
+									}
+								}
+								//printf("latest: %s\n",latest);
+								if(tmp_node != NULL) {
+									//printf("tmp_node: %d: %s\n",(int)tmp_node,tmp_node->name);
+									xmlNode *tag_node;
+									//for(tag_node = tmp_node->children; tag_node ; tag_node = tag_node->next){
+									//	if(tag_node->type == XML_ELEMENT_NODE) {
+									//		text = xmlGetProp(tag_node, "v");
+									//		if(text != 0){
+									//			printf("text here: %s\n",text);
+									//		}
+									//	}
+									//}
+									//printf("At %s %s (%s):\n",addr_street,addr_housenumber,addr_street_2);
+									newNode = xmlCopyNode(tmp_node, 1);
+									xmlNode *root_element = xmlDocGetRootElement(doc_output2);
+									xmlAddChild(root_element,newNode);
+								}
 							}
 						}
 					}
@@ -215,7 +300,12 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 			strncpy(osmid,text,99);
 			xmlFree(text);
 			for(child_node = cur_node->children; child_node ; child_node = child_node->next){
-				if(cur_node->type == XML_ELEMENT_NODE) {
+				char bool_tmp;
+				if(isway)
+					bool_tmp = (strcmp(cur_node->name,"way") == 0);
+				else
+					bool_tmp = (strcmp(cur_node->name,"node") == 0);
+				if(cur_node->type == XML_ELEMENT_NODE && bool_tmp) {
 					text = xmlGetProp(child_node, "k");
 					if(text != 0){
 						if(verbose)
@@ -289,8 +379,6 @@ int parse_cmdline(int argc, char **argv){
 			case 't':
 				veivegfilename = (char*) malloc(strlen(optarg)+1);
 				snprintf(veivegfilename,strlen(optarg)+1,"%s",optarg);
-				tmpfile_handle = fopen(veivegfilename,"w");
-				fclose(tmpfile_handle);
 				break;
 			case '?':
 				if(optopt == 'o')
@@ -320,10 +408,12 @@ int parse_cmdline(int argc, char **argv){
 
 int main(int argc, char **argv){
 
-	xmlDoc *doc_old = NULL;
+	xmlDoc *doc_old1 = NULL;
+	xmlDoc *doc_old2 = NULL;
 	xmlDoc *doc = NULL;
 	xmlDoc *doc_output = NULL;
 	xmlNode *root_element = NULL;
+	xmlDoc *doc_output2 = NULL;
 
 	sqlite3 *db = NULL;
 	int ret;
@@ -346,11 +436,11 @@ int main(int argc, char **argv){
 	}
 
 
-	doc_old = xmlReadFile(xmlfilename1,NULL, 0);
-	if(doc_old == NULL) {
+	doc_old1 = xmlReadFile(xmlfilename1,NULL, 0);
+	if(doc_old1 == NULL) {
 		printf("error: could not parse file %s\n", xmlfilename1);
 	}
-	root_element = xmlDocGetRootElement(doc_old);
+	root_element = xmlDocGetRootElement(doc_old1);
 	populate_database(root_element,db,0);
 
 	// Remove all nodes from this one
@@ -362,17 +452,24 @@ int main(int argc, char **argv){
 		xmlUnlinkNode(tmp_node);
 		xmlFreeNode(tmp_node);	
 	}
-	doc_output = doc_old;
-	doc_old = NULL;
+	doc_output = doc_old1;
+	doc_output2 = xmlCopyDoc(doc_output,1);
+	doc_old1 = NULL;
+
+	doc_old1 = xmlReadFile(xmlfilename1,NULL, 0);
+	if(doc_old1 == NULL) {
+		printf("error: could not parse file %s\n", xmlfilename1);
+	}
 
 	if(xmlfilename3 != NULL){
-		doc_old = xmlReadFile(xmlfilename3,NULL, 0);
-		if(doc_old == NULL) {
+		doc_old2 = xmlReadFile(xmlfilename3,NULL, 0);
+		if(doc_old2 == NULL) {
 			printf("error: could not parse file %s\n", xmlfilename3);
 		}
-		root_element = xmlDocGetRootElement(doc_old);
+		root_element = xmlDocGetRootElement(doc_old2);
 		populate_database(root_element,db,1);
 	}
+	
 
 
 	doc = xmlReadFile(xmlfilename2,NULL, 0);
@@ -380,15 +477,20 @@ int main(int argc, char **argv){
 		printf("error: could not parse file %s\n", xmlfilename2);
 	}
 	root_element = xmlDocGetRootElement(doc);
-	compare_to_database(root_element,db,doc_output);
+	compare_to_database(doc_old1, doc_old2, root_element,db,doc_output,doc_output2);
 
 	if(outputxmlfilename){
 		xmlSaveFileEnc(outputxmlfilename, doc_output, "UTF-8");
 	}
+	if(veivegfilename){
+		xmlSaveFileEnc(veivegfilename, doc_output2, "UTF-8");
+	}
 
 
 	xmlFreeDoc(doc_output);
-	xmlFreeDoc(doc_old);
+	xmlFreeDoc(doc_output2);
+	xmlFreeDoc(doc_old1);
+	xmlFreeDoc(doc_old2);
 	xmlFreeDoc(doc);
 
 
@@ -402,7 +504,6 @@ int main(int argc, char **argv){
 	printf("Existing:\t%d\n",number_old);
 	printf("New:\t\t%d\n",number_new);
 	printf("Missing:\t%d\n",number_nonexisting);
-
 	return 0;
 
 }
