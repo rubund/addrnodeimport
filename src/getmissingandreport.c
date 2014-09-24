@@ -31,6 +31,7 @@
 char verbose = 0;
 char *xmlfilename1;
 char *xmlfilename2;
+char *xmlfilename3 = NULL;
 char *outputxmlfilename = NULL;
 double addTo = 0;
 char exists = 0;
@@ -146,7 +147,7 @@ void compare_to_database(xmlNode * a_node, sqlite3 *db, xmlDoc *doc_output){
 	}
 }
 
-void populate_database(xmlNode * a_node, sqlite3 *db){
+void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 	xmlNode *cur_node = NULL;
 	xmlAttr *attribute;
 	xmlChar *text;
@@ -154,7 +155,8 @@ void populate_database(xmlNode * a_node, sqlite3 *db){
 
 	double latitude;
 	double longitude;
-	int rowcounter = 0;
+	static int rowcounter = 0;
+	int file_index = 0;
 	char *querybuffer;
 
 	char addr_housenumber[100];
@@ -166,7 +168,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db){
 	char hasfound = 0;
 
 	//basic_query(db,"drop table if exists existing;");
-	basic_query(db,"create table existing (id int auto_increment primary key not null, osm_id bigint, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), isway boolean, foundindataset boolean default 0);",0);
+	basic_query(db,"create table if not exists existing (id int auto_increment primary key not null, file_index int, osm_id bigint, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), isway boolean, foundindataset boolean default 0);",0);
 
 	for(cur_node = a_node->children; cur_node; cur_node = cur_node->next){
 		if(cur_node->type == XML_ELEMENT_NODE) {
@@ -213,24 +215,25 @@ void populate_database(xmlNode * a_node, sqlite3 *db){
 				}
 			}
 			if(hasfound) {
-				char isway = 0;
-				querybuffer = sqlite3_mprintf("insert into existing (id,osm_id,addr_housenumber,addr_street,addr_postcode,addr_city,isway) values (%d,'%q','%q','%q','%q','%q','%q');",rowcounter,osmid,addr_housenumber,addr_street,addr_postcode,addr_city,isway);
+				querybuffer = sqlite3_mprintf("insert into existing (id,file_index,osm_id,addr_housenumber,addr_street,addr_postcode,addr_city,isway) values (%d,%d,'%q','%q','%q','%q','%q','%d');",rowcounter,file_index,osmid,addr_housenumber,addr_street,addr_postcode,addr_city,(int)isway);
 				basic_query(db,querybuffer,0);
 				sqlite3_free(querybuffer);
 				rowcounter++;
 				number_old++;
+				file_index++;
 			}
 		} 
 	}
-	basic_query(db,"create index addr_street_index on existing (addr_street ASC);",0);
-	basic_query(db,"create index addr_housenumber_index on existing (addr_housenumber ASC);",0);
+	basic_query(db,"create index if not exists file_index_index on existing (file_index ASC);",0);
+	basic_query(db,"create index if not exists addr_street_index on existing (addr_street ASC);",0);
+	basic_query(db,"create index if not exists addr_housenumber_index on existing (addr_housenumber ASC);",0);
 
 }
 
 int parse_cmdline(int argc, char **argv){
 	int s;
 	opterr = 0;
-	while((s = getopt(argc, argv, "vso:")) != -1) {
+	while((s = getopt(argc, argv, "vso:w:")) != -1) {
 		switch (s) {
 			case 's':
 				only_info = 1;
@@ -242,8 +245,14 @@ int parse_cmdline(int argc, char **argv){
 				outputxmlfilename = (char*) malloc(strlen(optarg)+1);
 				snprintf(outputxmlfilename,strlen(optarg)+1,"%s",optarg);
 				break;
+			case 'w':
+				xmlfilename3 = (char*) malloc(strlen(optarg)+1);
+				snprintf(xmlfilename3,strlen(optarg)+1,"%s",optarg);
+				break;
 			case '?':
 				if(optopt == 'o')
+					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
+				else if(optopt == 'w')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
 				else if(isprint(optopt)) 
 					fprintf(stderr, "Unknown option '-%c'.\n",optopt);
@@ -268,6 +277,7 @@ int main(int argc, char **argv){
 
 	xmlDoc *doc_old = NULL;
 	xmlDoc *doc = NULL;
+	xmlDoc *doc_output = NULL;
 	xmlNode *root_element = NULL;
 
 	sqlite3 *db = NULL;
@@ -296,7 +306,7 @@ int main(int argc, char **argv){
 		printf("error: could not parse file %s\n", xmlfilename1);
 	}
 	root_element = xmlDocGetRootElement(doc_old);
-	populate_database(root_element,db);
+	populate_database(root_element,db,0);
 
 	// Remove all nodes from this one
 	xmlNode *cur_node;
@@ -307,20 +317,32 @@ int main(int argc, char **argv){
 		xmlUnlinkNode(tmp_node);
 		xmlFreeNode(tmp_node);	
 	}
+	doc_output = doc_old;
+	doc_old = NULL;
+
+	if(xmlfilename3 != NULL){
+		doc_old = xmlReadFile(xmlfilename3,NULL, 0);
+		if(doc_old == NULL) {
+			printf("error: could not parse file %s\n", xmlfilename3);
+		}
+		root_element = xmlDocGetRootElement(doc_old);
+		populate_database(root_element,db,1);
+	}
+
 
 	doc = xmlReadFile(xmlfilename2,NULL, 0);
 	if(doc == NULL) {
 		printf("error: could not parse file %s\n", xmlfilename2);
 	}
 	root_element = xmlDocGetRootElement(doc);
-	compare_to_database(root_element,db,doc_old);
+	compare_to_database(root_element,db,doc_output);
 
-	
 	if(outputxmlfilename){
-		xmlSaveFileEnc(outputxmlfilename, doc_old, "UTF-8");
+		xmlSaveFileEnc(outputxmlfilename, doc_output, "UTF-8");
 	}
 
 
+	xmlFreeDoc(doc_output);
 	xmlFreeDoc(doc_old);
 	xmlFreeDoc(doc);
 
