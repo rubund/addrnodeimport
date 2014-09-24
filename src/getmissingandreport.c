@@ -313,7 +313,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 	char hasfound = 0;
 
 	//basic_query(db,"drop table if exists existing;");
-	basic_query(db,"create table if not exists existing (id int auto_increment primary key not null, file_index int, osm_id bigint, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), isway boolean, foundindataset boolean default 0);",0);
+	basic_query(db,"create table if not exists existing (id int auto_increment primary key not null, file_index int, osm_id bigint, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), isway boolean, tag_number int, building boolean, foundindataset boolean default 0);",0);
 
 	for(cur_node = a_node->children; cur_node; cur_node = cur_node->next){
 		if(cur_node->type == XML_ELEMENT_NODE) {
@@ -322,6 +322,8 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 			if(text == 0) continue;
 			strncpy(osmid,text,99);
 			xmlFree(text);
+			int tag_number = 0;
+			int isbuilding = 0;
 			for(child_node = cur_node->children; child_node ; child_node = child_node->next){
 				char bool_tmp;
 				if(isway)
@@ -358,14 +360,22 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 							strncpy(addr_city,text,255);
 							xmlFree(text);
 						}
+						else if(strcmp(text,"building") == 0){
+							xmlFree(text);
+							text = xmlGetProp(child_node, "v");
+							//strncpy(addr_city,text,255);
+							xmlFree(text);
+							isbuilding = 1;
+						}
 						else {
 							xmlFree(text);
 						}
+						tag_number++;
 					}
 				}
 			}
 			if(hasfound) {
-				querybuffer = sqlite3_mprintf("insert into existing (id,file_index,osm_id,addr_housenumber,addr_street,addr_postcode,addr_city,isway) values (%d,%d,'%q','%q','%q','%q','%q','%d');",rowcounter,file_index,osmid,addr_housenumber,addr_street,addr_postcode,addr_city,(int)isway);
+				querybuffer = sqlite3_mprintf("insert into existing (id,file_index,osm_id,addr_housenumber,addr_street,addr_postcode,addr_city,isway,tag_number,building) values (%d,%d,'%q','%q','%q','%q','%q','%d','%d','%d');",rowcounter,file_index,osmid,addr_housenumber,addr_street,addr_postcode,addr_city,(int)isway,tag_number,isbuilding);
 				basic_query(db,querybuffer,0);
 				sqlite3_free(querybuffer);
 				rowcounter++;
