@@ -60,9 +60,13 @@ if not os.path.isfile("/tmp/osm_temp/nodes_"+munipnumberpadded+".osm" ):
 os.system("mkdir -p reports")
 print"Processing "+munipnumberpadded+"..."
 reportcontent = os.popen("getmissingandreport -s -t reports/veivegfixes_"+munipnumberpadded+".osm -d reports/duplicates_"+munipnumberpadded+".osm -e reports/otherobjects_"+munipnumberpadded+".osm -o reports/newnodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm  /tmp/osm_temp/nodes_"+munipnumberpadded+".osm "+osmfilename+"").read()
+reportcontent2 = os.popen("fillinpostcode -o reports/postcodecityfixes_"+munipnumberpadded+".osm -s /tmp/osm_temp/nodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm "+osmfilename+"").read()
 
 reportfile = open("reports/report_"+munipnumberpadded+".txt","w")
 reportfile.write(reportcontent)
 reportfile.close()
 
+reportfile2 = open("reports/report2_"+munipnumberpadded+".txt","w")
+reportfile2.write(reportcontent2)
+reportfile2.close()
 

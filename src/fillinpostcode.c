@@ -45,6 +45,8 @@ int number_nonexisting = 0;
 int number_veivegfixes = 0;
 int number_nodeswithotherthings = 0;
 int number_duplicates = 0;
+int number_fixes = 0;
+int number_error = 0;
 char foundid[20];
 char foundisway;
 FILE *tmpfile_handle;
@@ -225,11 +227,13 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 							missingcity = strcmp(sqlite3_column_text(stmt,6),"") == 0;
 							if(missingpostcode && !missingcity){
 								if(strcmp(sqlite3_column_text(stmt,6),addr_city) == 0) otherisok = 1;
-								else printf("Error - not equal (%s != %s) (osmid=%s)\n",sqlite3_column_text(stmt,6),addr_city,sqlite3_column_text(stmt,7));
+								else {if(verbose) printf("Error - not equal (%s != %s) (osmid=%s)\n",sqlite3_column_text(stmt,6),addr_city,sqlite3_column_text(stmt,7));
+									number_error++;}
 							}	
 							else if(!missingpostcode && missingcity){
 								if(strcmp(sqlite3_column_text(stmt,5),addr_postcode) == 0) otherisok = 1;
-								else printf("Error - not equal (%s != %s) (osmid=%s)\n",sqlite3_column_text(stmt,5),addr_postcode,sqlite3_column_text(stmt,7));
+								else {if(verbose) printf("Error - not equal (%s != %s) (osmid=%s)\n",sqlite3_column_text(stmt,5),addr_postcode,sqlite3_column_text(stmt,7));
+									number_error++;}
 							}	
 							else {
 								otherisok = 1;
@@ -287,6 +291,7 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 								xmlSetProp(newNode_intern,"action","modify");
 								xmlNode *root_element_intern = xmlDocGetRootElement(doc_output);
 								xmlAddChild(root_element_intern,newNode_intern);
+								number_fixes++;
 							}
 						}
 					}
@@ -596,7 +601,8 @@ int main(int argc, char **argv){
 	if(extranodesfilename != NULL)
 		free(extranodesfilename);
 
-	//printf("Existing:\t%d\n",number_old);
+	printf("Fixes:\t%d\n",number_fixes);
+	printf("Errors:\t%d\n",number_error);
 	return 0;
 
 }
