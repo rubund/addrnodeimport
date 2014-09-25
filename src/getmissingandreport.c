@@ -199,11 +199,11 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 			}
 			int basicnumber=0;
 			if(hasfound) {
-				querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street,addr_housenumber);
+				querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and addr_postcode='%q' and addr_city='%q' and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street,addr_housenumber,addr_postcode,addr_city);
 				exists = 0;
 				basic_query(db,querybuffer,0);
 				sqlite3_free(querybuffer);
-				querybuffer = sqlite3_mprintf("select count(*) from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street,addr_housenumber);
+				querybuffer = sqlite3_mprintf("select count(*) from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and addr_postcode='%q' and addr_city='%q' and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street,addr_housenumber,addr_postcode,addr_city);
 				ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
 				if (ret){
 					fprintf(stderr,"SQL Error");
@@ -216,7 +216,7 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 				sqlite3_finalize(stmt);	
 
 				if(basicnumber > 1 && duplicatefilename != NULL){
-					querybuffer = sqlite3_mprintf("select file_index,isway from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street,addr_housenumber);
+					querybuffer = sqlite3_mprintf("select file_index,isway from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and addr_postcode='%q' and addr_city='%q' and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street,addr_housenumber,addr_postcode,addr_city);
 					ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
 					if (ret){
 						fprintf(stderr,"SQL Error");
@@ -278,7 +278,7 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 							if(verbose)
 								printf("Has changed %s to %s\n",addr_street,addr_street_2);
 							exists = 0;
-							querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street_2,addr_housenumber);
+							querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and addr_postcode='%q' and addr_city='%q' and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street_2,addr_housenumber,addr_postcode,addr_city);
 							basic_query(db,querybuffer,0);
 							sqlite3_free(querybuffer);
 							if(exists) {
@@ -332,7 +332,7 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 				}
 				if(basicnumber > 1)
 					number_duplicates++;
-				querybuffer = sqlite3_mprintf("select count(*) from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and ((tag_number > 4 and building = 0) or (tag_number > 5))",addr_street,addr_housenumber);
+				querybuffer = sqlite3_mprintf("select count(*) from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and addr_postcode='%q' and addr_city='%q' and ((tag_number > 4 and building = 0) or (tag_number > 5))",addr_street,addr_housenumber,addr_postcode,addr_city);
 				ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
 				if (ret){
 					fprintf(stderr,"SQL Error");
@@ -346,7 +346,7 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 				sqlite3_finalize(stmt);	
 
 				if(basicnumber > 0 && extranodesfilename != NULL){
-					querybuffer = sqlite3_mprintf("select file_index,isway from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and ((tag_number > 4 and building = 0) or (tag_number > 5))",addr_street,addr_housenumber);
+					querybuffer = sqlite3_mprintf("select file_index,isway from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and addr_postcode='%q' and addr_city='%q' and ((tag_number > 4 and building = 0) or (tag_number > 5))",addr_street,addr_housenumber,addr_postcode,addr_city);
 					ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
 					if (ret){
 						fprintf(stderr,"SQL Error");
