@@ -397,6 +397,10 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 	basic_query(db,"create table if not exists existing (id int auto_increment primary key not null, file_index int, osm_id bigint, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), isway boolean, tag_number int, building boolean, foundindataset boolean default 0);",0);
 
 	for(cur_node = a_node->children; cur_node; cur_node = cur_node->next){
+		addr_housenumber[0] = 0;
+		addr_street[0] = 0;
+		addr_postcode[0] = 0;
+		addr_city[0] = 0;
 		if(cur_node->type == XML_ELEMENT_NODE) {
 			hasfound = 0;
 			text = xmlGetProp(cur_node, "id");
