@@ -47,13 +47,19 @@ os.system("sosi2osm "+prefix+"/"+str(munipnumberpadded)+"Adresser.SOS adresser.l
 
 osmfilename = prefix+"/"+str(munipnumberpadded)+"Adresser.osm"
 
+if not os.path.isdir("/tmp/osm_temp"):
+	os.system("mkdir -p /tmp/osm_temp");
+
 boundarea = os.popen("getedges -m 0.001 "+osmfilename).read()
-os.system(" wget \"http://overpass-api.de/api/interpreter?data=((way[\\\"addr:housenumber\\\"] "+boundarea+";>;););out meta;\" -O ways.osm")
-os.system(" wget \"http://overpass-api.de/api/interpreter?data=((node[\\\"addr:housenumber\\\"] "+boundarea+";<;););out meta;\" -O nodes.osm")
+if not os.path.isfile("/tmp/osm_temp/ways_"+munipnumberpadded+".osm" ):
+	os.system(" wget \"http://overpass-api.de/api/interpreter?data=((way[\\\"addr:housenumber\\\"] "+boundarea+";>;););out meta;\" -O /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
+if not os.path.isfile("/tmp/osm_temp/nodes_"+munipnumberpadded+".osm" ):
+	os.system(" wget \"http://overpass-api.de/api/interpreter?data=((node[\\\"addr:housenumber\\\"] "+boundarea+";<;););out meta;\" -O /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
 
 
 os.system("mkdir -p reports")
-reportcontent = os.popen("getmissingandreport -s -t reports/veivegfixes_"+munipnumberpadded+".osm -d reports/duplicates_"+munipnumberpadded+".osm -e reports/otherobjects_"+munipnumberpadded+".osm -o reports/newnodes_"+munipnumberpadded+".osm -w ways.osm nodes.osm "+osmfilename+"").read()
+print"Processing "+munipnumberpadded+"..."
+reportcontent = os.popen("getmissingandreport -s -t reports/veivegfixes_"+munipnumberpadded+".osm -d reports/duplicates_"+munipnumberpadded+".osm -e reports/otherobjects_"+munipnumberpadded+".osm -o reports/newnodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm  /tmp/osm_temp/nodes_"+munipnumberpadded+".osm "+osmfilename+"").read()
 
 reportfile = open("reports/report_"+munipnumberpadded+".txt","w")
 reportfile.write(reportcontent)
