@@ -212,7 +212,7 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 				sqlite3_finalize(stmt);	
 
 				if(numrows > 0){
-					querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street,addr_housenumber);
+					querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city,osm_id from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street,addr_housenumber);
 					ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
 					sqlite3_free(querybuffer);
 					if(numrows == 1){
@@ -225,11 +225,11 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 							missingcity = strcmp(sqlite3_column_text(stmt,6),"") == 0;
 							if(missingpostcode && !missingcity){
 								if(strcmp(sqlite3_column_text(stmt,6),addr_city) == 0) otherisok = 1;
-								else printf("Error - not equal (%s != %s)\n",sqlite3_column_text(stmt,6),addr_city);
+								else printf("Error - not equal (%s != %s) (osmid=%s)\n",sqlite3_column_text(stmt,6),addr_city,sqlite3_column_text(stmt,7));
 							}	
 							else if(!missingpostcode && missingcity){
 								if(strcmp(sqlite3_column_text(stmt,5),addr_postcode) == 0) otherisok = 1;
-								else printf("Error - not equal (%s != %s)\n",sqlite3_column_text(stmt,5),addr_postcode);
+								else printf("Error - not equal (%s != %s) (osmid=%s)\n",sqlite3_column_text(stmt,5),addr_postcode,sqlite3_column_text(stmt,7));
 							}	
 							else {
 								otherisok = 1;
@@ -262,7 +262,7 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 									xmlSetProp(tag_node,"v", addr_postcode);
 									xmlAddChild(newNode_intern,tag_node);
 								}
-								if(missingpostcode){
+								if(missingcity){
 									tag_node = xmlNewNode(NULL,"tag");
 									xmlSetProp(tag_node,"k", "addr:city");
 									xmlSetProp(tag_node,"v", addr_city);
