@@ -35,6 +35,7 @@ char *xmlfilename3 = NULL;
 char *outputxmlfilename = NULL;
 char *veivegfilename = NULL;
 char *duplicatefilename = NULL;
+char *extranodesfilename = NULL;
 double addTo = 0;
 char exists = 0;
 char only_info = 0;
@@ -329,7 +330,9 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 					}
 					number_nonexisting++;
 				}
-				querybuffer = sqlite3_mprintf("select count(*) from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q')",addr_street,addr_housenumber);
+				if(basicnumber > 1)
+					number_duplicates++;
+				querybuffer = sqlite3_mprintf("select count(*) from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and ((tag_number > 4 and building = 0) or (tag_number > 5))",addr_street,addr_housenumber);
 				ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
 				if (ret){
 					fprintf(stderr,"SQL Error");
@@ -338,10 +341,30 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 				sqlite3_free(querybuffer);
 				sqlite3_step(stmt);
 				const char *result2 = (const char*)sqlite3_column_text(stmt,0);
-				number_nodeswithotherthings	+= atoi(result2) - basicnumber;
+				basicnumber = atoi(result2);
+				number_nodeswithotherthings	+= basicnumber;
 				sqlite3_finalize(stmt);	
-				if(basicnumber > 1)
-					number_duplicates++;
+
+				if(basicnumber > 0 && extranodesfilename != NULL){
+					querybuffer = sqlite3_mprintf("select file_index,isway from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and ((tag_number > 4 and building = 0) or (tag_number > 5))",addr_street,addr_housenumber);
+					ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+					if (ret){
+						fprintf(stderr,"SQL Error");
+						return;
+					}
+					sqlite3_free(querybuffer);
+					while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+						const char *resultLoop = (const char*)sqlite3_column_text(stmt,0);
+						xmlNode *newNode_intern;
+						if(strcmp(sqlite3_column_text(stmt,1),"1") == 0)
+							newNode_intern = xmlCopyNode(get_xml_node(doc_old2,atoi(resultLoop),1), 1);
+						else
+							newNode_intern = xmlCopyNode(get_xml_node(doc_old1,atoi(resultLoop),0), 1);
+						xmlNode *root_element_intern = xmlDocGetRootElement(doc_output4);
+						xmlAddChild(root_element_intern,newNode_intern);
+					}
+					sqlite3_finalize(stmt);	
+				}
 
 				number++;
 				number_new++;
@@ -441,6 +464,10 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 							xmlFree(text);
 							tag_number--;
 						}
+						else if(strcmp(text,"access") == 0){
+							xmlFree(text);
+							tag_number--;
+						}
 						else {
 							xmlFree(text);
 						}
@@ -467,7 +494,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 int parse_cmdline(int argc, char **argv){
 	int s;
 	opterr = 0;
-	while((s = getopt(argc, argv, "vso:w:t:d:")) != -1) {
+	while((s = getopt(argc, argv, "vso:w:t:d:e:")) != -1) {
 		switch (s) {
 			case 's':
 				only_info = 1;
@@ -491,6 +518,10 @@ int parse_cmdline(int argc, char **argv){
 				duplicatefilename = (char*) malloc(strlen(optarg)+1);
 				snprintf(duplicatefilename,strlen(optarg)+1,"%s",optarg);
 				break;
+			case 'e':
+				extranodesfilename = (char*) malloc(strlen(optarg)+1);
+				snprintf(extranodesfilename,strlen(optarg)+1,"%s",optarg);
+				break;
 			case '?':
 				if(optopt == 'o')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
@@ -499,6 +530,8 @@ int parse_cmdline(int argc, char **argv){
 				else if(optopt == 'd')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
 				else if(optopt == 't')
+					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
+				else if(optopt == 'e')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
 				else if(isprint(optopt)) 
 					fprintf(stderr, "Unknown option '-%c'.\n",optopt);
@@ -605,8 +638,8 @@ int main(int argc, char **argv){
 	if(duplicatefilename){
 		xmlSaveFileEnc(duplicatefilename, doc_output3, "UTF-8");
 	}
-	if(NULL){
-		xmlSaveFileEnc("test4.osm", doc_output4, "UTF-8");
+	if(extranodesfilename){
+		xmlSaveFileEnc(extranodesfilename, doc_output4, "UTF-8");
 	}
 
 
@@ -625,6 +658,12 @@ int main(int argc, char **argv){
 	free(xmlfilename1);
 	free(xmlfilename2);
 	free(outputxmlfilename);
+	if(veivegfilename != NULL)
+		free(veivegfilename);
+	if(duplicatefilename != NULL)
+		free(duplicatefilename);
+	if(extranodesfilename != NULL)
+		free(extranodesfilename);
 
 	printf("Existing:\t%d\n",number_old);
 	printf("New:\t\t%d\n",number_new);
