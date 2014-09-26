@@ -17,7 +17,8 @@
 #   You should have received a copy of the GNU General Public License
 #   along with this program; if not, write to the Free Software
 #   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- 
+
+network=True 
 
 import os
 import sys
@@ -50,11 +51,25 @@ osmfilename = prefix+"/"+str(munipnumberpadded)+"Adresser.osm"
 if not os.path.isdir("/tmp/osm_temp"):
 	os.system("mkdir -p /tmp/osm_temp");
 
+
 boundarea = os.popen("getedges -m 0.001 "+osmfilename).read()
-if not os.path.isfile("/tmp/osm_temp/ways_"+munipnumberpadded+".osm" ):
-	os.system(" wget \"http://overpass-api.de/api/interpreter?data=((way[\\\"addr:housenumber\\\"] "+boundarea+";>;););out meta;\" -O /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
-if not os.path.isfile("/tmp/osm_temp/nodes_"+munipnumberpadded+".osm" ):
-	os.system(" wget \"http://overpass-api.de/api/interpreter?data=((node[\\\"addr:housenumber\\\"] "+boundarea+";<;););out meta;\" -O /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
+if network:
+	if not os.path.isfile("/tmp/osm_temp/ways_"+munipnumberpadded+".osm" ):
+		os.system(" wget \"http://overpass-api.de/api/interpreter?data=((way[\\\"addr:housenumber\\\"] "+boundarea+";>;););out meta;\" -O /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
+	if not os.path.isfile("/tmp/osm_temp/nodes_"+munipnumberpadded+".osm" ):
+		os.system(" wget \"http://overpass-api.de/api/interpreter?data=((node[\\\"addr:housenumber\\\"] "+boundarea+";<;););out meta;\" -O /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
+else:
+	print ""
+	#"osmosis  --read-pbf enableDateParsing=no file=norway.pbf  --bounding-box top=49.5138 left=10.9351 bottom=49.3866 right=11.201 --write-xml file=/tmp/osm_temp/ways_"+munipnumberpadded+".osm"
+	#"osmosis  --read-pbf enableDateParsing=no file=norway.pbf --bounding-polygon file="polygon.txt" --write-xml file=/tmp/osm_temp/ways_"+munipnumberpadded+".osm"
+
+if os.path.isfile("munip_borders/"+str(munipnumberpadded)+".osm"):
+	os.system("perl ../perl/osm2poly.pl munip_borders/"+str(munipnumberpadded)+".osm > munip_borders/"+str(munipnumberpadded)+".txt")
+	print "huff"
+	os.system("osmosis --read-xml enableDateParsing=no file=\"/tmp/osm_temp/ways_"+munipnumberpadded+".osm\" --bounding-polygon file=\"munip_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp.osm")
+	os.system("mv /tmp/osm_temp/ways_"+munipnumberpadded+"-tmp.osm /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
+	os.system("osmosis --read-xml enableDateParsing=no file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+".osm\" --bounding-polygon file=\"munip_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp.osm")
+	os.system("mv /tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp.osm /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
 
 
 os.system("mkdir -p reports")
