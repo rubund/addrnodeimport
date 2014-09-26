@@ -45,6 +45,7 @@ int number_nonexisting = 0;
 int number_veivegfixes = 0;
 int number_nodeswithotherthings = 0;
 int number_duplicates = 0;
+int number_buildings = 0;
 char foundid[20];
 char foundisway;
 FILE *tmpfile_handle;
@@ -485,6 +486,8 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 				sqlite3_free(querybuffer);
 				rowcounter++;
 				number_old++;
+				if(isbuilding)
+					number_buildings++;
 				file_index++;
 			}
 		} 
@@ -676,6 +679,8 @@ int main(int argc, char **argv){
 	printf("Duplicates:\t%d\n",number_duplicates);
 	if(veivegfilename != NULL)
 		printf("Veivegfixes:\t%d\n",number_veivegfixes);
+	if(xmlfilename3 != NULL)
+		printf("Buildings:\t%d\n",number_buildings);
 	return 0;
 
 }
