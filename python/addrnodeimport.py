@@ -22,6 +22,7 @@ network=True
 
 import os
 import sys
+import glob
 
 if len(sys.argv) != 3:
 	print "Missing command line argument.\nUsage: "+sys.argv[0]+" <top-zip-file> <municipality number>"
@@ -62,6 +63,23 @@ else:
 	print ""
 	#"osmosis  --read-pbf enableDateParsing=no file=norway.pbf  --bounding-box top=49.5138 left=10.9351 bottom=49.3866 right=11.201 --write-xml file=/tmp/osm_temp/ways_"+munipnumberpadded+".osm"
 	#"osmosis  --read-pbf enableDateParsing=no file=norway.pbf --bounding-polygon file="polygon.txt" --write-xml file=/tmp/osm_temp/ways_"+munipnumberpadded+".osm"
+
+if not os.path.isfile("munip_borders/"+str(munipnumberpadded)+".osm"):
+	alreadyextracted = glob.glob("munip_borders/"+munipnumberpadded+"/"+str(munipnumberpadded)+"_Adm*.sos")
+	if alreadyextracted == None or len(alreadyextracted) == 0:
+		print alreadyextracted
+		zipfiles = glob.glob("/lager2/ruben/kartverket/n50/Kartdata_"+str(munipnumber)+"_*N50_SOSI.zip")
+		if zipfiles != None and len(zipfiles) > 0:
+			zipfile = zipfiles[0]
+			print "there is"+zipfile
+			os.system("mkdir -p munip_borders")
+			os.system("unzip "+zipfile+" -d munip_borders/"+munipnumberpadded+"")
+
+	adminfiles = glob.glob("munip_borders/"+munipnumberpadded+"/"+str(munipnumberpadded)+"_Adm*.sos")
+	if adminfiles != None and len(adminfiles) > 0:
+		adminfile = adminfiles[0]
+		print "here now "+adminfile
+		os.system("sosi2osm "+adminfile+" default.lua > munip_borders/"+munipnumberpadded+".osm")
 
 if os.path.isfile("munip_borders/"+str(munipnumberpadded)+".osm"):
 	os.system("perl ../perl/osm2poly.pl munip_borders/"+str(munipnumberpadded)+".osm > munip_borders/"+str(munipnumberpadded)+".txt")
