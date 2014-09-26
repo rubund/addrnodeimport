@@ -65,7 +65,7 @@ else:
 	#"osmosis  --read-pbf enableDateParsing=no file=norway.pbf --bounding-polygon file="polygon.txt" --write-xml file=/tmp/osm_temp/ways_"+munipnumberpadded+".osm"
 
 if not os.path.isfile("munip_borders/"+str(munipnumberpadded)+".osm"):
-	alreadyextracted = glob.glob("munip_borders/"+munipnumberpadded+"/"+str(munipnumberpadded)+"_Adm*.sos")
+	alreadyextracted = glob.glob("munip_borders/"+munipnumberpadded+"/"+str(munipnumberpadded)+"*_Adm*.sos")
 	if alreadyextracted == None or len(alreadyextracted) == 0:
 		print alreadyextracted
 		zipfiles = glob.glob("/lager2/ruben/kartverket/n50/Kartdata_"+str(munipnumber)+"_*N50_SOSI.zip")
@@ -75,7 +75,7 @@ if not os.path.isfile("munip_borders/"+str(munipnumberpadded)+".osm"):
 			os.system("mkdir -p munip_borders")
 			os.system("unzip "+zipfile+" -d munip_borders/"+munipnumberpadded+"")
 
-	adminfiles = glob.glob("munip_borders/"+munipnumberpadded+"/"+str(munipnumberpadded)+"_Adm*.sos")
+	adminfiles = glob.glob("munip_borders/"+munipnumberpadded+"/"+str(munipnumberpadded)+"*_Adm*.sos")
 	if adminfiles != None and len(adminfiles) > 0:
 		adminfile = adminfiles[0]
 		print "here now "+adminfile
