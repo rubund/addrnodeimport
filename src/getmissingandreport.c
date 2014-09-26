@@ -36,6 +36,7 @@ char *outputxmlfilename = NULL;
 char *veivegfilename = NULL;
 char *duplicatefilename = NULL;
 char *extranodesfilename = NULL;
+char *notmatchedfilename = NULL;
 double addTo = 0;
 char exists = 0;
 char only_info = 0;
@@ -153,6 +154,7 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 	char addr_city[256];
 
 	char * querybuffer;
+	char exists2;
 
 	char hasfound = 0;
 	char hasfound2 = 0;
@@ -201,9 +203,20 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 			int basicnumber=0;
 			if(hasfound) {
 				querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and addr_postcode='%q' and addr_city='%q' and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street,addr_housenumber,addr_postcode,addr_city);
-				exists = 0;
-				basic_query(db,querybuffer,0);
+				exists2 = 0;
+				ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+				if (ret){
+					fprintf(stderr,"SQL Error");
+					return;
+				}
 				sqlite3_free(querybuffer);
+				while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+					querybuffer = sqlite3_mprintf("update existing set foundindataset=1 where id='%q';",sqlite3_column_text(stmt,0));
+					basic_query(db,querybuffer,0);
+					sqlite3_free(querybuffer);
+					exists2 = 1;
+				}
+				sqlite3_finalize(stmt);	
 				querybuffer = sqlite3_mprintf("select count(*) from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and addr_postcode='%q' and addr_city='%q' and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street,addr_housenumber,addr_postcode,addr_city);
 				ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
 				if (ret){
@@ -238,9 +251,9 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 				}
 
 				//sqlite3_free(result);
-				if(exists && verbose)
+				if(exists2 && verbose)
 					printf("Got the status also in the main \"thread\"\n");
-				if(!exists){
+				if(!exists2){
 					if(veivegfilename != NULL){
 						char addr_street_2[256];
 						char *mysubstr = NULL;
@@ -501,7 +514,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 int parse_cmdline(int argc, char **argv){
 	int s;
 	opterr = 0;
-	while((s = getopt(argc, argv, "vso:w:t:d:e:")) != -1) {
+	while((s = getopt(argc, argv, "vso:w:t:d:e:n:")) != -1) {
 		switch (s) {
 			case 's':
 				only_info = 1;
@@ -529,6 +542,10 @@ int parse_cmdline(int argc, char **argv){
 				extranodesfilename = (char*) malloc(strlen(optarg)+1);
 				snprintf(extranodesfilename,strlen(optarg)+1,"%s",optarg);
 				break;
+			case 'n':
+				notmatchedfilename = (char*) malloc(strlen(optarg)+1);
+				snprintf(notmatchedfilename,strlen(optarg)+1,"%s",optarg);
+				break;
 			case '?':
 				if(optopt == 'o')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
@@ -539,6 +556,8 @@ int parse_cmdline(int argc, char **argv){
 				else if(optopt == 't')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
 				else if(optopt == 'e')
+					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
+				else if(optopt == 'n')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
 				else if(isprint(optopt)) 
 					fprintf(stderr, "Unknown option '-%c'.\n",optopt);
@@ -559,6 +578,31 @@ int parse_cmdline(int argc, char **argv){
 	return 0;
 }
 
+void get_all_notmatched(xmlDoc *doc_old1, xmlDoc *doc_old2, sqlite3 *db, xmlDoc *doc){
+	char * querybuffer;
+	int ret;
+	sqlite3_stmt *stmt;
+	xmlNode *newNode_intern;
+
+	querybuffer = sqlite3_mprintf("select id,file_index,isway from existing where foundindataset=0 and ((tag_number <= 4) or (tag_number <= 5 and building = 1));");
+	ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+	sqlite3_free(querybuffer);
+	if (ret){
+		fprintf(stderr,"SQL Error 9");
+		return;
+	}
+	while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+		if(strcmp(sqlite3_column_text(stmt,2),"1") == 0)
+			newNode_intern = xmlCopyNode(get_xml_node(doc_old2,atoi(sqlite3_column_text(stmt,1)),1), 1);
+		else
+			newNode_intern = xmlCopyNode(get_xml_node(doc_old1,atoi(sqlite3_column_text(stmt,1)),0), 1);
+		xmlNode *root_element_intern = xmlDocGetRootElement(doc);
+		xmlAddChild(root_element_intern,newNode_intern);
+	}
+	sqlite3_finalize(stmt);	
+
+}
+
 int main(int argc, char **argv){
 
 	xmlDoc *doc_old1 = NULL;
@@ -569,6 +613,7 @@ int main(int argc, char **argv){
 	xmlDoc *doc_output2 = NULL;
 	xmlDoc *doc_output3 = NULL;
 	xmlDoc *doc_output4 = NULL;
+	xmlDoc *doc_output5 = NULL;
 
 	sqlite3 *db = NULL;
 	int ret;
@@ -611,6 +656,7 @@ int main(int argc, char **argv){
 	doc_output2 = xmlCopyDoc(doc_output,1);
 	doc_output3 = xmlCopyDoc(doc_output,1);
 	doc_output4 = xmlCopyDoc(doc_output,1);
+	doc_output5 = xmlCopyDoc(doc_output,1);
 	doc_old1 = NULL;
 
 	doc_old1 = xmlReadFile(xmlfilename1,NULL, 0);
@@ -636,6 +682,9 @@ int main(int argc, char **argv){
 	root_element = xmlDocGetRootElement(doc);
 	compare_to_database(doc_old1, doc_old2, root_element,db,doc_output,doc_output2,doc_output3,doc_output4);
 
+	if(notmatchedfilename)
+		get_all_notmatched(doc_old1, doc_old2, db,doc_output5);
+
 	if(outputxmlfilename){
 		xmlSaveFileEnc(outputxmlfilename, doc_output, "UTF-8");
 	}
@@ -648,12 +697,16 @@ int main(int argc, char **argv){
 	if(extranodesfilename){
 		xmlSaveFileEnc(extranodesfilename, doc_output4, "UTF-8");
 	}
+	if(notmatchedfilename){
+		xmlSaveFileEnc(notmatchedfilename, doc_output5, "UTF-8");
+	}
 
 
 	xmlFreeDoc(doc_output);
 	xmlFreeDoc(doc_output2);
 	xmlFreeDoc(doc_output3);
 	xmlFreeDoc(doc_output4);
+	xmlFreeDoc(doc_output5);
 	xmlFreeDoc(doc_old1);
 	xmlFreeDoc(doc_old2);
 	xmlFreeDoc(doc);
@@ -671,6 +724,8 @@ int main(int argc, char **argv){
 		free(duplicatefilename);
 	if(extranodesfilename != NULL)
 		free(extranodesfilename);
+	if(notmatchedfilename != NULL)
+		free(notmatchedfilename);
 
 	printf("Existing:\t%d\n",number_old);
 	printf("New:\t\t%d\n",number_new);
