@@ -47,6 +47,7 @@ int number_nodeswithotherthings = 0;
 int number_duplicates = 0;
 int number_fixes = 0;
 int number_error = 0;
+int number_onlynumber = 0;
 char foundid[20];
 char foundisway;
 FILE *tmpfile_handle;
@@ -324,6 +325,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 	char osmid[100];
 
 	char hasfound = 0;
+	char hasfoundnumber = 0;
 
 	//basic_query(db,"drop table if exists existing;");
 	basic_query(db,"create table if not exists existing (id int auto_increment primary key not null, file_index int, osm_id bigint, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), isway boolean, tag_number int, building boolean, foundindataset boolean default 0);",0);
@@ -335,6 +337,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 		addr_city[0] = 0;
 		if(cur_node->type == XML_ELEMENT_NODE) {
 			hasfound = 0;
+			hasfoundnumber = 0;
 			text = xmlGetProp(cur_node, "id");
 			if(text == 0) continue;
 			strncpy(osmid,text,99);
@@ -356,6 +359,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 							xmlFree(text);
 							text = xmlGetProp(child_node, "v");
 							strncpy(addr_housenumber,text,99);
+							hasfoundnumber = 1;
 							xmlFree(text);
 						}
 						else if(strcmp(text,"addr:street") == 0){
@@ -418,6 +422,9 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 				rowcounter++;
 				number_old++;
 				file_index++;
+			}
+			else if(hasfoundnumber){
+				number_onlynumber++;
 			}
 		} 
 	}
@@ -603,6 +610,7 @@ int main(int argc, char **argv){
 
 	printf("Fixes:\t%d\n",number_fixes);
 	printf("Errors:\t%d\n",number_error);
+	printf("Onlynumber:\t%d\n",number_onlynumber);
 	return 0;
 
 }
