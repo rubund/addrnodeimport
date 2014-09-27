@@ -47,6 +47,7 @@ int number_veivegfixes = 0;
 int number_nodeswithotherthings = 0;
 int number_duplicates = 0;
 int number_buildings = 0;
+int number_abandoned = 0;
 char foundid[20];
 char foundisway;
 FILE *tmpfile_handle;
@@ -406,6 +407,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 	char osmid[100];
 
 	char hasfound = 0;
+	char abandoned = 0;
 
 	//basic_query(db,"drop table if exists existing;");
 	basic_query(db,"create table if not exists existing (id int auto_increment primary key not null, file_index int, osm_id bigint, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), isway boolean, tag_number int, building boolean, foundindataset boolean default 0);",0);
@@ -417,6 +419,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 		addr_city[0] = 0;
 		if(cur_node->type == XML_ELEMENT_NODE) {
 			hasfound = 0;
+			abandoned = 0;
 			text = xmlGetProp(cur_node, "id");
 			if(text == 0) continue;
 			strncpy(osmid,text,99);
@@ -439,6 +442,13 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 							text = xmlGetProp(child_node, "v");
 							strncpy(addr_housenumber,text,99);
 							xmlFree(text);
+						}
+						else if(strcmp(text,"abandoned:addr:housenumber") == 0){
+							xmlFree(text);
+							text = xmlGetProp(child_node, "v");
+							strncpy(addr_housenumber,text,99);
+							xmlFree(text);
+							abandoned = 1;
 						}
 						else if(strcmp(text,"addr:street") == 0){
 							xmlFree(text);
@@ -465,6 +475,14 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 							//strncpy(addr_city,text,255);
 							xmlFree(text);
 							isbuilding = 1;
+						}
+						else if(strcmp(text,"building:levels") == 0){
+							xmlFree(text);
+							tag_number--;
+						}
+						else if(strcmp(text,"roof:levels") == 0){
+							xmlFree(text);
+							tag_number--;
 						}
 						else if(strcmp(text,"source") == 0){
 							xmlFree(text);
@@ -497,7 +515,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 					}
 				}
 			}
-			if(hasfound) {
+			if(hasfound || abandoned) {
 				querybuffer = sqlite3_mprintf("insert into existing (id,file_index,osm_id,addr_housenumber,addr_street,addr_postcode,addr_city,isway,tag_number,building) values (%d,%d,'%q','%q','%q','%q','%q','%d','%d','%d');",rowcounter,file_index,osmid,addr_housenumber,addr_street,addr_postcode,addr_city,(int)isway,tag_number,isbuilding);
 				basic_query(db,querybuffer,0);
 				sqlite3_free(querybuffer);
@@ -507,6 +525,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 					number_buildings++;
 				file_index++;
 			}
+			if(abandoned) number_abandoned++;
 		} 
 	}
 	basic_query(db,"create index if not exists file_index_index on existing (file_index ASC);",0);
@@ -740,6 +759,7 @@ int main(int argc, char **argv){
 		printf("Veivegfixes:\t%d\n",number_veivegfixes);
 	if(xmlfilename3 != NULL)
 		printf("Buildings:\t%d\n",number_buildings);
+	printf("Abandoned:\t%d\n",number_abandoned);
 	return 0;
 
 }

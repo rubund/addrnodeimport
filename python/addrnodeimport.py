@@ -56,9 +56,9 @@ if not os.path.isdir("/tmp/osm_temp"):
 boundarea = os.popen("getedges -m 0.01 "+osmfilename).read()
 if network:
 	if not os.path.isfile("/tmp/osm_temp/ways_"+munipnumberpadded+".osm" ):
-		os.system(" wget \"http://overpass-api.de/api/interpreter?data=((way[\\\"addr:housenumber\\\"] "+boundarea+";>;););out meta;\" -O /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
+		os.system(" wget \"http://overpass-api.de/api/interpreter?data=((way[\\\"addr:housenumber\\\"] "+boundarea+";>;);(way[\\\"abandoned:addr:housenumber\\\"] "+boundarea+";>;););out meta;\" -O /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
 	if not os.path.isfile("/tmp/osm_temp/nodes_"+munipnumberpadded+".osm" ):
-		os.system(" wget \"http://overpass-api.de/api/interpreter?data=((node[\\\"addr:housenumber\\\"] "+boundarea+";<;););out meta;\" -O /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
+		os.system(" wget \"http://overpass-api.de/api/interpreter?data=((node[\\\"addr:housenumber\\\"] "+boundarea+";<;);(node[\\\"abandoned:addr:housenumber\\\"] "+boundarea+";<;););out meta;\" -O /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
 else:
 	print ""
 	#"osmosis  --read-pbf enableDateParsing=no file=norway.pbf  --bounding-box top=49.5138 left=10.9351 bottom=49.3866 right=11.201 --write-xml file=/tmp/osm_temp/ways_"+munipnumberpadded+".osm"
