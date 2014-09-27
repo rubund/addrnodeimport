@@ -240,12 +240,14 @@ void iterate_ways(xmlDoc *doc_old1, sqlite3 *db, xmlDoc *doc_output1, xmlNode *b
 			bool_tmp = (strcmp(cur_node->name,"way") == 0);
 			if(cur_node->type == XML_ELEMENT_NODE && bool_tmp) {
 				text = xmlGetProp(cur_node, "id");
-				printf("Way-id: %s\n",text);
+				if(verbose)
+					printf("Way-id: %s\n",text);
 				xmlFree(text);
 				for(child_node = cur_node->children; child_node ; child_node = child_node->next){
 					text = xmlGetProp(child_node, "ref");
 					if(text != 0){
-						printf(" node-id: %s\n",text);
+						if(verbose)
+							printf(" node-id: %s\n",text);
 						querybuffer = sqlite3_mprintf("select latitude,longitude,file_index from objects where osm_id='%q' and isway=0;",text);
 						if(started ==0){
 							first = atoi(text);
@@ -277,7 +279,8 @@ void iterate_ways(xmlDoc *doc_old1, sqlite3 *db, xmlDoc *doc_output1, xmlNode *b
 							text = xmlGetProp(child_node,"v");
 							if(strcmp(text,"Grunnlinje") == 0){
 								donotinclude = 1;
-								printf("Skipping way\n");
+								if(verbose)
+									printf("Skipping way\n");
 							}
 							xmlFree(text);
 						}
@@ -289,7 +292,8 @@ void iterate_ways(xmlDoc *doc_old1, sqlite3 *db, xmlDoc *doc_output1, xmlNode *b
 			if(hasfound){
 				if(!donotinclude){
 					querybuffer = sqlite3_mprintf("insert into objects (id,osm_id,first_nd,last_nd,file_index,isway) values (%d,'%q','%d','%d','%d',1);",rowcounter,osmid,first,last,file_index);
-					printf("%s\n",querybuffer);
+					if(verbose)
+						printf("%s\n",querybuffer);
 					basic_query(db,querybuffer,0);
 					sqlite3_free(querybuffer);
 					rowcounter++;
@@ -315,7 +319,8 @@ void create_one_polygon(xmlDoc *doc_old, sqlite3 *db, xmlDoc *doc_output1, xmlNo
 	char found = 0;
 	int lastid = -99;
 	while(last != veryfirst){
-		printf("run\n");
+		if(verbose)
+			printf("run\n");
 		found = 0;
 		if(started == 0)
 			querybuffer = sqlite3_mprintf("select first_nd,last_nd,osm_id,id,file_index from objects where isway = 1 limit 1;");
@@ -333,47 +338,71 @@ void create_one_polygon(xmlDoc *doc_old, sqlite3 *db, xmlDoc *doc_output1, xmlNo
 					querybuffer = sqlite3_mprintf("select first_nd,last_nd,osm_id,id,file_index from objects where isway = 1 and first_nd='%d' and id != '%d' limit 1;",first,lastid);
 			}
 		}
-		printf("%s\n",querybuffer);
+		if(verbose)
+			printf("%s\n",querybuffer);
 		ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
 		sqlite3_free(querybuffer);
 		while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
 			found = 1;
 			first = atoi(sqlite3_column_text(stmt,0));	
 			last = atoi(sqlite3_column_text(stmt,1));	
-			printf("Her, first:%d, last:%d\n",first,last);
-			if(started == 0){
-				veryfirst = first;
-				started = 1;
-			}
+			if(verbose)
+				printf("Her, first:%d, last:%d\n",first,last);
 			xmlNode *newNode_intern;
-			printf("File-index.: %s\n",sqlite3_column_text(stmt,4));
+			if(verbose)
+				printf("File-index.: %s\n",sqlite3_column_text(stmt,4));
 			xmlNode *current_way = get_xml_node(doc_old,atoi(sqlite3_column_text(stmt,4)),1);
-			printf("node-name: %s\n",current_way->name);
+			if(verbose)
+				printf("node-name: %s\n",current_way->name);
 			xmlNode *child_node = NULL;
 			char bool_tmp;
 			text = xmlGetProp(current_way, "id");
-			printf("Id: %s\n",text);
+			if(verbose)
+				printf("Id: %s\n",text);
 			xmlFree(text);
+			xmlNode *firstreversenode = NULL;
 			xmlNode *firstnode = NULL;
 			for(child_node = current_way->children; child_node ; child_node = child_node->next){
 				bool_tmp = (strcmp(child_node->name,"nd") == 0);
 				if(child_node->type == XML_ELEMENT_NODE && bool_tmp) {
-					text = xmlGetProp(child_node, "ref");
-					printf("Ref: %s\n",text);
-					xmlFree(text);
 					newNode_intern = xmlCopyNode(child_node, 1);
 					if(thisisreverse){
-						if(firstnode == NULL){
+						if(firstreversenode == NULL){
+							if(verbose)
+								printf("Adding first in reverse\n");
 							xmlAddChild(bigway,newNode_intern);
-							firstnode = newNode_intern;
 						}
 						else {
-							xmlAddPrevSibling(firstnode, newNode_intern);
-							firstnode = newNode_intern;
+							if(child_node->next != NULL){
+								xmlAddPrevSibling(firstnode, newNode_intern);
+								if(verbose)
+									printf("Adding in reverse\n");
+							}
 						}
+						firstreversenode = newNode_intern;
 					}
 					else {
-						xmlAddChild(bigway,newNode_intern);
+						if(started == 0){
+							if(verbose)
+								printf("Adding very first\n");
+							xmlAddChild(bigway,newNode_intern);
+						}
+						else {
+                          	if (firstnode != NULL){
+								if(verbose)
+									printf("Adding in normal\n");
+								xmlAddChild(bigway,newNode_intern);
+							}
+						}
+					}
+					text = xmlGetProp(child_node, "ref");
+					if(verbose)
+						printf(" Ref: %s\n",text);
+					xmlFree(text);
+					firstnode = newNode_intern;
+					if(started == 0){
+						veryfirst = first;
+						started = 1;
 					}
 				}
 			}
@@ -381,13 +410,15 @@ void create_one_polygon(xmlDoc *doc_old, sqlite3 *db, xmlDoc *doc_output1, xmlNo
 			lastid = atoi(sqlite3_column_text(stmt,3));
 		}
 		if(!found){
-			printf("Reversing..\n");
+			if(verbose)
+				printf("Reversing..\n");
 			thisisreverse = !thisisreverse;
 		}
 		else {
 			lastwasreverse = thisisreverse;
 		}
-		printf("thisisreverse: %d. lastwasreverse: %d\n",thisisreverse,lastwasreverse);
+		if(verbose)
+			printf("thisisreverse: %d. lastwasreverse: %d\n",thisisreverse,lastwasreverse);
 		sqlite3_finalize(stmt);
 	}
 
