@@ -75,14 +75,14 @@ if not os.path.isfile("munip_borders/"+str(munipnumberpadded)+".osm"):
 			os.system("mkdir -p munip_borders")
 			os.system("unzip "+zipfile+" -d munip_borders/"+munipnumberpadded+"")
 
-	adminfiles = glob.glob("munip_borders/"+munipnumberpadded+"/"+str(munipnumberpadded)+"*_Adm*.sos")
-	if adminfiles != None and len(adminfiles) > 0:
-		adminfile = adminfiles[0]
-		print "here now "+adminfile
-		os.system("sosi2osm "+adminfile+" default.lua > munip_borders/"+munipnumberpadded+".osm")
-	os.system("osmosispolygon -o munip_borders/"+str(munipnumberpadded)+"-tmp.osm munip_borders/"+munipnumberpadded+".osm")
-	os.system("sed -i 's/>/>\\n/g' munip_borders/"+munipnumberpadded+"-tmp.osm")
-	os.system("mv munip_borders/"+str(munipnumberpadded)+"-tmp.osm munip_borders/"+munipnumberpadded+".osm")
+			adminfiles = glob.glob("munip_borders/"+munipnumberpadded+"/"+str(munipnumberpadded)+"*_Adm*.sos")
+			if adminfiles != None and len(adminfiles) > 0:
+				adminfile = adminfiles[0]
+				print "here now "+adminfile
+				os.system("sosi2osm "+adminfile+" default.lua > munip_borders/"+munipnumberpadded+".osm")
+			os.system("osmosispolygon -o munip_borders/"+str(munipnumberpadded)+"-tmp.osm munip_borders/"+munipnumberpadded+".osm")
+			os.system("sed -i 's/>/>\\n/g' munip_borders/"+munipnumberpadded+"-tmp.osm")
+			os.system("mv munip_borders/"+str(munipnumberpadded)+"-tmp.osm munip_borders/"+munipnumberpadded+".osm")
 
 if os.path.isfile("munip_borders/"+str(munipnumberpadded)+".osm"):
 	os.system("perl ../perl/osm2poly.pl munip_borders/"+str(munipnumberpadded)+".osm > munip_borders/"+str(munipnumberpadded)+".txt")

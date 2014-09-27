@@ -318,7 +318,8 @@ void create_one_polygon(xmlDoc *doc_old, sqlite3 *db, xmlDoc *doc_output1, xmlNo
 	char lastwasreverse=0;
 	char found = 0;
 	int lastid = -99;
-	while(last != veryfirst){
+	int runno=0;
+	while(last != veryfirst && (first != veryfirst || runno < 3)){
 		if(verbose)
 			printf("run\n");
 		found = 0;
@@ -420,6 +421,9 @@ void create_one_polygon(xmlDoc *doc_old, sqlite3 *db, xmlDoc *doc_output1, xmlNo
 		if(verbose)
 			printf("thisisreverse: %d. lastwasreverse: %d\n",thisisreverse,lastwasreverse);
 		sqlite3_finalize(stmt);
+		runno++;
+		if(verbose)
+			printf("New cycle: first: %d, last: %d, veryfirst: %d, runno: %d\n",first,last,veryfirst,runno);
 	}
 
 }
