@@ -45,6 +45,7 @@ int number_nonexisting = 0;
 int number_veivegfixes = 0;
 int number_nodeswithotherthings = 0;
 int number_duplicates = 0;
+int rowcounter = 0;
 char foundid[20];
 char foundisway;
 FILE *tmpfile_handle;
@@ -117,7 +118,7 @@ xmlNode *get_xml_node(xmlDoc *doc,int index,int isway){
 					text = xmlGetProp(tag_node, "k");
 					if(text != 0){
 						//printf(" found key: %s\n",text);
-						if(strcmp(text,"addr:street") == 0){
+						if(strcmp(text,"OBJTYPE") == 0){
 							xmlFree(text);
 							hasfound2 = 1;
 						}
@@ -137,176 +138,12 @@ xmlNode *get_xml_node(xmlDoc *doc,int index,int isway){
 	return tmp_node;
 }
 
-void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, sqlite3 *db, xmlDoc *doc_output, xmlDoc *doc_output2, xmlDoc *doc_output3, xmlDoc *doc_output4){
-	int i;
-	int ret;
-	xmlNode *cur_node = NULL;
-	xmlChar *text;
-	xmlNode *child_node = NULL;
-	xmlNode *newNode = NULL;
-	sqlite3_stmt *stmt;
-
-	char addr_housenumber[100];
-	char addr_street[256];
-	char addr_postcode[10];
-	char addr_city[256];
-
-	char * querybuffer;
-
-	char hasfound = 0;
-	char hasfound2 = 0;
-	int number = 0;
-
-	for(cur_node = a_node->children; cur_node; cur_node = cur_node->next){
-		addr_housenumber[0] = 0;
-		addr_street[0] = 0;
-		addr_postcode[0] = 0;
-		addr_city[0] = 0;
-		if(cur_node->type == XML_ELEMENT_NODE) {
-			hasfound = 0;
-			for(child_node = cur_node->children; child_node ; child_node = child_node->next){
-				if(cur_node->type == XML_ELEMENT_NODE) {
-					text = xmlGetProp(child_node, "k");
-					if(text != 0){
-						if(verbose)
-							printf("This node: %s\n",text);
-						if(strcmp(text,"addr:housenumber") == 0){
-							xmlFree(text);
-							text = xmlGetProp(child_node, "v");
-							strncpy(addr_housenumber,text,99);
-							xmlFree(text);
-						}
-						else if(strcmp(text,"addr:street") == 0){
-							xmlFree(text);
-							text = xmlGetProp(child_node, "v");
-							strncpy(addr_street,text,255);
-							xmlFree(text);
-							hasfound = 1;
-						}
-						else if(strcmp(text,"addr:postcode") == 0){
-							xmlFree(text);
-							text = xmlGetProp(child_node, "v");
-							strncpy(addr_postcode,text,9);
-							xmlFree(text);
-						}
-						else if(strcmp(text,"addr:city") == 0){
-							xmlFree(text);
-							text = xmlGetProp(child_node, "v");
-							strncpy(addr_city,text,255);
-							xmlFree(text);
-						}
-						else {
-							xmlFree(text);
-						}
-					}
-				}
-			}
-			if(hasfound) {
-				int numrows = 0;
-				querybuffer = sqlite3_mprintf("select count(*) from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street,addr_housenumber);
-				ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
-				sqlite3_free(querybuffer);
-				while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
-					numrows = atoi(sqlite3_column_text(stmt,0));	
-				}
-				sqlite3_finalize(stmt);	
-
-				if(numrows > 0){
-					querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street,addr_housenumber);
-					ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
-					sqlite3_free(querybuffer);
-					if(numrows == 1){
-						//printf("\n\n\n%s %s, %s %s:\n",addr_street,addr_housenumber,addr_postcode,addr_city);	
-						while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
-							char missingpostcode = 0;
-							char missingcity = 0;
-							char otherisok = 0;
-							missingpostcode = strcmp(sqlite3_column_text(stmt,5),"") == 0;
-							missingcity = strcmp(sqlite3_column_text(stmt,6),"") == 0;
-							if(missingpostcode && !missingcity){
-								if(strcmp(sqlite3_column_text(stmt,6),addr_city) == 0) otherisok = 1;
-								else printf("Error - not equal (%s != %s)\n",sqlite3_column_text(stmt,6),addr_city);
-							}	
-							else if(!missingpostcode && missingcity){
-								if(strcmp(sqlite3_column_text(stmt,5),addr_postcode) == 0) otherisok = 1;
-								else printf("Error - not equal (%s != %s)\n",sqlite3_column_text(stmt,5),addr_postcode);
-							}	
-							else {
-								otherisok = 1;
-							}
-							if((missingpostcode || missingcity) && otherisok){
-								if(verbose)
-									printf("%s %s:",addr_street,addr_housenumber);	
-
-								xmlNode *newNode_intern;
-								if(strcmp(sqlite3_column_text(stmt,2),"1") == 0)
-									newNode_intern = xmlCopyNode(get_xml_node(doc_old2,atoi(sqlite3_column_text(stmt,1)),1), 1);
-								else
-									newNode_intern = xmlCopyNode(get_xml_node(doc_old1,atoi(sqlite3_column_text(stmt,1)),0), 1);
-
-								if(verbose){
-									if(missingpostcode && !missingcity){
-										printf(" Missing postcode but has city. %s == %s ? %s == %s ?\n",sqlite3_column_text(stmt,5),addr_postcode,sqlite3_column_text(stmt,6),addr_city);
-									}
-									else if(missingcity && !missingpostcode){
-										printf(" Missing city but has postcode. %s == %s ? %s == %s ?\n",sqlite3_column_text(stmt,5),addr_postcode,sqlite3_column_text(stmt,6),addr_city);
-									}
-									else if(missingcity && missingpostcode){
-										printf(" Missing postcode and city. %s == %s ? %s == %s ?\n",sqlite3_column_text(stmt,5),addr_postcode,sqlite3_column_text(stmt,6),addr_city);
-									}
-								}
-								xmlNode *tag_node;
-								if(missingpostcode){
-									tag_node = xmlNewNode(NULL,"tag");
-									xmlSetProp(tag_node,"k", "addr:postcode");
-									xmlSetProp(tag_node,"v", addr_postcode);
-									xmlAddChild(newNode_intern,tag_node);
-								}
-								if(missingpostcode){
-									tag_node = xmlNewNode(NULL,"tag");
-									xmlSetProp(tag_node,"k", "addr:city");
-									xmlSetProp(tag_node,"v", addr_city);
-									xmlAddChild(newNode_intern,tag_node);
-								}
-								//for(tag_node = newNode_intern->children; tag_node ; tag_node = tag_node->next){
-								//	if(tag_node->type == XML_ELEMENT_NODE) {
-								//		text = xmlGetProp(tag_node, "k");
-								//		if(text != 0){
-								//			printf("her: %s\n",text);
-								//			if(strcmp(text,"addr:postcode") == 0){
-								//				xmlFree(text);
-								//				xmlSetProp(tag_node, "v",addr_postcode);
-								//			}
-								//			else if(strcmp(text,"addr:city") == 0){
-								//				xmlFree(text);
-								//				xmlSetProp(tag_node, "v",addr_city);
-								//			}
-								//		}
-								//	}
-								//}
-								xmlSetProp(newNode_intern,"action","modify");
-								xmlNode *root_element_intern = xmlDocGetRootElement(doc_output);
-								xmlAddChild(root_element_intern,newNode_intern);
-							}
-						}
-					}
-					else{
-						//printf(" More than one match (%d)\n",numrows);
-					}
-					sqlite3_finalize(stmt);	
-				}
-			}
-		}
-	}
-}
-
-void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
+void populate_database(xmlDoc *doc_old1, sqlite3 *db, xmlDoc *doc_output1){
 	xmlNode *cur_node = NULL;
 	xmlAttr *attribute;
 	xmlChar *text;
 	xmlNode *child_node = NULL;
 
-	static int rowcounter = 0;
 	int file_index = 0;
 	char *querybuffer;
 	sqlite3_stmt *stmt;
@@ -321,9 +158,10 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 	char longitude[100];
 
 	char hasfound = 0;
+	xmlNode *a_node = xmlDocGetRootElement(doc_old1);
 
 	//basic_query(db,"drop table if exists existing;");
-	basic_query(db,"create table if not exists nodes (id int auto_increment primary key not null, osm_id bigint, latitude double, longitude double);",0);
+	basic_query(db,"create table if not exists objects (id int auto_increment primary key not null, file_index int, osm_id bigint, latitude double, longitude double, first_nd int, last_nd int, isway boolean);",0);
 
 	for(cur_node = a_node->children; cur_node; cur_node = cur_node->next){
 		addr_housenumber[0] = 0;
@@ -339,48 +177,219 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 			xmlFree(text);
 			int tag_number = 0;
 			int isbuilding = 0;
-			if(isway ==0){
-				bool_tmp = (strcmp(cur_node->name,"node") == 0);
-				if(bool_tmp) {
-					text = xmlGetProp(cur_node, "lat");
-					if(text == 0) continue;
-					strncpy(latitude,text,99);
-					xmlFree(text);
-					text = xmlGetProp(cur_node, "lon");
-					if(text == 0) continue;
-					strncpy(longitude,text,99);
-					xmlFree(text);
-					
-					querybuffer = sqlite3_mprintf("insert into nodes (id,osm_id,latitude,longitude) values (%d,'%q','%q','%q');",rowcounter,osmid,latitude,longitude);
-					basic_query(db,querybuffer,0);
-					sqlite3_free(querybuffer);
-					rowcounter++;
-				}
-			}
-			else{
-				for(child_node = cur_node->children; child_node ; child_node = child_node->next){
-					bool_tmp = (strcmp(cur_node->name,"way") == 0);
-					if(cur_node->type == XML_ELEMENT_NODE && bool_tmp) {
-						text = xmlGetProp(child_node, "ref");
-						if(text != 0){
-							printf("%s: ",text);
-							querybuffer = sqlite3_mprintf("select latitude,longitude from nodes where osm_id='%q';",text);
-							xmlFree(text);
-							ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
-							sqlite3_free(querybuffer);
-							while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
-								printf("Latitude: %10.5f, Longitude: %10.5f\n",atof(sqlite3_column_text(stmt,0)),atof(sqlite3_column_text(stmt,1)));
-							}
-							sqlite3_finalize(stmt);	
-						}
-					}
-				}
+			bool_tmp = (strcmp(cur_node->name,"node") == 0);
+			if(bool_tmp) {
+				text = xmlGetProp(cur_node, "lat");
+				if(text == 0) continue;
+				strncpy(latitude,text,99);
+				xmlFree(text);
+				text = xmlGetProp(cur_node, "lon");
+				if(text == 0) continue;
+				strncpy(longitude,text,99);
+				xmlFree(text);
+				xmlNode *newNode_intern;
+				newNode_intern = xmlCopyNode(cur_node,2);
+				xmlNode *root_element_intern = xmlDocGetRootElement(doc_output1);
+				xmlAddChild(root_element_intern,newNode_intern);
+				
+				querybuffer = sqlite3_mprintf("insert into objects (id,osm_id,latitude,longitude,file_index,isway) values (%d,'%q','%q','%q','%d',0);",rowcounter,osmid,latitude,longitude,file_index);
+				basic_query(db,querybuffer,0);
+				sqlite3_free(querybuffer);
+				rowcounter++;
+				file_index++;
 			}
 		} 
 	}
 	//basic_query(db,"create index if not exists file_index_index on existing (file_index ASC);",0);
 	//basic_query(db,"create index if not exists addr_street_index on existing (addr_street ASC);",0);
 	//basic_query(db,"create index if not exists addr_housenumber_index on existing (addr_housenumber ASC);",0);
+
+}
+
+void iterate_ways(xmlDoc *doc_old1, sqlite3 *db, xmlDoc *doc_output1, xmlNode *bigway){
+	xmlNode *a_node = xmlDocGetRootElement(doc_old1);
+	xmlNode *cur_node = NULL;
+	xmlChar *text;
+	xmlNode *child_node = NULL;
+	char hasfound = 0;
+	char osmid[100];
+	char *querybuffer;
+	sqlite3_stmt *stmt;
+	int ret;
+	xmlNode *new_node = NULL;
+	int file_index = 0;
+	int first;
+	int last;
+	char donotinclude=0;
+
+	for(cur_node = a_node->children; cur_node; cur_node = cur_node->next){
+		if(cur_node->type == XML_ELEMENT_NODE) {
+			char bool_tmp;
+			hasfound = 0;
+			donotinclude = 0;
+			text = xmlGetProp(cur_node, "id");
+			if(text == 0) continue;
+			strncpy(osmid,text,99);
+			xmlFree(text);
+			int tag_number = 0;
+			int isbuilding = 0;
+			int started = 0;
+			first = 0;
+			last = 0;
+			
+			bool_tmp = (strcmp(cur_node->name,"way") == 0);
+			if(cur_node->type == XML_ELEMENT_NODE && bool_tmp) {
+				text = xmlGetProp(cur_node, "id");
+				printf("Way-id: %s\n",text);
+				xmlFree(text);
+				for(child_node = cur_node->children; child_node ; child_node = child_node->next){
+					text = xmlGetProp(child_node, "ref");
+					if(text != 0){
+						printf(" node-id: %s\n",text);
+						querybuffer = sqlite3_mprintf("select latitude,longitude,file_index from objects where osm_id='%q' and isway=0;",text);
+						if(started ==0){
+							first = atoi(text);
+							started = 1;
+						}
+						last = atoi(text);
+						ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+						sqlite3_free(querybuffer);
+						hasfound = 1;
+						while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+							//printf("Latitude: %10.5f, Longitude: %10.5f\n",atof(sqlite3_column_text(stmt,0)),atof(sqlite3_column_text(stmt,1)));
+							//new_node = xmlNewNode(NULL,"nd");
+							//xmlSetProp(new_node,"ref", text);
+							//xmlAddChild(bigway,new_node);
+							xmlFree(text);
+
+							//xmlNode *newNode_intern;
+							//newNode_intern = xmlCopyNode(get_xml_node(doc_old1,atoi(sqlite3_column_text(stmt,2)),0), 1);
+							//xmlNode *root_element_intern = xmlDocGetRootElement(doc_output1);
+							//xmlAddChild(root_element_intern,newNode_intern);
+						}
+						sqlite3_finalize(stmt);
+					}
+					text = xmlGetProp(child_node, "k");
+					if(text != 0){
+						//printf("%s: ",text);
+						if(strcmp(text,"OBJTYPE") == 0){
+							xmlFree(text);
+							text = xmlGetProp(child_node,"v");
+							if(strcmp(text,"Grunnlinje") == 0){
+								donotinclude = 1;
+								printf("Skipping way\n");
+							}
+							xmlFree(text);
+						}
+						else
+							xmlFree(text);
+					}
+				}
+			}
+			if(hasfound){
+				if(!donotinclude){
+					querybuffer = sqlite3_mprintf("insert into objects (id,osm_id,first_nd,last_nd,file_index,isway) values (%d,'%q','%d','%d','%d',1);",rowcounter,osmid,first,last,file_index);
+					printf("%s\n",querybuffer);
+					basic_query(db,querybuffer,0);
+					sqlite3_free(querybuffer);
+					rowcounter++;
+				}
+				file_index++;
+			}
+		} 
+	}
+
+}
+
+void create_one_polygon(xmlDoc *doc_old, sqlite3 *db, xmlDoc *doc_output1, xmlNode *bigway){
+	char *querybuffer;
+	sqlite3_stmt *stmt;
+	int ret;
+	xmlChar *text;
+	int first=0;
+	int last=0;
+	int veryfirst=-1;
+	int started=0;
+	char thisisreverse=0;
+	char lastwasreverse=0;
+	char found = 0;
+	int lastid = -99;
+	while(last != veryfirst){
+		printf("run\n");
+		found = 0;
+		if(started == 0)
+			querybuffer = sqlite3_mprintf("select first_nd,last_nd,osm_id,id,file_index from objects where isway = 1 limit 1;");
+		else {
+			if(!lastwasreverse){
+				if(thisisreverse)
+					querybuffer = sqlite3_mprintf("select first_nd,last_nd,osm_id,id,file_index from objects where isway = 1 and last_nd='%d' and id != '%d' limit 1;",last,lastid);
+				else
+					querybuffer = sqlite3_mprintf("select first_nd,last_nd,osm_id,id,file_index from objects where isway = 1 and first_nd='%d' and id != '%d' limit 1;",last,lastid);
+			}
+			else {
+				if(thisisreverse)
+					querybuffer = sqlite3_mprintf("select first_nd,last_nd,osm_id,id,file_index from objects where isway = 1 and last_nd='%d' and id != '%d' limit 1;",first,lastid);
+				else
+					querybuffer = sqlite3_mprintf("select first_nd,last_nd,osm_id,id,file_index from objects where isway = 1 and first_nd='%d' and id != '%d' limit 1;",first,lastid);
+			}
+		}
+		printf("%s\n",querybuffer);
+		ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+		sqlite3_free(querybuffer);
+		while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+			found = 1;
+			first = atoi(sqlite3_column_text(stmt,0));	
+			last = atoi(sqlite3_column_text(stmt,1));	
+			printf("Her, first:%d, last:%d\n",first,last);
+			if(started == 0){
+				veryfirst = first;
+				started = 1;
+			}
+			xmlNode *newNode_intern;
+			printf("File-index.: %s\n",sqlite3_column_text(stmt,4));
+			xmlNode *current_way = get_xml_node(doc_old,atoi(sqlite3_column_text(stmt,4)),1);
+			printf("node-name: %s\n",current_way->name);
+			xmlNode *child_node = NULL;
+			char bool_tmp;
+			text = xmlGetProp(current_way, "id");
+			printf("Id: %s\n",text);
+			xmlFree(text);
+			xmlNode *firstnode = NULL;
+			for(child_node = current_way->children; child_node ; child_node = child_node->next){
+				bool_tmp = (strcmp(child_node->name,"nd") == 0);
+				if(child_node->type == XML_ELEMENT_NODE && bool_tmp) {
+					text = xmlGetProp(child_node, "ref");
+					printf("Ref: %s\n",text);
+					xmlFree(text);
+					newNode_intern = xmlCopyNode(child_node, 1);
+					if(thisisreverse){
+						if(firstnode == NULL){
+							xmlAddChild(bigway,newNode_intern);
+							firstnode = newNode_intern;
+						}
+						else {
+							xmlAddPrevSibling(firstnode, newNode_intern);
+							firstnode = newNode_intern;
+						}
+					}
+					else {
+						xmlAddChild(bigway,newNode_intern);
+					}
+				}
+			}
+
+			lastid = atoi(sqlite3_column_text(stmt,3));
+		}
+		if(!found){
+			printf("Reversing..\n");
+			thisisreverse = !thisisreverse;
+		}
+		else {
+			lastwasreverse = thisisreverse;
+		}
+		printf("thisisreverse: %d. lastwasreverse: %d\n",thisisreverse,lastwasreverse);
+		sqlite3_finalize(stmt);
+	}
 
 }
 
@@ -410,14 +419,14 @@ int parse_cmdline(int argc, char **argv){
 		}
 	}
 
-	if(argc != (optind + 2)){
-		fprintf(stderr,"Usage: %s <arguments> existingnodes.osm newnodes.osm\n",argv[0]);
+	if(argc != (optind + 1)){
+		fprintf(stderr,"Usage: %s <arguments> input.osm\n",argv[0]);
 		return -1;
 	}
 	xmlfilename1 = (char*) malloc(strlen(argv[optind])+1);
 	snprintf(xmlfilename1,strlen(argv[optind])+1,"%s",argv[optind]);
-	xmlfilename2 = (char*) malloc(strlen(argv[optind+1])+1);
-	snprintf(xmlfilename2,strlen(argv[optind+1])+1,"%s",argv[optind+1]);
+	//xmlfilename2 = (char*) malloc(strlen(argv[optind+1])+1);
+	//snprintf(xmlfilename2,strlen(argv[optind+1])+1,"%s",argv[optind+1]);
 	return 0;
 }
 
@@ -426,11 +435,12 @@ int main(int argc, char **argv){
 	xmlDoc *doc_old1 = NULL;
 	xmlDoc *doc_old2 = NULL;
 	xmlDoc *doc = NULL;
-	xmlDoc *doc_output = NULL;
+	xmlDoc *doc_output1 = NULL;
 	xmlNode *root_element = NULL;
 	xmlDoc *doc_output2 = NULL;
 	xmlDoc *doc_output3 = NULL;
 	xmlDoc *doc_output4 = NULL;
+	xmlNode *new_node = NULL;
 
 	sqlite3 *db = NULL;
 	int ret;
@@ -457,10 +467,8 @@ int main(int argc, char **argv){
 	if(doc_old1 == NULL) {
 		printf("error: could not parse file %s\n", xmlfilename1);
 	}
-	root_element = xmlDocGetRootElement(doc_old1);
-	populate_database(root_element,db,0);
-	populate_database(root_element,db,1);
 
+	root_element = xmlDocGetRootElement(doc_old1);
 	// Remove all nodes from this one
 	xmlNode *cur_node;
 	for(cur_node = root_element->children;cur_node;){
@@ -470,10 +478,10 @@ int main(int argc, char **argv){
 		xmlUnlinkNode(tmp_node);
 		xmlFreeNode(tmp_node);	
 	}
-	doc_output = doc_old1;
-	doc_output2 = xmlCopyDoc(doc_output,1);
-	doc_output3 = xmlCopyDoc(doc_output,1);
-	doc_output4 = xmlCopyDoc(doc_output,1);
+	doc_output1 = doc_old1;
+	doc_output2 = xmlCopyDoc(doc_output1,1);
+	doc_output3 = xmlCopyDoc(doc_output1,1);
+	doc_output4 = xmlCopyDoc(doc_output1,1);
 	doc_old1 = NULL;
 
 	doc_old1 = xmlReadFile(xmlfilename1,NULL, 0);
@@ -481,18 +489,20 @@ int main(int argc, char **argv){
 		printf("error: could not parse file %s\n", xmlfilename1);
 	}
 
+	populate_database(doc_old1,db,doc_output1);
+	new_node = xmlNewNode(NULL,"way");
+	xmlSetProp(new_node,"id", "-99999");
+	xmlSetProp(new_node,"version", "1");
+	xmlSetProp(new_node,"visible", "true");
+
+	root_element = xmlDocGetRootElement(doc_output1);
+	xmlAddChild(root_element,new_node);
+	iterate_ways(doc_old1,db,doc_output1,new_node);
+	create_one_polygon(doc_old1, db, doc_output1, new_node);
 	
 
-
-	//doc = xmlReadFile(xmlfilename2,NULL, 0);
-	//if(doc == NULL) {
-	//	printf("error: could not parse file %s\n", xmlfilename2);
-	//}
-	//root_element = xmlDocGetRootElement(doc);
-	//compare_to_database(doc_old1, doc_old2, root_element,db,doc_output,doc_output2,doc_output3,doc_output4);
-
 	if(outputxmlfilename){
-		xmlSaveFileEnc(outputxmlfilename, doc_output, "UTF-8");
+		xmlSaveFileEnc(outputxmlfilename, doc_output1, "UTF-8");
 	}
 	if(veivegfilename){
 		xmlSaveFileEnc(veivegfilename, doc_output2, "UTF-8");
@@ -505,7 +515,7 @@ int main(int argc, char **argv){
 	}
 
 
-	xmlFreeDoc(doc_output);
+	xmlFreeDoc(doc_output1);
 	xmlFreeDoc(doc_output2);
 	xmlFreeDoc(doc_output3);
 	xmlFreeDoc(doc_output4);
