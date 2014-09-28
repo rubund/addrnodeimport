@@ -369,7 +369,6 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 					if(outputxmlfilename){
 						newNode = xmlCopyNode(cur_node, 1);
 						if(correctionsfilename != NULL){
-							fprintf(stderr,"Her er jeg %s\n",addr_street);
 							querybuffer = sqlite3_mprintf("select toname from corrections where toname='%q';",addr_street);
 							ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
 							sqlite3_free(querybuffer);
