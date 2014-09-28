@@ -37,6 +37,7 @@ char *veivegfilename = NULL;
 char *duplicatefilename = NULL;
 char *extranodesfilename = NULL;
 char *notmatchedfilename = NULL;
+char *correctionsfilename = NULL;
 double addTo = 0;
 char exists = 0;
 char only_info = 0;
@@ -203,6 +204,33 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 			}
 			int basicnumber=0;
 			if(hasfound) {
+				if(correctionsfilename != NULL){
+					querybuffer = sqlite3_mprintf("select toname from corrections where fromname='%q';",addr_street);
+					ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+					sqlite3_free(querybuffer);
+					if (ret){
+						fprintf(stderr,"SQL Error");
+						return;
+					}
+					if((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+						if(verbose)
+							fprintf(stdout,"Found correction: %s %s",addr_street, sqlite3_column_text(stmt,0));
+						strncpy(addr_street,sqlite3_column_text(stmt,0),255);
+					}
+					sqlite3_finalize(stmt);	
+
+					querybuffer = sqlite3_mprintf("select toname from corrections where fromname='%q';",addr_city);
+					ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+					sqlite3_free(querybuffer);
+					if (ret){
+						fprintf(stderr,"SQL Error");
+						return;
+					}
+					if((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+						strncpy(addr_city,sqlite3_column_text(stmt,0),255);
+					}
+					sqlite3_finalize(stmt);	
+				}
 				querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and addr_postcode='%q' and addr_city='%q' and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street,addr_housenumber,addr_postcode,addr_city);
 				exists2 = 0;
 				ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
@@ -399,6 +427,8 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 	static int rowcounter = 0;
 	int file_index = 0;
 	char *querybuffer;
+	int ret;
+	sqlite3_stmt *stmt;
 
 	char addr_housenumber[100];
 	char addr_street[256];
@@ -534,10 +564,43 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 
 }
 
+
+void get_corrections(xmlNode * a_node, sqlite3 *db){
+	xmlNode *cur_node = NULL;
+	xmlChar *text;
+	static int rowcounter = 0;
+	char *querybuffer;
+	int ret;
+	sqlite3_stmt *stmt;
+
+	char fromname[256];	
+	char toname[256];	
+
+	basic_query(db,"create table if not exists corrections (id int auto_increment primary key not null, fromname varchar(100), toname varchar(100));",0);
+
+	for(cur_node = a_node->children; cur_node; cur_node = cur_node->next){
+		if(cur_node->type == XML_ELEMENT_NODE && (strcmp(cur_node->name,"spelling") == 0)) {
+			text = xmlGetProp(cur_node, "from");
+			strncpy(fromname,text,255);
+			xmlFree(text);
+			text = xmlGetProp(cur_node, "to");
+			strncpy(toname,text,255);
+			xmlFree(text);
+			querybuffer = sqlite3_mprintf("insert into corrections (id,fromname,toname) values (%d,'%q','%q')",rowcounter,fromname,toname);
+			if(verbose)
+				printf("%s\n",querybuffer);	
+			basic_query(db,querybuffer,0);
+			sqlite3_free(querybuffer);
+			rowcounter++;
+		}
+	}
+}
+
+
 int parse_cmdline(int argc, char **argv){
 	int s;
 	opterr = 0;
-	while((s = getopt(argc, argv, "vso:w:t:d:e:n:")) != -1) {
+	while((s = getopt(argc, argv, "vso:w:t:d:e:n:c:")) != -1) {
 		switch (s) {
 			case 's':
 				only_info = 1;
@@ -569,6 +632,10 @@ int parse_cmdline(int argc, char **argv){
 				notmatchedfilename = (char*) malloc(strlen(optarg)+1);
 				snprintf(notmatchedfilename,strlen(optarg)+1,"%s",optarg);
 				break;
+			case 'c':
+				correctionsfilename = (char*) malloc(strlen(optarg)+1);
+				snprintf(correctionsfilename,strlen(optarg)+1,"%s",optarg);
+				break;
 			case '?':
 				if(optopt == 'o')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
@@ -581,6 +648,8 @@ int parse_cmdline(int argc, char **argv){
 				else if(optopt == 'e')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
 				else if(optopt == 'n')
+					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
+				else if(optopt == 'c')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
 				else if(isprint(optopt)) 
 					fprintf(stderr, "Unknown option '-%c'.\n",optopt);
@@ -628,6 +697,7 @@ void get_all_notmatched(xmlDoc *doc_old1, xmlDoc *doc_old2, sqlite3 *db, xmlDoc 
 
 int main(int argc, char **argv){
 
+	xmlDoc *doc_corrections = NULL;
 	xmlDoc *doc_old1 = NULL;
 	xmlDoc *doc_old2 = NULL;
 	xmlDoc *doc = NULL;
@@ -658,6 +728,14 @@ int main(int argc, char **argv){
 			printf("Opened database successfully\n");
 	}
 
+	if(correctionsfilename != NULL){
+		doc_corrections = xmlReadFile(correctionsfilename,NULL,0);
+		if(doc_corrections == NULL) {
+			printf("error: could not parse file %s\n", correctionsfilename);
+		}
+		root_element = xmlDocGetRootElement(doc_corrections);
+		get_corrections(root_element,db);
+	}
 
 	doc_old1 = xmlReadFile(xmlfilename1,NULL, 0);
 	if(doc_old1 == NULL) {
@@ -749,6 +827,8 @@ int main(int argc, char **argv){
 		free(extranodesfilename);
 	if(notmatchedfilename != NULL)
 		free(notmatchedfilename);
+	if(correctionsfilename != NULL)
+		free(correctionsfilename);
 
 	printf("Existing:\t%d\n",number_old);
 	printf("New:\t\t%d\n",number_new);
