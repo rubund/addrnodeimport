@@ -368,6 +368,59 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 						printf("This node is missing:\n %s\n %s\n %s\n %s\n\n",addr_housenumber,addr_street,addr_postcode,addr_city);
 					if(outputxmlfilename){
 						newNode = xmlCopyNode(cur_node, 1);
+						if(correctionsfilename != NULL){
+							fprintf(stderr,"Her er jeg %s\n",addr_street);
+							querybuffer = sqlite3_mprintf("select toname from corrections where toname='%q';",addr_street);
+							ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+							sqlite3_free(querybuffer);
+							if (ret){
+								fprintf(stderr,"SQL Error");
+								return;
+							}
+							if((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+								xmlNode *sub_tag_node;
+								if(verbose)
+									fprintf(stdout,"Found correction: %s %s",addr_street, sqlite3_column_text(stmt,0));
+								for(sub_tag_node = newNode->children; sub_tag_node ; sub_tag_node = sub_tag_node->next){
+									if(sub_tag_node->type == XML_ELEMENT_NODE) {
+										text = xmlGetProp(sub_tag_node, "k");
+										if(text != 0){
+											if(strcmp(text,"addr:street") == 0){
+												xmlFree(text);
+												xmlSetProp(sub_tag_node, "v", sqlite3_column_text(stmt,0));
+											}
+										}
+									}
+								}
+							}
+							sqlite3_finalize(stmt);	
+
+							querybuffer = sqlite3_mprintf("select toname from corrections where toname='%q';",addr_city);
+							ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+							sqlite3_free(querybuffer);
+							if (ret){
+								fprintf(stderr,"SQL Error");
+								return;
+							}
+							if((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+								xmlNode *sub_tag_node;
+								if(verbose)
+									fprintf(stdout,"Found correction: %s %s",addr_street, sqlite3_column_text(stmt,0));
+								for(sub_tag_node = newNode->children; sub_tag_node ; sub_tag_node = sub_tag_node->next){
+									if(sub_tag_node->type == XML_ELEMENT_NODE) {
+										text = xmlGetProp(sub_tag_node, "k");
+										if(text != 0){
+											if(strcmp(text,"addr:city") == 0){
+												xmlFree(text);
+												xmlSetProp(sub_tag_node, "v", sqlite3_column_text(stmt,0));
+											}
+										}
+									}
+								}
+							}
+							sqlite3_finalize(stmt);	
+						}
+
 						xmlNode *root_element = xmlDocGetRootElement(doc_output);
 						xmlAddChild(root_element,newNode);
 					}
