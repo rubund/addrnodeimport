@@ -18,11 +18,12 @@
 #   along with this program; if not, write to the Free Software
 #   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-network=True 
+network=True
 
 import os
 import sys
 import glob
+import re
 
 if len(sys.argv) != 3:
 	print "Missing command line argument.\nUsage: "+sys.argv[0]+" <top-zip-file> <municipality number>"
@@ -55,14 +56,30 @@ if not os.path.isdir("/tmp/osm_temp"):
 
 boundarea = os.popen("getedges -m 0.01 "+osmfilename).read()
 if network:
+	os.system("/tmp/osm_temp/ways_"+munipnumberpadded+".osm")
+	os.system("/tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
 	if not os.path.isfile("/tmp/osm_temp/ways_"+munipnumberpadded+".osm" ):
 		os.system(" wget \"http://overpass-api.de/api/interpreter?data=((way[\\\"addr:housenumber\\\"] "+boundarea+";>;);(way[\\\"abandoned:addr:housenumber\\\"] "+boundarea+";>;););out meta;\" -O /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
 	if not os.path.isfile("/tmp/osm_temp/nodes_"+munipnumberpadded+".osm" ):
 		os.system(" wget \"http://overpass-api.de/api/interpreter?data=((node[\\\"addr:housenumber\\\"] "+boundarea+";<;);(node[\\\"abandoned:addr:housenumber\\\"] "+boundarea+";<;););out meta;\" -O /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
 else:
-	print ""
-	#"osmosis  --read-pbf enableDateParsing=no file=norway.pbf  --bounding-box top=49.5138 left=10.9351 bottom=49.3866 right=11.201 --write-xml file=/tmp/osm_temp/ways_"+munipnumberpadded+".osm"
-	#"osmosis  --read-pbf enableDateParsing=no file=norway.pbf --bounding-polygon file="polygon.txt" --write-xml file=/tmp/osm_temp/ways_"+munipnumberpadded+".osm"
+	print boundarea
+	testing = "(3432.23)"
+	#boundareamatch = re.compile("\(\d+\.\d+\)")
+	boundareamatch = re.compile("\((\d+\.\d+),(\d+\.\d+),(\d+\.\d+),(\d+\.\d+)\)")
+	matches = boundareamatch.match(boundarea)
+	print matches
+	bottomcoord = matches.group(1)
+	leftcoord = matches.group(2)
+	topcoord = matches.group(3)
+	rightcoord = matches.group(4)
+	if not os.path.isfile("/tmp/norway_address_nodes.pbf"):
+		os.system("osmosis --read-pbf file=\"/home/ruben/norway-latest.osm.pbf\" --tf accept-nodes \"addr:housenumber\"=* --write-pbf file=/tmp/norway_address_nodes.pbf")
+	if not os.path.isfile("/tmp/norway_address_ways.pbf"):
+		os.system("osmosis --read-pbf file=\"/home/ruben/norway-latest.osm.pbf\" --tf accept-ways \"addr:housenumber\"=* --write-pbf file=/tmp/norway_address_ways.pbf")
+		#os.system("osmosis --read-pbf file=\"/home/ruben/norway-latest.osm.pbf\" --tf accept-ways \"addr:housenumber\"=* --used-node idTrackerType=BitSet --write-pbf file=/tmp/norway_address_ways.pbf")
+	os.system("osmosis --read-pbf file=\"/tmp/norway_address_nodes.pbf\" --bounding-box bottom="+bottomcoord+" left="+leftcoord+" top="+topcoord+" right="+rightcoord+" --write-xml file=/tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
+	os.system("osmosis --read-pbf file=\"/tmp/norway_address_ways.pbf\" --bounding-box bottom="+bottomcoord+" left="+leftcoord+" top="+topcoord+" right="+rightcoord+" --write-xml file=/tmp/osm_temp/ways_"+munipnumberpadded+".osm")
 
 if not os.path.isfile("munip_borders/"+str(munipnumberpadded)+".osm"):
 	alreadyextracted = glob.glob("munip_borders/"+munipnumberpadded+"/"+str(munipnumberpadded)+"*_Adm*.sos")
