@@ -56,8 +56,8 @@ if not os.path.isdir("/tmp/osm_temp"):
 
 boundarea = os.popen("getedges -m 0.01 "+osmfilename).read()
 if network:
-	os.system("/tmp/osm_temp/ways_"+munipnumberpadded+".osm")
-	os.system("/tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
+	os.system("rm -rf /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
+	os.system("rm -rf /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
 	if not os.path.isfile("/tmp/osm_temp/ways_"+munipnumberpadded+".osm" ):
 		os.system(" wget \"http://overpass-api.de/api/interpreter?data=((way[\\\"addr:housenumber\\\"] "+boundarea+";>;);(way[\\\"abandoned:addr:housenumber\\\"] "+boundarea+";>;););out meta;\" -O /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
 	if not os.path.isfile("/tmp/osm_temp/nodes_"+munipnumberpadded+".osm" ):
