@@ -605,7 +605,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 					}
 				}
 			}
-			if(hasfound || abandoned) {
+			if(hasfound) {
 				querybuffer = sqlite3_mprintf("insert into existing (id,file_index,osm_id,addr_housenumber,addr_street,addr_postcode,addr_city,isway,tag_number,building) values (%d,%d,'%q','%q','%q','%q','%q','%d','%d','%d');",rowcounter,file_index,osmid,addr_housenumber,addr_street,addr_postcode,addr_city,(int)isway,tag_number,isbuilding);
 				basic_query(db,querybuffer,0);
 				sqlite3_free(querybuffer);
