@@ -64,22 +64,21 @@ if network:
 		os.system(" wget \"http://overpass-api.de/api/interpreter?data=((node[\\\"addr:housenumber\\\"] "+boundarea+";<;);(node[\\\"abandoned:addr:housenumber\\\"] "+boundarea+";<;););out meta;\" -O /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
 else:
 	print boundarea
-	testing = "(3432.23)"
-	#boundareamatch = re.compile("\(\d+\.\d+\)")
 	boundareamatch = re.compile("\((\d+\.\d+),(\d+\.\d+),(\d+\.\d+),(\d+\.\d+)\)")
 	matches = boundareamatch.match(boundarea)
-	print matches
 	bottomcoord = matches.group(1)
 	leftcoord = matches.group(2)
 	topcoord = matches.group(3)
 	rightcoord = matches.group(4)
-	if not os.path.isfile("/tmp/norway_address_nodes.pbf"):
-		os.system("osmosis --read-pbf file=\"/home/ruben/norway-latest.osm.pbf\" --tf accept-nodes \"addr:housenumber\"=* --write-pbf file=/tmp/norway_address_nodes.pbf")
-	if not os.path.isfile("/tmp/norway_address_ways.pbf"):
-		os.system("osmosis --read-pbf file=\"/home/ruben/norway-latest.osm.pbf\" --tf accept-ways \"addr:housenumber\"=* --write-pbf file=/tmp/norway_address_ways.pbf")
-		#os.system("osmosis --read-pbf file=\"/home/ruben/norway-latest.osm.pbf\" --tf accept-ways \"addr:housenumber\"=* --used-node idTrackerType=BitSet --write-pbf file=/tmp/norway_address_ways.pbf")
-	os.system("osmosis --read-pbf file=\"/tmp/norway_address_nodes.pbf\" --bounding-box bottom="+bottomcoord+" left="+leftcoord+" top="+topcoord+" right="+rightcoord+" --write-xml file=/tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
-	os.system("osmosis --read-pbf file=\"/tmp/norway_address_ways.pbf\" --bounding-box bottom="+bottomcoord+" left="+leftcoord+" top="+topcoord+" right="+rightcoord+" --write-xml file=/tmp/osm_temp/ways_"+munipnumberpadded+".osm")
+	os.system("osmosis --read-pbf file=\"/home/ruben/norway-latest.osm.pbf\" --bounding-box bottom="+bottomcoord+" left="+leftcoord+" top="+topcoord+" right="+rightcoord+" --write-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\"")
+	os.system("osmosis --read-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\" --tf accept-nodes \"addr:housenumber\"=* --tf reject-ways --tf reject-relations --write-xml file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp1.osm\"")
+	os.system("osmosis --read-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\" --tf accept-nodes \"abandoned:addr:housenumber\"=* --tf reject-ways --tf reject-relations --write-xml file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp2.osm\"")
+	os.system("osmosis --rx \"/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp1.osm\" --rx \"/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp2.osm\" --merge --wx \"/tmp/osm_temp/nodes_"+munipnumberpadded+".osm\"")
+	os.system("rm -rf /tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp1.osm /tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp2.osm")
+	os.system("osmosis --read-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\" --tf accept-ways \"addr:housenumber\"=* --tf reject-relations --used-node --write-xml file=\"/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp1.osm\"")
+	os.system("osmosis --read-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\" --tf accept-ways \"abandoned:addr:housenumber\"=* --tf reject-relations --used-node --write-xml file=\"/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp2.osm\"")
+	os.system("osmosis --rx \"/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp1.osm\" --rx \"/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp2.osm\" --merge --wx \"/tmp/osm_temp/ways_"+munipnumberpadded+".osm\"")
+	os.system("rm -rf /tmp/osm_temp/ways_"+munipnumberpadded+"-tmp1.osm /tmp/osm_temp/ways_"+munipnumberpadded+"-tmp2.osm")
 
 if not os.path.isfile("munip_borders/"+str(munipnumberpadded)+".osm"):
 	alreadyextracted = glob.glob("munip_borders/"+munipnumberpadded+"/"+str(munipnumberpadded)+"*_Adm*.sos")
@@ -103,7 +102,6 @@ if not os.path.isfile("munip_borders/"+str(munipnumberpadded)+".osm"):
 
 if os.path.isfile("munip_borders/"+str(munipnumberpadded)+".osm"):
 	os.system("perl ../perl/osm2poly.pl munip_borders/"+str(munipnumberpadded)+".osm > munip_borders/"+str(munipnumberpadded)+".txt")
-	print "huff"
 	os.system("osmosis --read-xml enableDateParsing=no file=\"/tmp/osm_temp/ways_"+munipnumberpadded+".osm\" --bounding-polygon file=\"munip_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp.osm")
 	os.system("mv /tmp/osm_temp/ways_"+munipnumberpadded+"-tmp.osm /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
 	os.system("osmosis --read-xml enableDateParsing=no file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+".osm\" --bounding-polygon file=\"munip_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp.osm")
