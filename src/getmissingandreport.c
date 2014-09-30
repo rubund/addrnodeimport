@@ -442,7 +442,7 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 				sqlite3_finalize(stmt);	
 
 				if(basicnumber > 0 && extranodesfilename != NULL){
-					querybuffer = sqlite3_mprintf("select file_index,isway from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and addr_postcode='%q' and addr_city='%q' and ((tag_number > 4 and building = 0) or (tag_number > 5))",addr_street,addr_housenumber,addr_postcode,addr_city);
+					querybuffer = sqlite3_mprintf("select file_index,isway,id from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and addr_postcode='%q' and addr_city='%q' and ((tag_number > 4 and building = 0) or (tag_number > 5))",addr_street,addr_housenumber,addr_postcode,addr_city);
 					ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
 					if (ret){
 						fprintf(stderr,"SQL Error");
@@ -450,6 +450,9 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 					}
 					sqlite3_free(querybuffer);
 					while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+						querybuffer = sqlite3_mprintf("update existing set foundindataset=1 where id='%q';",sqlite3_column_text(stmt,2));
+						basic_query(db,querybuffer,0);
+						sqlite3_free(querybuffer);
 						const char *resultLoop = (const char*)sqlite3_column_text(stmt,0);
 						xmlNode *newNode_intern;
 						if(strcmp(sqlite3_column_text(stmt,1),"1") == 0)
@@ -741,7 +744,7 @@ void get_all_notmatched(xmlDoc *doc_old1, xmlDoc *doc_old2, sqlite3 *db, xmlDoc 
 	sqlite3_stmt *stmt;
 	xmlNode *newNode_intern;
 
-	querybuffer = sqlite3_mprintf("select id,file_index,isway from existing where foundindataset=0 and ((tag_number <= 4) or (tag_number <= 5 and building = 1));");
+	querybuffer = sqlite3_mprintf("select id,file_index,isway from existing where foundindataset=0;");
 	ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
 	sqlite3_free(querybuffer);
 	if (ret){
