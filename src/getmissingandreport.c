@@ -781,14 +781,14 @@ void get_all_notmatched(xmlDoc *doc_old1, xmlDoc *doc_old2, sqlite3 *db, xmlDoc 
 		return;
 	}
 	while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
-		if(notmatchedfilename){
-			if(strcmp(sqlite3_column_text(stmt,2),"1") == 0)
-				newNode_intern = xmlCopyNode(get_xml_node(doc_old2,atoi(sqlite3_column_text(stmt,1)),1), 1);
-			else
-				newNode_intern = xmlCopyNode(get_xml_node(doc_old1,atoi(sqlite3_column_text(stmt,1)),0), 1);
-			xmlNode *root_element_intern = xmlDocGetRootElement(doc);
-			xmlAddChild(root_element_intern,newNode_intern);
-		}
+		//if(notmatchedfilename){
+		//	if(strcmp(sqlite3_column_text(stmt,2),"1") == 0)
+		//		newNode_intern = xmlCopyNode(get_xml_node(doc_old2,atoi(sqlite3_column_text(stmt,1)),1), 1);
+		//	else
+		//		newNode_intern = xmlCopyNode(get_xml_node(doc_old1,atoi(sqlite3_column_text(stmt,1)),0), 1);
+		//	xmlNode *root_element_intern = xmlDocGetRootElement(doc);
+		//	xmlAddChild(root_element_intern,newNode_intern);
+		//}
 		number_notmatchedpois++;
 	}
 	sqlite3_finalize(stmt);	
