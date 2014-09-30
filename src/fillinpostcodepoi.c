@@ -218,7 +218,7 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 					querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city,osm_id from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and ((tag_number > 4) or (tag_number > 5 and building = 1))",addr_street,addr_housenumber);
 					ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
 					sqlite3_free(querybuffer);
-					if(numrows == 1){
+					if(1){
 						//printf("\n\n\n%s %s, %s %s:\n",addr_street,addr_housenumber,addr_postcode,addr_city);	
 						while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
 							char missingpostcode = 0;
@@ -296,9 +296,10 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 							}
 						}
 					}
-					else{
-						//printf(" More than one match (%d)\n",numrows);
-					}
+					//else{
+					//	printf(" More than one match (%d) - %s %s\n",numrows,addr_street,addr_housenumber);
+					//}
+						//printf("Done with - %s %s\n",addr_street,addr_housenumber);
 					sqlite3_finalize(stmt);	
 				}
 			}
