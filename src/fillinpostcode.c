@@ -36,6 +36,7 @@ char *outputxmlfilename = NULL;
 char *veivegfilename = NULL;
 char *duplicatefilename = NULL;
 char *extranodesfilename = NULL;
+char *onlynumberfilename = NULL;
 double addTo = 0;
 char exists = 0;
 char only_info = 0;
@@ -306,7 +307,7 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 	}
 }
 
-void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
+void populate_database(xmlNode * a_node, sqlite3 *db, char isway, xmlDoc *doc_output2){
 	xmlNode *cur_node = NULL;
 	xmlAttr *attribute;
 	xmlChar *text;
@@ -424,6 +425,12 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 				file_index++;
 			}
 			else if(hasfoundnumber){
+				if(onlynumberfilename){
+					xmlNode *tmpNode;
+					tmpNode = xmlCopyNode(cur_node,1);
+					xmlNode *root_element_intern = xmlDocGetRootElement(doc_output2);
+					xmlAddChild(root_element_intern,tmpNode);
+				}
 				number_onlynumber++;
 			}
 		} 
@@ -437,7 +444,7 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 int parse_cmdline(int argc, char **argv){
 	int s;
 	opterr = 0;
-	while((s = getopt(argc, argv, "vso:w:t:d:e:")) != -1) {
+	while((s = getopt(argc, argv, "vso:w:t:d:e:n:")) != -1) {
 		switch (s) {
 			case 's':
 				only_info = 1;
@@ -465,6 +472,10 @@ int parse_cmdline(int argc, char **argv){
 				extranodesfilename = (char*) malloc(strlen(optarg)+1);
 				snprintf(extranodesfilename,strlen(optarg)+1,"%s",optarg);
 				break;
+			case 'n':
+				onlynumberfilename = (char*) malloc(strlen(optarg)+1);
+				snprintf(onlynumberfilename,strlen(optarg)+1,"%s",optarg);
+				break;
 			case '?':
 				if(optopt == 'o')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
@@ -475,6 +486,8 @@ int parse_cmdline(int argc, char **argv){
 				else if(optopt == 't')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
 				else if(optopt == 'e')
+					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
+				else if(optopt == 'n')
 					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
 				else if(isprint(optopt)) 
 					fprintf(stderr, "Unknown option '-%c'.\n",optopt);
@@ -532,7 +545,6 @@ int main(int argc, char **argv){
 		printf("error: could not parse file %s\n", xmlfilename1);
 	}
 	root_element = xmlDocGetRootElement(doc_old1);
-	populate_database(root_element,db,0);
 
 	// Remove all nodes from this one
 	xmlNode *cur_node;
@@ -553,6 +565,8 @@ int main(int argc, char **argv){
 	if(doc_old1 == NULL) {
 		printf("error: could not parse file %s\n", xmlfilename1);
 	}
+	root_element = xmlDocGetRootElement(doc_old1);
+	populate_database(root_element,db,0,doc_output2);
 
 	if(xmlfilename3 != NULL){
 		doc_old2 = xmlReadFile(xmlfilename3,NULL, 0);
@@ -560,7 +574,7 @@ int main(int argc, char **argv){
 			printf("error: could not parse file %s\n", xmlfilename3);
 		}
 		root_element = xmlDocGetRootElement(doc_old2);
-		populate_database(root_element,db,1);
+		populate_database(root_element,db,1,doc_output2);
 	}
 	
 
@@ -575,8 +589,8 @@ int main(int argc, char **argv){
 	if(outputxmlfilename){
 		xmlSaveFileEnc(outputxmlfilename, doc_output, "UTF-8");
 	}
-	if(veivegfilename){
-		xmlSaveFileEnc(veivegfilename, doc_output2, "UTF-8");
+	if(onlynumberfilename){
+		xmlSaveFileEnc(onlynumberfilename, doc_output2, "UTF-8");
 	}
 	if(duplicatefilename){
 		xmlSaveFileEnc(duplicatefilename, doc_output3, "UTF-8");
@@ -607,6 +621,8 @@ int main(int argc, char **argv){
 		free(duplicatefilename);
 	if(extranodesfilename != NULL)
 		free(extranodesfilename);
+	if(onlynumberfilename != NULL)
+		free(onlynumberfilename);
 
 	printf("Fixes:\t%d\n",number_fixes);
 	printf("Errors:\t%d\n",number_error);
