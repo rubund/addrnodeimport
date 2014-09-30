@@ -190,7 +190,13 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 						else if(strcmp(text,"addr:postcode") == 0){
 							xmlFree(text);
 							text = xmlGetProp(child_node, "v");
-							strncpy(addr_postcode,text,9);
+							if(strlen(text) == 3){
+								strncpy(addr_postcode+1,text,9);
+								addr_postcode[0] = '0';
+							}
+							else {
+								strncpy(addr_postcode,text,9);
+							}
 							xmlFree(text);
 						}
 						else if(strcmp(text,"addr:city") == 0){
