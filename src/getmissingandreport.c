@@ -49,6 +49,7 @@ int number_nodeswithotherthings = 0;
 int number_duplicates = 0;
 int number_buildings = 0;
 int number_abandoned = 0;
+int number_notmatched = 0;
 char foundid[20];
 char foundisway;
 FILE *tmpfile_handle;
@@ -748,12 +749,15 @@ void get_all_notmatched(xmlDoc *doc_old1, xmlDoc *doc_old2, sqlite3 *db, xmlDoc 
 		return;
 	}
 	while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
-		if(strcmp(sqlite3_column_text(stmt,2),"1") == 0)
-			newNode_intern = xmlCopyNode(get_xml_node(doc_old2,atoi(sqlite3_column_text(stmt,1)),1), 1);
-		else
-			newNode_intern = xmlCopyNode(get_xml_node(doc_old1,atoi(sqlite3_column_text(stmt,1)),0), 1);
-		xmlNode *root_element_intern = xmlDocGetRootElement(doc);
-		xmlAddChild(root_element_intern,newNode_intern);
+		if(notmatchedfilename){
+			if(strcmp(sqlite3_column_text(stmt,2),"1") == 0)
+				newNode_intern = xmlCopyNode(get_xml_node(doc_old2,atoi(sqlite3_column_text(stmt,1)),1), 1);
+			else
+				newNode_intern = xmlCopyNode(get_xml_node(doc_old1,atoi(sqlite3_column_text(stmt,1)),0), 1);
+			xmlNode *root_element_intern = xmlDocGetRootElement(doc);
+			xmlAddChild(root_element_intern,newNode_intern);
+		}
+		number_notmatched++;
 	}
 	sqlite3_finalize(stmt);	
 
@@ -847,8 +851,7 @@ int main(int argc, char **argv){
 	root_element = xmlDocGetRootElement(doc);
 	compare_to_database(doc_old1, doc_old2, root_element,db,doc_output,doc_output2,doc_output3,doc_output4);
 
-	if(notmatchedfilename)
-		get_all_notmatched(doc_old1, doc_old2, db,doc_output5);
+	get_all_notmatched(doc_old1, doc_old2, db,doc_output5);
 
 	if(outputxmlfilename){
 		xmlSaveFileEnc(outputxmlfilename, doc_output, "UTF-8");
@@ -904,6 +907,7 @@ int main(int argc, char **argv){
 	if(xmlfilename3 != NULL)
 		printf("Buildings:\t%d\n",number_buildings);
 	printf("Abandoned:\t%d\n",number_abandoned);
+	printf("Notmatched:\t%d\n",number_notmatched);
 	return 0;
 
 }
