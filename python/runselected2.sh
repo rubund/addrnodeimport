@@ -193,7 +193,7 @@
 ./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 234
 ./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 235
 ./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 238
-#./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 301
+./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 301
 ./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 533
 ./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 602
 ./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 625
