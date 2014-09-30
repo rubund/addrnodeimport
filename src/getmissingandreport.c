@@ -50,6 +50,7 @@ int number_duplicates = 0;
 int number_buildings = 0;
 int number_abandoned = 0;
 int number_notmatched = 0;
+int number_notmatchedpois = 0;
 char foundid[20];
 char foundisway;
 FILE *tmpfile_handle;
@@ -441,7 +442,7 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 				number_nodeswithotherthings	+= basicnumber;
 				sqlite3_finalize(stmt);	
 
-				if(basicnumber > 0 && extranodesfilename != NULL){
+				if(basicnumber > 0){
 					querybuffer = sqlite3_mprintf("select file_index,isway,id from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and addr_postcode='%q' and addr_city='%q' and ((tag_number > 4 and building = 0) or (tag_number > 5))",addr_street,addr_housenumber,addr_postcode,addr_city);
 					ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
 					if (ret){
@@ -453,14 +454,16 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 						querybuffer = sqlite3_mprintf("update existing set foundindataset=1 where id='%q';",sqlite3_column_text(stmt,2));
 						basic_query(db,querybuffer,0);
 						sqlite3_free(querybuffer);
-						const char *resultLoop = (const char*)sqlite3_column_text(stmt,0);
-						xmlNode *newNode_intern;
-						if(strcmp(sqlite3_column_text(stmt,1),"1") == 0)
-							newNode_intern = xmlCopyNode(get_xml_node(doc_old2,atoi(resultLoop),1), 1);
-						else
-							newNode_intern = xmlCopyNode(get_xml_node(doc_old1,atoi(resultLoop),0), 1);
-						xmlNode *root_element_intern = xmlDocGetRootElement(doc_output4);
-						xmlAddChild(root_element_intern,newNode_intern);
+						if (extranodesfilename != NULL){
+							const char *resultLoop = (const char*)sqlite3_column_text(stmt,0);
+							xmlNode *newNode_intern;
+							if(strcmp(sqlite3_column_text(stmt,1),"1") == 0)
+								newNode_intern = xmlCopyNode(get_xml_node(doc_old2,atoi(resultLoop),1), 1);
+							else
+								newNode_intern = xmlCopyNode(get_xml_node(doc_old1,atoi(resultLoop),0), 1);
+							xmlNode *root_element_intern = xmlDocGetRootElement(doc_output4);
+							xmlAddChild(root_element_intern,newNode_intern);
+						}
 					}
 					sqlite3_finalize(stmt);	
 				}
@@ -744,7 +747,7 @@ void get_all_notmatched(xmlDoc *doc_old1, xmlDoc *doc_old2, sqlite3 *db, xmlDoc 
 	sqlite3_stmt *stmt;
 	xmlNode *newNode_intern;
 
-	querybuffer = sqlite3_mprintf("select id,file_index,isway from existing where foundindataset=0;");
+	querybuffer = sqlite3_mprintf("select id,file_index,isway from existing where foundindataset=0 and ((tag_number <= 4) or (tag_number <= 5 and building = 1));;");
 	ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
 	sqlite3_free(querybuffer);
 	if (ret){
@@ -761,6 +764,26 @@ void get_all_notmatched(xmlDoc *doc_old1, xmlDoc *doc_old2, sqlite3 *db, xmlDoc 
 			xmlAddChild(root_element_intern,newNode_intern);
 		}
 		number_notmatched++;
+	}
+	sqlite3_finalize(stmt);	
+
+	querybuffer = sqlite3_mprintf("select id,file_index,isway from existing where foundindataset=0 and ((tag_number > 4 and building = 0) or (tag_number > 5));;");
+	ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+	sqlite3_free(querybuffer);
+	if (ret){
+		fprintf(stderr,"SQL Error 9");
+		return;
+	}
+	while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+		if(notmatchedfilename){
+			if(strcmp(sqlite3_column_text(stmt,2),"1") == 0)
+				newNode_intern = xmlCopyNode(get_xml_node(doc_old2,atoi(sqlite3_column_text(stmt,1)),1), 1);
+			else
+				newNode_intern = xmlCopyNode(get_xml_node(doc_old1,atoi(sqlite3_column_text(stmt,1)),0), 1);
+			xmlNode *root_element_intern = xmlDocGetRootElement(doc);
+			xmlAddChild(root_element_intern,newNode_intern);
+		}
+		number_notmatchedpois++;
 	}
 	sqlite3_finalize(stmt);	
 
@@ -911,6 +934,7 @@ int main(int argc, char **argv){
 		printf("Buildings:\t%d\n",number_buildings);
 	printf("Abandoned:\t%d\n",number_abandoned);
 	printf("Notmatched:\t%d\n",number_notmatched);
+	printf("NotmatchedPOIs:\t%d\n",number_notmatchedpois);
 	return 0;
 
 }
