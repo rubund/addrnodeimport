@@ -109,6 +109,12 @@ if os.path.isfile("munip_borders/"+str(munipnumberpadded)+".osm"):
 	os.system("mv /tmp/osm_temp/ways_"+munipnumberpadded+"-tmp.osm /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
 	os.system("osmosis --read-xml enableDateParsing=no file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+".osm\" --bounding-polygon file=\"munip_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp.osm")
 	os.system("mv /tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp.osm /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
+	os.system("osmosis --read-xml enableDateParsing=no file=\""+osmfilename+"\" --bounding-polygon file=\"munip_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm")
+	beforenumber = os.popen("countnodes "+osmfilename+"").read()
+	afternumber = os.popen("countnodes /tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm").read()
+	reportfile3 = open("reports/report3_"+munipnumberpadded+".txt","w")
+	reportfile3.write("Before: "+beforenumber+"After: "+afternumber+"")
+	reportfile3.close()
 
 
 os.system("mkdir -p reports")
