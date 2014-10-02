@@ -120,7 +120,7 @@ if os.path.isfile("munip_borders/"+str(munipnumberpadded)+".osm"):
 os.system("mkdir -p reports")
 print"Processing "+munipnumberpadded+"..."
 reportcontent = os.popen("getmissingandreport -s -t reports/veivegfixes_"+munipnumberpadded+".osm -n reports/notmatched_"+munipnumberpadded+".osm -d reports/duplicates_"+munipnumberpadded+".osm -e reports/otherobjects_"+munipnumberpadded+".osm -o reports/newnodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm -c ../xml/corrections.xml  /tmp/osm_temp/nodes_"+munipnumberpadded+".osm "+osmfilename+"").read()
-reportcontent2 = os.popen("fillinpostcode -o reports/postcodecityfixes_"+munipnumberpadded+".osm -n reports/onlynumber_"+munipnumberpadded+".osm -s /tmp/osm_temp/nodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm "+osmfilename+"").read()
+reportcontent2 = os.popen("fillinpostcode -c ../xml/corrections.xml -o reports/postcodecityfixes_"+munipnumberpadded+".osm -n reports/onlynumber_"+munipnumberpadded+".osm -s /tmp/osm_temp/nodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm "+osmfilename+"").read()
 
 reportfile = open("reports/report_"+munipnumberpadded+".txt","w")
 reportfile.write(reportcontent)
