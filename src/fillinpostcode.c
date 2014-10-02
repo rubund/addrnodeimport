@@ -395,7 +395,31 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway, xmlDoc *doc_ou
 							xmlFree(text);
 							isbuilding = 1;
 						}
+						else if(strcmp(text,"building:levels") == 0){
+							xmlFree(text);
+							tag_number--;
+						}
+						else if(strcmp(text,"building:roof:shape") == 0){
+							xmlFree(text);
+							tag_number--;
+						}
+						else if(strcmp(text,"roof:levels") == 0){
+							xmlFree(text);
+							tag_number--;
+						}
 						else if(strcmp(text,"source") == 0){
+							xmlFree(text);
+							tag_number--;
+						}
+						else if(strcmp(text,"source:date") == 0){
+							xmlFree(text);
+							tag_number--;
+						}
+						else if(strcmp(text,"source:addr") == 0){
+							xmlFree(text);
+							tag_number--;
+						}
+						else if(strcmp(text,"source:building") == 0){
 							xmlFree(text);
 							tag_number--;
 						}
@@ -412,6 +436,10 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway, xmlDoc *doc_ou
 							tag_number--;
 						}
 						else if(strcmp(text,"access") == 0){
+							xmlFree(text);
+							tag_number--;
+						}
+						else if(strcmp(text,"nvdb:id") == 0){
 							xmlFree(text);
 							tag_number--;
 						}
