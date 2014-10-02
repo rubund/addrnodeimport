@@ -591,6 +591,10 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 							xmlFree(text);
 							tag_number--;
 						}
+						else if(strcmp(text,"source:addr") == 0){
+							xmlFree(text);
+							tag_number--;
+						}
 						else if(strcmp(text,"source:building") == 0){
 							xmlFree(text);
 							tag_number--;
