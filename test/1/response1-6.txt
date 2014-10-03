@@ -1,0 +1,9 @@
+Existing:	11
+New:		11
+Missing:	4
+Otherthings:	0
+Duplicates:	0
+Buildings:	1
+Abandoned:	0
+Notmatched:	4
+NotmatchedPOIs:	0
