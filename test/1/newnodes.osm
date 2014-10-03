@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<osm version="0.6" upload="false" generator="sosi2osm">
+<node id="-1" lat="59.4319642" lon="10.6826333" version="1" visible="true">
+<tag k="addr:postcode" v="1597"/><tag k="addr:city" v="Moss"/><tag k="addr:street" v="Aksel Olsens vei"/><tag k="addr:housenumber" v="2"/></node>
+<node id="-2" lat="59.4318526" lon="10.6829282" version="1" visible="true">
+<tag k="addr:postcode" v="1597"/><tag k="addr:city" v="Moss"/><tag k="addr:street" v="Aksel Olsens vei"/><tag k="addr:housenumber" v="4"/></node>
+<node id="-3" lat="59.4317818" lon="10.6828543" version="1" visible="true">
+<tag k="addr:postcode" v="1597"/><tag k="addr:city" v="Moss"/><tag k="addr:street" v="Aksel Olsens vei"/><tag k="addr:housenumber" v="4A"/></node>
+<node id="-4" lat="59.4317143" lon="10.6832036" version="1" visible="true">
+<tag k="addr:postcode" v="1597"/><tag k="addr:city" v="Moss"/><tag k="addr:street" v="Aksel Olsens vei"/><tag k="addr:housenumber" v="6"/></node>
+<node id="-5" lat="59.4314092" lon="10.6831701" version="1" visible="true">
+<tag k="addr:postcode" v="1597"/><tag k="addr:city" v="Moss"/><tag k="addr:street" v="Aksel Olsens vei"/><tag k="addr:housenumber" v="3"/></node>
+<node id="-79" lat="59.4317253" lon="10.6435520" version="1" visible="true">
+<tag k="addr:postcode" v="1515"/><tag k="addr:city" v="Moss"/><tag k="addr:street" v="Alby gate"/><tag k="addr:housenumber" v="8"/></node>
+<node id="-80" lat="59.4321244" lon="10.6422561" version="1" visible="true">
+<tag k="addr:postcode" v="1515"/><tag k="addr:city" v="Moss"/><tag k="addr:street" v="Alby gate"/><tag k="addr:housenumber" v="7C"/></node>
+<node id="-91" lat="59.4313440" lon="10.6409957" version="1" visible="true">
+<tag k="addr:postcode" v="1515"/><tag k="addr:city" v="Moss"/><tag k="addr:street" v="Alby gate"/><tag k="addr:housenumber" v="15"/></node>
+<node id="-92" lat="59.4313440" lon="10.6409957" version="1" visible="true">
+<tag k="addr:postcode" v="1536"/><tag k="addr:city" v="Moss"/><tag k="addr:street" v="Knuten"/><tag k="addr:housenumber" v="7"/></node>
+<node id="-363" lat="59.4242586" lon="10.6767179" version="1" visible="true">
+<tag k="addr:postcode" v="1523"/><tag k="addr:city" v="Moss"/><tag k="addr:street" v="Bekkeliveien"/><tag k="addr:housenumber" v="3F"/></node>
+<node id="-377" lat="59.4372100" lon="10.6203643" version="1" visible="true">
+<tag k="addr:postcode" v="1519"/><tag k="addr:city" v="Moss"/><tag k="addr:street" v="Begersborgveien"/><tag k="addr:housenumber" v="6B"/></node>
+</osm>

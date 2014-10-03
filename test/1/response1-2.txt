@@ -1,0 +1,9 @@
+Existing:	10
+New:		11
+Missing:	5
+Otherthings:	0
+Duplicates:	0
+Veivegfixes:	1
+Abandoned:	0
+Notmatched:	4
+NotmatchedPOIs:	0

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="Osmosis 0.40.1">
+  <node id="2612163644" version="2" timestamp="2014-10-03T03:01:52Z" uid="633013" user="Honning" changeset="21707112" lat="59.4620956" lon="10.6947674"/>
+  <node id="2612163657" version="2" timestamp="2014-10-03T03:01:52Z" uid="633013" user="Honning" changeset="21707112" lat="59.4621034" lon="10.6949502"/>
+  <node id="2612163673" version="2" timestamp="2014-10-03T03:01:52Z" uid="633013" user="Honning" changeset="21707112" lat="59.4620597" lon="10.6949576"/>
+  <node id="2612163660" version="2" timestamp="2014-10-03T03:01:52Z" uid="633013" user="Honning" changeset="21707112" lat="59.4620518" lon="10.6947747"/>
+  <way id="255534789" version="2" timestamp="2014-10-03T03:01:52Z" uid="1710144" user="rubund" changeset="25734823">
+    <nd ref="2612163644"/>
+    <nd ref="2612163657"/>
+    <nd ref="2612163673"/>
+    <nd ref="2612163660"/>
+    <nd ref="2612163644"/>
+    <tag k="addr:city" v="Moss"/>
+    <tag k="addr:housenumber" v="7"/>
+    <tag k="addr:postcode" v="1536"/>
+    <tag k="addr:street" v="Knuten"/>
+    <tag k="building" v="terrace"/>
+    <tag k="source" v="Bing"/>
+  </way>
+</osm>
