@@ -4,18 +4,56 @@
 from xml.dom.minidom import parse, parseString, Document
 import re
 import os,sys
+import kommunenummer
 from osmapi import OsmApi
 
-if len(sys.argv) != 3:
-	print "Usage command <osm-file> <munip-name>" 
+
+if len(sys.argv) != 2:
+	print "Usage command <osm-file>" 
 	sys.exit()
+
+munipnumber = sys.argv[1]
+munipnumberpadded = "%04d" % (int(munipnumber))
+
+report1 = open("reports/report_"+str(munipnumberpadded)+".txt","r")
+content = report1.read()
+#match1 = re.compile(u"Existing:\s+(\d+)\s+New")
+matches = re.match(r"Existing:\s+(\d+)\s+New:\s+(\d+)\s+Missing:\s+(\d+)\s+Otherthings:\s+(\d+)\s+Duplicates:\s+(\d+)\s+Veivegfixes:\s+(\d+)\s+Buildings:\s+(\d+)\s+Abandoned:\s+(\d+)\s+Notmatched:\s+(\d+)\s+NotmatchedPOIs:\s+(\d+)",content,re.MULTILINE);
+report1.close()
+print matches.group(0)
+missing=matches.group(3)
+new=matches.group(2)
+notmatched=matches.group(9)
+
+report1 = open("reports/report2_"+str(munipnumberpadded)+".txt","r")
+content = report1.read()
+#match1 = re.compile(u"Existing:\s+(\d+)\s+New")
+report1.close()
+matches = re.match(r"Fixes:\s+(\d+)\s+Errors:\s+(\d+)\s+Onlynumber:\s+(\d+)\s+",content,re.MULTILINE);
+print matches.group(0)
+onlynumber=matches.group(3)
+fixes=matches.group(1)
+print new
+print notmatched
+print missing
+print onlynumber
+print fixes
+if int(notmatched) == 0 and int(fixes) == 0 and int(onlynumber) == 0 and int(new) != 0 and int(missing) != 0:
+	print "Can be imported"
+else:
+	print "Cannot be imported"
+	sys.exit()
+
 #api = OsmApi(api="api06.dev.openstreetmap.org", username="", password="", changesetauto=True, changesetautotags={"source":"Kartverket"})
-api = OsmApi(api="api06.dev.openstreetmap.org", username="", password="")
+#api = OsmApi(api="api06.dev.openstreetmap.org", username="rubund_import", passwordfile="./password.txt")
+api = OsmApi(api="api06.dev.openstreetmap.org", username="rubund_import", password="")
 #api.NodeGet(123)
+mycomment=u"addr node import "+kommunenummer.nrtonavn[int(munipnumber)]+" kommune"
+#mycomment=u"addr node import municipality number "+munipnumberpadded+", Norway"
+#api.ChangesetCreate({"comment":u"addr node import "+str(sys.argv[2].decode('utf-8')), "source":"Kartverket", "source:date":"2014-08-24"})
+api.ChangesetCreate({"comment": mycomment, "source":"Kartverket", "source:date":"2014-08-24"})
 
-api.ChangesetCreate({"comment":"addr node import "+str(sys.argv[2]), "source":"Kartverket", "source:date":"2014-08-24"})
-
-dom1 = parse(sys.argv[1])
+dom1 = parse("reports/newnodes_"+str(munipnumberpadded)+".osm")
 mainelement1 = dom1.getElementsByTagName("osm")[0]
 nodes = mainelement1.getElementsByTagName("node")
 counter = 1
@@ -45,7 +83,6 @@ for node in nodes:
 			print uploadnode
 			counter = counter + 1
 		
-print node
 api.ChangesetClose()
 ##api.flush()
 #api.NodeCreate

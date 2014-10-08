@@ -1,438 +1,438 @@
 #!/bin/sh
 
 
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1001
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1002
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1003
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1004
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1014
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1017
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1018
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1021
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1026
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1027
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1029
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1032
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1034
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1037
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1046
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1101
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1102
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1111
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1112
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1114
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1119
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1120
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1121
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1122
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1129
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1130
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1133
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1134
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1135
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1201
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1235
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1241
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1242
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1243
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1244
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1245
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1246
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1247
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1251
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1252
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1253
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1256
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1259
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1260
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1263
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1264
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1265
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1266
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1563
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1566
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1567
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1571
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1573
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1576
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1601
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1612
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1613
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1617
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1620
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1621
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1622
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1624
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1627
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1630
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1632
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1634
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1635
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1636
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1638
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1640
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1644
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1648
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1653
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1657
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1662
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1663
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1664
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1665
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1711
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1714
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1717
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1718
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1719
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1724
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1756
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1805
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1851
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1852
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1853
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1854
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1866
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1867
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1868
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1870
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1871
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1902
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1903
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1911
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1913
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1917
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1919
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1920
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1922
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1923
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1924
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1925
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1926
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1927
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1928
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1929
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1931
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1933
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1936
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1938
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1939
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1940
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1941
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1942
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1943
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2002
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2003
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2004
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2011
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2012
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2014
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2015
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2017
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2018
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2019
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2020
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2021
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2022
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2023
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2024
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2025
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2027
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2028
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 2030
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 436
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 437
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 439
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 441
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 633
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 826
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 831
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 833
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 834
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 919
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 928
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 929
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 935
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 937
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 938
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 940
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 941
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 101
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 104
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 105
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 106
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 111
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 118
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 119
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 121
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 122
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 123
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 124
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 125
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 127
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 128
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 135
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 136
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 137
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 138
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 211
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 213
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 214
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 215
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 216
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 217
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 219
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 220
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 221
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 226
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 227
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 228
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 229
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 230
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 231
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 233
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 234
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 235
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 238
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 301
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 533
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 602
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 625
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 626
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 627
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 628
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 701
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 702
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 704
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 706
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 711
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 713
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 714
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 716
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 719
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 720
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 722
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 723
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1103
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1106
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1124
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1127
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1141
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1142
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1144
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1145
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1146
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1149
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1160
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1401
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1411
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1412
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1413
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1416
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1417
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1418
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1419
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1420
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1421
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1422
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1424
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1426
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1428
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1429
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1430
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1431
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1432
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1433
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1438
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1439
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1441
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1443
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1444
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1445
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1449
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1502
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1504
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1505
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1511
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1514
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1515
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1516
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1517
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1519
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1520
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1523
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1524
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1525
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1526
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1528
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1529
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1531
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1532
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1534
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1535
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1539
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1543
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1545
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1546
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1547
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1548
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1551
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1554
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1557
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1560
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1576
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 512
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 513
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1633
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1702
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1703
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1721
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1725
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1736
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1738
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1739
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1740
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1742
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1743
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1744
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1748
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1749
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1750
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1751
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1755
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1804
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1811
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1812
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1813
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1815
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1816
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1818
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1820
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1822
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1824
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1825
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1826
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1827
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1828
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1832
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1833
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1834
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1835
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1836
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1837
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1838
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1839
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1840
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1841
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1845
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1848
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1849
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1850
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1856
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1857
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1859
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1860
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1865
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1874
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1151
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1211
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1216
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1219
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1221
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1222
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1223
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1224
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1227
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1228
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1231
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1232
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1233
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1234
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 1238
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 236
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 237
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 238
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 239
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 402
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 403
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 412
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 415
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 417
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 418
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 419
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 423
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 425
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 426
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 427
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 428
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 429
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 430
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 432
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 434
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 501
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 502
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 511
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 514
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 515
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 516
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 517
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 519
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 520
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 521
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 522
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 528
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 529
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 534
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 536
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 538
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 540
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 541
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 542
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 543
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 544
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 545
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 604
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 605
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 612
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 615
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 616
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 617
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 618
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 619
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 620
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 621
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 622
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 623
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 624
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 625
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 631
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 632
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 633
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 805
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 806
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 811
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 814
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 815
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 817
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 819
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 821
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 822
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 826
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 827
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 828
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 829
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 830
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 901
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 904
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 906
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 911
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 912
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 914
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 919
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 926
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 532
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 420
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 709
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 807
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 438
-./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip 728
+./doall.sh  1001
+./doall.sh  1002
+./doall.sh  1003
+./doall.sh  1004
+./doall.sh  1014
+./doall.sh  1017
+./doall.sh  1018
+./doall.sh  1021
+./doall.sh  1026
+./doall.sh  1027
+./doall.sh  1029
+./doall.sh  1032
+./doall.sh  1034
+./doall.sh  1037
+./doall.sh  1046
+./doall.sh  1101
+./doall.sh  1102
+./doall.sh  1111
+./doall.sh  1112
+./doall.sh  1114
+./doall.sh  1119
+./doall.sh  1120
+./doall.sh  1121
+./doall.sh  1122
+./doall.sh  1129
+./doall.sh  1130
+./doall.sh  1133
+./doall.sh  1134
+./doall.sh  1135
+./doall.sh  1201
+./doall.sh  1235
+./doall.sh  1241
+./doall.sh  1242
+./doall.sh  1243
+./doall.sh  1244
+./doall.sh  1245
+./doall.sh  1246
+./doall.sh  1247
+./doall.sh  1251
+./doall.sh  1252
+./doall.sh  1253
+./doall.sh  1256
+./doall.sh  1259
+./doall.sh  1260
+./doall.sh  1263
+./doall.sh  1264
+./doall.sh  1265
+./doall.sh  1266
+./doall.sh  1563
+./doall.sh  1566
+./doall.sh  1567
+./doall.sh  1571
+./doall.sh  1573
+./doall.sh  1576
+./doall.sh  1601
+./doall.sh  1612
+./doall.sh  1613
+./doall.sh  1617
+./doall.sh  1620
+./doall.sh  1621
+./doall.sh  1622
+./doall.sh  1624
+./doall.sh  1627
+./doall.sh  1630
+./doall.sh  1632
+./doall.sh  1634
+./doall.sh  1635
+./doall.sh  1636
+./doall.sh  1638
+./doall.sh  1640
+./doall.sh  1644
+./doall.sh  1648
+./doall.sh  1653
+./doall.sh  1657
+./doall.sh  1662
+./doall.sh  1663
+./doall.sh  1664
+./doall.sh  1665
+./doall.sh  1711
+./doall.sh  1714
+./doall.sh  1717
+./doall.sh  1718
+./doall.sh  1719
+./doall.sh  1724
+./doall.sh  1756
+./doall.sh  1805
+./doall.sh  1851
+./doall.sh  1852
+./doall.sh  1853
+./doall.sh  1854
+./doall.sh  1866
+./doall.sh  1867
+./doall.sh  1868
+./doall.sh  1870
+./doall.sh  1871
+./doall.sh  1902
+./doall.sh  1903
+./doall.sh  1911
+./doall.sh  1913
+./doall.sh  1917
+./doall.sh  1919
+./doall.sh  1920
+./doall.sh  1922
+./doall.sh  1923
+./doall.sh  1924
+./doall.sh  1925
+./doall.sh  1926
+./doall.sh  1927
+./doall.sh  1928
+./doall.sh  1929
+./doall.sh  1931
+./doall.sh  1933
+./doall.sh  1936
+./doall.sh  1938
+./doall.sh  1939
+./doall.sh  1940
+./doall.sh  1941
+./doall.sh  1942
+./doall.sh  1943
+./doall.sh  2002
+./doall.sh  2003
+./doall.sh  2004
+./doall.sh  2011
+./doall.sh  2012
+./doall.sh  2014
+./doall.sh  2015
+./doall.sh  2017
+./doall.sh  2018
+./doall.sh  2019
+./doall.sh  2020
+./doall.sh  2021
+./doall.sh  2022
+./doall.sh  2023
+./doall.sh  2024
+./doall.sh  2025
+./doall.sh  2027
+./doall.sh  2028
+./doall.sh  2030
+./doall.sh  436
+./doall.sh  437
+./doall.sh  439
+./doall.sh  441
+./doall.sh  633
+./doall.sh  826
+./doall.sh  831
+./doall.sh  833
+./doall.sh  834
+./doall.sh  919
+./doall.sh  928
+./doall.sh  929
+./doall.sh  935
+./doall.sh  937
+./doall.sh  938
+./doall.sh  940
+./doall.sh  941
+./doall.sh  101
+./doall.sh  104
+./doall.sh  105
+./doall.sh  106
+./doall.sh  111
+./doall.sh  118
+./doall.sh  119
+./doall.sh  121
+./doall.sh  122
+./doall.sh  123
+./doall.sh  124
+./doall.sh  125
+./doall.sh  127
+./doall.sh  128
+./doall.sh  135
+./doall.sh  136
+./doall.sh  137
+./doall.sh  138
+./doall.sh  211
+./doall.sh  213
+./doall.sh  214
+./doall.sh  215
+./doall.sh  216
+./doall.sh  217
+./doall.sh  219
+./doall.sh  220
+./doall.sh  221
+./doall.sh  226
+./doall.sh  227
+./doall.sh  228
+./doall.sh  229
+./doall.sh  230
+./doall.sh  231
+./doall.sh  233
+./doall.sh  234
+./doall.sh  235
+./doall.sh  238
+./doall.sh  301
+./doall.sh  533
+./doall.sh  602
+./doall.sh  625
+./doall.sh  626
+./doall.sh  627
+./doall.sh  628
+./doall.sh  701
+./doall.sh  702
+./doall.sh  704
+./doall.sh  706
+./doall.sh  711
+./doall.sh  713
+./doall.sh  714
+./doall.sh  716
+./doall.sh  719
+./doall.sh  720
+./doall.sh  722
+./doall.sh  723
+./doall.sh  1103
+./doall.sh  1106
+./doall.sh  1124
+./doall.sh  1127
+./doall.sh  1141
+./doall.sh  1142
+./doall.sh  1144
+./doall.sh  1145
+./doall.sh  1146
+./doall.sh  1149
+./doall.sh  1160
+./doall.sh  1401
+./doall.sh  1411
+./doall.sh  1412
+./doall.sh  1413
+./doall.sh  1416
+./doall.sh  1417
+./doall.sh  1418
+./doall.sh  1419
+./doall.sh  1420
+./doall.sh  1421
+./doall.sh  1422
+./doall.sh  1424
+./doall.sh  1426
+./doall.sh  1428
+./doall.sh  1429
+./doall.sh  1430
+./doall.sh  1431
+./doall.sh  1432
+./doall.sh  1433
+./doall.sh  1438
+./doall.sh  1439
+./doall.sh  1441
+./doall.sh  1443
+./doall.sh  1444
+./doall.sh  1445
+./doall.sh  1449
+./doall.sh  1502
+./doall.sh  1504
+./doall.sh  1505
+./doall.sh  1511
+./doall.sh  1514
+./doall.sh  1515
+./doall.sh  1516
+./doall.sh  1517
+./doall.sh  1519
+./doall.sh  1520
+./doall.sh  1523
+./doall.sh  1524
+./doall.sh  1525
+./doall.sh  1526
+./doall.sh  1528
+./doall.sh  1529
+./doall.sh  1531
+./doall.sh  1532
+./doall.sh  1534
+./doall.sh  1535
+./doall.sh  1539
+./doall.sh  1543
+./doall.sh  1545
+./doall.sh  1546
+./doall.sh  1547
+./doall.sh  1548
+./doall.sh  1551
+./doall.sh  1554
+./doall.sh  1557
+./doall.sh  1560
+./doall.sh  1576
+./doall.sh  512
+./doall.sh  513
+./doall.sh  1633
+./doall.sh  1702
+./doall.sh  1703
+./doall.sh  1721
+./doall.sh  1725
+./doall.sh  1736
+./doall.sh  1738
+./doall.sh  1739
+./doall.sh  1740
+./doall.sh  1742
+./doall.sh  1743
+./doall.sh  1744
+./doall.sh  1748
+./doall.sh  1749
+./doall.sh  1750
+./doall.sh  1751
+./doall.sh  1755
+./doall.sh  1804
+./doall.sh  1811
+./doall.sh  1812
+./doall.sh  1813
+./doall.sh  1815
+./doall.sh  1816
+./doall.sh  1818
+./doall.sh  1820
+./doall.sh  1822
+./doall.sh  1824
+./doall.sh  1825
+./doall.sh  1826
+./doall.sh  1827
+./doall.sh  1828
+./doall.sh  1832
+./doall.sh  1833
+./doall.sh  1834
+./doall.sh  1835
+./doall.sh  1836
+./doall.sh  1837
+./doall.sh  1838
+./doall.sh  1839
+./doall.sh  1840
+./doall.sh  1841
+./doall.sh  1845
+./doall.sh  1848
+./doall.sh  1849
+./doall.sh  1850
+./doall.sh  1856
+./doall.sh  1857
+./doall.sh  1859
+./doall.sh  1860
+./doall.sh  1865
+./doall.sh  1874
+./doall.sh  1151
+./doall.sh  1211
+./doall.sh  1216
+./doall.sh  1219
+./doall.sh  1221
+./doall.sh  1222
+./doall.sh  1223
+./doall.sh  1224
+./doall.sh  1227
+./doall.sh  1228
+./doall.sh  1231
+./doall.sh  1232
+./doall.sh  1233
+./doall.sh  1234
+./doall.sh  1238
+./doall.sh  236
+./doall.sh  237
+./doall.sh  238
+./doall.sh  239
+./doall.sh  402
+./doall.sh  403
+./doall.sh  412
+./doall.sh  415
+./doall.sh  417
+./doall.sh  418
+./doall.sh  419
+./doall.sh  423
+./doall.sh  425
+./doall.sh  426
+./doall.sh  427
+./doall.sh  428
+./doall.sh  429
+./doall.sh  430
+./doall.sh  432
+./doall.sh  434
+./doall.sh  501
+./doall.sh  502
+./doall.sh  511
+./doall.sh  514
+./doall.sh  515
+./doall.sh  516
+./doall.sh  517
+./doall.sh  519
+./doall.sh  520
+./doall.sh  521
+./doall.sh  522
+./doall.sh  528
+./doall.sh  529
+./doall.sh  534
+./doall.sh  536
+./doall.sh  538
+./doall.sh  540
+./doall.sh  541
+./doall.sh  542
+./doall.sh  543
+./doall.sh  544
+./doall.sh  545
+./doall.sh  604
+./doall.sh  605
+./doall.sh  612
+./doall.sh  615
+./doall.sh  616
+./doall.sh  617
+./doall.sh  618
+./doall.sh  619
+./doall.sh  620
+./doall.sh  621
+./doall.sh  622
+./doall.sh  623
+./doall.sh  624
+./doall.sh  625
+./doall.sh  631
+./doall.sh  632
+./doall.sh  633
+./doall.sh  805
+./doall.sh  806
+./doall.sh  811
+./doall.sh  814
+./doall.sh  815
+./doall.sh  817
+./doall.sh  819
+./doall.sh  821
+./doall.sh  822
+./doall.sh  826
+./doall.sh  827
+./doall.sh  828
+./doall.sh  829
+./doall.sh  830
+./doall.sh  901
+./doall.sh  904
+./doall.sh  906
+./doall.sh  911
+./doall.sh  912
+./doall.sh  914
+./doall.sh  919
+./doall.sh  926
+./doall.sh  532
+./doall.sh  420
+./doall.sh  709
+./doall.sh  807
+./doall.sh  438
+./doall.sh  728
 
