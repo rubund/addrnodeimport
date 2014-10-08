@@ -41,8 +41,8 @@
 <spelling from="Bjarne Ness'' veg" to="Bjarne Ness' veg" />
 <spelling from="Bjønner''n" to="Bjønner'n" />
 <spelling from="Carl Dons'' veg" to="Carl Dons' veg" />
-<spelling from="Christian IV''s vei" to="Christian IV's vei" />
-<spelling from="Christian VII''s gate" to="Christian VII's gate" />
+<spelling from="Christian IV''s vei" to="Christian IVs vei" />
+<spelling from="Christian VII''s gate" to="Christian VIIs gate" />
 <spelling from="Claus Riis'' gate" to="Claus Riis' gate" />
 <spelling from="Diriks'' gate" to="Diriks' gate" />
 <spelling from="Elias Blix'' gate" to="Elias Blix' gate" />
@@ -61,8 +61,8 @@
 <spelling from="Hans Ross'' gate" to="Hans Ross' gate" />
 <spelling from="Herman Foss'' gate" to="Herman Foss' gate" />
 <spelling from="Haakon 7''s gate" to="Haakon 7's gate" />
-<spelling from="Haakon VII''s gate" to="Haakon VII's gate" />
-<spelling from="Haakon VII''s veg" to="Haakon VII's veg" />
+<spelling from="Haakon VII''s gate" to="Haakon VIIs gate" />
+<spelling from="Haakon VII''s veg" to="Haakon VIIs veg" />
 <spelling from="Ingeborg Aas'' veg" to="Ingeborg Aas' veg" />
 <spelling from="Jacob Hilditch'' gate" to="Jacob Hilditch' gate" />
 <spelling from="Johan Gjønnes'' veg" to="Johan Gjønnes' veg" />
@@ -71,11 +71,11 @@
 <spelling from="Kaptein Koss'' vei" to="Kaptein Koss' vei" />
 <spelling from="Knoph''s vei" to="Knoph's vei" />
 <spelling from="Knut Glomsaas'' vei" to="Knut Glomsaas' vei" />
-<spelling from="Kong Olav V''s gate" to="Kong Olav V's gate" />
+<spelling from="Kong Olav V''s gate" to="Kong Olav Vs gate" />
 <spelling from="Konsul Børs'' gate" to="Konsul Børs' gate" />
 <spelling from="K.O. Thornæs'' veg" to="K.O. Thornæs' veg" />
 <spelling from="Krebs'' gate" to="Krebs' gate" />
-<spelling from="Kristian IV''s gate" to="Kristian IV's gate" />
+<spelling from="Kristian IV''s gate" to="Kristian IVs gate" />
 <spelling from="Lammers'' gate" to="Lammers' gate" />
 <spelling from="Laura Hangerås'' veg" to="Laura Hangerås' veg" />
 <spelling from="Lindesnes'' gate" to="Lindesnes' gate" />
@@ -274,4 +274,5 @@
 <spelling from="R.M.Olsens veg" to="R.M. Olsens veg" />
 <spelling from="Th.C.Henriksens gate" to="Th.C. Henriksens gate" />
 <spelling from="Ths.W.Schwartz gate" to="Ths.W. Schwartz gate" />
+
 </corrections>
