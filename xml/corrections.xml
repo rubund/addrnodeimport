@@ -31,7 +31,7 @@
 
 <spelling from="Agnes'' veg" to="Agnes' veg" />
 <spelling from="Alfred Getz'' vei" to="Alfred Getz' vei" />
-<spelling from="Alfred Hess''s veg" to="Alfred Hess's veg" />
+<spelling from="Alfred Hess''s veg" to="Alfred Hess' veg" />
 <spelling from="Arnoldus Reimers'' gate" to="Arnoldus Reimers' gate" />
 <spelling from="Bark Silas'' vei" to="Bark Silas' vei" />
 <spelling from="Behrens'' gate" to="Behrens' gate" />
@@ -46,7 +46,7 @@
 <spelling from="Claus Riis'' gate" to="Claus Riis' gate" />
 <spelling from="Diriks'' gate" to="Diriks' gate" />
 <spelling from="Elias Blix'' gate" to="Elias Blix' gate" />
-<spelling from="Elias Blix''s gate" to="Elias Blix's gate" />
+<spelling from="Elias Blix''s gate" to="Elias Blix' gate" />
 <spelling from="Ellen Gleditsch'' vei" to="Ellen Gleditsch' vei" />
 <spelling from="Erling Schiøtz'' vei" to="Erling Schiøtz' vei" />
 <spelling from="Ernst Sars'' vei" to="Ernst Sars' vei" />
@@ -120,9 +120,9 @@
 <spelling from="Dr.Greves gate" to="Dr. Greves gate" />
 <spelling from="Dr.Gundahls veg" to="Dr. Gundahls veg" />
 <spelling from="Dr.Kvammes vei" to="Dr. Kvammes vei" />
-<spelling from="Dr.Lorentzens vei" to="Dr.Lorentzens vei" />
+<spelling from="Dr.Lorentzens vei" to="Dr. Lorentzens vei" />
 <spelling from="Dr.Møllers gate" to="Dr. Møllers gate" />
-<spelling from="Dr.Møllersvei" to="Dr. Møllersvei" />
+<spelling from="Dr.Møllersvei" to="Dr. Møllers vei" />
 <spelling from="Dr.Munks gate" to="Dr. Munks gate" />
 <spelling from="Dr.Nilsens vei" to="Dr. Nilsens vei" />
 <spelling from="Dr.Opsands vei" to="Dr. Opsands vei" />
@@ -163,7 +163,7 @@
 <spelling from="H O Torgersens vei" to="H.O. Torgersens vei" />
 <spelling from="H P Jacobsens gate" to="H.P. Jacobsens gate" />
 <spelling from="J A Schneiders veg" to="J.A. Schneiders veg" />
-<spelling from="J B Holtsgate" to="J.B. Holtsgate" />
+<spelling from="J B Holtsgate" to="J.B. Holts gate" />
 <spelling from="J E Abrahamsens veg" to="J.E. Abrahamsens veg" />
 <spelling from="J E Ekornesvei" to="J.E. Ekornesvei" />
 <spelling from="J M Withs gate" to="J.M. Withs gate" />
@@ -176,7 +176,7 @@
 <spelling from="M A Habberstads veg" to="M.A. Habberstads veg" />
 <spelling from="Major O Laakes veg" to="Major O. Laakes veg" />
 <spelling from="M B Landstads gate" to="M.B. Landstads gate" />
-<spelling from="M O Orningsvei" to="M.O. Orningsvei" />
+<spelling from="M O Orningsvei" to="M.O. Ornings vei" />
 <spelling from="N C Nielsens gate" to="N.C. Nielsens gate" />
 <spelling from="O E Rølvaags vei" to="O.E. Rølvaags vei" />
 <spelling from="O G Hauges veg" to="O.G. Hauges veg" />
@@ -192,17 +192,17 @@
 <spelling from="P C Bjerckes vei" to="P.C. Bjerckes vei" />
 <spelling from="Per K Hestetuns veg" to="Per K. Hestetuns veg" />
 <spelling from="P G Rodums veg" to="P.G. Rodums veg" />
-<spelling from="P M Røwdesvei" to="P.M. Røwdesvei" />
+<spelling from="P M Røwdesvei" to="P.M. Røwdes vei" />
 <spelling from="P W Nilsens veg" to="P.W. Nilsens veg" />
 <spelling from="Sigbjørn K Tonstad veg" to="Sigbjørn K. Tonstad veg" />
 <spelling from="S M Gundersens gate" to="S.M. Gundersens gate" />
-<spelling from="Søren R Thornæs veg" to="Søren R. Thornæs veg" />
+<spelling from="Søren R Thornæs veg" to="Søren R. Thornæs' veg" />
 <spelling from="Sverre F Halvorsens vei" to="Sverre F. Halvorsens vei" />
 <spelling from="Sverre K Andersens gate" to="Sverre K. Andersens gate" />
 <spelling from="Thor O Hannevigs vei" to="Thor O. Hannevigs vei" />
 
 <spelling from="A. C. Lies gate" to="A.C. Lies gate" />
-<spelling from="A. K. Blix veg" to="A.K. Blix veg" />
+<spelling from="A. K. Blix veg" to="A.K. Blix' veg" />
 <spelling from="C. A. Pihls gate" to="C.A. Pihls gate" />
 <spelling from="C. A. Torstensens vei" to="C.A. Torstensens vei" />
 <spelling from="C. E. Holters vei" to="C.E. Holters vei" />
@@ -224,7 +224,7 @@
 <spelling from="K. K. Lien vei" to="K.K. Lien vei" />
 <spelling from="Kommandør T. I. Øgrims plass" to="Kommandør T.I. Øgrims plass" />
 <spelling from="L. P. Wettres vei" to="L.P. Wettres vei" />
-<spelling from="L. T. Aas veg" to="L.T. Aas veg" />
+<spelling from="L. T. Aas veg" to="L.T. Aas' veg" />
 <spelling from="L. W. Hansens gate" to="L.W. Hansens gate" />
 <spelling from="M. P. Persens vei" to="M.P. Persens vei" />
 <spelling from="O. J. Kaarbøs gate" to="O.J. Kaarbøs gate" />
@@ -273,7 +273,7 @@
 <spelling from="R.M.Andersens vei" to="R.M. Andersens vei" />
 <spelling from="R.M.Olsens veg" to="R.M. Olsens veg" />
 <spelling from="Th.C.Henriksens gate" to="Th.C. Henriksens gate" />
-<spelling from="Ths.W.Schwartz gate" to="Ths.W. Schwartz gate" />
+<spelling from="Ths.W.Schwartz gate" to="Ths.W. Schwartz' gate" />
 
 <spelling from="C Andersens gate" to="C. Andersens gate" />
 <spelling from="E Engebretsens gate" to="E. Engebretsens gate" />
