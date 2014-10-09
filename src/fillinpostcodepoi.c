@@ -526,6 +526,7 @@ void get_corrections(xmlNode * a_node, sqlite3 *db){
 			rowcounter++;
 		}
 	}
+	basic_query(db,"create index if not exists fromname_index on corrections (fromname ASC);",0);
 }
 
 
