@@ -5,6 +5,8 @@ from xml.dom.minidom import parse, parseString, Document
 import re
 import os,sys
 import kommunenummer
+import mypasswords
+import MySQLdb
 from osmapi import OsmApi
 
 
@@ -44,9 +46,22 @@ else:
 	print "Cannot be imported"
 	sys.exit()
 
+
+db = MySQLdb.connect(host="localhost",user="ruben",passwd=mypasswords.sql, db="beebeetle")
+cursor = db.cursor()
+cursor.execute("set names utf8")
+cursor.execute("select person from osmimportresp where kommunenummer=\""+str(munipnumber)+"\";")
+rows=cursor.fetchall()
+if(len(rows) != 0):
+	print "Someone else is responsible for this one. Not importing..."
+	sys.exit()
+else:
+	print "Nobody is responsible for this one"
+db.close()
+
 #api = OsmApi(api="api06.dev.openstreetmap.org", username="", password="", changesetauto=True, changesetautotags={"source":"Kartverket"})
 #api = OsmApi(api="api06.dev.openstreetmap.org", username="rubund_import", passwordfile="./password.txt")
-api = OsmApi(api="api06.dev.openstreetmap.org", username="rubund_import", password="")
+api = OsmApi(api="api06.dev.openstreetmap.org", username="rubund_import", password=mypasswords.osm)
 #api.NodeGet(123)
 mycomment=u"addr node import "+kommunenummer.nrtonavn[int(munipnumber)]+" kommune"
 #mycomment=u"addr node import municipality number "+munipnumberpadded+", Norway"
