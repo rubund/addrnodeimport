@@ -28,6 +28,7 @@
 <spelling from="MAGNUS DEN GODES VEG" to="Magnus den Godes veg" />
 <spelling from="MAGNUS DEN GODES VEI" to="Magnus den Godes vei" />
 <spelling from="THOMAS VON WESTENS GATE" to="Thomas von Westens gate" />
+<spelling from="GÅRDSALLéEN" to="Gårdsalléen" />
 
 <spelling from="Agnes'' veg" to="Agnes’ veg" />
 <spelling from="Alfred Getz'' vei" to="Alfred Getz’ vei" />
@@ -315,9 +316,15 @@
 <spelling from="Ottervn" to="Otterveien" />
 <spelling from="St Hansvn" to="St. Hansveien" />
 
-<spelling from="Alle`veien" to="Alleveien" />
-<spelling from="Håkon den VII alle`" to="Håkon den VII alle" />
+<spelling from="Alle`veien" to="Alléveien" />
+<spelling from="Håkon den VII alle`" to="Håkon den VIIs allé" />
 <spelling from="Harald Dreyer`s vei" to="Harald Dreyers vei" />
 <spelling from="Wilhelm Retz` gate" to="Wilhelm Retz’ gate" />
+
+<spelling from="Langelandsallčen" to="Langelandsalléen" />
+<spelling from="Låkeallčen" to="Låkealléen" />
+<spelling from="Ødegårdsalčen" to="Ødegårdsalléen" />
+<spelling from="Storlčvegen" to="Storlevegen" />
+<spelling from="Joakim Brevolds allč" to="Joakim Brevolds allé" />
 
 </corrections>
