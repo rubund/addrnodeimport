@@ -3,7 +3,7 @@
 <!-- Symbols to use: ’ -->
 <spelling from="Juhána Rásttu? geaidnu" to="Juhána Rásttuš geaidnu" />
 <spelling from="Rá??eviessogeaidnu" to="Ráđđeviessogeaidnu" />
-<spelling from="Stuorragea?gi" to="Stuorraluohkká" />
+<spelling from="Stuorragea?gi" to="Stuorrageađgi" />
 <spelling from="Gárgo?" to="Gárgoš" />
 <spelling from="Jeagilvármá?ii" to="Jeagilvármáđii" />
 <spelling from="Látto?luohkká" to="Láttošluohkká" />
@@ -326,5 +326,7 @@
 <spelling from="Ødegårdsalčen" to="Ødegårdsalléen" />
 <spelling from="Storlčvegen" to="Storlevegen" />
 <spelling from="Joakim Brevolds allč" to="Joakim Brevolds allé" />
+
+<spelling from="Nordahl Griegsvei" to="Nordahl Griegs vei" />
 
 </corrections>
