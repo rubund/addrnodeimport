@@ -99,5 +99,13 @@ for node in nodes:
 			counter = counter + 1
 		
 api.ChangesetClose()
+
+db = MySQLdb.connect(host="localhost",user="ruben",passwd=mypasswords.sql, db="beebeetle")
+cursor = db.cursor()
+cursor.execute("set names utf8")
+cursor.execute("insert into update_requests (kommunenummer,ip,tid) values ('"+str(munipnumber)+"','script',now());")
+db.commit()
+db.close()
+#os.system("echo \"insert into update_requests (kommunenummer,ip,tid) values (543,'script',now())\" | mysql -u ruben --password="+mypasswords.sql+" beebeetle")
 ##api.flush()
 #api.NodeCreate
