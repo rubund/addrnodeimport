@@ -50,7 +50,7 @@ else:
 db = MySQLdb.connect(host="localhost",user="ruben",passwd=mypasswords.sql, db="beebeetle")
 cursor = db.cursor()
 cursor.execute("set names utf8")
-cursor.execute("select person from osmimportresp where kommunenummer=\""+str(munipnumber)+"\";")
+cursor.execute("select person from osmimportresp where kommunenummer=\""+str(munipnumber)+"\" and person != 'rubund';")
 rows=cursor.fetchall()
 if(len(rows) != 0):
 	print "Someone else is responsible for this one. Not importing..."
