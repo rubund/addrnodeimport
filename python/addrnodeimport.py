@@ -19,6 +19,7 @@
 #   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 network=True
+munipfirst=False
 
 import os
 import sys
@@ -72,18 +73,33 @@ else:
 	leftcoord = matches.group(2)
 	topcoord = matches.group(3)
 	rightcoord = matches.group(4)
-	print "\nExtracting municipality from pbf:"
-	os.system("osmosis --read-pbf file=\"/home/ruben/norway-latest.osm.pbf\" --bounding-box bottom="+bottomcoord+" left="+leftcoord+" top="+topcoord+" right="+rightcoord+" --write-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\"")
-	print "\nExtracting address nodes:"
-	os.system("osmosis --read-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\" --tf accept-nodes \"addr:housenumber\"=* --tf reject-ways --tf reject-relations --write-xml file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp1.osm\"")
-	os.system("osmosis --read-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\" --tf accept-nodes \"abandoned:addr:housenumber\"=* --tf reject-ways --tf reject-relations --write-xml file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp2.osm\"")
-	os.system("osmosis --rx \"/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp1.osm\" --rx \"/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp2.osm\" --merge --wx \"/tmp/osm_temp/nodes_"+munipnumberpadded+".osm\"")
-	print "\nExtracting address ways:"
-	os.system("rm -rf /tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp1.osm /tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp2.osm")
-	os.system("osmosis --read-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\" --tf accept-ways \"addr:housenumber\"=* --tf reject-relations --used-node --write-xml file=\"/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp1.osm\"")
-	os.system("osmosis --read-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\" --tf accept-ways \"abandoned:addr:housenumber\"=* --tf reject-relations --used-node --write-xml file=\"/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp2.osm\"")
-	os.system("osmosis --rx \"/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp1.osm\" --rx \"/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp2.osm\" --merge --wx \"/tmp/osm_temp/ways_"+munipnumberpadded+".osm\"")
-	os.system("rm -rf /tmp/osm_temp/ways_"+munipnumberpadded+"-tmp1.osm /tmp/osm_temp/ways_"+munipnumberpadded+"-tmp2.osm /tmp/osm_temp/objects_"+munipnumberpadded+".pbf")
+	if munipfirst:
+		print "\nExtracting municipality from pbf:"
+		os.system("osmosis --read-pbf file=\"/home/ruben/norway-latest.osm.pbf\" --bounding-box bottom="+bottomcoord+" left="+leftcoord+" top="+topcoord+" right="+rightcoord+" --write-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\"")
+		print "\nExtracting address nodes:"
+		os.system("osmosis --read-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\" --tf accept-nodes \"addr:housenumber\"=* --tf reject-ways --tf reject-relations --write-xml file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp1.osm\"")
+		os.system("osmosis --read-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\" --tf accept-nodes \"abandoned:addr:housenumber\"=* --tf reject-ways --tf reject-relations --write-xml file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp2.osm\"")
+		os.system("osmosis --rx \"/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp1.osm\" --rx \"/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp2.osm\" --merge --wx \"/tmp/osm_temp/nodes_"+munipnumberpadded+".osm\"")
+		print "\nExtracting address ways:"
+		os.system("rm -rf /tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp1.osm /tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp2.osm")
+		os.system("osmosis --read-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\" --tf accept-ways \"addr:housenumber\"=* --tf reject-relations --used-node --write-xml file=\"/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp1.osm\"")
+		os.system("osmosis --read-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\" --tf accept-ways \"abandoned:addr:housenumber\"=* --tf reject-relations --used-node --write-xml file=\"/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp2.osm\"")
+		os.system("osmosis --rx \"/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp1.osm\" --rx \"/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp2.osm\" --merge --wx \"/tmp/osm_temp/ways_"+munipnumberpadded+".osm\"")
+		os.system("rm -rf /tmp/osm_temp/ways_"+munipnumberpadded+"-tmp1.osm /tmp/osm_temp/ways_"+munipnumberpadded+"-tmp2.osm /tmp/osm_temp/objects_"+munipnumberpadded+".pbf")
+	else:
+		if not os.path.isfile("/tmp/osm_temp/nodes.osm") or not os.path.isfile("/tmp/osm_temp/ways.osm"):
+			print "\nExtracting all way addresses:"
+			os.system("osmosis --read-pbf file=\"/home/ruben/norway-latest.osm.pbf\" --tf accept-ways \"addr:housenumber\"=* --tf reject-relations --used-node --write-xml file=\"/tmp/osm_temp/ways-tmp1.osm\"")
+			os.system("osmosis --read-pbf file=\"/home/ruben/norway-latest.osm.pbf\" --tf accept-ways \"abandoned:addr:housenumber\"=* --tf reject-relations --used-node --write-xml file=\"/tmp/osm_temp/ways-tmp2.osm\"")
+			os.system("osmosis --rx \"/tmp/osm_temp/ways-tmp1.osm\" --rx \"/tmp/osm_temp/ways-tmp2.osm\" --merge --wx \"/tmp/osm_temp/ways.osm\"")
+			print "\nExtracting all node addresses:"
+			os.system("osmosis --read-pbf file=\"/home/ruben/norway-latest.osm.pbf\" --tf accept-nodes \"addr:housenumber\"=* --tf reject-ways --tf reject-relations --write-xml file=\"/tmp/osm_temp/nodes-tmp1.osm\"")
+			os.system("osmosis --read-pbf file=\"/home/ruben/norway-latest.osm.pbf\" --tf accept-nodes \"abandoned:addr:housenumber\"=* --tf reject-ways --tf reject-relations --write-xml file=\"/tmp/osm_temp/nodes-tmp2.osm\"")
+			os.system("osmosis --rx \"/tmp/osm_temp/nodes-tmp1.osm\" --rx \"/tmp/osm_temp/nodes-tmp2.osm\" --merge --wx \"/tmp/osm_temp/nodes.osm\"")
+		print "\nGet ways for municipality:"
+		os.system("osmosis --read-xml file=\"/tmp/osm_temp/ways.osm\" --bounding-box bottom="+bottomcoord+" left="+leftcoord+" top="+topcoord+" right="+rightcoord+" --write-xml file=\"/tmp/osm_temp/ways_"+munipnumberpadded+".osm\"")
+		print "\nGet nodes for municipality:"
+		os.system("osmosis --read-xml file=\"/tmp/osm_temp/nodes.osm\" --bounding-box bottom="+bottomcoord+" left="+leftcoord+" top="+topcoord+" right="+rightcoord+" --write-xml file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+".osm\"")
 
 if not os.path.isfile("munip_borders/"+str(munipnumberpadded)+".osm"):
 	alreadyextracted = glob.glob("munip_borders/"+munipnumberpadded+"/"+str(munipnumberpadded)+"*_Adm*.sos")
