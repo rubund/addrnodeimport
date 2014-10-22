@@ -1,10 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os
 import sys
-import MySQLdb
+import mysql.connector
+import mypasswords
 
-db = MySQLdb.connect(host="localhost",user="ruben",passwd="elgelg",db="beebeetle")
+db = mysql.connector.connect(host="localhost",user="ruben",password=mypasswords.sql,database="beebeetle")
+
 cursor = db.cursor()
 cursor.execute("set names utf8")
 
@@ -16,5 +18,5 @@ if len(rows) == 0:
 	os.system("./updatetime.py "+sys.argv[1]+"")
 	#os.system("./uploadmunip.py "+sys.argv[1]+"")
 else:
-	print "Not doing anything for "+sys.argv[1]
+	print ("Not doing anything for "+sys.argv[1])
 
