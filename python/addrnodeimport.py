@@ -18,7 +18,6 @@
 #   along with this program; if not, write to the Free Software
 #   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-network=True
 munipfirst=False
 
 import os
@@ -26,10 +25,14 @@ import sys
 import glob
 import re
 
-if len(sys.argv) != 3:
+if len(sys.argv) != 3 and len(sys.argv) != 4:
 	print "Missing command line argument.\nUsage: "+sys.argv[0]+" <top-zip-file> <municipality number>"
 	sys.exit()
 
+if len(sys.argv) == 4 and sys.argv[3] == "1":
+	network=False
+else:
+	network=True
 
 topzipfile = sys.argv[1]
 munipnumber = sys.argv[2]

@@ -15,11 +15,13 @@ db = MySQLdb.connect(host="localhost",user="ruben",passwd="elgelg",db="beebeetle
 ecursor = db.cursor()
 ecursor.execute("set names utf8")
 
-uquery = "update municipalities set updated=now() where muni_id=\""+str(muninumber)+"\";"
+updatestring = "date_sub(now(),INTERVAL 2 DAY)"
+
+uquery = "update municipalities set updated="+updatestring+" where muni_id=\""+str(muninumber)+"\";"
 print uquery
 ret = ecursor.execute(uquery)
 if(ecursor.rowcount == 0):
-	uquery = "insert into municipalities (updated,muni_id) values (now(),\""+str(muninumber)+"\");"
+	uquery = "insert into municipalities (updated,muni_id) values ("+updatestring+",\""+str(muninumber)+"\");"
 	print uquery
 	ret = ecursor.execute(uquery)
 db.commit()
