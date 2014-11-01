@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" upload="false" generator="sosi2osm"><node id="-363" lat="59.4242586" lon="10.6767179" version="1" visible="true" action="modify">
+<tag k="addr:postcode" v="1523"/><tag k="addr:city" v="Moss"/><tag k="addr:street" v="Bekkeliveien"/><tag k="addr:housenumber" v="3F"/></node></osm>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" upload="false" generator="sosi2osm"><node id="-6" lat="59.4317092" lon="10.6831401" version="1" visible="true">
+<tag k="addr:postcode" v="1597"/><tag k="addr:city" v="Moss"/><tag k="addr:street" v="Aksels vei"/><tag k="addr:housenumber" v="3"/></node><node id="-9" lat="59.4311092" lon="10.6831101" version="1" visible="true">
+<tag k="addr:postcode" v="1597"/><tag k="addr:street" v="Aksels vei"/><tag k="addr:housenumber" v="3"/></node><node id="-91" lat="59.4313440" lon="10.6409957" version="1" visible="true">
+<tag k="addr:postcode" v="1515"/><tag k="addr:street" v="Alby gate"/><tag k="addr:housenumber" v="15"/></node><node id="-363" lat="59.4242586" lon="10.6767179" version="1" visible="true" action="modify">
+<tag k="addr:postcode" v="1523"/><tag k="addr:city" v="Moss"/><tag k="addr:street" v="Bekkeliveien"/><tag k="addr:housenumber" v="3F"/></node></osm>

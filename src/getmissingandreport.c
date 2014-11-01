@@ -148,6 +148,7 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 	int ret;
 	xmlNode *cur_node = NULL;
 	xmlChar *text;
+	xmlChar *text2;
 	xmlNode *child_node = NULL;
 	xmlNode *newNode = NULL;
 	sqlite3_stmt *stmt;
@@ -426,6 +427,27 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 								}
 							}
 							sqlite3_finalize(stmt);	
+						}
+						xmlNode *sub_tag_node;
+						for(sub_tag_node = newNode->children; sub_tag_node ; sub_tag_node = sub_tag_node->next){
+							if(sub_tag_node->type == XML_ELEMENT_NODE) {
+								text = xmlGetProp(sub_tag_node, "k");
+								if(text != 0){
+									if(strcmp(text,"addr:postcode") == 0){
+										xmlFree(text);
+										text = xmlGetProp(sub_tag_node, "v");
+										if(text != NULL){
+											if(strlen(text) == 3){
+												text2 = malloc(5);
+												snprintf(text2,5,"%04d",atoi(text));
+												xmlSetProp(sub_tag_node, "v", text2);
+												free(text2);
+											}
+											free(text);
+										}
+									}
+								}
+							}
 						}
 
 						xmlNode *root_element = xmlDocGetRootElement(doc_output);
