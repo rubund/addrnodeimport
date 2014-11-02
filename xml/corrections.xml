@@ -29,6 +29,8 @@
 <spelling from="MAGNUS DEN GODES VEI" to="Magnus den Godes vei" />
 <spelling from="THOMAS VON WESTENS GATE" to="Thomas von Westens gate" />
 <spelling from="GÅRDSALLéEN" to="Gårdsalléen" />
+<spelling from="VON DER LIPPES GATE" to="Von der Lippes gate" />
+<spelling from="VON ØTKENS VEI" to="Von Øtkens vei" />
 
 <spelling from="Agnes'' veg" to="Agnes’ veg" />
 <spelling from="Alfred Getz'' vei" to="Alfred Getz’ vei" />
@@ -345,4 +347,8 @@
 <spelling from="Lodve Langesgate" to="Lodve Langes gate" />
 <spelling from="Rombaksveien-E6" to="Rombaksveien" />
 <spelling from="P.A. Munchs Gate sør" to="P.A. Munchs gate sør" />
+
+<!-- Type of road should be lowercase-->
+<spelling from="Gullhaug Torg" to="Gullhaug torg" />
+
 </corrections>
