@@ -40,6 +40,8 @@ munipnumberpadded = "%04d" % (int(munipnumber))
 basenametopzipfile = os.path.basename(topzipfile)
 prefix = basenametopzipfile.split('.')[0]
 
+#apiurl = "http://overpass-api.de/api"
+apiurl = "http://overpass.osm.rambler.ru/cgi"
 
 if not os.path.isdir(prefix):
 	os.system("unzip "+topzipfile+" -d "+prefix+"")
@@ -63,9 +65,9 @@ if network:
 	os.system("rm -rf /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
 	os.system("rm -rf /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
 	if not os.path.isfile("/tmp/osm_temp/ways_"+munipnumberpadded+".osm" ):
-		os.system(" wget \"http://overpass-api.de/api/interpreter?data=((way[\\\"addr:housenumber\\\"] "+boundarea+";>;);(way[\\\"abandoned:addr:housenumber\\\"] "+boundarea+";>;););out meta;\" -O /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
+		os.system(" wget \""+apiurl+"/interpreter?data=((way[\\\"addr:housenumber\\\"] "+boundarea+";>;);(way[\\\"abandoned:addr:housenumber\\\"] "+boundarea+";>;););out meta;\" -O /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
 	if not os.path.isfile("/tmp/osm_temp/nodes_"+munipnumberpadded+".osm" ):
-		os.system(" wget \"http://overpass-api.de/api/interpreter?data=((node[\\\"addr:housenumber\\\"] "+boundarea+";<;);(node[\\\"abandoned:addr:housenumber\\\"] "+boundarea+";<;););out meta;\" -O /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
+		os.system(" wget \""+apiurl+"/interpreter?data=((node[\\\"addr:housenumber\\\"] "+boundarea+";<;);(node[\\\"abandoned:addr:housenumber\\\"] "+boundarea+";<;););out meta;\" -O /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
 else:
 	os.system("rm -rf /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
 	os.system("rm -rf /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
