@@ -220,7 +220,7 @@ for($i=0;$i<2100;$i++){
         else if($notmatched != 0){
             $totalstatus .= "<font color=\"green\">Noen adressenoder i OSM gjenkjennes ikke ($notmatched stk). Det kan hende dette er uproblematisk. Ellers er alle Kartverkets adressenoder i OSM. Se: <a href=\"reports/notmatched_$kommunenummer.osm\">notmatched.osm</a></font>";
         }
-        $result = mysql_query("select person,date(tid) from osmimportresp where kommunenummer='".$i."' order by tid asc limit 1") or die('Mysql error');
+        $result = mysql_query("select person,date(tid) from osmimportresp where kommunenummer='".$i."' and deleted != 1 order by tid asc limit 1") or die('Mysql error');
         if ($row = mysql_fetch_array($result, MYSQL_NUM)){
             $ansvarlig = "<b>".$row[0]."</b> (".$row[1].")";
         }
