@@ -32,7 +32,8 @@ char *xmlfilename;
 double addTo = 0;
 int number_nodes = 0;
 
-void iterate_and_get_elements(xmlNode * a_node){
+void iterate_and_get_elements(xmlNode * a_node)
+{
 	xmlNode *cur_node = NULL;
 	xmlAttr *attribute;
 	xmlChar *text;
@@ -81,7 +82,8 @@ void iterate_and_get_elements(xmlNode * a_node){
 
 }
 
-int parse_cmdline(int argc, char **argv){
+int parse_cmdline(int argc, char **argv)
+{
 	int s;
 	opterr = 0;
 	while((s = getopt(argc, argv, "vm:")) != -1) {
@@ -112,7 +114,8 @@ int parse_cmdline(int argc, char **argv){
 	return 0;
 }
 
-int main(int argc, char **argv){
+int main(int argc, char **argv)
+{
 
 	xmlDoc *doc = NULL;
 	xmlNode *root_element = NULL;

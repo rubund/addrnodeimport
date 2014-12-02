@@ -53,7 +53,8 @@ char foundid[20];
 char foundisway;
 FILE *tmpfile_handle;
 
-static int sql_callback(void *info, int argc, char **argv, char **azColName){
+static int sql_callback(void *info, int argc, char **argv, char **azColName)
+{
 	int i;
 	exists = 1;
 	if(verbose){
@@ -81,7 +82,8 @@ static int sql_callback(void *info, int argc, char **argv, char **azColName){
 	return 0;
 }
 
-void basic_query(sqlite3 *db,char *query, void *info){
+void basic_query(sqlite3 *db,char *query, void *info)
+{
 	int ret;
 	char *zErrMsg = 0;
 	ret = sqlite3_exec(db,query,sql_callback, info, &zErrMsg);
@@ -95,7 +97,8 @@ void basic_query(sqlite3 *db,char *query, void *info){
 	}
 }
 
-xmlNode *get_xml_node(xmlDoc *doc,int index,int isway){
+xmlNode *get_xml_node(xmlDoc *doc,int index,int isway)
+{
 	xmlNode *tmp_node;
 	xmlChar *text;
 	char hasfound2=0;
@@ -141,7 +144,8 @@ xmlNode *get_xml_node(xmlDoc *doc,int index,int isway){
 	return tmp_node;
 }
 
-void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, sqlite3 *db, xmlDoc *doc_output, xmlDoc *doc_output2, xmlDoc *doc_output3, xmlDoc *doc_output4){
+void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, sqlite3 *db, xmlDoc *doc_output, xmlDoc *doc_output2, xmlDoc *doc_output3, xmlDoc *doc_output4)
+{
 	int i;
 	int ret;
 	xmlNode *cur_node = NULL;
@@ -341,7 +345,8 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 	}
 }
 
-void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
+void populate_database(xmlNode * a_node, sqlite3 *db, char isway)
+{
 	xmlNode *cur_node = NULL;
 	xmlAttr *attribute;
 	xmlChar *text;
@@ -501,7 +506,8 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway){
 
 }
 
-void get_corrections(xmlNode * a_node, sqlite3 *db){
+void get_corrections(xmlNode * a_node, sqlite3 *db)
+{
 	xmlNode *cur_node = NULL;
 	xmlChar *text;
 	static int rowcounter = 0;
@@ -534,7 +540,8 @@ void get_corrections(xmlNode * a_node, sqlite3 *db){
 }
 
 
-int parse_cmdline(int argc, char **argv){
+int parse_cmdline(int argc, char **argv)
+{
 	int s;
 	opterr = 0;
 	while((s = getopt(argc, argv, "vso:w:t:d:e:c:")) != -1) {
@@ -601,7 +608,8 @@ int parse_cmdline(int argc, char **argv){
 	return 0;
 }
 
-int main(int argc, char **argv){
+int main(int argc, char **argv)
+{
 
 	xmlDoc *doc_corrections = NULL;
 	xmlDoc *doc_old1 = NULL;

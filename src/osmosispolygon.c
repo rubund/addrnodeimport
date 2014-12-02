@@ -50,7 +50,8 @@ char foundid[20];
 char foundisway;
 FILE *tmpfile_handle;
 
-static int sql_callback(void *info, int argc, char **argv, char **azColName){
+static int sql_callback(void *info, int argc, char **argv, char **azColName)
+{
 	int i;
 	exists = 1;
 	if(verbose){
@@ -78,7 +79,8 @@ static int sql_callback(void *info, int argc, char **argv, char **azColName){
 	return 0;
 }
 
-void basic_query(sqlite3 *db,char *query, void *info){
+void basic_query(sqlite3 *db,char *query, void *info)
+{
 	int ret;
 	char *zErrMsg = 0;
 	ret = sqlite3_exec(db,query,sql_callback, info, &zErrMsg);
@@ -92,7 +94,8 @@ void basic_query(sqlite3 *db,char *query, void *info){
 	}
 }
 
-xmlNode *get_xml_node(xmlDoc *doc,int index,int isway){
+xmlNode *get_xml_node(xmlDoc *doc,int index,int isway)
+{
 	xmlNode *tmp_node;
 	xmlChar *text;
 	char hasfound2=0;
@@ -138,7 +141,8 @@ xmlNode *get_xml_node(xmlDoc *doc,int index,int isway){
 	return tmp_node;
 }
 
-void populate_database(xmlDoc *doc_old1, sqlite3 *db, xmlDoc *doc_output1){
+void populate_database(xmlDoc *doc_old1, sqlite3 *db, xmlDoc *doc_output1)
+{
 	xmlNode *cur_node = NULL;
 	xmlAttr *attribute;
 	xmlChar *text;
@@ -206,7 +210,8 @@ void populate_database(xmlDoc *doc_old1, sqlite3 *db, xmlDoc *doc_output1){
 
 }
 
-void iterate_ways(xmlDoc *doc_old1, sqlite3 *db, xmlDoc *doc_output1, xmlNode *bigway){
+void iterate_ways(xmlDoc *doc_old1, sqlite3 *db, xmlDoc *doc_output1, xmlNode *bigway)
+{
 	xmlNode *a_node = xmlDocGetRootElement(doc_old1);
 	xmlNode *cur_node = NULL;
 	xmlChar *text;
@@ -305,7 +310,8 @@ void iterate_ways(xmlDoc *doc_old1, sqlite3 *db, xmlDoc *doc_output1, xmlNode *b
 
 }
 
-void create_one_polygon(xmlDoc *doc_old, sqlite3 *db, xmlDoc *doc_output1, xmlNode *bigway){
+void create_one_polygon(xmlDoc *doc_old, sqlite3 *db, xmlDoc *doc_output1, xmlNode *bigway)
+{
 	char *querybuffer;
 	sqlite3_stmt *stmt;
 	int ret;
@@ -428,7 +434,8 @@ void create_one_polygon(xmlDoc *doc_old, sqlite3 *db, xmlDoc *doc_output1, xmlNo
 
 }
 
-int parse_cmdline(int argc, char **argv){
+int parse_cmdline(int argc, char **argv)
+{
 	int s;
 	opterr = 0;
 	while((s = getopt(argc, argv, "vso:w:t:d:e:")) != -1) {
@@ -465,7 +472,8 @@ int parse_cmdline(int argc, char **argv){
 	return 0;
 }
 
-int main(int argc, char **argv){
+int main(int argc, char **argv)
+{
 
 	xmlDoc *doc_old1 = NULL;
 	xmlDoc *doc_old2 = NULL;
