@@ -82,7 +82,7 @@ echo "<body>";
 <?php
 echo "<h3>Adressenode-import-status for Norge</h3>";
 //echo "<p>Sist oppdatert: <font color=\"green\">".date ("d. M Y H:i:s.", filemtime('reports/report_1943.txt'))."</font></p>";
-echo "<h4>Datauttaksdato: 2014-08-24 (Bruk som <i>source:date</i> i changeset)</h4>";
+echo "<h4>Datauttaksdato: 2014-11-23 (Bruk som <i>source:date</i> i changeset)</h4>";
 ?>
 <h4>Husk 4 ting:</h4>
 <ol>
