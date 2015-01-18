@@ -17,6 +17,7 @@ ecursor = db.cursor()
 ecursor.execute("set names utf8")
 
 updatestring = "date_sub(now(),INTERVAL 2 DAY)"
+#updatestring = "now()"
 
 uquery = "update municipalities set updated="+updatestring+" where muni_id=\""+str(muninumber)+"\";"
 print (uquery)

@@ -50,7 +50,7 @@ else:
 db = mysql.connector.connect(host="localhost",user="ruben",password=mypasswords.sql,database="beebeetle")
 cursor = db.cursor()
 cursor.execute("set names utf8")
-cursor.execute("select person from osmimportresp where kommunenummer=\""+str(munipnumber)+"\" and person != 'rubund';")
+cursor.execute("select person from osmimportresp where kommunenummer=\""+str(munipnumber)+"\" and person != 'rubund' and deleted != 1;")
 rows = cursor.fetchall()
 if(len(rows) > 0):
 	print ("Someone else is responsible for this one. Not importing...")
@@ -66,7 +66,7 @@ api = OsmApi(api="api06.dev.openstreetmap.org", username="rubund_import", passwo
 mycomment=u"addr node import "+kommunenummer.nrtonavn[int(munipnumber)]+" kommune"
 #mycomment=u"addr node import municipality number "+munipnumberpadded+", Norway"
 #api.ChangesetCreate({"comment":u"addr node import "+str(sys.argv[2].decode('utf-8')), "source":"Kartverket", "source:date":"2014-08-24"})
-api.ChangesetCreate({"comment": mycomment, "source":"Kartverket", "source:date":"2014-08-24"})
+api.ChangesetCreate({"comment": mycomment, "source":"Kartverket", "source:date":"2014-11-23"})
 
 dom1 = parse("reports/newnodes_"+str(munipnumberpadded)+".osm")
 mainelement1 = dom1.getElementsByTagName("osm")[0]
