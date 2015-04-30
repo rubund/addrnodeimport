@@ -40,22 +40,23 @@ munipnumberpadded = "%04d" % (int(munipnumber))
 basenametopzipfile = os.path.basename(topzipfile)
 prefix = basenametopzipfile.split('.')[0]
 
-#apiurl = "http://overpass-api.de/api"
-apiurl = "http://overpass.osm.rambler.ru/cgi"
+apiurl = "http://overpass-api.de/api"
+#apiurl = "http://overpass.osm.rambler.ru/cgi"
 
 if not os.path.isdir(prefix):
 	os.system("unzip "+topzipfile+" -d "+prefix+"")
 
 prefix = str(prefix)+"/elveg/adresse"
 
-if not os.path.isfile(prefix+"/"+str(munipnumberpadded)+"Adresser.sos"):
+if not os.path.isfile(prefix+"/"+str(munipnumberpadded)+"adresser.sos"):
 	ret = os.system("cd "+prefix+" ; unzip "+str(munipnumberpadded)+"Adresser.ZIP");
 	if ret != 0:
 		print ("Failed to find this municipality")
 		sys.exit()
 
-os.system("sed -i 's/ANSI/ISO-8859-10/' "+prefix+"/"+str(munipnumberpadded)+"Adresser.sos")
-os.system("sosi2osm "+prefix+"/"+str(munipnumberpadded)+"Adresser.sos ./kartverketadresser.lua > "+prefix+"/"+str(munipnumberpadded)+"Adresser.osm")
+os.system("mv "+prefix+"/*"+str(munipnumberpadded)+"adresser.sos "+prefix+"/"+str(munipnumberpadded)+"adresser.sos")
+os.system("sed -i 's/ANSI/ISO-8859-10/' "+prefix+"/"+str(munipnumberpadded)+"adresser.sos")
+os.system("sosi2osm "+prefix+"/"+str(munipnumberpadded)+"adresser.sos ./kartverketadresser.lua > "+prefix+"/"+str(munipnumberpadded)+"Adresser.osm")
 
 osmfilename = prefix+"/"+str(munipnumberpadded)+"Adresser.osm"
 
