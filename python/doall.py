@@ -14,7 +14,7 @@ cursor.execute("select updated from municipalities where muni_id="+str(sys.argv[
 rows = cursor.fetchall()
 db.close()
 if len(rows) == 0:
-	os.system("./addrnodeimport.py /home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip "+sys.argv[1]+" 1")
+	os.system("./addrnodeimport.py /home/ruben/Vegdata_Norge_Adresser_UTM33_SOSI.zip "+sys.argv[1]+" 1")
 	os.system("./updatetime.py "+sys.argv[1]+"")
 	#os.system("./uploadmunip.py "+sys.argv[1]+"")
 else:

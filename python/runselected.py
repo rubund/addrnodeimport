@@ -3,7 +3,7 @@
 import os
 
 
-zipfile = "/home/ruben/Vegdata_Norge_UTM33_Geometri_SOSI.zip"
+zipfile = "/home/ruben/Vegdata_Norge_Adresser_UTM33_SOSI.zip"
 
 munips = range(0,2100)
 

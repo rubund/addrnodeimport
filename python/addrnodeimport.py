@@ -46,13 +46,16 @@ apiurl = "http://overpass.osm.rambler.ru/cgi"
 if not os.path.isdir(prefix):
 	os.system("unzip "+topzipfile+" -d "+prefix+"")
 
-if not os.path.isfile(prefix+"/"+str(munipnumberpadded)+"Adresser.SOS"):
-	ret = os.system("cd "+prefix+" ; unzip "+str(munipnumberpadded)+"Elveg.zip");
+prefix = str(prefix)+"/elveg/adresse"
+
+if not os.path.isfile(prefix+"/"+str(munipnumberpadded)+"Adresser.sos"):
+	ret = os.system("cd "+prefix+" ; unzip "+str(munipnumberpadded)+"Adresser.ZIP");
 	if ret != 0:
 		print ("Failed to find this municipality")
 		sys.exit()
 
-os.system("sosi2osm "+prefix+"/"+str(munipnumberpadded)+"Adresser.SOS adresser.lua > "+prefix+"/"+str(munipnumberpadded)+"Adresser.osm")
+os.system("sed -i 's/ANSI/ISO-8859-10/' "+prefix+"/"+str(munipnumberpadded)+"Adresser.sos")
+os.system("sosi2osm "+prefix+"/"+str(munipnumberpadded)+"Adresser.sos ./kartverketadresser.lua > "+prefix+"/"+str(munipnumberpadded)+"Adresser.osm")
 
 osmfilename = prefix+"/"+str(munipnumberpadded)+"Adresser.osm"
 
