@@ -140,7 +140,7 @@ for($i=0;$i<2100;$i++){
             $veivegfixesstr = $veivegfixes ." (<a href=\"reports/veivegfixes_$kommunenummer.osm\">osm</a>)";
         }
         if($otherthings != ""){
-            $otherthings = $otherthings ." (<a href=\"reports/otherobjects_$kommunenummer.osm\">osm</a>)";
+            $otherthingsstr = $otherthings ." (<a href=\"reports/otherobjects_$kommunenummer.osm\">osm</a>)";
         }
         if($duplicates != ""){
             $duplicatesstr = $duplicates ." (<a href=\"reports/duplicates_$kommunenummer.osm\">osm</a>)";
@@ -207,7 +207,12 @@ for($i=0;$i<2100;$i++){
             $totalstatus .= "Det finnes adressenoder som mangler postnr. eller sted ($fixes stk). Denne .osm filen fikser dette: <a href=\"reports/postcodecityfixes_$kommunenummer.osm\">postcodecityfixes.osm</a>";
         }
         else if($notmatched == 0 && $missing == 0 && $duplicates == 0 && $new != 0) {
-            $totalstatus .= "<b><font color=\"green\">Ingen feil!</font></b>";
+            if($otherthings == 0){
+                $totalstatus .= "<b><font color=\"green\">Ingen feil!</font></b>";
+            }
+            else  {
+                $totalstatus .= "<b><font color=\"green\">Ingen feil!</font></b> Men det kan være lurt å ta en titt på og reviewe andre objekter ($otherthings stk) som inneholder addr:-tagger: <a href=\"reports/otherobjects_$kommunenummer.osm\">otherobjects.osm</a>";
+            }
             //$totalstatus .= "<b><font color=\"green\">Ingen feil!</font> $existing av totalt $new stemmer overens</b>";
         }
         else if($veivegfixes != 0){
