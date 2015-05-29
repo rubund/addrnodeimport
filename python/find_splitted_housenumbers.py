@@ -111,7 +111,7 @@ for row in cur.fetchall():
 			else:
 				current = newnodes_nodes[rowres[0]].cloneNode(True)
 				newdoc_top.appendChild(current)
-			#print (rowres)
+			print (rowres)
 			#print (str(row[0])+": "+str(rowres[0]))
 			#print (newnodes_nodes[rowres[0]].getElementsByTagName("tag")[3].getAttribute("v"))#getAttribute("lat"))
 			first = 0
