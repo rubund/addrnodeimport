@@ -86,12 +86,13 @@ echo "<h4>Datauttaksdato: 2015-03-27 (Bruk som <i>source:date</i> i changeset)</
 echo "<pre>source:date=2015-03-27\n";
 echo "source=Kartverket</pre>";
 ?>
-<h4>Husk 4 ting:</h4>
+<h4>Husk 5 ting:</h4>
 <ol>
 <li>Opprett en bruker med navnet <i>vanligbrukernavn</i>_import og bruk denne for import</li>
 <li>Tag <b>"changeset"</b>-et med source=Kartverket og source:date=dato og <b>ikke</b> nodene.</li>
 <li>Ikke importer noder for kommuner f&oslash;r det st&aring;r "<b><font color=\"green\">Klar for å importeres:</font></b>".</li>
 <li>Etter innlasting av osm-filer fra denne siden i JOSM, trykk Ctrl-U s&aring;nn at nodene som wayene best&aring;r av lastes inn. Disse nodene er nemlig ikke med i osm-filene!</li>
+<li>I enkelte tilfeller kan adressene i OSM være mer oppdatert enn i Kartverkets datasett. Påse at dette ikke ødelegges.</li>
 </ol>
 <img src="nodes.png" height=700/><img src="nodes-soer.png" height=700/><img src="ways.png" height=700/>
 <br><br>
