@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. /etc/naturfakta-web.conf
+. /etc/addrnodeimport.conf
 
 if [ "$#" -ne 1 -o "$1" = "" ] ; then
   echo "Missing arguments"

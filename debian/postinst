@@ -53,7 +53,7 @@ case "$1" in
             echo "Enabling site now"
             a2ensite addrnodeimport-site.conf
         fi
-        #chown -R www-data:www-data ...
+        chown -R www-data:www-data /var/cache/addrnodeimport/reports
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
