@@ -47,9 +47,9 @@ case "$1" in
         sed -i "s/\$dbuser = .*$/\$dbuser = '"$DBUSER"';/" /usr/share/websites/addrnodeimport/www/mysql.php
         sed -i "s/\$dbpass = .*$/\$dbpass = '"$PASSWORD"';/" /usr/share/websites/addrnodeimport/www/mysql.php
         sed -i "s/\$dbname = .*$/\$dbname = '"$DBNAME"';/" /usr/share/websites/addrnodeimport/www/mysql.php
-        sed -i "s/sqldbname = .*$/sqldbname = '"$DBUSER"';/" /usr/lib/addrnodeimport/python/mypasswords.py
+        sed -i "s/sqldbname = .*$/sqldbname = '"$DBNAME"';/" /usr/lib/addrnodeimport/python/mypasswords.py
         sed -i "s/sql = .*$/sql = '"$PASSWORD"';/" /usr/lib/addrnodeimport/python/mypasswords.py
-        sed -i "s/sqldbuser = .*$/sqldbuser = '"$DBNAME"';/" /usr/lib/addrnodeimport/python/mypasswords.py
+        sed -i "s/sqldbuser = .*$/sqldbuser = '"$DBUSER"';/" /usr/lib/addrnodeimport/python/mypasswords.py
         db_get addrnodeimport/enable
         ENABLENOW=$RET
         if [ "$ENABLENOW" = "true" ] ; then
