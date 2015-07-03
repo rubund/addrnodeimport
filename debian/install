@@ -1,5 +1,5 @@
 web/* /usr/share/websites/addrnodeimport/www
 config/addrnodeimport.conf /etc/
 config/addrnodeimport-site.conf /etc/apache2/sites-available/
-scripts/addrnodeimport_make_sql_backup /usr/bin/
-scripts/addrnodeimport_import_sql_backup /usr/bin/
+sh/addrnodeimport_make_sql_backup /usr/bin/
+sh/addrnodeimport_import_sql_backup /usr/bin/

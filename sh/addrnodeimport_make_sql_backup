@@ -1,0 +1,12 @@
+#!/bin/sh
+
+. /etc/naturfakta-web.conf
+
+if [ "$#" -ne 1 -o "$1" = "" ] ; then
+  echo "Missing arguments"
+  echo "Usage $0 <outputfile.sql>"
+  exit 1
+fi
+
+echo "Backing up to $1..."
+mysqldump -u $DBUSER -p${DBPASS} $DBNAME > $1 

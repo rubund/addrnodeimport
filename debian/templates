@@ -21,7 +21,7 @@ Description: Enter the password for the mysql database
 
 Template: addrnodeimport/db-user
 Type: string
-Default: naturfaktauser
+Default: addrnodeimport
 Description: Enter name of the mysql user
  Blablabla
  blablabla.
