@@ -1,0 +1,16 @@
+Source: addrnodeimport
+Section: unknown
+Priority: optional
+Maintainer: ruben <ruben.undheim@gmail.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.6
+Homepage: <insert the upstream URL, if relevant>
+
+Package: addrnodeimport
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, php5-gd, php5-mysql, apache2,
+         gir1.2-gexiv2-0.10, python-mysql.connector,
+         mysql-server, mysql-client, php5-common, libapache2-mod-php5,
+         perl
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>

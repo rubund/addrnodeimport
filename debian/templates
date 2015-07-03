@@ -1,0 +1,50 @@
+
+Template: addrnodeimport/db-name
+Type: string
+Default: addrnodeimport
+Description: Enter name of mysql database to use for addrnodeimport
+ Blablabla
+ blablabla.
+ .
+ For more detailed information please see
+ blablabla
+
+Template: addrnodeimport/db-password
+Type: password
+Default: default
+Description: Enter the password for the mysql database
+ Blablabla
+ blablabla.
+ .
+ For more detailed information please see
+ blablabla
+
+Template: addrnodeimport/db-user
+Type: string
+Default: naturfaktauser
+Description: Enter name of the mysql user
+ Blablabla
+ blablabla.
+ .
+ For more detailed information please see
+ blablabla
+
+Template: addrnodeimport/root-password
+Type: password
+Default: 
+Description: Enter the root password for the config db
+ Blablabla
+ blablabla.
+ .
+ For more detailed information please see
+ blablabla
+
+Template: addrnodeimport/enable
+Type: boolean
+Default: y
+Description: Enable apache site for addrnodeimport now?
+ Blablabla
+ blablabla.
+ .
+ For more detailed information please see
+ blablabla
