@@ -3,3 +3,5 @@ config/addrnodeimport.conf /etc/
 config/addrnodeimport-site.conf /etc/apache2/sites-available/
 sh/addrnodeimport_make_sql_backup /usr/bin/
 sh/addrnodeimport_import_sql_backup /usr/bin/
+python/update_on_request.php /usr/lib/addrnodeimport/python
+python/mypasswords.php /usr/lib/addrnodeimport/python
