@@ -94,7 +94,7 @@ echo "source=Kartverket</pre>";
 <li>Etter innlasting av osm-filer fra denne siden i JOSM, trykk Ctrl-U s&aring;nn at nodene som wayene best&aring;r av lastes inn. Disse nodene er nemlig ikke med i osm-filene!</li>
 <li>I enkelte tilfeller kan adressene i OSM være mer oppdatert enn i Kartverkets datasett. Påse at dette ikke ødelegges.</li>
 </ol>
-<img src="nodes.png" height=700/><img src="nodes-soer.png" height=700/><img src="ways.png" height=700/>
+<!--<img src="nodes.png" height=700/><img src="nodes-soer.png" height=700/><img src="ways.png" height=700/>-->
 <br><br>
 <?php
 echo "<table border=1>";
