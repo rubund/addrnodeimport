@@ -20,7 +20,7 @@ set -e
 case "$1" in
     remove|upgrade|deconfigure)
         a2dissite addrnodeimport-site.conf
-        rm -rf /usr/share/addrnodeimport/municipality_borders
+        #rm -rf /usr/share/addrnodeimport/municipality_borders
     ;;
 
     failed-upgrade)

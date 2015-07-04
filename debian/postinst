@@ -57,8 +57,8 @@ case "$1" in
             a2ensite addrnodeimport-site.conf
         fi
         chown -R www-data:www-data /var/cache/addrnodeimport
-        tar -xvf /usr/share/addrnodeimport/municipality_borders.tar.gz -C /usr/share/addrnodeimport
-        mv /usr/share/addrnodeimport/osm /usr/share/addrnodeimport/municipality_borders
+        #tar -xf /usr/share/addrnodeimport/municipality_borders.tar.gz -C /usr/share/addrnodeimport
+        #mv /usr/share/addrnodeimport/osm /usr/share/addrnodeimport/municipality_borders
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
