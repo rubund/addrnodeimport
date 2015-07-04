@@ -133,6 +133,8 @@ if not os.path.isfile(""+cachedir+"/municipality_borders/"+str(munipnumberpadded
 #			os.system("sed -i 's/>/>\\n/g' munip_borders/"+munipnumberpadded+"-tmp.osm")
 #			os.system("mv munip_borders/"+str(munipnumberpadded)+"-tmp.osm munip_borders/"+munipnumberpadded+".osm")
 
+os.system("mkdir -p "+cachedir+"/reports")
+
 if os.path.isfile(""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm"):
 	os.system("perl ../perl/osm2poly.pl "+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm > "+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt")
 	os.system("osmosis --read-xml enableDateParsing=no file=\"/tmp/osm_temp/ways_"+munipnumberpadded+".osm\" --bounding-polygon file=\""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp.osm")
@@ -142,21 +144,20 @@ if os.path.isfile(""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".
 	os.system("osmosis --read-xml enableDateParsing=no file=\""+osmfilename+"\" --bounding-polygon file=\""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm")
 	beforenumber = os.popen("countnodes "+osmfilename+"").read()
 	afternumber = os.popen("countnodes /tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm").read()
-	reportfile3 = open("reports/report3_"+munipnumberpadded+".txt","w")
+	reportfile3 = open(""+cachedir+"/reports/report3_"+munipnumberpadded+".txt","w")
 	reportfile3.write("Before: "+beforenumber+"After: "+afternumber+"")
 	reportfile3.close()
 
 
-os.system("mkdir -p reports")
 print ("Processing "+munipnumberpadded+"...")
-reportcontent = os.popen("getmissingandreport -s -t reports/veivegfixes_"+munipnumberpadded+".osm -n reports/notmatched_"+munipnumberpadded+".osm -d reports/duplicates_"+munipnumberpadded+".osm -e reports/otherobjects_"+munipnumberpadded+".osm -o reports/newnodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm -c ../xml/corrections.xml  /tmp/osm_temp/nodes_"+munipnumberpadded+".osm "+osmfilename+"").read()
-reportcontent2 = os.popen("fillinpostcode -c ../xml/corrections.xml -o reports/postcodecityfixes_"+munipnumberpadded+".osm -n reports/onlynumber_"+munipnumberpadded+".osm -s /tmp/osm_temp/nodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm "+osmfilename+"").read()
+reportcontent = os.popen("getmissingandreport -s -t "+cachedir+"/reports/veivegfixes_"+munipnumberpadded+".osm -n "+cachedir+"/reports/notmatched_"+munipnumberpadded+".osm -d "+cachedir+"/reports/duplicates_"+munipnumberpadded+".osm -e "+cachedir+"/reports/otherobjects_"+munipnumberpadded+".osm -o "+cachedir+"/reports/newnodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm -c ../xml/corrections.xml  /tmp/osm_temp/nodes_"+munipnumberpadded+".osm "+osmfilename+"").read()
+reportcontent2 = os.popen("fillinpostcode -c ../xml/corrections.xml -o "+cachedir+"/reports/postcodecityfixes_"+munipnumberpadded+".osm -n "+cachedir+"/reports/onlynumber_"+munipnumberpadded+".osm -s /tmp/osm_temp/nodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm "+osmfilename+"").read()
 
-reportfile = open("reports/report_"+munipnumberpadded+".txt","w")
+reportfile = open(""+cachedir+"/reports/report_"+munipnumberpadded+".txt","w")
 reportfile.write(reportcontent)
 reportfile.close()
 
-reportfile2 = open("reports/report2_"+munipnumberpadded+".txt","w")
+reportfile2 = open(""+cachedir+"/reports/report2_"+munipnumberpadded+".txt","w")
 reportfile2.write(reportcontent2)
 reportfile2.close()
 
