@@ -7,3 +7,4 @@ python/update_on_request.py /usr/lib/addrnodeimport/python
 python/mypasswords.py /usr/lib/addrnodeimport/python
 python/addrnodeimport.py /usr/bin
 data/municipality_borders.tar.gz /usr/share/addrnodeimport
+python/kartverketadresser.lua /usr/share/addrnodeimport

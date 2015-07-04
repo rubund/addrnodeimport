@@ -57,7 +57,7 @@ if not os.path.isfile(prefix+"/"+str(munipnumberpadded)+"adresser.sos"):
 
 os.system("mv "+prefix+"/*"+str(munipnumberpadded)+"adresser.sos "+prefix+"/"+str(munipnumberpadded)+"adresser.sos")
 os.system("sed -i 's/ANSI/ISO-8859-10/' "+prefix+"/"+str(munipnumberpadded)+"adresser.sos")
-os.system("sosi2osm "+prefix+"/"+str(munipnumberpadded)+"adresser.sos ./kartverketadresser.lua > "+prefix+"/"+str(munipnumberpadded)+"Adresser.osm")
+os.system("sosi2osm "+prefix+"/"+str(munipnumberpadded)+"adresser.sos /usr/share/addrnodeimport/kartverketadresser.lua > "+prefix+"/"+str(munipnumberpadded)+"Adresser.osm")
 
 osmfilename = prefix+"/"+str(munipnumberpadded)+"Adresser.osm"
 
