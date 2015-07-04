@@ -25,11 +25,11 @@ import sys
 import glob
 import re
 
-if len(sys.argv) != 3 and len(sys.argv) != 4:
-	print ("Missing command line argument.\nUsage: "+sys.argv[0]+" <top-zip-file> <municipality number>")
+if len(sys.argv) != 5:
+	print ("Missing command line argument.\nUsage: "+sys.argv[0]+" <top-zip-file> <municipality number> <work-dir> <offline-mode>")
 	sys.exit()
 
-if len(sys.argv) == 4 and sys.argv[3] == "1":
+if len(sys.argv) == 5 and sys.argv[4] == "1":
 	network=False
 else:
 	network=True
@@ -39,14 +39,15 @@ munipnumber = sys.argv[2]
 munipnumberpadded = "%04d" % (int(munipnumber))
 basenametopzipfile = os.path.basename(topzipfile)
 prefix = basenametopzipfile.split('.')[0]
+cachedir = sys.argv[3]
 
 apiurl = "http://overpass-api.de/api"
 #apiurl = "http://overpass.osm.rambler.ru/cgi"
 
-if not os.path.isdir(prefix):
-	os.system("unzip "+topzipfile+" -d "+prefix+"")
+if not os.path.isdir(cachedir+"/"+prefix):
+	os.system("unzip "+topzipfile+" -d "+cachedir+"/"+prefix+"")
 
-prefix = str(prefix)+"/elveg/adresse"
+prefix = str(cachedir)+"/"+str(prefix)+"/elveg/adresse"
 
 if not os.path.isfile(prefix+"/"+str(munipnumberpadded)+"adresser.sos"):
 	ret = os.system("cd "+prefix+" ; unzip "+str(munipnumberpadded)+"Adresser.ZIP");
@@ -110,33 +111,35 @@ else:
 		print ("\nGet nodes for municipality:")
 		os.system("osmosis --read-pbf file=\"/tmp/osm_temp/nodes.pbf\" --bounding-box bottom="+bottomcoord+" left="+leftcoord+" top="+topcoord+" right="+rightcoord+" --write-xml file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+".osm\"")
 
-if not os.path.isfile("munip_borders/"+str(munipnumberpadded)+".osm"):
-	alreadyextracted = glob.glob("munip_borders/"+munipnumberpadded+"/"+str(munipnumberpadded)+"*_Adm*.sos")
-	if alreadyextracted == None or len(alreadyextracted) == 0:
-		print (alreadyextracted)
-		zipfiles = glob.glob("/home/ruben/n50/Kartdata_"+str(munipnumber)+"_*N50_SOSI.zip")
-		if zipfiles != None and len(zipfiles) > 0:
-			zipfile = zipfiles[0]
-			print ("there is"+zipfile)
-			os.system("mkdir -p munip_borders")
-			os.system("unzip "+zipfile+" -d munip_borders/"+munipnumberpadded+"")
+if not os.path.isfile(""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm"):
+	os.system("tar -xf /usr/share/addrnodeimport/municipality_borders.tar.gz -C "+cachedir+"")	
+	os.system("mv "+cachedir+"/osm "+cachedir+"/municipality_borders")
+#	alreadyextracted = glob.glob("munip_borders/"+munipnumberpadded+"/"+str(munipnumberpadded)+"*_Adm*.sos")
+#	if alreadyextracted == None or len(alreadyextracted) == 0:
+#		print (alreadyextracted)
+#		zipfiles = glob.glob("/home/ruben/n50/Kartdata_"+str(munipnumber)+"_*N50_SOSI.zip")
+#		if zipfiles != None and len(zipfiles) > 0:
+#			zipfile = zipfiles[0]
+#			print ("there is"+zipfile)
+#			os.system("mkdir -p munip_borders")
+#			os.system("unzip "+zipfile+" -d munip_borders/"+munipnumberpadded+"")
+#
+#			adminfiles = glob.glob("munip_borders/"+munipnumberpadded+"/"+str(munipnumberpadded)+"*_Adm*.sos")
+#			if adminfiles != None and len(adminfiles) > 0:
+#				adminfile = adminfiles[0]
+#				print ("here now "+adminfile)
+#				os.system("sosi2osm "+adminfile+" default.lua > munip_borders/"+munipnumberpadded+".osm")
+#			os.system("osmosispolygon -o munip_borders/"+str(munipnumberpadded)+"-tmp.osm munip_borders/"+munipnumberpadded+".osm")
+#			os.system("sed -i 's/>/>\\n/g' munip_borders/"+munipnumberpadded+"-tmp.osm")
+#			os.system("mv munip_borders/"+str(munipnumberpadded)+"-tmp.osm munip_borders/"+munipnumberpadded+".osm")
 
-			adminfiles = glob.glob("munip_borders/"+munipnumberpadded+"/"+str(munipnumberpadded)+"*_Adm*.sos")
-			if adminfiles != None and len(adminfiles) > 0:
-				adminfile = adminfiles[0]
-				print ("here now "+adminfile)
-				os.system("sosi2osm "+adminfile+" default.lua > munip_borders/"+munipnumberpadded+".osm")
-			os.system("osmosispolygon -o munip_borders/"+str(munipnumberpadded)+"-tmp.osm munip_borders/"+munipnumberpadded+".osm")
-			os.system("sed -i 's/>/>\\n/g' munip_borders/"+munipnumberpadded+"-tmp.osm")
-			os.system("mv munip_borders/"+str(munipnumberpadded)+"-tmp.osm munip_borders/"+munipnumberpadded+".osm")
-
-if os.path.isfile("munip_borders/"+str(munipnumberpadded)+".osm"):
-	os.system("perl ../perl/osm2poly.pl munip_borders/"+str(munipnumberpadded)+".osm > munip_borders/"+str(munipnumberpadded)+".txt")
-	os.system("osmosis --read-xml enableDateParsing=no file=\"/tmp/osm_temp/ways_"+munipnumberpadded+".osm\" --bounding-polygon file=\"munip_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp.osm")
+if os.path.isfile(""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm"):
+	os.system("perl ../perl/osm2poly.pl "+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm > "+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt")
+	os.system("osmosis --read-xml enableDateParsing=no file=\"/tmp/osm_temp/ways_"+munipnumberpadded+".osm\" --bounding-polygon file=\""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp.osm")
 	os.system("mv /tmp/osm_temp/ways_"+munipnumberpadded+"-tmp.osm /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
-	os.system("osmosis --read-xml enableDateParsing=no file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+".osm\" --bounding-polygon file=\"munip_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp.osm")
+	os.system("osmosis --read-xml enableDateParsing=no file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+".osm\" --bounding-polygon file=\""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp.osm")
 	os.system("mv /tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp.osm /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
-	os.system("osmosis --read-xml enableDateParsing=no file=\""+osmfilename+"\" --bounding-polygon file=\"munip_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm")
+	os.system("osmosis --read-xml enableDateParsing=no file=\""+osmfilename+"\" --bounding-polygon file=\""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm")
 	beforenumber = os.popen("countnodes "+osmfilename+"").read()
 	afternumber = os.popen("countnodes /tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm").read()
 	reportfile3 = open("reports/report3_"+munipnumberpadded+".txt","w")

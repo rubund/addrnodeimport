@@ -5,4 +5,5 @@ sh/addrnodeimport_make_sql_backup /usr/bin/
 sh/addrnodeimport_import_sql_backup /usr/bin/
 python/update_on_request.py /usr/lib/addrnodeimport/python
 python/mypasswords.py /usr/lib/addrnodeimport/python
+python/addrnodeimport.py /usr/bin
 data/municipality_borders.tar.gz /usr/share/addrnodeimport
