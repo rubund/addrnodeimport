@@ -136,7 +136,7 @@ if not os.path.isfile(""+cachedir+"/municipality_borders/"+str(munipnumberpadded
 os.system("mkdir -p "+cachedir+"/reports")
 
 if os.path.isfile(""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm"):
-	os.system("perl ../perl/osm2poly.pl "+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm > "+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt")
+	os.system("perl /usr/lib/addrnodeimport/perl/osm2poly.pl "+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm > "+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt")
 	os.system("osmosis --read-xml enableDateParsing=no file=\"/tmp/osm_temp/ways_"+munipnumberpadded+".osm\" --bounding-polygon file=\""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp.osm")
 	os.system("mv /tmp/osm_temp/ways_"+munipnumberpadded+"-tmp.osm /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
 	os.system("osmosis --read-xml enableDateParsing=no file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+".osm\" --bounding-polygon file=\""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp.osm")
