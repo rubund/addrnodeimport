@@ -9,3 +9,4 @@ python/addrnodeimport.py /usr/bin
 data/municipality_borders.tar.gz /usr/share/addrnodeimport
 python/kartverketadresser.lua /usr/share/addrnodeimport
 perl/osm2poly.pl /usr/lib/addrnodeimport/perl
+xml/corrections.xml /usr/share/addrnodeimport

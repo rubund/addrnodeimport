@@ -150,8 +150,8 @@ if os.path.isfile(""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".
 
 
 print ("Processing "+munipnumberpadded+"...")
-reportcontent = os.popen("getmissingandreport -s -t "+cachedir+"/reports/veivegfixes_"+munipnumberpadded+".osm -n "+cachedir+"/reports/notmatched_"+munipnumberpadded+".osm -d "+cachedir+"/reports/duplicates_"+munipnumberpadded+".osm -e "+cachedir+"/reports/otherobjects_"+munipnumberpadded+".osm -o "+cachedir+"/reports/newnodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm -c ../xml/corrections.xml  /tmp/osm_temp/nodes_"+munipnumberpadded+".osm "+osmfilename+"").read()
-reportcontent2 = os.popen("fillinpostcode -c ../xml/corrections.xml -o "+cachedir+"/reports/postcodecityfixes_"+munipnumberpadded+".osm -n "+cachedir+"/reports/onlynumber_"+munipnumberpadded+".osm -s /tmp/osm_temp/nodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm "+osmfilename+"").read()
+reportcontent = os.popen("getmissingandreport -s -t "+cachedir+"/reports/veivegfixes_"+munipnumberpadded+".osm -n "+cachedir+"/reports/notmatched_"+munipnumberpadded+".osm -d "+cachedir+"/reports/duplicates_"+munipnumberpadded+".osm -e "+cachedir+"/reports/otherobjects_"+munipnumberpadded+".osm -o "+cachedir+"/reports/newnodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm -c /usr/share/addrnodeimport/corrections.xml  /tmp/osm_temp/nodes_"+munipnumberpadded+".osm "+osmfilename+"").read()
+reportcontent2 = os.popen("fillinpostcode -c /usr/share/addrnodeimport/corrections.xml -o "+cachedir+"/reports/postcodecityfixes_"+munipnumberpadded+".osm -n "+cachedir+"/reports/onlynumber_"+munipnumberpadded+".osm -s /tmp/osm_temp/nodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm "+osmfilename+"").read()
 
 reportfile = open(""+cachedir+"/reports/report_"+munipnumberpadded+".txt","w")
 reportfile.write(reportcontent)
