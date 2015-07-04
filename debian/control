@@ -2,7 +2,9 @@ Source: addrnodeimport
 Section: unknown
 Priority: optional
 Maintainer: ruben <ruben.undheim@gmail.com>
-Build-Depends: debhelper (>= 9)
+Build-Depends: debhelper (>= 9),
+               libxml2-dev,
+               libsqlite3-dev
 Standards-Version: 3.9.6
 Homepage: <insert the upstream URL, if relevant>
 
