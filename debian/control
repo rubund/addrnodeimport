@@ -15,6 +15,6 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, php5-gd, php5-mysql, apache2,
          gir1.2-gexiv2-0.10, python-mysql.connector,
          mysql-server, mysql-client, php5-common, libapache2-mod-php5,
-         perl, sosi2osm
+         perl, sosi2osm, osmosis
 Description: <insert up to 60 chars description>
  <insert long description, indented with spaces>
