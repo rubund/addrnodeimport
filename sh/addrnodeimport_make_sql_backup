@@ -9,4 +9,4 @@ if [ "$#" -ne 1 -o "$1" = "" ] ; then
 fi
 
 echo "Backing up to $1..."
-mysqldump -u $DBUSER -p${DBPASS} $DBNAME municipalities osmimportresp update_requests > $1 
+mysqldump -u $DBUSER -p${DBPASS} --extended-insert=FALSE $DBNAME municipalities osmimportresp update_requests > $1
