@@ -17,7 +17,7 @@ def update_request_checker():
 		cursor.execute("select distinct kommunenummer from update_requests where ferdig = 0 and addtime(tid , '0:05:00') < now();")
 		rows = cursor.fetchall()
 		for row in rows:
-			command = "cd /home/ruben/devel/addrnodeimport/python ; ./addrnodeimport.py /home/ruben/Vegdata_Norge_Adresser_UTM33_SOSI.zip "+str(row[0])+""
+			command = "/usr/bin/addrnodeimport.py /var/cache/addrnodeimport/Vegdata_Norge_Adresser_UTM33_SOSI.zip "+str(row[0])+" /var/cache/addrnodeimport 0"
 			print command
 			os.system(command)
 			uquery = "update update_requests set ferdig=1 where kommunenummer=\""+str(row[0])+"\";"
