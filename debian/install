@@ -4,8 +4,11 @@ config/addrnodeimport-site.conf /etc/apache2/sites-available/
 sh/addrnodeimport_make_sql_backup /usr/bin/
 sh/addrnodeimport_import_sql_backup /usr/bin/
 python/update_on_request.py /usr/lib/addrnodeimport/python
+python/updatetime.py /usr/lib/addrnodeimport/python
+python/doall.py /usr/lib/addrnodeimport/python
 python/mypasswords.py /usr/lib/addrnodeimport/python
 python/addrnodeimport.py /usr/bin
+python/update_all.sh /usr/lib/addrnodeimport/sh
 data/municipality_borders.tar.gz /usr/share/addrnodeimport
 python/kartverketadresser.lua /usr/share/addrnodeimport
 perl/osm2poly.pl /usr/lib/addrnodeimport/perl
