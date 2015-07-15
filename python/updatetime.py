@@ -12,7 +12,7 @@ if len(sys.argv) != 2:
 muninumber = int(sys.argv[1])
 
 
-db = mysql.connector.connect(host="localhost",user="ruben",password=mypasswords.sql,database="beebeetle")
+db = mysql.connector.connect(host="localhost",user=mypasswords.sqldbuser,password=mypasswords.sql,database=mypasswords.sqldbname)
 ecursor = db.cursor()
 ecursor.execute("set names utf8")
 
