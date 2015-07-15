@@ -85,7 +85,7 @@ else:
 	rightcoord = matches.group(4)
 	if munipfirst:
 		print ("\nExtracting municipality from pbf:")
-		os.system("osmosis --read-pbf file=\"/home/ruben/norway-latest.osm.pbf\" --bounding-box bottom="+bottomcoord+" left="+leftcoord+" top="+topcoord+" right="+rightcoord+" --write-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\"")
+		os.system("osmosis --read-pbf file=\"/var/cache/addrnodeimport/norway-latest.osm.pbf\" --bounding-box bottom="+bottomcoord+" left="+leftcoord+" top="+topcoord+" right="+rightcoord+" --write-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\"")
 		print ("\nExtracting address nodes:")
 		os.system("osmosis --read-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\" --tf accept-nodes \"addr:housenumber\"=* --tf reject-ways --tf reject-relations --write-xml file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp1.osm\"")
 		os.system("osmosis --read-pbf file=\"/tmp/osm_temp/objects_"+munipnumberpadded+".pbf\" --tf accept-nodes \"abandoned:addr:housenumber\"=* --tf reject-ways --tf reject-relations --write-xml file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp2.osm\"")
@@ -99,12 +99,12 @@ else:
 	else:
 		if not os.path.isfile("/tmp/osm_temp/nodes.pbf") or not os.path.isfile("/tmp/osm_temp/ways.pbf"):
 			print ("\nExtracting all way addresses:")
-			os.system("osmosis --read-pbf file=\"/home/ruben/norway-latest.osm.pbf\" --tf accept-ways \"addr:housenumber\"=* --tf reject-relations --used-node idTrackerType=Dynamic --write-pbf file=\"/tmp/osm_temp/ways-tmp1.pbf\"")
-			os.system("osmosis --read-pbf file=\"/home/ruben/norway-latest.osm.pbf\" --tf accept-ways \"abandoned:addr:housenumber\"=* --tf reject-relations --used-node idTrackerType=Dynamic --write-pbf file=\"/tmp/osm_temp/ways-tmp2.pbf\"")
+			os.system("osmosis --read-pbf file=\"/var/cache/addrnodeimport/norway-latest.osm.pbf\" --tf accept-ways \"addr:housenumber\"=* --tf reject-relations --used-node idTrackerType=Dynamic --write-pbf file=\"/tmp/osm_temp/ways-tmp1.pbf\"")
+			os.system("osmosis --read-pbf file=\"/var/cache/addrnodeimport/norway-latest.osm.pbf\" --tf accept-ways \"abandoned:addr:housenumber\"=* --tf reject-relations --used-node idTrackerType=Dynamic --write-pbf file=\"/tmp/osm_temp/ways-tmp2.pbf\"")
 			os.system("osmosis --read-pbf \"/tmp/osm_temp/ways-tmp1.pbf\" --read-pbf \"/tmp/osm_temp/ways-tmp2.pbf\" --merge --write-pbf \"/tmp/osm_temp/ways.pbf\"")
 			print ("\nExtracting all node addresses:")
-			os.system("osmosis --read-pbf file=\"/home/ruben/norway-latest.osm.pbf\" --tf accept-nodes \"addr:housenumber\"=* --tf reject-ways --tf reject-relations --write-pbf file=\"/tmp/osm_temp/nodes-tmp1.pbf\"")
-			os.system("osmosis --read-pbf file=\"/home/ruben/norway-latest.osm.pbf\" --tf accept-nodes \"abandoned:addr:housenumber\"=* --tf reject-ways --tf reject-relations --write-pbf file=\"/tmp/osm_temp/nodes-tmp2.pbf\"")
+			os.system("osmosis --read-pbf file=\"/var/cache/addrnodeimport/norway-latest.osm.pbf\" --tf accept-nodes \"addr:housenumber\"=* --tf reject-ways --tf reject-relations --write-pbf file=\"/tmp/osm_temp/nodes-tmp1.pbf\"")
+			os.system("osmosis --read-pbf file=\"/var/cache/addrnodeimport/norway-latest.osm.pbf\" --tf accept-nodes \"abandoned:addr:housenumber\"=* --tf reject-ways --tf reject-relations --write-pbf file=\"/tmp/osm_temp/nodes-tmp2.pbf\"")
 			os.system("osmosis --read-pbf \"/tmp/osm_temp/nodes-tmp1.pbf\" --read-pbf \"/tmp/osm_temp/nodes-tmp2.pbf\" --merge --write-pbf \"/tmp/osm_temp/nodes.pbf\"")
 		print ("\nGet ways for municipality:")
 		os.system("osmosis --read-pbf file=\"/tmp/osm_temp/ways.pbf\" --bounding-box bottom="+bottomcoord+" left="+leftcoord+" top="+topcoord+" right="+rightcoord+" --write-xml file=\"/tmp/osm_temp/ways_"+munipnumberpadded+".osm\"")
