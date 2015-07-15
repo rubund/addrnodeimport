@@ -29,7 +29,7 @@ do_start(){
 do_stop(){
 
     echo "stopping"
-
+    ps aux | grep "\-d \-m /usr/lib/addrnodeimport/python/update_on_request.py" | cut -c 10-16 | xargs kill
 }
 
 case "$1" in
@@ -44,6 +44,8 @@ case "$1" in
   reload|force-reload|graceful)
   ;;
   restart)
+    do_stop
+    do_start
   ;;
 esac
 
