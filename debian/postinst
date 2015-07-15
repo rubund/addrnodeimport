@@ -33,14 +33,6 @@ case "$1" in
         echo "Heisann. her er jeg: $DBUSER"
         db_get addrnodeimport/root-password
         ROOTPASSWORD=$RET
-        RES=$(echo "select schema_name from information_schema.schemata where schema_name = '$DBNAME';" | mysql -h localhost -u root -p$ROOTPASSWORD mysql)
-        if [ "$RES" = "" ] ; then
-            echo "Database does not exist. Creating..."
-            echo "create database $DBNAME;" | mysql -h localhost -u root -p$ROOTPASSWORD mysql
-            echo "grant all on ${DBNAME}.* to ${DBUSER} identified by '${PASSWORD}';" | mysql -h localhost -u root -p$ROOTPASSWORD mysql
-        else
-            echo "Database $DBNAME exists already. Skipping setup"
-        fi
         sed -i 's/DBNAME=.*$/DBNAME='$DBNAME'/' /etc/addrnodeimport.conf
         sed -i 's/DBUSER=.*$/DBUSER='$DBUSER'/' /etc/addrnodeimport.conf
         sed -i 's/DBPASS=.*$/DBPASS='$PASSWORD'/' /etc/addrnodeimport.conf
@@ -50,6 +42,15 @@ case "$1" in
         sed -i "s/sqldbname = .*$/sqldbname = '"$DBNAME"';/" /usr/lib/addrnodeimport/python/mypasswords.py
         sed -i "s/sql = .*$/sql = '"$PASSWORD"';/" /usr/lib/addrnodeimport/python/mypasswords.py
         sed -i "s/sqldbuser = .*$/sqldbuser = '"$DBUSER"';/" /usr/lib/addrnodeimport/python/mypasswords.py
+        RES=$(echo "select schema_name from information_schema.schemata where schema_name = '$DBNAME';" | mysql -h localhost -u root -p$ROOTPASSWORD mysql)
+        if [ "$RES" = "" ] ; then
+            echo "Database does not exist. Creating..."
+            echo "create database $DBNAME;" | mysql -h localhost -u root -p$ROOTPASSWORD mysql
+            echo "grant all on ${DBNAME}.* to ${DBUSER} identified by '${PASSWORD}';" | mysql -h localhost -u root -p$ROOTPASSWORD mysql
+            /usr/bin/addrnodeimport_import_sql_backup /usr/share/doc/addrnodeimport/tables.sql
+        else
+            echo "Database $DBNAME exists already. Skipping setup"
+        fi
         db_get addrnodeimport/enable
         ENABLENOW=$RET
         if [ "$ENABLENOW" = "true" ] ; then
