@@ -4,4 +4,3 @@ $dbuser = '';
 $dbpass = '';
 $dbname = '';
 ?>
-
