@@ -1,0 +1,53 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          addrnodeimport-server
+# Required-Start:    apache2
+# Required-Stop:     
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: <Enter a short description of the software>
+# Description:       <Enter a long description of the software>
+#                    <...>
+#                    <...>
+### END INIT INFO
+
+# Author: ruben <ruben.undheim@gmail.com>
+
+
+DESC="addrnodeimport update server"
+NAME=addrnodeimport-server
+DAEMON=/usr/lib/addrnodeimport/python/update_on_request.py
+
+
+do_start(){
+
+    echo "starting"
+    /bin/su addrnodeimport -c "/usr/bin/nohup /usr/bin/screen -d -m /usr/lib/addrnodeimport/python/update_on_request.py"
+
+}
+
+do_stop(){
+
+    echo "stopping"
+
+}
+
+case "$1" in
+  start)
+    do_start
+  ;;
+  stop|graceful-stop)
+    do_stop
+  ;;
+  status)
+  ;;
+  reload|force-reload|graceful)
+  ;;
+  restart)
+  ;;
+esac
+
+exit 0
+
+
+

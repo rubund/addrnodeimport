@@ -56,7 +56,7 @@ case "$1" in
             echo "Enabling site now"
             a2ensite addrnodeimport-site.conf
         fi
-        chown -R www-data:www-data /var/cache/addrnodeimport
+        chown -R addrnodeimport:addrnodeimport /var/cache/addrnodeimport
         #tar -xf /usr/share/addrnodeimport/municipality_borders.tar.gz -C /usr/share/addrnodeimport
         #mv /usr/share/addrnodeimport/osm /usr/share/addrnodeimport/municipality_borders
     ;;
