@@ -1,0 +1,13 @@
+[Unit]
+Description=addrnodeimport Server software
+After=mysql.service
+
+[Service]
+ExecStart=/usr/bin/screen -dmS addrnodeimport /usr/bin/python /usr/lib/addrnodeimport/python/update_on_request.py
+ExecStop=/usr/bin/screen -S addrnodeimport -X quit
+User=addrnodeimport
+Type=forking
+
+
+[Install]
+WantedBy=multi-user.target
