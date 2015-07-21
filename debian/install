@@ -9,6 +9,8 @@ python/doall.py /usr/lib/addrnodeimport/python
 python/mypasswords.py /usr/lib/addrnodeimport/python
 python/addrnodeimport.py /usr/bin
 python/update_all.sh /usr/lib/addrnodeimport/sh
+python/uploadmunip.py /usr/lib/addrnodeimport/python
+python/kommunenummer.py /usr/lib/addrnodeimport/python
 data/municipality_borders.tar.gz /usr/share/addrnodeimport
 python/kartverketadresser.lua /usr/share/addrnodeimport
 perl/osm2poly.pl /usr/lib/addrnodeimport/perl

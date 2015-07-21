@@ -4,5 +4,7 @@
 osm = ''
 sql = ''
 
+osmuser = ''
+
 sqldbname = ''
 sqldbuser = ''

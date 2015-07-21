@@ -14,10 +14,12 @@ if len(sys.argv) != 2:
 	print ("Usage command <osm-file>")
 	sys.exit()
 
+cachedir = "/var/cache/addrnodeimport"
+
 munipnumber = sys.argv[1]
 munipnumberpadded = "%04d" % (int(munipnumber))
 
-report1 = open("reports/report_"+str(munipnumberpadded)+".txt","r")
+report1 = open(cachedir+"/reports/report_"+str(munipnumberpadded)+".txt","r")
 content = report1.read()
 #match1 = re.compile(u"Existing:\s+(\d+)\s+New")
 matches = re.match(r"Existing:\s+(\d+)\s+New:\s+(\d+)\s+Missing:\s+(\d+)\s+Otherthings:\s+(\d+)\s+Duplicates:\s+(\d+)\s+Veivegfixes:\s+(\d+)\s+Buildings:\s+(\d+)\s+Abandoned:\s+(\d+)\s+Notmatched:\s+(\d+)\s+NotmatchedPOIs:\s+(\d+)",content,re.MULTILINE);
@@ -27,7 +29,7 @@ missing=matches.group(3)
 new=matches.group(2)
 notmatched=matches.group(9)
 
-report1 = open("reports/report2_"+str(munipnumberpadded)+".txt","r")
+report1 = open(cachedir+"/reports/report2_"+str(munipnumberpadded)+".txt","r")
 content = report1.read()
 #match1 = re.compile(u"Existing:\s+(\d+)\s+New")
 report1.close()
@@ -47,7 +49,7 @@ else:
 	sys.exit()
 
 
-db = mysql.connector.connect(host="localhost",user="ruben",password=mypasswords.sql,database="beebeetle")
+db = mysql.connector.connect(host="localhost",user=mypasswords.sqldbuser,password=mypasswords.sql,database=mypasswords.sqldbname)
 cursor = db.cursor()
 cursor.execute("set names utf8")
 cursor.execute("select person from osmimportresp where kommunenummer=\""+str(munipnumber)+"\" and person != 'rubund' and deleted != 1;")
@@ -61,14 +63,14 @@ db.close()
 
 #api = OsmApi(api="api06.dev.openstreetmap.org", username="", password="", changesetauto=True, changesetautotags={"source":"Kartverket"})
 #api = OsmApi(api="api06.dev.openstreetmap.org", username="rubund_import", passwordfile="./password.txt")
-api = OsmApi(api="api06.dev.openstreetmap.org", username="rubund_import", password=mypasswords.osm)
+api = OsmApi(api="api.openstreetmap.org", username=mypasswords.osmuser, password=mypasswords.osm)
 #api.NodeGet(123)
 mycomment=u"addr node import "+kommunenummer.nrtonavn[int(munipnumber)]+" kommune"
 #mycomment=u"addr node import municipality number "+munipnumberpadded+", Norway"
 #api.ChangesetCreate({"comment":u"addr node import "+str(sys.argv[2].decode('utf-8')), "source":"Kartverket", "source:date":"2014-08-24"})
-api.ChangesetCreate({"comment": mycomment, "source":"Kartverket", "source:date":"2014-11-23"})
+api.ChangesetCreate({"comment": mycomment, "source":"Kartverket", "source:date":"2015-05-26"})
 
-dom1 = parse("reports/newnodes_"+str(munipnumberpadded)+".osm")
+dom1 = parse(cachedir+"/reports/newnodes_"+str(munipnumberpadded)+".osm")
 mainelement1 = dom1.getElementsByTagName("osm")[0]
 nodes = mainelement1.getElementsByTagName("node")
 counter = 1
@@ -100,10 +102,10 @@ for node in nodes:
 		
 api.ChangesetClose()
 
-db = mysql.connector.connect(host="localhost",user="ruben",password=mypasswords.sql,database="beebeetle")
+db = mysql.connector.connect(host="localhost",user=mypasswords.sqldbuser,password=mypasswords.sql,database=mypasswords.sqldbname)
 cursor = db.cursor()
 cursor.execute("set names utf8")
-cursor.execute("insert into update_requests (kommunenummer,ip,tid) values ('"+str(munipnumber)+"','script',now());")
+cursor.execute("insert into update_requests (kommunenummer,ip,tid) values ('"+str(munipnumber)+"','script',addtime(now(),\"0:05:00\"));")
 db.commit()
 db.close()
 #os.system("echo \"insert into update_requests (kommunenummer,ip,tid) values (543,'script',now())\" | mysql -u ruben --password="+mypasswords.sql+" beebeetle")

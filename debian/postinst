@@ -33,6 +33,10 @@ case "$1" in
         echo "Heisann. her er jeg: $DBUSER"
         db_get addrnodeimport/root-password
         ROOTPASSWORD=$RET
+        db_get addrnodeimport/osm-import-user
+        OSMUSER=$RET
+        db_get addrnodeimport/osm-import-pass
+        OSMPASS=$RET
         sed -i 's/DBNAME=.*$/DBNAME='$DBNAME'/' /etc/addrnodeimport.conf
         sed -i 's/DBUSER=.*$/DBUSER='$DBUSER'/' /etc/addrnodeimport.conf
         sed -i 's/DBPASS=.*$/DBPASS='$PASSWORD'/' /etc/addrnodeimport.conf
@@ -42,6 +46,8 @@ case "$1" in
         sed -i "s/sqldbname = .*$/sqldbname = '"$DBNAME"';/" /usr/lib/addrnodeimport/python/mypasswords.py
         sed -i "s/sql = .*$/sql = '"$PASSWORD"';/" /usr/lib/addrnodeimport/python/mypasswords.py
         sed -i "s/sqldbuser = .*$/sqldbuser = '"$DBUSER"';/" /usr/lib/addrnodeimport/python/mypasswords.py
+        sed -i "s/osm = .*$/osm = '"$OSMPASS"';/" /usr/lib/addrnodeimport/python/mypasswords.py
+        sed -i "s/osmuser = .*$/osmuser = '"$OSMUSER"';/" /usr/lib/addrnodeimport/python/mypasswords.py
         RES=$(echo "select schema_name from information_schema.schemata where schema_name = '$DBNAME';" | mysql -h localhost -u root -p$ROOTPASSWORD mysql)
         if [ "$RES" = "" ] ; then
             echo "Database does not exist. Creating..."

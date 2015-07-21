@@ -39,6 +39,16 @@ Description: Enter the root password for the config db
  For more detailed information please see
  blablabla
 
+Template: addrnodeimport/osm-import-user
+Type: string
+Default: osmuser
+Description: What is the user name for the import user?
+
+Template: addrnodeimport/osm-import-pass
+Type: password
+Default: osmpass
+Description: What is the password for the import user?
+
 Template: addrnodeimport/enable
 Type: boolean
 Default: y
