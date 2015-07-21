@@ -4,7 +4,8 @@ include "kommunenummer.php";
 $conn = mysql_connect($dbhost,$dbuser,$dbpass) or die ('Error connecting to mysql');
 mysql_select_db($dbname);
 mysql_query("set names utf8");
-$pending_update_message = "Vil bli oppdatert<br>straks (~6 min)";
+$pending_update_message = "Venter litt før<br>oppdatering (~6 min)";
+$pending_update_message2 = "Vil bli oppdatert<br>straks (~1 min)";
 
 header('Content-Type: text/html; charset=utf-8');
 echo "<html><head><title>Adressenode-import-status for Norge</title>";
@@ -64,14 +65,25 @@ function proposename(){
     else 
         document.getElementById('ansvarlig_'+kommunenummer+'').innerHTML = "<b>Wasn't able to update</b>";
 }
-function request_update(kommunenummer_request){
-    randres = ajaxreq("/ajaxpublic.php?update=1&kommune="+kommunenummer_request+"");
+function request_update(kommunenummer_request, step){
     var randres;
-    if (randres == "OK"){
-        document.getElementById('oppdater_'+kommunenummer_request+'').innerHTML = "<b><?=$pending_update_message?></b>";
+    if(step == 1){
+	randres = ajaxreq("/ajaxpublic.php?update=1&kommune="+kommunenummer_request+"&now=1");
+        
+        if (randres == "OK"){
+            document.getElementById('oppdater_'+kommunenummer_request+'').innerHTML = "<b><?=$pending_update_message2?></b>";
+        }
+        else 
+            document.getElementById('oppdater_'+kommunenummer_request+'').innerHTML = "<b>Feil</b>";
     }
-    else 
-        document.getElementById('oppdater_'+kommunenummer_request+'').innerHTML = "<b>Feil</b>";
+    else {
+	randres = ajaxreq("/ajaxpublic.php?update=1&kommune="+kommunenummer_request+"&now=0");
+        if (randres == "OK"){
+            document.getElementById('oppdater_'+kommunenummer_request+'').innerHTML = "<input type=\"button\" onclick=\"request_update('"+kommunenummer_request+"',1)\" value=\"Start umiddelbart\"><br><b><?=$pending_update_message?></b>";
+        }
+        else 
+            document.getElementById('oppdater_'+kommunenummer_request+'').innerHTML = "<b>Feil "+randres+"</b>";
+    }
 }
 </script>
 <?php
@@ -237,10 +249,10 @@ for($i=0;$i<2100;$i++){
         }
         $result = mysql_query("select tid from update_requests where kommunenummer='".$i."' and ferdig != 1 order by tid asc limit 1") or die('Mysql error');
         if ($row = mysql_fetch_array($result, MYSQL_NUM)){
-            $pending_update = $pending_update_message;
+            $pending_update = "Vil bli oppdatert<br>straks";
         }
         else {
-            $pending_update = "<input type=\"button\" onclick=\"request_update('".$i."')\" value=\"Oppdater status\"/>";
+            $pending_update = "<input type=\"button\" onclick=\"request_update('".$i."',0)\" value=\"Oppdater status\"/>";
         }
         
         echo "<tr><td><span id=\"oppdater_$i\">$pending_update</span></td><td>$kommunenummer</td><td>".$nrtonavn[$i]."</td><td align=right>$completeness</td><td>$ledhtml</td><td style=\"padding-left : 20px\">$modtime</td><td style=\"padding-left : 30px\"><span id=\"ansvarlig_$i\">$ansvarlig</span></td><td style=\"padding-left : 30px\">$totalstatus</td></tr>";

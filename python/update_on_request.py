@@ -14,7 +14,7 @@ def update_request_checker():
 		ecursor = db.cursor()
 		cursor.execute("set names utf8")
 		ecursor.execute("set names utf8")
-		cursor.execute("select distinct kommunenummer from update_requests where ferdig = 0 and (addtime(tid , '0:05:00') < now() or kommunenummer = 0);")
+		cursor.execute("select distinct kommunenummer from update_requests where ferdig = 0 and (tid) < now() or kommunenummer = 0);")
 		rows = cursor.fetchall()
 		for row in rows:
 			if row[0] == 0:  # Update all

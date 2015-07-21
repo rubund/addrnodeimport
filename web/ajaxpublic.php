@@ -10,7 +10,16 @@ if(isset($_GET['person'])){
     echo "OK";
 }
 elseif(isset($_GET['update'])){
-    $result = mysql_query("insert into update_requests (kommunenummer, ip, tid) values ('".mysql_escape_string($_GET['kommune'])."','".mysql_escape_string($_SERVER['REMOTE_ADDR'])."',now());") or die('Mysql error');
-    echo "OK";
+
+    if(isset($_GET["now"])){
+      if($_GET["now"] == 1){
+        $result = mysql_query("update update_requests set tid=now() where kommunenummer = '".mysql_escape_string($_GET['kommune'])."' and ferdig=0;") or die('Mysql error');
+        echo "OK";
+      }
+      else {
+        $result = mysql_query("insert into update_requests (kommunenummer, ip, tid) values ('".mysql_escape_string($_GET['kommune'])."','".mysql_escape_string($_SERVER['REMOTE_ADDR'])."',addtime(now(), \"0:05:00\"));") or die('Mysql error');
+        echo "OK";
+      }
+    }
 }
 ?>
