@@ -22,7 +22,7 @@ DAEMON=/usr/lib/addrnodeimport/python/update_on_request.py
 do_start(){
 
     echo "starting"
-    /bin/su addrnodeimport -c "/usr/bin/nohup /usr/bin/screen -d -m /usr/lib/addrnodeimport/python/update_on_request.py"
+    /bin/su addrnodeimport -c "/usr/bin/screen -d -m /usr/lib/addrnodeimport/python/update_on_request.py"
 
 }
 
