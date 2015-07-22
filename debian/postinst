@@ -24,13 +24,10 @@ case "$1" in
     configure)
         db_get addrnodeimport/db-name
         DBNAME=$RET
-        echo "Heisann. her er jeg: $DBNAME"
         db_get addrnodeimport/db-password
         PASSWORD=$RET
-        echo "Heisann. her er jeg: $PASSWORD"
         db_get addrnodeimport/db-user
         DBUSER=$RET
-        echo "Heisann. her er jeg: $DBUSER"
         db_get addrnodeimport/root-password
         ROOTPASSWORD=$RET
         db_get addrnodeimport/osm-import-user
