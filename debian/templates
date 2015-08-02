@@ -2,59 +2,34 @@
 Template: addrnodeimport/db-name
 Type: string
 Default: addrnodeimport
-Description: Enter name of mysql database to use for addrnodeimport
- Blablabla
- blablabla.
- .
- For more detailed information please see
- blablabla
+_Description: Enter name of mysql database to use for addrnodeimport:
 
 Template: addrnodeimport/db-password
 Type: password
 Default: default
-Description: Enter the password for the mysql database
- Blablabla
- blablabla.
- .
- For more detailed information please see
- blablabla
+_Description: Enter the password for the mysql database:
 
 Template: addrnodeimport/db-user
 Type: string
 Default: addrnodeimport
-Description: Enter name of the mysql user
- Blablabla
- blablabla.
- .
- For more detailed information please see
- blablabla
+_Description: Enter name of the mysql user:
 
 Template: addrnodeimport/root-password
 Type: password
 Default: 
-Description: Enter the root password for the config db
- Blablabla
- blablabla.
- .
- For more detailed information please see
- blablabla
+_Description: Enter the root password for the config db:
 
 Template: addrnodeimport/osm-import-user
 Type: string
 Default: osmuser
-Description: What is the user name for the import user?
+_Description: What is the user name for the import user:
 
 Template: addrnodeimport/osm-import-pass
 Type: password
 Default: osmpass
-Description: What is the password for the import user?
+_Description: What is the password for the import user:
 
 Template: addrnodeimport/enable
 Type: boolean
-Default: y
-Description: Enable apache site for addrnodeimport now?
- Blablabla
- blablabla.
- .
- For more detailed information please see
- blablabla
+Default: true
+_Description: Enable apache site for addrnodeimport now?:

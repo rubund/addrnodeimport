@@ -50,7 +50,7 @@ case "$1" in
             echo "Database does not exist. Creating..."
             echo "create database $DBNAME;" | mysql -h localhost -u root -p$ROOTPASSWORD mysql
             echo "grant all on ${DBNAME}.* to ${DBUSER} identified by '${PASSWORD}';" | mysql -h localhost -u root -p$ROOTPASSWORD mysql
-            /usr/bin/addrnodeimport_import_sql_backup /usr/share/doc/addrnodeimport/tables.sql
+            addrnodeimport_import_sql_backup /usr/share/doc/addrnodeimport/tables.sql
         else
             echo "Database $DBNAME exists already. Skipping setup"
         fi
