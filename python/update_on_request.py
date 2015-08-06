@@ -27,7 +27,7 @@ def update_request_checker():
 					print uquery
 					ret = ecursor.execute(uquery)
 				else:
-					command = "/usr/bin/addrnodeimport.py /var/cache/addrnodeimport/Vegdata_Norge_Adresser_UTM33_SOSI.zip "+str(row[0])+" /var/cache/addrnodeimport 0"
+					command = "/usr/bin/addrnodeimport /var/cache/addrnodeimport/Vegdata_Norge_Adresser_UTM33_SOSI.zip "+str(row[0])+" /var/cache/addrnodeimport 0"
 					print command
 					os.system(command)
 					uquery = "update update_requests set ferdig=1 where kommunenummer=\""+str(row[0])+"\";"

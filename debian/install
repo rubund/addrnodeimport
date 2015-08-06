@@ -7,7 +7,7 @@ python/update_on_request.py /usr/lib/addrnodeimport/python
 python/updatetime.py /usr/lib/addrnodeimport/python
 python/doall.py /usr/lib/addrnodeimport/python
 python/mypasswords.py /usr/lib/addrnodeimport/python
-python/addrnodeimport.py /usr/bin
+python/addrnodeimport /usr/bin
 python/update_all.sh /usr/lib/addrnodeimport/sh
 python/uploadmunip.py /usr/lib/addrnodeimport/python
 python/kommunenummer.py /usr/lib/addrnodeimport/python

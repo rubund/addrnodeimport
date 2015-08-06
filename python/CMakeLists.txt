@@ -1,3 +1,3 @@
 
 
-install(TARGETS addrnodeimport.py DESTINATION bin)
+install(TARGETS addrnodeimport DESTINATION bin)

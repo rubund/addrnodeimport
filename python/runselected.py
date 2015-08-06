@@ -9,7 +9,7 @@ munips = range(0,2100)
 
 
 for m in munips:
-	command ="./addrnodeimport.py "+zipfile+" %04d" % (int(m))
+	command ="./addrnodeimport "+zipfile+" %04d" % (int(m))
 	os.system(command)
 
 
