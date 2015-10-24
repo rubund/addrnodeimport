@@ -94,8 +94,8 @@ echo "<body>";
 <?php
 echo "<h3>Adressenode-import-status for Norge</h3>";
 //echo "<p>Sist oppdatert: <font color=\"green\">".date ("d. M Y H:i:s.", filemtime('reports/report_1943.txt'))."</font></p>";
-echo "<h4>Datauttaksdato: 2015-05-26 (Bruk som <i>source:date</i> i changeset)</h4>";
-echo "<pre>source:date=2015-05-26\n";
+echo "<h4>Datauttaksdato: 2015-08-25 (Bruk som <i>source:date</i> i changeset)</h4>";
+echo "<pre>source:date=2015-08-25\n";
 echo "source=Kartverket</pre>";
 ?>
 <h4>Husk 5 ting:</h4>
