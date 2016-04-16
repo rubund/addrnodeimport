@@ -159,10 +159,26 @@ void iterate_and_get_elements(xmlNode * a_node1, xmlNode * a_node2, xmlDoc * doc
 							if(tmp_node->type == XML_ELEMENT_NODE){
 								text2 = xmlGetProp(tmp_node, "k");
 								if(text2 != 0){
-									if(strcmp(text2,"addr:housenumber") == 0 || strcmp(text2,"addr:postcode") == 0 || strcmp(text2,"addr:street") == 0 || strcmp(text2,"addr:city") == 0){
+									//if(strcmp(text2,"addr:housenumber") == 0 || strcmp(text2,"addr:postcode") == 0 || strcmp(text2,"addr:street") == 0 || strcmp(text2,"addr:city") == 0){
+									//	xmlFree(text2);
+									//	xmlUnlinkNode(tmp_node);
+									//	xmlFreeNode(tmp_node);
+									//}
+									if(strcmp(text2,"addr:housenumber") == 0){
 										xmlFree(text2);
-										xmlUnlinkNode(tmp_node);
-										xmlFreeNode(tmp_node);
+										xmlSetProp(tmp_node,"v",addrdata2.addr_housenumber);
+									}
+									else if(strcmp(text2,"addr:street") == 0){
+										xmlFree(text2);
+										xmlSetProp(tmp_node,"v",addrdata2.addr_street);
+									}
+									else if(strcmp(text2,"addr:postcode") == 0){
+										xmlFree(text2);
+										xmlSetProp(tmp_node,"v",addrdata2.addr_postcode);
+									}
+									else if(strcmp(text2,"addr:city") == 0){
+										xmlFree(text2);
+										xmlSetProp(tmp_node,"v",addrdata2.addr_city);
 									}
 								}
 							}
@@ -171,27 +187,6 @@ void iterate_and_get_elements(xmlNode * a_node1, xmlNode * a_node2, xmlDoc * doc
 								//xmlFreeNode(tmp_node);
 							}
 						}
-						xmlNode *tag_node;
-
-						tag_node = xmlNewNode(NULL,"tag");
-						xmlSetProp(tag_node,"k","addr:street");
-						xmlSetProp(tag_node,"v",addrdata2.addr_street);
-						xmlAddChild(new_node,tag_node);
-
-						tag_node = xmlNewNode(NULL,"tag");
-						xmlSetProp(tag_node,"k","addr:housenumber");
-						xmlSetProp(tag_node,"v",addrdata2.addr_housenumber);
-						xmlAddChild(new_node,tag_node);
-
-						tag_node = xmlNewNode(NULL,"tag");
-						xmlSetProp(tag_node,"k","addr:postcode");
-						xmlSetProp(tag_node,"v",addrdata2.addr_postcode);
-						xmlAddChild(new_node,tag_node);
-
-						tag_node = xmlNewNode(NULL,"tag");
-						xmlSetProp(tag_node,"k","addr:city");
-						xmlSetProp(tag_node,"v",addrdata2.addr_city);
-						xmlAddChild(new_node,tag_node);
 
 						xmlSetProp(new_node,"action","modify");
 						xmlNode *root_element_new = xmlDocGetRootElement(doc_output);
