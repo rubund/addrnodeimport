@@ -76,10 +76,11 @@ t_addrdata * get_addrdata(t_addrdata *out, xmlNode *node){
 	}
 }
 
-void iterate_and_get_elements(xmlNode * a_node1, xmlNode * a_node2)
+void iterate_and_get_elements(xmlNode * a_node1, xmlNode * a_node2, xmlDoc * doc_output)
 {
 	xmlNode *cur_node = NULL;
 	xmlNode *cur_node2 = NULL;
+	xmlNode *new_node = NULL;
 	xmlAttr *attribute;
 	xmlChar *text;
 
@@ -146,6 +147,32 @@ void iterate_and_get_elements(xmlNode * a_node1, xmlNode * a_node2)
 							printf("addr:city:\t%s\n",addrdata2.addr_city);
 						}
 						printf("%20s %5s, %5s %20s    replaced by   %20s %5s, %5s %20s\n",addrdata1.addr_street,addrdata1.addr_housenumber,addrdata1.addr_postcode,addrdata1.addr_city,addrdata2.addr_street,addrdata2.addr_housenumber,addrdata2.addr_postcode,addrdata2.addr_city);
+						new_node = xmlCopyNode(cur_node,1);
+
+						xmlNode *tag_node;
+						tag_node = xmlNewNode(NULL,"tag");
+						xmlSetProp(tag_node,"k","addr:postcode");
+						xmlSetProp(tag_node,"v",addrdata2.addr_postcode);
+						xmlAddChild(new_node,tag_node);
+
+						tag_node = xmlNewNode(NULL,"tag");
+						xmlSetProp(tag_node,"k","addr:city");
+						xmlSetProp(tag_node,"v",addrdata2.addr_city);
+						xmlAddChild(new_node,tag_node);
+
+						tag_node = xmlNewNode(NULL,"tag");
+						xmlSetProp(tag_node,"k","addr:housenumber");
+						xmlSetProp(tag_node,"v",addrdata2.addr_housenumber);
+						xmlAddChild(new_node,tag_node);
+
+						tag_node = xmlNewNode(NULL,"tag");
+						xmlSetProp(tag_node,"k","addr:street");
+						xmlSetProp(tag_node,"v",addrdata2.addr_street);
+						xmlAddChild(new_node,tag_node);
+
+						xmlSetProp(new_node,"action","modify");
+						xmlNode *root_element_new = xmlDocGetRootElement(doc_output);
+						xmlAddChild(root_element_new,new_node);
 					}
 				}
 				if (found)
@@ -195,6 +222,7 @@ int main(int argc, char **argv)
 
 	xmlDoc *doc1 = NULL;
 	xmlDoc *doc2 = NULL;
+	xmlDoc *doc_output = NULL;
 	xmlNode *root_element1 = NULL;
 	xmlNode *root_element2 = NULL;
 	
@@ -214,12 +242,27 @@ int main(int argc, char **argv)
 		printf("error: could not parse file %s\n", xmlfilename2);
 	}
 
+	doc_output = xmlCopyDoc(doc1,1);
+	xmlNode * root;
+	root = xmlDocGetRootElement(doc_output);
+	xmlNode *cur_node;
+	for(cur_node = root->children;cur_node;){
+		xmlNode *tmp_node;
+		tmp_node = cur_node;
+		cur_node = cur_node->next;
+		xmlUnlinkNode(tmp_node);
+		xmlFreeNode(tmp_node);
+	}
+
 	root_element1 = xmlDocGetRootElement(doc1);
 	root_element2 = xmlDocGetRootElement(doc2);
 
-	// Here iterate
-	iterate_and_get_elements(root_element1, root_element2);
 
+	// Here iterate
+	iterate_and_get_elements(root_element1, root_element2, doc_output);
+
+	xmlSaveFileEnc("test.osm", doc_output, "UTF-8");
+	xmlFreeDoc(doc_output);
 	xmlFreeDoc(doc1);
 	xmlFreeDoc(doc2);
 
