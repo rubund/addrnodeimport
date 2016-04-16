@@ -30,6 +30,7 @@
 char verbose = 0;
 char *xmlfilename1;
 char *xmlfilename2;
+char *xmlfilename3;
 double addTo = 0;
 
 typedef struct {
@@ -149,15 +150,32 @@ void iterate_and_get_elements(xmlNode * a_node1, xmlNode * a_node2, xmlDoc * doc
 						printf("%20s %5s, %5s %20s    replaced by   %20s %5s, %5s %20s\n",addrdata1.addr_street,addrdata1.addr_housenumber,addrdata1.addr_postcode,addrdata1.addr_city,addrdata2.addr_street,addrdata2.addr_housenumber,addrdata2.addr_postcode,addrdata2.addr_city);
 						new_node = xmlCopyNode(cur_node,1);
 
+						xmlNode *cur_node3;
+						xmlChar *text2;
+						for(cur_node3 = new_node->children; cur_node3;){
+							xmlNode *tmp_node;
+							tmp_node = cur_node3;
+							cur_node3 = tmp_node->next;
+							if(tmp_node->type == XML_ELEMENT_NODE){
+								text2 = xmlGetProp(tmp_node, "k");
+								if(text2 != 0){
+									if(strcmp(text2,"addr:housenumber") == 0 || strcmp(text2,"addr:postcode") == 0 || strcmp(text2,"addr:street") == 0 || strcmp(text2,"addr:city") == 0){
+										xmlFree(text2);
+										xmlUnlinkNode(tmp_node);
+										xmlFreeNode(tmp_node);
+									}
+								}
+							}
+							else {
+								//xmlUnlinkNode(tmp_node);
+								//xmlFreeNode(tmp_node);
+							}
+						}
 						xmlNode *tag_node;
-						tag_node = xmlNewNode(NULL,"tag");
-						xmlSetProp(tag_node,"k","addr:postcode");
-						xmlSetProp(tag_node,"v",addrdata2.addr_postcode);
-						xmlAddChild(new_node,tag_node);
 
 						tag_node = xmlNewNode(NULL,"tag");
-						xmlSetProp(tag_node,"k","addr:city");
-						xmlSetProp(tag_node,"v",addrdata2.addr_city);
+						xmlSetProp(tag_node,"k","addr:street");
+						xmlSetProp(tag_node,"v",addrdata2.addr_street);
 						xmlAddChild(new_node,tag_node);
 
 						tag_node = xmlNewNode(NULL,"tag");
@@ -166,8 +184,13 @@ void iterate_and_get_elements(xmlNode * a_node1, xmlNode * a_node2, xmlDoc * doc
 						xmlAddChild(new_node,tag_node);
 
 						tag_node = xmlNewNode(NULL,"tag");
-						xmlSetProp(tag_node,"k","addr:street");
-						xmlSetProp(tag_node,"v",addrdata2.addr_street);
+						xmlSetProp(tag_node,"k","addr:postcode");
+						xmlSetProp(tag_node,"v",addrdata2.addr_postcode);
+						xmlAddChild(new_node,tag_node);
+
+						tag_node = xmlNewNode(NULL,"tag");
+						xmlSetProp(tag_node,"k","addr:city");
+						xmlSetProp(tag_node,"v",addrdata2.addr_city);
 						xmlAddChild(new_node,tag_node);
 
 						xmlSetProp(new_node,"action","modify");
@@ -206,14 +229,16 @@ int parse_cmdline(int argc, char **argv)
 		}
 	}
 
-	if(argc != (optind + 2)){
-		fprintf(stderr,"Usage: %o [options] notmatched.osm newnodes.osm\n",argv[0]);
+	if(argc != (optind + 3)){
+		fprintf(stderr,"Usage: %o [options] notmatched.osm newnodes.osm output.osm\n",argv[0]);
 		return -1;
 	}
 	xmlfilename1 = (char*) malloc(strlen(argv[optind])+1);
 	xmlfilename2 = (char*) malloc(strlen(argv[optind+1])+1);
+	xmlfilename3 = (char*) malloc(strlen(argv[optind+2])+1);
 	snprintf(xmlfilename1,strlen(argv[optind])+1,"%s",argv[optind]);
 	snprintf(xmlfilename2,strlen(argv[optind+1])+1,"%s",argv[optind+1]);
+	snprintf(xmlfilename3,strlen(argv[optind+2])+1,"%s",argv[optind+2]);
 	return 0;
 }
 
@@ -261,7 +286,7 @@ int main(int argc, char **argv)
 	// Here iterate
 	iterate_and_get_elements(root_element1, root_element2, doc_output);
 
-	xmlSaveFileEnc("test.osm", doc_output, "UTF-8");
+	xmlSaveFileEnc(xmlfilename3, doc_output, "UTF-8");
 	xmlFreeDoc(doc_output);
 	xmlFreeDoc(doc1);
 	xmlFreeDoc(doc2);
