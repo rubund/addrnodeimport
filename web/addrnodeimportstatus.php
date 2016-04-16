@@ -228,9 +228,9 @@ for($i=0;$i<2100;$i++){
         else if($onlynumber != 0){
             $totalstatus .= "<font color=\"red\">Det finnes adressenoder som mangler gatenavn ($onlynumber stk). Dette må fikses manuelt. Se:</font> <a href=\"reports/onlynumber_$kommunenummer.osm\">onlynumber.osm</a> - <span style=\"color:grey\">[$linktoosm]</span>";
         }
-        else if($fixes != 0){
-            $totalstatus .= "Det finnes adressenoder som mangler postnr. eller sted ($fixes stk). Denne .osm filen fikser dette: <a href=\"reports/postcodecityfixes_$kommunenummer.osm\">postcodecityfixes.osm</a>";
-        }
+        //else if($fixes != 0){
+        //    $totalstatus .= "Det finnes adressenoder som mangler postnr. eller sted ($fixes stk). Denne .osm filen fikser dette: <a href=\"reports/postcodecityfixes_$kommunenummer.osm\">postcodecityfixes.osm</a>";
+        //}
         else if($notmatched == 0 && $missing == 0 && $duplicates == 0 && $new != 0) {
             if($otherthings == 0){
                 $totalstatus .= "<b><font color=\"green\">Ingen feil!</font></b>";
