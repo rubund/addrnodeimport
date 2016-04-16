@@ -95,9 +95,11 @@ void iterate_and_get_elements(xmlNode * a_node1, xmlNode * a_node2)
 	double diff2;
 	t_addrdata addrdata1;
 	t_addrdata addrdata2;
+	char found;
 
 	for(cur_node = a_node1->children; cur_node; cur_node = cur_node->next){
 		if(cur_node->type == XML_ELEMENT_NODE && strcmp(cur_node->name,"node") == 0) {
+			found = 0;
 			attribute = cur_node->properties;
 			if(verbose)
 				printf("node type: Element, name: %s\n", cur_node->name);
@@ -131,7 +133,8 @@ void iterate_and_get_elements(xmlNode * a_node1, xmlNode * a_node2)
 					diff1 = diff1 > 0 ? diff1 : -diff1;
 					diff2 = longitude2 - longitude;
 					diff2 = diff2 > 0 ? diff2 : -diff2;
-					if (diff1 < 0.0001 && diff2 < 0.0001){
+					if (diff1 < 0.00001 && diff2 < 0.00001){
+						found = 1;
 						get_addrdata(&addrdata2,cur_node2);
 						if(verbose){
 							printf("Similar position\n");
@@ -145,6 +148,8 @@ void iterate_and_get_elements(xmlNode * a_node1, xmlNode * a_node2)
 						printf("%20s %5s, %5s %20s    replaced by   %20s %5s, %5s %20s\n",addrdata1.addr_street,addrdata1.addr_housenumber,addrdata1.addr_postcode,addrdata1.addr_city,addrdata2.addr_street,addrdata2.addr_housenumber,addrdata2.addr_postcode,addrdata2.addr_city);
 					}
 				}
+				if (found)
+					break;
 			} 
 		}
 	}
