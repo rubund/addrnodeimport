@@ -247,7 +247,7 @@ for($i=0;$i<2100;$i++){
             $totalstatus .= "<font color=\"red\">Det finnes duplikater ($duplicates stk). Se: <a href=\"reports/duplicates_$kommunenummer.osm\">duplicates.osm</a></font>";
         }
 		else if($notmatched != 0 && $missing != 0 && $automaticchanges != 0){
-            $totalstatus .= "Noen eksisterende adresser har endret seg. Denne .osm filen fikser dette: <a href=\"reports/changed_$kommunenummer.osm\">changed.osm</a>";
+            $totalstatus .= "Noen eksisterende adresser har endret seg ($automaticchanges stk). Denne .osm filen fikser dette: <a href=\"reports/changed_$kommunenummer.osm\">changed.osm</a>";
 		}
         else if($notmatched != 0 && $missing != 0){
             $totalstatus .= "Noen eksisterende noder gjenkjennes ikke ($notmatched stk). Dette må fikses før import. Se: <a href=\"reports/notmatched_$kommunenummer.osm\">notmatched.osm</a> - sammenlign med $linktoosm";
