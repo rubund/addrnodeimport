@@ -95,28 +95,31 @@ for node in nodes:
 		osm_version = node.attributes["version"].value
 		latitude = node.attributes["lat"].value
 		longitude = node.attributes["lon"].value
+		username = node.attributes["user"].value
 		tags = node.getElementsByTagName("tag")
 		if "action" in node.attributes:
 			action = node.attributes["action"].value
 		else:
 			action = ""
 		jtags = {}
+		hasothertags = False
 		for tag in tags:
 			if tag.attributes["k"].value == "addr:housenumber":
 				housenumber = tag.attributes["v"].value
 				jtags["addr:housenumber"] = housenumber
-			#elif tag.attributes["k"].value == "addr:street":
-			#	street = tag.attributes["v"].value
-			#	jtags.append("addr:street" : street)
-			#elif tag.attributes["k"].value == "addr:postcode":
-			#	postcode    = tag.attributes["v"].value
-			#	jtags.append("addr:postcode" : postcode)
-			#elif tag.attributes["k"].value == "addr:city":
-			#	city        = tag.attributes["v"].value
-			#	jtags.append("addr:city" : city)
+			elif tag.attributes["k"].value == "addr:street":
+				street = tag.attributes["v"].value
+				jtags["addr:street"] = street
+			elif tag.attributes["k"].value == "addr:postcode":
+				postcode    = tag.attributes["v"].value
+				jtags["addr:postcode"] = postcode
+			elif tag.attributes["k"].value == "addr:city":
+				city        = tag.attributes["v"].value
+				jtags["addr:city"] = city
 			else:
 				jtags[tag.attributes["k"].value] = tag.attributes["v"].value
-		if housenumber != "":
+				hasothertags = True
+		if housenumber != "" and not hasothertags and username == "rubund_import":
 			#if action == "modify":
 			deletenode = {"id": osm_id , "version" : osm_version , "lat" : latitude, "lon": longitude , "tag": jtags}
 			#else:
