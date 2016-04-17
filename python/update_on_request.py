@@ -9,6 +9,7 @@ import mypasswords
 
 def update_request_checker():
 	while 1:
+		hasdone = False
 		try:
 			db = MySQLdb.connect(host="localhost",user=mypasswords.sqldbuser,passwd=mypasswords.sql,db=mypasswords.sqldbname)
 			cursor = db.cursor()
@@ -18,6 +19,7 @@ def update_request_checker():
 			cursor.execute("select distinct kommunenummer from update_requests where ferdig = 0 and (tid < now() or kommunenummer = 0);")
 			rows = cursor.fetchall()
 			for row in rows:
+				hasdone = True
 				if row[0] == 0:  # Update all
 					print ("Updating all")
 					command = "/usr/lib/addrnodeimport/sh/update_all.sh"
@@ -46,7 +48,8 @@ def update_request_checker():
 
 
 			db.close()
-			time.sleep(15)
+			if not hasdone:
+				time.sleep(15)
 		except MySQLdb.OperationalError:
 			print("Mysql server unavailable. Trying again...")
 			time.sleep(2)
