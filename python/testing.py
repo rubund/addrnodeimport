@@ -96,6 +96,10 @@ for node in nodes:
 		latitude = node.attributes["lat"].value
 		longitude = node.attributes["lon"].value
 		tags = node.getElementsByTagName("tag")
+		if "action" in node.attributes:
+			action = node.attributes["action"].value
+		else:
+			action = ""
 		jtags = {}
 		for tag in tags:
 			if tag.attributes["k"].value == "addr:housenumber":
@@ -113,11 +117,19 @@ for node in nodes:
 			else:
 				jtags[tag.attributes["k"].value] = tag.attributes["v"].value
 		if housenumber != "":
-			editnode = {"id": osm_id , "version" : osm_version , "lat" : latitude, "lon": longitude , "tag": jtags}
+			if action == "modify":
+				editnode = {"id": osm_id , "version" : osm_version , "lat" : latitude, "lon": longitude , "tag": jtags}
+			else:
+				editnode = {"id": -counter , "version" : osm_version , "lat" : latitude, "lon": longitude , "tag": jtags}
+				counter = counter + 1;
 			#print (str(latitude)+""+str(longitude)+""+street+" "+housenumber)
-			api.NodeUpdate(editnode)
+			if action == "modify":
+				print("Modifying")
+				api.NodeUpdate(editnode)
+			else:
+				print("Creating")
+				api.NodeCreate(editnode)
 			print (editnode)
-			counter = counter + 1
 #number = 3122745503
 #print(number)
 #editednode = {"id": 4303211109, "lat" : "59.6395566", "lon" : "11.3226128", "tag" : {"addr:housenumber": "47A", "addr:street":"Skramrudåsen", "addr:postcode": "1860","addr:city":"Trøgstad"} , "version" : 1}		
