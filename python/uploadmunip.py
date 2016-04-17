@@ -59,6 +59,13 @@ if(len(rows) > 0):
 	sys.exit()
 else:
 	print ("Nobody is responsible for this one")
+
+cursor.execute("select tid from update_requests where kommunenummer=\"%s\" and ferdig=0 order by tid desc limit 1" % (munipnumber,))
+rows = cursor.fetchall()
+if(len(rows) > 0):
+	print("Waiting for getting updated")
+	sys.exit()
+	
 db.close()
 
 #api = OsmApi(api="api06.dev.openstreetmap.org", username="", password="", changesetauto=True, changesetautotags={"source":"Kartverket"})
