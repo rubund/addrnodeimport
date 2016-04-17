@@ -262,6 +262,8 @@ void iterate_and_get_elements(xmlNode * a_node1, xmlNode * a_node2, xmlDoc * doc
 						found = 1;
 					}
 				}
+				if(found)
+					break;
 			} 
 		}
 	}
