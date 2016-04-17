@@ -99,6 +99,8 @@ void iterate_and_get_elements(xmlNode * a_node1, xmlNode * a_node2, xmlDoc * doc
 	t_addrdata addrdata1;
 	t_addrdata addrdata2;
 	char found;
+	char latString[20];
+	char lonString[20];
 
 	for(cur_node = a_node1->children; cur_node; cur_node = cur_node->next){
 		if(cur_node->type == XML_ELEMENT_NODE && strcmp(cur_node->name,"node") == 0) {
@@ -130,15 +132,29 @@ void iterate_and_get_elements(xmlNode * a_node1, xmlNode * a_node2, xmlDoc * doc
 			//		attribute = cur_node2->properties;
 					text = xmlGetProp(cur_node2,"lat");
 					latitude2 = atof(text);
+					strncpy(latString,text,19);	
 					text = xmlGetProp(cur_node2,"lon");
 					longitude2 = atof(text);
+					strncpy(lonString,text,19);	
 					diff1 = latitude2 - latitude;
 					diff1 = diff1 > 0 ? diff1 : -diff1;
 					diff2 = longitude2 - longitude;
 					diff2 = diff2 > 0 ? diff2 : -diff2;
-					if (diff1 < 0.00001 && diff2 < 0.00001){
-						found = 1;
-						get_addrdata(&addrdata2,cur_node2);
+					char sameLocation=0;
+					char nearLocation=0;
+					get_addrdata(&addrdata2,cur_node2);
+					if (diff1 < 0.00001 && diff2 < 0.00001)
+						sameLocation = 1;
+					else if (diff1 < 0.001 && diff2 < 0.001){
+						int length_number_1 = strlen(addrdata1.addr_housenumber);
+						if( strncmp(addrdata1.addr_street,addrdata2.addr_street,255) == 0 &&
+							strncmp(addrdata1.addr_postcode,addrdata2.addr_postcode,4) == 0 &&
+							strncmp(addrdata1.addr_city,addrdata2.addr_city,255) == 0 && 
+							strncmp(addrdata1.addr_housenumber,addrdata2.addr_housenumber,length_number_1) == 0
+							)
+							nearLocation = 1;
+					}
+					if (sameLocation || nearLocation){
 						if(verbose){
 							//printf("Similar position\n");
 							//printf("Latitude: %f\n", latitude2);
@@ -147,9 +163,16 @@ void iterate_and_get_elements(xmlNode * a_node1, xmlNode * a_node2, xmlDoc * doc
 							//printf("addr:housenumber:\t%s\n",addrdata2.addr_housenumber);
 							//printf("addr:postcode:\t%s\n",addrdata2.addr_postcode);
 							//printf("addr:city:\t%s\n",addrdata2.addr_city);
-							printf("%20s %5s, %5s %20s    replaced by   %20s %5s, %5s %20s\n",addrdata1.addr_street,addrdata1.addr_housenumber,addrdata1.addr_postcode,addrdata1.addr_city,addrdata2.addr_street,addrdata2.addr_housenumber,addrdata2.addr_postcode,addrdata2.addr_city);
+							if(nearLocation)
+								printf("near");
+							else if (sameLocation)
+								printf("same");
+							printf("%20s %5s, %5s %20s    replaced by   %20s %5s, %5s %20s (diff1: %f, diff2: %f)\n",addrdata1.addr_street,addrdata1.addr_housenumber,addrdata1.addr_postcode,addrdata1.addr_city,addrdata2.addr_street,addrdata2.addr_housenumber,addrdata2.addr_postcode,addrdata2.addr_city,diff1,diff2);
 						}
-						new_node = xmlCopyNode(cur_node,1);
+						if(!found)
+							new_node = xmlCopyNode(cur_node,1);
+						else
+							new_node = xmlCopyNode(cur_node2,1);
 
 						xmlNode *cur_node3;
 						xmlChar *text2;
@@ -225,15 +248,19 @@ void iterate_and_get_elements(xmlNode * a_node1, xmlNode * a_node2, xmlDoc * doc
 							xmlAddChild(new_node,tag_node);
 						}
 
+						if(nearLocation){
+							xmlSetProp(new_node,"lat",latString);
+							xmlSetProp(new_node,"lon",lonString);
+						}
 
-						xmlSetProp(new_node,"action","modify");
+						if(!found){
+							xmlSetProp(new_node,"action","modify");
+						}
 						xmlNode *root_element_new = xmlDocGetRootElement(doc_output);
 						xmlAddChild(root_element_new,new_node);
+						totn++;
+						found = 1;
 					}
-				}
-				if (found){
-					totn++;
-					break;
 				}
 			} 
 		}
