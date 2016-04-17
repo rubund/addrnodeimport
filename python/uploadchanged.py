@@ -76,7 +76,7 @@ db.close()
 api = OsmApi(api="api.openstreetmap.org", username=mypasswords.osmuser, password=mypasswords.osm)
 #api = OsmApi(api="api06.dev.openstreetmap.org", username=mypasswords.osmuser, password=mypasswords.osm)
 #api.NodeGet(123)
-mycomment=u"addr node import "+kommunenummer.nrtonavn[int(munipnumber)]+" kommune"
+mycomment=u"addr node import "+kommunenummer.nrtonavn[int(munipnumber)]+" kommune (changed addresses)"
 #mycomment=u"addr node import municipality number "+munipnumberpadded+", Norway"
 #api.ChangesetCreate({"comment":u"addr node import "+str(sys.argv[2].decode('utf-8')), "source":"Kartverket", "source:date":"2014-08-24"})
 api.ChangesetCreate({"comment": mycomment, "source":"Kartverket", "source:date":"2016-03-22"})
