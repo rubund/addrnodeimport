@@ -258,6 +258,10 @@ void iterate_and_get_elements(xmlNode * a_node1, xmlNode * a_node2, xmlDoc * doc
 						}
 						xmlNode *root_element_new = xmlDocGetRootElement(doc_output);
 						xmlAddChild(root_element_new,new_node);
+						// To prevent the same node from being used several times: -->
+						xmlSetProp(cur_node2,"lat","0");
+						xmlSetProp(cur_node2,"lon","0");
+						// <--
 						totn++;
 						found = 1;
 					}
