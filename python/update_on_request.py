@@ -16,7 +16,7 @@ def update_request_checker():
 			ecursor = db.cursor()
 			cursor.execute("set names utf8")
 			ecursor.execute("set names utf8")
-			cursor.execute("select distinct kommunenummer from update_requests where ferdig = 0 and (tid < now() or kommunenummer = 0);")
+			cursor.execute("select distinct kommunenummer from update_requests where upload = 0 and ferdig = 0 and (tid < now() or kommunenummer = 0);")
 			rows = cursor.fetchall()
 			for row in rows:
 				hasdone = True
@@ -25,14 +25,14 @@ def update_request_checker():
 					command = "/usr/lib/addrnodeimport/sh/update_all.sh"
 					print command
 					os.system(command)
-					uquery = "update update_requests set ferdig=1 where kommunenummer=\""+str(row[0])+"\";"
+					uquery = "update update_requests set ferdig=1 where kommunenummer=\""+str(row[0])+"\" and upload = 0;"
 					print uquery
 					ret = ecursor.execute(uquery)
 				else:
 					command = "/usr/bin/addrnodeimport /var/cache/addrnodeimport/Vegdata_Norge_Adresser_UTM33_SOSI.zip "+str(row[0])+" /var/cache/addrnodeimport 0"
 					print command
 					os.system(command)
-					uquery = "update update_requests set ferdig=1 where kommunenummer=\""+str(row[0])+"\";"
+					uquery = "update update_requests set ferdig=1 where kommunenummer=\""+str(row[0])+"\" and upload = 0;"
 					print uquery
 					ret = ecursor.execute(uquery)
 					uquery = "update municipalities set updated=now() where muni_id=\""+str(row[0])+"\";"

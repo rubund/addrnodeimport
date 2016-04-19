@@ -70,7 +70,7 @@ if(len(rows) > 0):
 else:
 	print ("Nobody is responsible for this one")
 
-cursor.execute("select tid from update_requests where kommunenummer=\"%s\" and ferdig=0 order by tid desc limit 1" % (munipnumber,))
+cursor.execute("select tid from update_requests where kommunenummer=\"%s\" and ferdig=0 and upload=0 order by tid desc limit 1" % (munipnumber,))
 rows = cursor.fetchall()
 if(len(rows) > 0):
 	print("Waiting for getting updated")
