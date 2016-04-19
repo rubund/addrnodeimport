@@ -18,7 +18,7 @@ def update_request_checker():
 			cursor.execute("set names utf8")
 			ecursor.execute("set names utf8")
 			e2cursor.execute("set names utf8")
-			cursor.execute("select distinct kommunenummer from update_requests where upload = 1 and ferdig = 0 and (tid < now());")
+			cursor.execute("select distinct kommunenummer,id from update_requests where upload = 1 and ferdig = 0 and (tid < now());")
 			rows = cursor.fetchall()
 			for row in rows:
 				e2cursor.execute("select kommunenummer from update_requests where kommunenummer = '"+str(row[0])+"' and upload = 0 and ferdig = 0;")
@@ -28,7 +28,7 @@ def update_request_checker():
 					command = "cd /usr/lib/addrnodeimport/python/ ; ./donextstep.py "+str(row[0])+""
 					print command
 					os.system(command)
-					uquery = "update update_requests set ferdig=1 where kommunenummer=\""+str(row[0])+"\" and upload = 1;"
+					uquery = "update update_requests set ferdig=1 where kommunenummer=\""+str(row[0])+"\" and upload = 1 and id='"+str(row[1])+"';"
 					print uquery
 					ret = ecursor.execute(uquery)
 					db.commit()
