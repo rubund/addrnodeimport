@@ -16,6 +16,6 @@ Depends: ${shlibs:Depends}, ${misc:Depends}, php5-gd, php5-mysql, apache2,
          gir1.2-gexiv2-0.10, python-mysql.connector,
          mysql-server, mysql-client, php5-common, libapache2-mod-php5,
          perl, sosi2osm, osmosis, python-mysqldb, screen, python-osmapi,
-         python, python3
+         python, python3, python3-pyproj
 Description: Server software for addrnodeimport for OSM
  This is a "web site" for aiding the import of addresses in Norway to OSM.
