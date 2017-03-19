@@ -128,6 +128,7 @@ for l in lines:
             xmlline = xmlline + "\n" + "<tag k=\"addr:postcode\" v=\"%s\" />" % (current['POSTNUMMER'])
             poststed = current['POSTSTED'].title()
             poststed = poststed.replace(" I "," i ")
+            poststed = poststed.replace(" På "," på ")
             xmlline = xmlline + "\n" + "<tag k=\"addr:city\" v=\"%s\" />" % (poststed)
             xmlline = xmlline + "\n" + "<tag k=\"addr:street\" v=\"%s\" />" % (current['ADRESSE'])
             if 'BOKSTAV' in current:
