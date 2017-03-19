@@ -126,7 +126,7 @@ for l in lines:
         if 'NUMMER' in current and 'ADRESSE' in current:
             xmlline = "<node id=\"-%d\" lat=\"%f\" lon=\"%f\" version=\"1\" visible=\"true\">" % (cnt, current['lat'], current['lon'])
             xmlline = xmlline + "\n" + "<tag k=\"addr:postcode\" v=\"%s\" />" % (current['POSTNUMMER'])
-            poststed = current['POSTSTED'].title()
+            poststed = current['POSTSTED'].strip().title()
             poststed = poststed.replace(" I "," i ")
             poststed = poststed.replace(" På "," på ")
             xmlline = xmlline + "\n" + "<tag k=\"addr:city\" v=\"%s\" />" % (poststed)
