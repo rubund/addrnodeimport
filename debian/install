@@ -15,6 +15,7 @@ python/kommunenummer.py /usr/lib/addrnodeimport/python
 python/uploadchanged.py /usr/lib/addrnodeimport/python
 python/deletenotmatchednodes.py /usr/lib/addrnodeimport/python
 python/donextstep.py /usr/lib/addrnodeimport/python
+python/sosiaddr.py /usr/lib/addrnodeimport/python
 data/municipality_borders.tar.gz /usr/share/addrnodeimport
 python/kartverketadresser.lua /usr/share/addrnodeimport
 perl/osm2poly.pl /usr/lib/addrnodeimport/perl
