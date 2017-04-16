@@ -1,0 +1,2595 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="Osmosis 0.43.1">
+  <bounds minlon="17.61349" minlat="69.15256" maxlon="18.50904" maxlat="69.57098" origin="0.43.1"/>
+  <node id="1931291741" version="1" timestamp="2017-04-16T01:08:25Z" uid="615818" user="Kim Simonsen" changeset="13239319" lat="69.2304856" lon="17.9817491"/>
+  <node id="1931291743" version="1" timestamp="2017-04-16T01:08:25Z" uid="615818" user="Kim Simonsen" changeset="13239319" lat="69.230536" lon="17.9825699"/>
+  <node id="1931291745" version="1" timestamp="2017-04-16T01:08:25Z" uid="615818" user="Kim Simonsen" changeset="13239319" lat="69.2304894" lon="17.9824331"/>
+  <node id="1931291747" version="1" timestamp="2017-04-16T01:08:25Z" uid="615818" user="Kim Simonsen" changeset="13239319" lat="69.2305665" lon="17.9827657"/>
+  <node id="1931291750" version="1" timestamp="2017-04-16T01:08:25Z" uid="615818" user="Kim Simonsen" changeset="13239319" lat="69.2304038" lon="17.9818698"/>
+  <node id="1931291751" version="1" timestamp="2017-04-16T01:08:25Z" uid="615818" user="Kim Simonsen" changeset="13239319" lat="69.2305161" lon="17.9826209"/>
+  <node id="1931291753" version="1" timestamp="2017-04-16T01:08:25Z" uid="615818" user="Kim Simonsen" changeset="13239319" lat="69.2309365" lon="17.9823473"/>
+  <node id="1931291756" version="1" timestamp="2017-04-16T01:08:25Z" uid="615818" user="Kim Simonsen" changeset="13239319" lat="69.2306625" lon="17.9815158"/>
+  <node id="1931291759" version="1" timestamp="2017-04-16T01:08:25Z" uid="615818" user="Kim Simonsen" changeset="13239319" lat="69.2305928" lon="17.9816624"/>
+  <node id="1931291761" version="1" timestamp="2017-04-16T01:08:25Z" uid="615818" user="Kim Simonsen" changeset="13239319" lat="69.2305712" lon="17.9815721"/>
+  <node id="1931291763" version="1" timestamp="2017-04-16T01:08:25Z" uid="615818" user="Kim Simonsen" changeset="13239319" lat="69.2305846" lon="17.9827201"/>
+  <node id="1931291766" version="1" timestamp="2017-04-16T01:08:25Z" uid="615818" user="Kim Simonsen" changeset="13239319" lat="69.2306958" lon="17.9830661"/>
+  <node id="2057274203" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.351258" lon="18.078668"/>
+  <node id="2057274204" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3512861" lon="18.0788457"/>
+  <node id="2057274205" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3513134" lon="18.0785974"/>
+  <node id="2057274206" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3513415" lon="18.0787751"/>
+  <node id="2057274211" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3518233" lon="18.0804002"/>
+  <node id="2057274212" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3518296" lon="18.080217"/>
+  <node id="2057274213" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3518427" lon="18.0819924"/>
+  <node id="2057274214" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3518808" lon="18.0827145"/>
+  <node id="2057274215" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3518978" lon="18.083037"/>
+  <node id="2057274216" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3519286" lon="18.0804292"/>
+  <node id="2057274217" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3519349" lon="18.080246"/>
+  <node id="2057274218" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3519563" lon="18.0826825"/>
+  <node id="2057274219" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3519744" lon="18.0830046"/>
+  <node id="2057274220" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3519841" lon="18.0826707"/>
+  <node id="2057274221" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3520022" lon="18.0830129"/>
+  <node id="2057274222" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3520899" lon="18.0805654"/>
+  <node id="2057274223" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3520907" lon="18.080773"/>
+  <node id="2057274224" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3521661" lon="18.0825935"/>
+  <node id="2057274225" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3521814" lon="18.082587"/>
+  <node id="2057274226" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3521841" lon="18.0829357"/>
+  <node id="2057274227" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3521982" lon="18.082905"/>
+  <node id="2057274228" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3522143" lon="18.0818348"/>
+  <node id="2057274229" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3522201" lon="18.0805613"/>
+  <node id="2057274230" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3522209" lon="18.0807689"/>
+  <node id="2057274231" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3522524" lon="18.0825569"/>
+  <node id="2057274232" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3522691" lon="18.0828749"/>
+  <node id="2057274237" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3531655" lon="18.0780223"/>
+  <node id="2057274238" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3532152" lon="18.0778144"/>
+  <node id="2057274239" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.353224" lon="18.0778365"/>
+  <node id="2057274240" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3532744" lon="18.0782977"/>
+  <node id="2057274241" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3533205" lon="18.07748"/>
+  <node id="2057274242" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3533328" lon="18.078112"/>
+  <node id="2057274243" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3533581" lon="18.078176"/>
+  <node id="2057274245" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3534633" lon="18.0778415"/>
+  <node id="2057274250" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3535323" lon="18.0803626"/>
+  <node id="2057274256" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3535769" lon="18.0802132"/>
+  <node id="2057274259" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3535912" lon="18.0806374"/>
+  <node id="2057274261" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3536112" lon="18.0792838"/>
+  <node id="2057274262" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3536143" lon="18.08056"/>
+  <node id="2057274263" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3536148" lon="18.0793725"/>
+  <node id="2057274265" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3536287" lon="18.0793272"/>
+  <node id="2057274269" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3536717" lon="18.0790875"/>
+  <node id="2057274270" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3536819" lon="18.0808555"/>
+  <node id="2057274272" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3536891" lon="18.0791307"/>
+  <node id="2057274273" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3536907" lon="18.07956"/>
+  <node id="2057274274" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3536933" lon="18.0791171"/>
+  <node id="2057274276" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.353705" lon="18.0807781"/>
+  <node id="2057274277" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3537106" lon="18.0777916"/>
+  <node id="2057274278" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3537312" lon="18.0808409"/>
+  <node id="2057274280" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.353743" lon="18.0789683"/>
+  <node id="2057274281" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.353748" lon="18.0774426"/>
+  <node id="2057274283" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3537534" lon="18.0778914"/>
+  <node id="2057274284" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3537692" lon="18.0793046"/>
+  <node id="2057274285" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3537758" lon="18.0806916"/>
+  <node id="2057274292" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3537891" lon="18.0785365"/>
+  <node id="2057274294" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3537941" lon="18.077374"/>
+  <node id="2057274296" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3538179" lon="18.0790327"/>
+  <node id="2057274300" version="2" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="16840763" lat="69.3539416" lon="18.0776554"/>
+  <node id="2057274306" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.353864" lon="18.0786009"/>
+  <node id="2057274310" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3539416" lon="18.0793537"/>
+  <node id="2057274312" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3540333" lon="18.0790251"/>
+  <node id="2057274314" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3541083" lon="18.0797273"/>
+  <node id="2057274318" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14209318" lat="69.3541999" lon="18.0793987"/>
+  <node id="2071057679" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3540255" lon="18.0710764"/>
+  <node id="2071057681" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3540413" lon="18.0712534"/>
+  <node id="2071057682" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3540622" lon="18.0708645"/>
+  <node id="2071057683" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3540629" lon="18.0711285"/>
+  <node id="2071057684" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3540996" lon="18.0709165"/>
+  <node id="2071057685" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3541131" lon="18.0713533"/>
+  <node id="2071057686" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.354114" lon="18.0708335"/>
+  <node id="2071057687" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3541858" lon="18.0709335"/>
+  <node id="2071057692" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3550503" lon="18.0656427"/>
+  <node id="2071057693" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3551084" lon="18.0655559"/>
+  <node id="2071057694" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3551175" lon="18.0660053"/>
+  <node id="2071057695" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3551329" lon="18.0656882"/>
+  <node id="2071057696" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3551756" lon="18.0659186"/>
+  <node id="2071057697" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3552491" lon="18.0655147"/>
+  <node id="2071057698" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3552552" lon="18.0743486"/>
+  <node id="2071057699" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3552881" lon="18.0746821"/>
+  <node id="2071057700" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3552919" lon="18.0657451"/>
+  <node id="2071057701" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3553248" lon="18.0746529"/>
+  <node id="2071057702" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3553365" lon="18.0748441"/>
+  <node id="2071057703" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3553536" lon="18.0742703"/>
+  <node id="2071057704" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.355366" lon="18.0747454"/>
+  <node id="2071057705" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3553803" lon="18.0746088"/>
+  <node id="2071057706" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3553866" lon="18.0746038"/>
+  <node id="2071057707" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3553962" lon="18.0746445"/>
+  <node id="2071057708" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3554047" lon="18.0746161"/>
+  <node id="2071057709" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3555064" lon="18.0747691"/>
+  <node id="2071057710" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3555081" lon="18.0740163"/>
+  <node id="2071057711" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3555197" lon="18.0748928"/>
+  <node id="2071057712" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3555255" lon="18.0752992"/>
+  <node id="2071057713" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3555343" lon="18.0737496"/>
+  <node id="2071057714" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3555361" lon="18.0747925"/>
+  <node id="2071057715" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3555544" lon="18.0749765"/>
+  <node id="2071057716" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3555751" lon="18.0740693"/>
+  <node id="2071057717" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.355579" lon="18.0748264"/>
+  <node id="2071057718" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3555937" lon="18.0750711"/>
+  <node id="2071057719" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3556504" lon="18.0748828"/>
+  <node id="2071057720" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3556731" lon="18.073969"/>
+  <node id="2071057721" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3556831" lon="18.0738672"/>
+  <node id="2071057722" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14301805" lat="69.3557353" lon="18.0740182"/>
+  <node id="2088234217" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14461825" lat="69.3537431" lon="18.0797376"/>
+  <node id="2088234218" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14461825" lat="69.3538063" lon="18.079878"/>
+  <node id="2088234219" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14461825" lat="69.3538245" lon="18.0794425"/>
+  <node id="2088234220" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14461825" lat="69.3538521" lon="18.0797121"/>
+  <node id="2088234221" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14461825" lat="69.3538877" lon="18.0795828"/>
+  <node id="2088234222" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14461825" lat="69.3539117" lon="18.0801117"/>
+  <node id="2088234223" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="14461825" lat="69.3539574" lon="18.0799459"/>
+  <node id="2207223582" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.353849" lon="18.0746447"/>
+  <node id="2207223584" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3538784" lon="18.0744495"/>
+  <node id="2207223587" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3539404" lon="18.0747551"/>
+  <node id="2207223591" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3539697" lon="18.0745598"/>
+  <node id="2207223604" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3540895" lon="18.0740163"/>
+  <node id="2207223619" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.354097" lon="18.0722693"/>
+  <node id="2207223624" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3541151" lon="18.0738434"/>
+  <node id="2207223630" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.354135" lon="18.0720352"/>
+  <node id="2207223634" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3541376" lon="18.0738703"/>
+  <node id="2207223636" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3541456" lon="18.0738164"/>
+  <node id="2207223644" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3541574" lon="18.0740974"/>
+  <node id="2207223646" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.354162" lon="18.0723543"/>
+  <node id="2207223652" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3541911" lon="18.0738706"/>
+  <node id="2207223654" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3541979" lon="18.0702252"/>
+  <node id="2207223656" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3542001" lon="18.0721201"/>
+  <node id="2207223658" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3542171" lon="18.0755027"/>
+  <node id="2207223660" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3542356" lon="18.0756926"/>
+  <node id="2207223661" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3542384" lon="18.0714711"/>
+  <node id="2207223663" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.354252" lon="18.0698798"/>
+  <node id="2207223664" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3542565" lon="18.0753151"/>
+  <node id="2207223667" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3542706" lon="18.0754607"/>
+  <node id="2207223669" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3542716" lon="18.0712667"/>
+  <node id="2207223670" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3542814" lon="18.0703304"/>
+  <node id="2207223680" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3542899" lon="18.0750122"/>
+  <node id="2207223682" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3542972" lon="18.071109"/>
+  <node id="2207223684" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3543034" lon="18.071556"/>
+  <node id="2207223686" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3543138" lon="18.0715697"/>
+  <node id="2207223687" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3543149" lon="18.0752693"/>
+  <node id="2207223689" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3543355" lon="18.069985"/>
+  <node id="2207223691" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3543366" lon="18.0713517"/>
+  <node id="2207223693" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.354347" lon="18.0713653"/>
+  <node id="2207223694" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3543479" lon="18.0724546"/>
+  <node id="2207223696" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3543593" lon="18.0749578"/>
+  <node id="2207223698" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3543622" lon="18.071194"/>
+  <node id="2207223700" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3543675" lon="18.0691125"/>
+  <node id="2207223701" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3543746" lon="18.0722394"/>
+  <node id="2207223703" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3543774" lon="18.074325"/>
+  <node id="2207223705" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3543844" lon="18.0752148"/>
+  <node id="2207223707" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3543986" lon="18.0753604"/>
+  <node id="2207223708" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544081" lon="18.074123"/>
+  <node id="2207223712" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544171" lon="18.0755504"/>
+  <node id="2207223713" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544221" lon="18.0700296"/>
+  <node id="2207223715" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544226" lon="18.0702053"/>
+  <node id="2207223717" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544259" lon="18.0722907"/>
+  <node id="2207223719" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.354431" lon="18.0687253"/>
+  <node id="2207223720" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544328" lon="18.0722353"/>
+  <node id="2207223722" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544343" lon="18.0741551"/>
+  <node id="2207223725" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544361" lon="18.0692029"/>
+  <node id="2207223727" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.354437" lon="18.0739861"/>
+  <node id="2207223728" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544454" lon="18.0700588"/>
+  <node id="2207223729" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544516" lon="18.0698399"/>
+  <node id="2207223730" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544564" lon="18.0740098"/>
+  <node id="2207223731" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544566" lon="18.0690776"/>
+  <node id="2207223736" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544597" lon="18.0738365"/>
+  <node id="2207223738" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544642" lon="18.0744312"/>
+  <node id="2207223739" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.354475" lon="18.069869"/>
+  <node id="2207223743" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544778" lon="18.069851"/>
+  <node id="2207223745" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544784" lon="18.0723431"/>
+  <node id="2207223747" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544853" lon="18.0722878"/>
+  <node id="2207223748" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544859" lon="18.0742886"/>
+  <node id="2207223750" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544886" lon="18.0725953"/>
+  <node id="2207223753" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544922" lon="18.0688605"/>
+  <node id="2207223755" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544941" lon="18.0691271"/>
+  <node id="2207223759" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544979" lon="18.0716063"/>
+  <node id="2207223761" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3544996" lon="18.0688158"/>
+  <node id="2207223762" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545006" lon="18.0703028"/>
+  <node id="2207223764" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545057" lon="18.0743128"/>
+  <node id="2207223768" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545084" lon="18.0718064"/>
+  <node id="2207223770" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.354513" lon="18.0740491"/>
+  <node id="2207223771" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545154" lon="18.0723801"/>
+  <node id="2207223773" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545192" lon="18.0714407"/>
+  <node id="2207223775" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545274" lon="18.0701305"/>
+  <node id="2207223777" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545297" lon="18.06891"/>
+  <node id="2207223779" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545299" lon="18.0716394"/>
+  <node id="2207223780" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545319" lon="18.0739247"/>
+  <node id="2207223782" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545406" lon="18.0740828"/>
+  <node id="2207223784" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545512" lon="18.0714738"/>
+  <node id="2207223786" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.354552" lon="18.0752573"/>
+  <node id="2207223787" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545547" lon="18.0714461"/>
+  <node id="2207223789" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545557" lon="18.0699485"/>
+  <node id="2207223791" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545557" lon="18.075048"/>
+  <node id="2207223794" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545625" lon="18.0701745"/>
+  <node id="2207223796" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545653" lon="18.0736335"/>
+  <node id="2207223797" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.354566" lon="18.0685154"/>
+  <node id="2207223799" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545744" lon="18.0692524"/>
+  <node id="2207223801" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545789" lon="18.0718794"/>
+  <node id="2207223804" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545904" lon="18.0711458"/>
+  <node id="2207223806" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545908" lon="18.0699924"/>
+  <node id="2207223808" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545937" lon="18.0734467"/>
+  <node id="2207223810" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3545968" lon="18.0683161"/>
+  <node id="2207223812" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3546132" lon="18.0695219"/>
+  <node id="2207223813" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3546162" lon="18.0736957"/>
+  <node id="2207223815" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3546252" lon="18.0715191"/>
+  <node id="2207223817" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3546256" lon="18.0752678"/>
+  <node id="2207223819" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3546293" lon="18.0750586"/>
+  <node id="2207223821" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3546446" lon="18.0735089"/>
+  <node id="2207223822" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.354647" lon="18.0707968"/>
+  <node id="2207223824" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3546497" lon="18.0683819"/>
+  <node id="2207223826" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3546628" lon="18.0712404"/>
+  <node id="2207223828" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3546689" lon="18.0682578"/>
+  <node id="2207223831" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3546839" lon="18.0691254"/>
+  <node id="2207223835" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3546964" lon="18.0725906"/>
+  <node id="2207223837" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3547117" lon="18.0722518"/>
+  <node id="2207223838" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.354715" lon="18.0684632"/>
+  <node id="2207223840" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3547192" lon="18.068706"/>
+  <node id="2207223842" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3547195" lon="18.0708915"/>
+  <node id="2207223844" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3547213" lon="18.0676623"/>
+  <node id="2207223847" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3547227" lon="18.0693949"/>
+  <node id="2207223858" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3547342" lon="18.0683391"/>
+  <node id="2207223860" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3547366" lon="18.0680122"/>
+  <node id="2207223861" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.35475" lon="18.0685067"/>
+  <node id="2207223862" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3547633" lon="18.0669312"/>
+  <node id="2207223863" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3547853" lon="18.0757633"/>
+  <node id="2207223864" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3547859" lon="18.067363"/>
+  <node id="2207223865" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3547894" lon="18.0676384"/>
+  <node id="2207223869" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3547937" lon="18.0759258"/>
+  <node id="2207223872" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3548041" lon="18.0726296"/>
+  <node id="2207223874" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3548046" lon="18.0679883"/>
+  <node id="2207223881" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3548161" lon="18.072363"/>
+  <node id="2207223883" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3548194" lon="18.0722908"/>
+  <node id="2207223887" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3548268" lon="18.0762871"/>
+  <node id="2207223888" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3548366" lon="18.0726414"/>
+  <node id="2207223890" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3548395" lon="18.072576"/>
+  <node id="2207223892" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3548397" lon="18.0668991"/>
+  <node id="2207223894" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3548447" lon="18.0761676"/>
+  <node id="2207223896" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3548449" lon="18.075714"/>
+  <node id="2207223897" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3548461" lon="18.0757381"/>
+  <node id="2207223903" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3548545" lon="18.0759006"/>
+  <node id="2207223905" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3548559" lon="18.0759278"/>
+  <node id="2207223906" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3548622" lon="18.0673309"/>
+  <node id="2207223908" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3548644" lon="18.0768767"/>
+  <node id="2207223925" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3548901" lon="18.0767047"/>
+  <node id="2207223926" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3548977" lon="18.0748985"/>
+  <node id="2207223927" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3549009" lon="18.0763762"/>
+  <node id="2207223928" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3549027" lon="18.07569"/>
+  <node id="2207223929" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.354906" lon="18.0738683"/>
+  <node id="2207223931" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.35491" lon="18.0763154"/>
+  <node id="2207223932" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3549129" lon="18.0762497"/>
+  <node id="2207223933" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3549138" lon="18.0759038"/>
+  <node id="2207223935" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3549216" lon="18.0761915"/>
+  <node id="2207223937" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3549292" lon="18.0726085"/>
+  <node id="2207223939" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3549295" lon="18.0746623"/>
+  <node id="2207223941" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.354931" lon="18.0736834"/>
+  <node id="2207223944" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3549354" lon="18.0739755"/>
+  <node id="2207223946" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3549382" lon="18.0724072"/>
+  <node id="2207223949" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3549443" lon="18.0739099"/>
+  <node id="2207223951" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3549635" lon="18.076996"/>
+  <node id="2207223953" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3549649" lon="18.0763815"/>
+  <node id="2207223957" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3549824" lon="18.0762647"/>
+  <node id="2207223958" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3549852" lon="18.0734743"/>
+  <node id="2207223960" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3549892" lon="18.076824"/>
+  <node id="2207223962" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3549951" lon="18.0738191"/>
+  <node id="2207223964" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3549959" lon="18.0750051"/>
+  <node id="2207223976" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3550029" lon="18.0737615"/>
+  <node id="2207223985" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3550116" lon="18.073278"/>
+  <node id="2207223989" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3550179" lon="18.0708398"/>
+  <node id="2207223992" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3550199" lon="18.0740671"/>
+  <node id="2207223995" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3550278" lon="18.0747689"/>
+  <node id="2207224003" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3550459" lon="18.0738742"/>
+  <node id="2207224005" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3550582" lon="18.0735535"/>
+  <node id="2207224008" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3550633" lon="18.0711809"/>
+  <node id="2207224011" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3550744" lon="18.0666735"/>
+  <node id="2207224015" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3550847" lon="18.0733573"/>
+  <node id="2207224017" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3550849" lon="18.0707682"/>
+  <node id="2207224025" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3551115" lon="18.0715518"/>
+  <node id="2207224027" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3551202" lon="18.0667841"/>
+  <node id="2207224044" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3551302" lon="18.0711093"/>
+  <node id="2207224046" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.355153" lon="18.0718523"/>
+  <node id="2207224050" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3551666" lon="18.0663666"/>
+  <node id="2207224051" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3551813" lon="18.0714741"/>
+  <node id="2207224056" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3552124" lon="18.0664771"/>
+  <node id="2207224060" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3552228" lon="18.0717746"/>
+  <node id="2207224063" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3552609" lon="18.0762014"/>
+  <node id="2207224067" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3552986" lon="18.0758632"/>
+  <node id="2207224071" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3553168" lon="18.0762514"/>
+  <node id="2207224073" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3553326" lon="18.0761088"/>
+  <node id="2207224075" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3553544" lon="18.0759131"/>
+  <node id="2207224078" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3554154" lon="18.0761828"/>
+  <node id="2207224080" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3554371" lon="18.0759871"/>
+  <node id="2207224082" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3554653" lon="18.0729089"/>
+  <node id="2207224086" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3554797" lon="18.0726852"/>
+  <node id="2207224089" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3555242" lon="18.0764308"/>
+  <node id="2207224099" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3555651" lon="18.0762039"/>
+  <node id="2207224101" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.355594" lon="18.0762459"/>
+  <node id="2207224103" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3556107" lon="18.0761538"/>
+  <node id="2207224105" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3556151" lon="18.0729861"/>
+  <node id="2207224107" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3556196" lon="18.0765693"/>
+  <node id="2207224109" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3556294" lon="18.0727624"/>
+  <node id="2207224111" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3556537" lon="18.0763804"/>
+  <node id="2207224113" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3556555" lon="18.0762189"/>
+  <node id="2207224114" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3556609" lon="18.0761889"/>
+  <node id="2207224116" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3556915" lon="18.0764353"/>
+  <node id="2207224118" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3557162" lon="18.0767436"/>
+  <node id="2207224120" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3557204" lon="18.0762751"/>
+  <node id="2207224122" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3557334" lon="18.074844"/>
+  <node id="2207224124" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3557363" lon="18.076789"/>
+  <node id="2207224129" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3557575" lon="18.076597"/>
+  <node id="2207224133" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3557749" lon="18.0731885"/>
+  <node id="2207224135" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3557749" lon="18.0768764"/>
+  <node id="2207224136" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3557775" lon="18.0766424"/>
+  <node id="2207224139" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3557821" lon="18.0749522"/>
+  <node id="2207224140" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3557866" lon="18.0746509"/>
+  <node id="2207224141" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3557903" lon="18.0765969"/>
+  <node id="2207224142" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3558098" lon="18.0729426"/>
+  <node id="2207224143" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3558162" lon="18.0767298"/>
+  <node id="2207224145" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3558289" lon="18.0766843"/>
+  <node id="2207224147" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3558353" lon="18.0747591"/>
+  <node id="2207224165" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3558958" lon="18.0771241"/>
+  <node id="2207224167" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3559051" lon="18.0733371"/>
+  <node id="2207224181" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3559391" lon="18.07697"/>
+  <node id="2207224182" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.35594" lon="18.0730913"/>
+  <node id="2207224184" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3559487" lon="18.0752934"/>
+  <node id="2207224186" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3559552" lon="18.0772584"/>
+  <node id="2207224198" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3559942" lon="18.0751272"/>
+  <node id="2207224200" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3559985" lon="18.0771043"/>
+  <node id="2207224204" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3560205" lon="18.0754514"/>
+  <node id="2207224205" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3560225" lon="18.0751896"/>
+  <node id="2207224208" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3560493" lon="18.0750918"/>
+  <node id="2207224209" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3560631" lon="18.0752789"/>
+  <node id="2207224210" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.356066" lon="18.0752852"/>
+  <node id="2207224211" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3560678" lon="18.0756136"/>
+  <node id="2207224212" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3560898" lon="18.075181"/>
+  <node id="2207224216" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3561174" lon="18.0754311"/>
+  <node id="2207224217" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3561296" lon="18.0757484"/>
+  <node id="2207224220" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3561459" lon="18.0775086"/>
+  <node id="2207224221" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.356152" lon="18.0760724"/>
+  <node id="2207224225" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3561741" lon="18.075885"/>
+  <node id="2207224227" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3561791" lon="18.0755659"/>
+  <node id="2207224228" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3561858" lon="18.0773549"/>
+  <node id="2207224229" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3561908" lon="18.0776025"/>
+  <node id="2207224230" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3561922" lon="18.0759244"/>
+  <node id="2207224234" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3562307" lon="18.0774488"/>
+  <node id="2207224235" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3562411" lon="18.0774089"/>
+  <node id="2207224236" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.35625" lon="18.0762866"/>
+  <node id="2207224237" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.35625" lon="18.0777266"/>
+  <node id="2207224238" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.356251" lon="18.0756017"/>
+  <node id="2207224239" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3562551" lon="18.074656"/>
+  <node id="2207224240" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3562894" lon="18.075739"/>
+  <node id="2207224241" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.35629" lon="18.0775729"/>
+  <node id="2207224242" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3562986" lon="18.0757055"/>
+  <node id="2207224243" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3563004" lon="18.077533"/>
+  <node id="2207224244" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3563033" lon="18.0744697"/>
+  <node id="2207224245" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3563346" lon="18.0748214"/>
+  <node id="2207224249" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.356358" lon="18.0758888"/>
+  <node id="2207224250" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3563828" lon="18.0746352"/>
+  <node id="2207224257" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3564335" lon="18.073716"/>
+  <node id="2207224258" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.356438" lon="18.0782954"/>
+  <node id="2207224262" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3564844" lon="18.0781169"/>
+  <node id="2207224263" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3564909" lon="18.0757238"/>
+  <node id="2207224264" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3564932" lon="18.0734868"/>
+  <node id="2207224265" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3565382" lon="18.0782295"/>
+  <node id="2207224267" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3565408" lon="18.0755402"/>
+  <node id="2207224269" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3565566" lon="18.0758671"/>
+  <node id="2207224270" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3565593" lon="18.0785493"/>
+  <node id="2207224271" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3565727" lon="18.0766008"/>
+  <node id="2207224272" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3565752" lon="18.0749537"/>
+  <node id="2207224273" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3565796" lon="18.0780701"/>
+  <node id="2207224274" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3565823" lon="18.0740277"/>
+  <node id="2207224278" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3566057" lon="18.0783709"/>
+  <node id="2207224279" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3566064" lon="18.0756836"/>
+  <node id="2207224282" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.356616" lon="18.0764225"/>
+  <node id="2207224283" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3566254" lon="18.0747855"/>
+  <node id="2207224286" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.356642" lon="18.0737985"/>
+  <node id="2207224287" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3566472" lon="18.0782115"/>
+  <node id="2207224290" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3566625" lon="18.0767759"/>
+  <node id="2207224291" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3566682" lon="18.0751767"/>
+  <node id="2207224293" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3566876" lon="18.076106"/>
+  <node id="2207224294" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3566893" lon="18.0740709"/>
+  <node id="2207224296" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3567057" lon="18.0765977"/>
+  <node id="2207224297" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3567184" lon="18.0750085"/>
+  <node id="2207224298" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3567264" lon="18.0759459"/>
+  <node id="2207224300" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3567387" lon="18.0738743"/>
+  <node id="2207224305" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3567741" lon="18.0762748"/>
+  <node id="2207224315" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3568127" lon="18.0743203"/>
+  <node id="2207224316" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3568129" lon="18.0761147"/>
+  <node id="2207224319" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.356846" lon="18.0755336"/>
+  <node id="2207224323" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3568621" lon="18.0741236"/>
+  <node id="2207224325" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3568883" lon="18.0753586"/>
+  <node id="2207224327" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3569123" lon="18.0756624"/>
+  <node id="2207224329" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3569441" lon="18.0755308"/>
+  <node id="2207224330" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3569461" lon="18.0754709"/>
+  <node id="2207224335" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.356971" lon="18.075368"/>
+  <node id="2207224336" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3569795" lon="18.0793672"/>
+  <node id="2207224338" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3569949" lon="18.0756297"/>
+  <node id="2207224342" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3570146" lon="18.0792608"/>
+  <node id="2207224344" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3570289" lon="18.0792988"/>
+  <node id="2207224345" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3570303" lon="18.0754832"/>
+  <node id="2207224346" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3570393" lon="18.0792672"/>
+  <node id="2207224347" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3570486" lon="18.074843"/>
+  <node id="2207224348" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3570492" lon="18.0795523"/>
+  <node id="2207224350" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3570548" lon="18.0793675"/>
+  <node id="2207224352" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.357063" lon="18.0782178"/>
+  <node id="2207224353" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3570652" lon="18.0793359"/>
+  <node id="2207224354" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3570843" lon="18.0794459"/>
+  <node id="2207224356" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3570958" lon="18.0746421"/>
+  <node id="2207224358" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3571215" lon="18.0763062"/>
+  <node id="2207224359" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3571228" lon="18.0749835"/>
+  <node id="2207224360" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3571303" lon="18.0779448"/>
+  <node id="2207224364" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3571641" lon="18.0784182"/>
+  <node id="2207224365" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3571701" lon="18.0747825"/>
+  <node id="2207224368" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3571828" lon="18.0764348"/>
+  <node id="2207224369" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3571843" lon="18.0781787"/>
+  <node id="2207224373" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3572053" lon="18.0780935"/>
+  <node id="2207224374" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3572077" lon="18.0759753"/>
+  <node id="2207224375" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3572103" lon="18.0782304"/>
+  <node id="2207224378" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3572495" lon="18.0800825"/>
+  <node id="2207224380" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3572677" lon="18.0807022"/>
+  <node id="2207224381" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3572691" lon="18.0761039"/>
+  <node id="2207224382" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3572823" lon="18.0799869"/>
+  <node id="2207224383" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3572971" lon="18.080214"/>
+  <node id="2207224386" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3573108" lon="18.0805587"/>
+  <node id="2207224387" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3573197" lon="18.0808283"/>
+  <node id="2207224389" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3573299" lon="18.0801184"/>
+  <node id="2207224393" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3573629" lon="18.0806848"/>
+  <node id="2207224402" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3574289" lon="18.0752999"/>
+  <node id="2207224404" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3574441" lon="18.0767322"/>
+  <node id="2207224405" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3574531" lon="18.0802121"/>
+  <node id="2207224406" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3574725" lon="18.0751123"/>
+  <node id="2207224407" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3574839" lon="18.0765394"/>
+  <node id="2207224408" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3575084" lon="18.0800356"/>
+  <node id="2207224409" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3575232" lon="18.0803885"/>
+  <node id="2207224410" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3575365" lon="18.0801065"/>
+  <node id="2207224411" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.357538" lon="18.0803411"/>
+  <node id="2207224412" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3575463" lon="18.0769024"/>
+  <node id="2207224413" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3575497" lon="18.0800643"/>
+  <node id="2207224414" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3575527" lon="18.0803783"/>
+  <node id="2207224415" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3575572" lon="18.0755395"/>
+  <node id="2207224418" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3575818" lon="18.0815868"/>
+  <node id="2207224419" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3575862" lon="18.0767097"/>
+  <node id="2207224421" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.357592" lon="18.0770535"/>
+  <node id="2207224422" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3576008" lon="18.0753519"/>
+  <node id="2207224424" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3576064" lon="18.0802069"/>
+  <node id="2207224428" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.357628" lon="18.0814416"/>
+  <node id="2207224430" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3576359" lon="18.076825"/>
+  <node id="2207224432" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3576405" lon="18.0817371"/>
+  <node id="2207224433" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3576469" lon="18.078398"/>
+  <node id="2207224438" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.357685" lon="18.0771974"/>
+  <node id="2207224439" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3576867" lon="18.0815918"/>
+  <node id="2207224440" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3576906" lon="18.0758584"/>
+  <node id="2207224441" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3576934" lon="18.0781845"/>
+  <node id="2207224444" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3577154" lon="18.082024"/>
+  <node id="2207224447" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3577289" lon="18.0769689"/>
+  <node id="2207224449" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3577356" lon="18.0756641"/>
+  <node id="2207224450" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3577364" lon="18.0785549"/>
+  <node id="2207224451" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3577368" lon="18.0791106"/>
+  <node id="2207224455" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3577551" lon="18.079266"/>
+  <node id="2207224457" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.357759" lon="18.0818667"/>
+  <node id="2207224458" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3577748" lon="18.0791828"/>
+  <node id="2207224459" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3577754" lon="18.0789471"/>
+  <node id="2207224461" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3577822" lon="18.0821729"/>
+  <node id="2207224462" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3577829" lon="18.0783415"/>
+  <node id="2207224464" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3577986" lon="18.0760599"/>
+  <node id="2207224465" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3578067" lon="18.0793641"/>
+  <node id="2207224466" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3578122" lon="18.0807271"/>
+  <node id="2207224467" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3578134" lon="18.0790192"/>
+  <node id="2207224468" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3578258" lon="18.0820156"/>
+  <node id="2207224469" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3578437" lon="18.0758656"/>
+  <node id="2207224470" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3578581" lon="18.0805947"/>
+  <node id="2207224471" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.357865" lon="18.0791173"/>
+  <node id="2207224472" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3578675" lon="18.0808814"/>
+  <node id="2207224474" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3579134" lon="18.080749"/>
+  <node id="2207224475" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3579208" lon="18.0776053"/>
+  <node id="2207224477" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3579269" lon="18.0762962"/>
+  <node id="2207224479" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3579616" lon="18.0821364"/>
+  <node id="2207224480" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3579618" lon="18.0773889"/>
+  <node id="2207224481" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3579736" lon="18.0760974"/>
+  <node id="2207224482" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3579774" lon="18.0810874"/>
+  <node id="2207224485" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.358015" lon="18.0819806"/>
+  <node id="2207224488" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3580232" lon="18.0809439"/>
+  <node id="2207224489" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3580278" lon="18.0764871"/>
+  <node id="2207224490" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3580335" lon="18.0812315"/>
+  <node id="2207224491" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3580442" lon="18.0823638"/>
+  <node id="2207224492" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.358052" lon="18.0778056"/>
+  <node id="2207224495" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3580745" lon="18.0762884"/>
+  <node id="2207224496" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3580793" lon="18.081088"/>
+  <node id="2207224498" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.358093" lon="18.0775892"/>
+  <node id="2207224499" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3580975" lon="18.0822079"/>
+  <node id="2207224500" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3581115" lon="18.0825533"/>
+  <node id="2207224501" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3581339" lon="18.0802346"/>
+  <node id="2207224507" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3581714" lon="18.082393"/>
+  <node id="2207224509" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3581735" lon="18.0800763"/>
+  <node id="2207224512" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3581983" lon="18.0828145"/>
+  <node id="2207224513" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3581999" lon="18.0803674"/>
+  <node id="2207224515" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3582019" lon="18.0766078"/>
+  <node id="2207224518" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3582183" lon="18.0767858"/>
+  <node id="2207224520" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3582383" lon="18.076452"/>
+  <node id="2207224521" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3582395" lon="18.0802091"/>
+  <node id="2207224523" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3582422" lon="18.0766838"/>
+  <node id="2207224526" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3582582" lon="18.0826542"/>
+  <node id="2207224530" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3582787" lon="18.076528"/>
+  <node id="2207224531" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3582806" lon="18.0769033"/>
+  <node id="2207224534" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.358285" lon="18.0765011"/>
+  <node id="2207224539" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3583131" lon="18.0820263"/>
+  <node id="2207224547" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3583473" lon="18.0766186"/>
+  <node id="2207224551" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.358362" lon="18.0830591"/>
+  <node id="2207224554" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.358375" lon="18.0818164"/>
+  <node id="2207224555" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3583786" lon="18.0829467"/>
+  <node id="2207224559" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3583915" lon="18.0829926"/>
+  <node id="2207224560" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3584061" lon="18.0822468"/>
+  <node id="2207224562" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3584133" lon="18.0832417"/>
+  <node id="2207224567" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3584278" lon="18.0828357"/>
+  <node id="2207224569" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3584427" lon="18.0831752"/>
+  <node id="2207224575" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.358468" lon="18.0820368"/>
+  <node id="2207224579" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3584795" lon="18.0808486"/>
+  <node id="2207224583" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3584919" lon="18.0830642"/>
+  <node id="2207224586" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3585111" lon="18.0773014"/>
+  <node id="2207224590" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3585311" lon="18.0800745"/>
+  <node id="2207224596" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3585554" lon="18.0806413"/>
+  <node id="2207224599" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3585612" lon="18.077143"/>
+  <node id="2207224600" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3585678" lon="18.0811085"/>
+  <node id="2207224604" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3585793" lon="18.0799065"/>
+  <node id="2207224606" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3585905" lon="18.0775032"/>
+  <node id="2207224611" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.358638" lon="18.0803207"/>
+  <node id="2207224612" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3586406" lon="18.0773448"/>
+  <node id="2207224614" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3586437" lon="18.0809012"/>
+  <node id="2207224617" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3586832" lon="18.081819"/>
+  <node id="2207224618" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3586861" lon="18.0801527"/>
+  <node id="2207224620" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3587019" lon="18.0778425"/>
+  <node id="2207224622" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3587209" lon="18.0777849"/>
+  <node id="2207224623" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3587277" lon="18.0819856"/>
+  <node id="2207224625" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3587499" lon="18.0779698"/>
+  <node id="2207224626" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3587558" lon="18.0816633"/>
+  <node id="2207224627" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3587563" lon="18.0804872"/>
+  <node id="2207224629" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3587689" lon="18.0779122"/>
+  <node id="2207224630" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3587722" lon="18.0776293"/>
+  <node id="2207224632" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3588002" lon="18.0818299"/>
+  <node id="2207224635" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3588121" lon="18.08033"/>
+  <node id="2207224636" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3588181" lon="18.0780425"/>
+  <node id="2207224637" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3588236" lon="18.0806794"/>
+  <node id="2207224639" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3588693" lon="18.0778869"/>
+  <node id="2207224640" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3588794" lon="18.0805223"/>
+  <node id="2207224644" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3589042" lon="18.0799701"/>
+  <node id="2207224648" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3589525" lon="18.0797735"/>
+  <node id="2207224649" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.358959" lon="18.0823207"/>
+  <node id="2207224653" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3590002" lon="18.078467"/>
+  <node id="2207224654" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3590015" lon="18.0801623"/>
+  <node id="2207224655" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3590062" lon="18.0822377"/>
+  <node id="2207224656" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3590181" lon="18.0825909"/>
+  <node id="2207224658" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3590428" lon="18.0813241"/>
+  <node id="2207224659" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3590461" lon="18.0811601"/>
+  <node id="2207224660" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3590498" lon="18.0799657"/>
+  <node id="2207224661" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3590499" lon="18.0783327"/>
+  <node id="2207224662" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3590652" lon="18.082508"/>
+  <node id="2207224663" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3590696" lon="18.081283"/>
+  <node id="2207224664" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3590788" lon="18.0815129"/>
+  <node id="2207224665" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3590878" lon="18.0787283"/>
+  <node id="2207224668" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3591056" lon="18.0814718"/>
+  <node id="2207224669" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3591076" lon="18.0830737"/>
+  <node id="2207224671" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3591131" lon="18.0815109"/>
+  <node id="2207224672" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3591162" lon="18.0810525"/>
+  <node id="2207224675" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3591376" lon="18.0785939"/>
+  <node id="2207224677" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3591451" lon="18.0832431"/>
+  <node id="2207224683" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3591673" lon="18.0829675"/>
+  <node id="2207224686" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3591832" lon="18.0814033"/>
+  <node id="2207224691" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3592047" lon="18.0831369"/>
+  <node id="2207224696" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3592193" lon="18.0792147"/>
+  <node id="2207224698" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3592334" lon="18.0836502"/>
+  <node id="2207224703" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3592683" lon="18.0838088"/>
+  <node id="2207224704" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3592715" lon="18.0791048"/>
+  <node id="2207224709" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3592904" lon="18.0794867"/>
+  <node id="2207224710" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3592964" lon="18.0835385"/>
+  <node id="2207224714" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3593313" lon="18.083697"/>
+  <node id="2207224716" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3593426" lon="18.0793768"/>
+  <node id="2207224719" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3593799" lon="18.0798525"/>
+  <node id="2207224721" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3594234" lon="18.0800213"/>
+  <node id="2207224722" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3594333" lon="18.0797418"/>
+  <node id="2207224724" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3594625" lon="18.0801731"/>
+  <node id="2207224725" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3594625" lon="18.0832052"/>
+  <node id="2207224726" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3594768" lon="18.0799106"/>
+  <node id="2207224727" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.359478" lon="18.0846088"/>
+  <node id="2207224728" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3594866" lon="18.0798903"/>
+  <node id="2207224729" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3595114" lon="18.0847773"/>
+  <node id="2207224730" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.359512" lon="18.0805262"/>
+  <node id="2207224732" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3595159" lon="18.0800625"/>
+  <node id="2207224735" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3595196" lon="18.083479"/>
+  <node id="2207224737" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3595257" lon="18.0800421"/>
+  <node id="2207224739" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3595261" lon="18.0830983"/>
+  <node id="2207224741" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3595319" lon="18.0845228"/>
+  <node id="2207224745" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3595653" lon="18.0846913"/>
+  <node id="2207224746" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3595833" lon="18.0833722"/>
+  <node id="2207224748" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3595851" lon="18.0808812"/>
+  <node id="2207224750" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3595876" lon="18.0826395"/>
+  <node id="2207224751" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3595937" lon="18.080391"/>
+  <node id="2207224758" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3596505" lon="18.0825188"/>
+  <node id="2207224760" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3596667" lon="18.0807459"/>
+  <node id="2207224761" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.359674" lon="18.0830016"/>
+  <node id="2207224762" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3596994" lon="18.0811946"/>
+  <node id="2207224765" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3597368" lon="18.082881"/>
+  <node id="2207224770" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3597623" lon="18.0810881"/>
+  <node id="2207224775" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3597838" lon="18.0815964"/>
+  <node id="2207224781" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3598196" lon="18.086542"/>
+  <node id="2207224783" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3598468" lon="18.0814899"/>
+  <node id="2207224785" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3598782" lon="18.0863804"/>
+  <node id="2207224786" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3598856" lon="18.0867346"/>
+  <node id="2207224789" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3599442" lon="18.0865729"/>
+  <node id="2207224792" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3599842" lon="18.0870511"/>
+  <node id="2207224793" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3599997" lon="18.0886585"/>
+  <node id="2207224794" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3600226" lon="18.0885208"/>
+  <node id="2207224795" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3600364" lon="18.0869109"/>
+  <node id="2207224796" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3600389" lon="18.0885426"/>
+  <node id="2207224797" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3600522" lon="18.0884622"/>
+  <node id="2207224798" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3600574" lon="18.0827521"/>
+  <node id="2207224800" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3600737" lon="18.0887573"/>
+  <node id="2207224801" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3600748" lon="18.0829781"/>
+  <node id="2207224802" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3600762" lon="18.0885924"/>
+  <node id="2207224803" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3600827" lon="18.0873465"/>
+  <node id="2207224804" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3600895" lon="18.088512"/>
+  <node id="2207224805" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3600965" lon="18.0886196"/>
+  <node id="2207224806" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3600988" lon="18.0829344"/>
+  <node id="2207224809" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3601131" lon="18.0831466"/>
+  <node id="2207224810" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3601305" lon="18.0826186"/>
+  <node id="2207224811" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3601349" lon="18.0872064"/>
+  <node id="2207224813" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.360137" lon="18.0831029"/>
+  <node id="2207224819" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3601816" lon="18.085468"/>
+  <node id="2207224824" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3602064" lon="18.0876551"/>
+  <node id="2207224825" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3602101" lon="18.0829694"/>
+  <node id="2207224828" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3602194" lon="18.089136"/>
+  <node id="2207224830" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3602329" lon="18.0856256"/>
+  <node id="2207224831" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3602495" lon="18.0892062"/>
+  <node id="2207224832" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.360253" lon="18.0852807"/>
+  <node id="2207224833" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3602585" lon="18.0874942"/>
+  <node id="2207224834" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3602716" lon="18.0889557"/>
+  <node id="2207224835" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3602733" lon="18.0878293"/>
+  <node id="2207224837" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3602967" lon="18.0893161"/>
+  <node id="2207224839" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3603017" lon="18.0890258"/>
+  <node id="2207224840" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3603044" lon="18.0854383"/>
+  <node id="2207224841" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3603055" lon="18.0836861"/>
+  <node id="2207224842" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3603129" lon="18.0889872"/>
+  <node id="2207224844" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3603253" lon="18.0876684"/>
+  <node id="2207224845" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.360346" lon="18.0838378"/>
+  <node id="2207224847" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3603601" lon="18.089097"/>
+  <node id="2207224848" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3603685" lon="18.0837895"/>
+  <node id="2207224849" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3603854" lon="18.0838527"/>
+  <node id="2207224850" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3603925" lon="18.083499"/>
+  <node id="2207224851" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3604137" lon="18.0836924"/>
+  <node id="2207224854" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3604306" lon="18.0837556"/>
+  <node id="2207224855" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.360433" lon="18.0836508"/>
+  <node id="2207224860" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3604742" lon="18.0896618"/>
+  <node id="2207224861" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3604815" lon="18.0867624"/>
+  <node id="2207224862" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.360494" lon="18.0849452"/>
+  <node id="2207224865" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3605304" lon="18.0897853"/>
+  <node id="2207224867" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3605307" lon="18.0894546"/>
+  <node id="2207224868" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3605483" lon="18.0865874"/>
+  <node id="2207224869" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3605522" lon="18.0847604"/>
+  <node id="2207224870" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3605597" lon="18.0898495"/>
+  <node id="2207224871" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3605637" lon="18.0866346"/>
+  <node id="2207224873" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3605666" lon="18.0839631"/>
+  <node id="2207224874" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3605726" lon="18.087042"/>
+  <node id="2207224875" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3605773" lon="18.0865989"/>
+  <node id="2207224876" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.360587" lon="18.0895781"/>
+  <node id="2207224879" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.360598" lon="18.0895375"/>
+  <node id="2207224880" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.360599" lon="18.0852116"/>
+  <node id="2207224881" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3606012" lon="18.0836993"/>
+  <node id="2207224882" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3606015" lon="18.0867507"/>
+  <node id="2207224884" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3606151" lon="18.086715"/>
+  <node id="2207224885" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3606162" lon="18.0896423"/>
+  <node id="2207224889" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3606273" lon="18.0896017"/>
+  <node id="2207224890" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3606334" lon="18.0840338"/>
+  <node id="2207224893" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3606394" lon="18.086867"/>
+  <node id="2207224897" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3606572" lon="18.0850268"/>
+  <node id="2207224898" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3606576" lon="18.087065"/>
+  <node id="2207224899" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3606681" lon="18.08377"/>
+  <node id="2207224900" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3606731" lon="18.0856177"/>
+  <node id="2207224902" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3606776" lon="18.0858166"/>
+  <node id="2207224907" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3607097" lon="18.0857374"/>
+  <node id="2207224908" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3607223" lon="18.0872636"/>
+  <node id="2207224909" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3607233" lon="18.0859658"/>
+  <node id="2207224911" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.360727" lon="18.0854846"/>
+  <node id="2207224913" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3607428" lon="18.0868416"/>
+  <node id="2207224914" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3607432" lon="18.0889981"/>
+  <node id="2207224915" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3607554" lon="18.0858867"/>
+  <node id="2207224916" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3607637" lon="18.0856044"/>
+  <node id="2207224918" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3607958" lon="18.0855254"/>
+  <node id="2207224919" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3607958" lon="18.0860186"/>
+  <node id="2207224920" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3608075" lon="18.0870402"/>
+  <node id="2207224921" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3608094" lon="18.0857536"/>
+  <node id="2207224922" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3608133" lon="18.0887412"/>
+  <node id="2207224923" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3608133" lon="18.089152"/>
+  <node id="2207224926" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3608415" lon="18.0856746"/>
+  <node id="2207224927" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3608498" lon="18.0858856"/>
+  <node id="2207224928" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3608702" lon="18.0863246"/>
+  <node id="2207224929" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3608834" lon="18.0888951"/>
+  <node id="2207224931" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3609229" lon="18.0865135"/>
+  <node id="2207224933" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3609622" lon="18.0842171"/>
+  <node id="2207224934" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3609817" lon="18.086074"/>
+  <node id="2207224937" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3610239" lon="18.0839462"/>
+  <node id="2207224939" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3610345" lon="18.086263"/>
+  <node id="2207224940" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3610349" lon="18.0843503"/>
+  <node id="2207224942" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3610966" lon="18.0840793"/>
+  <node id="2207224945" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3611437" lon="18.0854943"/>
+  <node id="2207224947" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3611718" lon="18.0844318"/>
+  <node id="2207224948" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3612058" lon="18.0852959"/>
+  <node id="2207224949" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3612166" lon="18.0842568"/>
+  <node id="2207224952" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3612265" lon="18.0857026"/>
+  <node id="2207224953" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3612411" lon="18.0845744"/>
+  <node id="2207224959" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3612811" lon="18.0860423"/>
+  <node id="2207224960" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3612858" lon="18.0843994"/>
+  <node id="2207224961" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3612885" lon="18.0855042"/>
+  <node id="2207224963" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3613369" lon="18.0862111"/>
+  <node id="2207224965" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3613528" lon="18.0858515"/>
+  <node id="2207224972" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3614086" lon="18.0860203"/>
+  <node id="2207224977" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.361414" lon="18.0863773"/>
+  <node id="2207224979" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3614173" lon="18.0861199"/>
+  <node id="2207224985" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3614236" lon="18.0904977"/>
+  <node id="2207224990" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.361461" lon="18.0862545"/>
+  <node id="2207224996" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3614694" lon="18.0903486"/>
+  <node id="2207224999" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3614916" lon="18.0906661"/>
+  <node id="2207225010" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3615315" lon="18.0852638"/>
+  <node id="2207225012" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3615374" lon="18.090517"/>
+  <node id="2207225021" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.361587" lon="18.0850919"/>
+  <node id="2207225027" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3616384" lon="18.0855414"/>
+  <node id="2207225030" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3616602" lon="18.0904947"/>
+  <node id="2207225038" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3616939" lon="18.0853695"/>
+  <node id="2207225042" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3617159" lon="18.0903139"/>
+  <node id="2207225048" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3617285" lon="18.0906636"/>
+  <node id="2207225051" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="15400916" lat="69.3617841" lon="18.0904828"/>
+  <node id="2369148776" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="16781933" lat="69.3613493" lon="18.0861781"/>
+  <node id="2369148778" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="16781933" lat="69.3613959" lon="18.086054"/>
+  <node id="2375442620" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="16840763" lat="69.3538142" lon="18.0776295"/>
+  <node id="2375442621" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="16840763" lat="69.3539042" lon="18.0778154"/>
+  <node id="2375442622" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="16840763" lat="69.356698" lon="18.0772772"/>
+  <node id="2375442623" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="16840763" lat="69.35673" lon="18.0774558"/>
+  <node id="2375442624" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="16840763" lat="69.3567388" lon="18.0771196"/>
+  <node id="2375442625" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="16840763" lat="69.3567488" lon="18.0773831"/>
+  <node id="2375442626" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="16840763" lat="69.356788" lon="18.0775768"/>
+  <node id="2375442627" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="16840763" lat="69.3567896" lon="18.0772255"/>
+  <node id="2375442628" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="16840763" lat="69.3568477" lon="18.0773465"/>
+  <node id="2375491429" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="16841510" lat="69.3523729" lon="18.080177"/>
+  <node id="2375491430" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="16841510" lat="69.352377" lon="18.0799431"/>
+  <node id="2375491432" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="16841510" lat="69.3524669" lon="18.0801905"/>
+  <node id="2375491434" version="1" timestamp="2017-04-16T01:08:25Z" uid="790872" user="Geir Ove Myhr" changeset="16841510" lat="69.3524711" lon="18.0799566"/>
+  <way id="182776589" version="1" timestamp="2017-04-16T01:08:25Z" uid="615818" user="Kim Simonsen" changeset="13239319">
+    <nd ref="1931291753"/>
+    <nd ref="1931291766"/>
+    <nd ref="1931291763"/>
+    <nd ref="1931291747"/>
+    <nd ref="1931291751"/>
+    <nd ref="1931291743"/>
+    <nd ref="1931291745"/>
+    <nd ref="1931291750"/>
+    <nd ref="1931291741"/>
+    <nd ref="1931291761"/>
+    <nd ref="1931291759"/>
+    <nd ref="1931291756"/>
+    <nd ref="1931291753"/>
+    <tag k="name" v="Kvistad Varehus"/>
+    <tag k="shop" v="mall"/>
+    <tag k="alt_name" v="Kvistad Senter"/>
+    <tag k="building" v="retail"/>
+    <tag k="addr:street" v="Skolegata"/>
+    <tag k="addr:postcode" v="9300"/>
+    <tag k="addr:housename" v="Kvistad Varehus"/>
+    <tag k="addr:housenumber" v="2"/>
+  </way>
+  <way id="195255497" version="4" timestamp="2017-04-16T01:08:25Z" uid="5167123" user="HyperSR" changeset="46267716">
+    <nd ref="2057274221"/>
+    <nd ref="2057274220"/>
+    <nd ref="2057274218"/>
+    <nd ref="2057274219"/>
+    <nd ref="2057274215"/>
+    <nd ref="2057274214"/>
+    <nd ref="2057274213"/>
+    <nd ref="2057274228"/>
+    <nd ref="2057274231"/>
+    <nd ref="2057274232"/>
+    <nd ref="2057274227"/>
+    <nd ref="2057274225"/>
+    <nd ref="2057274224"/>
+    <nd ref="2057274226"/>
+    <nd ref="2057274221"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:housenumber" v="32"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:street" v="Gisundveien"/>
+    <tag k="building" v="yes"/>
+    <tag k="name" v="Felleskjøpkaia"/>
+    <tag k="source" v="Bing"/>
+  </way>
+  <way id="195255499" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2057274292"/>
+    <nd ref="2057274306"/>
+    <nd ref="2057274296"/>
+    <nd ref="2057274280"/>
+    <nd ref="2057274292"/>
+    <tag k="name" v="Bakeriet"/>
+    <tag k="source" v="Bing"/>
+    <tag k="building" v="yes"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Sjyveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="4"/>
+  </way>
+  <way id="195255501" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2057274203"/>
+    <nd ref="2057274205"/>
+    <nd ref="2057274206"/>
+    <nd ref="2057274204"/>
+    <nd ref="2057274203"/>
+    <tag k="source" v="Bing"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Gisundveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="41"/>
+  </way>
+  <way id="195255504" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2057274310"/>
+    <nd ref="2057274312"/>
+    <nd ref="2057274318"/>
+    <nd ref="2057274314"/>
+    <nd ref="2057274310"/>
+    <tag k="source" v="Bing"/>
+    <tag k="building" v="yes"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Sjyveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="5"/>
+  </way>
+  <way id="195255505" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2057274229"/>
+    <nd ref="2057274230"/>
+    <nd ref="2057274223"/>
+    <nd ref="2057274222"/>
+    <nd ref="2057274229"/>
+    <tag k="source" v="Bing"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Gisundveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="31"/>
+  </way>
+  <way id="195255508" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2057274217"/>
+    <nd ref="2057274216"/>
+    <nd ref="2057274211"/>
+    <nd ref="2057274212"/>
+    <nd ref="2057274217"/>
+    <tag k="source" v="Bing"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Gisundveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="35"/>
+  </way>
+  <way id="195255516" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2057274294"/>
+    <nd ref="2057274281"/>
+    <nd ref="2057274277"/>
+    <nd ref="2057274283"/>
+    <nd ref="2375442620"/>
+    <nd ref="2375442621"/>
+    <nd ref="2057274300"/>
+    <nd ref="2057274294"/>
+    <tag k="source" v="Bing"/>
+    <tag k="building" v="yes"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Sjyveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="8"/>
+  </way>
+  <way id="195255518" version="4" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2057274261"/>
+    <nd ref="2057274269"/>
+    <nd ref="2057274272"/>
+    <nd ref="2057274274"/>
+    <nd ref="2057274284"/>
+    <nd ref="2057274273"/>
+    <nd ref="2057274263"/>
+    <nd ref="2057274265"/>
+    <nd ref="2057274261"/>
+    <tag k="url" v="http://kystlaget.com/?page_id=7"/>
+    <tag k="name" v="Telegrafen"/>
+    <tag k="source" v="Bing"/>
+    <tag k="building" v="yes"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Sjyveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="2"/>
+  </way>
+  <way id="195255519" version="4" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2057274242"/>
+    <nd ref="2057274240"/>
+    <nd ref="2057274237"/>
+    <nd ref="2057274239"/>
+    <nd ref="2057274238"/>
+    <nd ref="2057274241"/>
+    <nd ref="2057274245"/>
+    <nd ref="2057274243"/>
+    <nd ref="2057274242"/>
+    <tag k="name" v="Joker Gibostad"/>
+    <tag k="shop" v="supermarket"/>
+    <tag k="source" v="Bing"/>
+    <tag k="building" v="yes"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Gisundveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="21"/>
+  </way>
+  <way id="195255520" version="4" timestamp="2017-04-16T01:08:25Z" uid="5167123" user="HyperSR" changeset="45628756">
+    <nd ref="2057274259"/>
+    <nd ref="2057274262"/>
+    <nd ref="2057274250"/>
+    <nd ref="2057274256"/>
+    <nd ref="2057274285"/>
+    <nd ref="2057274278"/>
+    <nd ref="2057274276"/>
+    <nd ref="2057274270"/>
+    <nd ref="2057274259"/>
+    <tag k="shop" v="car_repair"/>
+    <tag k="source" v="Bing"/>
+    <tag k="building" v="yes"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Sjyveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="1"/>
+  </way>
+  <way id="196809356" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2071057682"/>
+    <nd ref="2071057684"/>
+    <nd ref="2071057686"/>
+    <nd ref="2071057687"/>
+    <nd ref="2071057685"/>
+    <nd ref="2071057681"/>
+    <nd ref="2071057683"/>
+    <nd ref="2071057679"/>
+    <nd ref="2071057682"/>
+    <tag k="name" v="Gibostad Barnehage"/>
+    <tag k="source" v="Bing"/>
+    <tag k="amenity" v="kindergarten"/>
+    <tag k="building" v="yes"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Møllerenga"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="6"/>
+  </way>
+  <way id="196809357" version="4" timestamp="2017-04-16T01:08:25Z" uid="5167123" user="HyperSR" changeset="45362130">
+    <nd ref="2071057693"/>
+    <nd ref="2071057695"/>
+    <nd ref="2071057697"/>
+    <nd ref="2071057700"/>
+    <nd ref="2071057696"/>
+    <nd ref="2071057694"/>
+    <nd ref="2071057692"/>
+    <nd ref="2071057693"/>
+    <tag k="name" v="Gibostad Kapell"/>
+    <tag k="source" v="Bing"/>
+    <tag k="building" v="church"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Møllerenga"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="building:levels" v="2"/>
+    <tag k="addr:housenumber" v="23"/>
+  </way>
+  <way id="196809358" version="4" timestamp="2017-04-16T01:08:25Z" uid="5167123" user="HyperSR" changeset="45362071">
+    <nd ref="2071057707"/>
+    <nd ref="2071057708"/>
+    <nd ref="2071057711"/>
+    <nd ref="2071057714"/>
+    <nd ref="2071057709"/>
+    <nd ref="2071057716"/>
+    <nd ref="2071057710"/>
+    <nd ref="2071057713"/>
+    <nd ref="2071057721"/>
+    <nd ref="2071057720"/>
+    <nd ref="2071057722"/>
+    <nd ref="2071057719"/>
+    <nd ref="2071057717"/>
+    <nd ref="2071057715"/>
+    <nd ref="2071057718"/>
+    <nd ref="2071057712"/>
+    <nd ref="2071057702"/>
+    <nd ref="2071057704"/>
+    <nd ref="2071057701"/>
+    <nd ref="2071057699"/>
+    <nd ref="2071057698"/>
+    <nd ref="2071057703"/>
+    <nd ref="2071057706"/>
+    <nd ref="2071057705"/>
+    <nd ref="2071057707"/>
+    <tag k="name" v="Gibostad Servicesenter"/>
+    <tag k="source" v="Bing"/>
+    <tag k="amenity" v="hospital"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="22"/>
+  </way>
+  <way id="198722228" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2088234223"/>
+    <nd ref="2088234222"/>
+    <nd ref="2088234218"/>
+    <nd ref="2088234217"/>
+    <nd ref="2088234219"/>
+    <nd ref="2088234221"/>
+    <nd ref="2088234220"/>
+    <nd ref="2088234223"/>
+    <tag k="url" v="http://kystlaget.com/?page_id=9"/>
+    <tag k="name" v="Gammelbutikken"/>
+    <tag k="source" v="Bing"/>
+    <tag k="building" v="yes"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Sjyveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="3"/>
+  </way>
+  <way id="210645665" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223712"/>
+    <nd ref="2207223660"/>
+    <nd ref="2207223658"/>
+    <nd ref="2207223667"/>
+    <nd ref="2207223664"/>
+    <nd ref="2207223687"/>
+    <nd ref="2207223680"/>
+    <nd ref="2207223696"/>
+    <nd ref="2207223705"/>
+    <nd ref="2207223707"/>
+    <nd ref="2207223712"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="10"/>
+  </way>
+  <way id="210645666" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224089"/>
+    <nd ref="2207224099"/>
+    <nd ref="2207224101"/>
+    <nd ref="2207224103"/>
+    <nd ref="2207224113"/>
+    <nd ref="2207224114"/>
+    <nd ref="2207224120"/>
+    <nd ref="2207224116"/>
+    <nd ref="2207224111"/>
+    <nd ref="2207224107"/>
+    <nd ref="2207224089"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="27"/>
+  </way>
+  <way id="210645667" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223789"/>
+    <nd ref="2207223806"/>
+    <nd ref="2207223794"/>
+    <nd ref="2207223775"/>
+    <nd ref="2207223762"/>
+    <nd ref="2207223715"/>
+    <nd ref="2207223728"/>
+    <nd ref="2207223713"/>
+    <nd ref="2207223729"/>
+    <nd ref="2207223739"/>
+    <nd ref="2207223743"/>
+    <nd ref="2207223789"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Møllerenga"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="10"/>
+  </way>
+  <way id="210645669" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224921"/>
+    <nd ref="2207224927"/>
+    <nd ref="2207224919"/>
+    <nd ref="2207224915"/>
+    <nd ref="2207224909"/>
+    <nd ref="2207224902"/>
+    <nd ref="2207224907"/>
+    <nd ref="2207224900"/>
+    <nd ref="2207224911"/>
+    <nd ref="2207224916"/>
+    <nd ref="2207224918"/>
+    <nd ref="2207224926"/>
+    <nd ref="2207224921"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="80"/>
+  </way>
+  <way id="210645670" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223748"/>
+    <nd ref="2207223738"/>
+    <nd ref="2207223703"/>
+    <nd ref="2207223708"/>
+    <nd ref="2207223722"/>
+    <nd ref="2207223730"/>
+    <nd ref="2207223727"/>
+    <nd ref="2207223736"/>
+    <nd ref="2207223780"/>
+    <nd ref="2207223770"/>
+    <nd ref="2207223782"/>
+    <nd ref="2207223764"/>
+    <nd ref="2207223748"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="9"/>
+  </way>
+  <way id="210645671" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224677"/>
+    <nd ref="2207224669"/>
+    <nd ref="2207224683"/>
+    <nd ref="2207224691"/>
+    <nd ref="2207224677"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="102"/>
+  </way>
+  <way id="210645672" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224985"/>
+    <nd ref="2207224996"/>
+    <nd ref="2207225012"/>
+    <nd ref="2207224999"/>
+    <nd ref="2207224985"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="130"/>
+  </way>
+  <way id="210645674" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224050"/>
+    <nd ref="2207224056"/>
+    <nd ref="2207224027"/>
+    <nd ref="2207224011"/>
+    <nd ref="2207224050"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Møllerenga"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="21"/>
+  </way>
+  <way id="210645678" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224479"/>
+    <nd ref="2207224485"/>
+    <nd ref="2207224499"/>
+    <nd ref="2207224491"/>
+    <nd ref="2207224479"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Sjyveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="44"/>
+  </way>
+  <way id="210645680" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224140"/>
+    <nd ref="2207224147"/>
+    <nd ref="2207224139"/>
+    <nd ref="2207224122"/>
+    <nd ref="2207224140"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="26"/>
+  </way>
+  <way id="210645681" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223822"/>
+    <nd ref="2207223842"/>
+    <nd ref="2207223826"/>
+    <nd ref="2207223804"/>
+    <nd ref="2207223822"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Møllerenga"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="5"/>
+  </way>
+  <way id="210645687" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224368"/>
+    <nd ref="2207224358"/>
+    <nd ref="2207224374"/>
+    <nd ref="2207224381"/>
+    <nd ref="2207224368"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="47"/>
+  </way>
+  <way id="210645688" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224470"/>
+    <nd ref="2207224474"/>
+    <nd ref="2207224472"/>
+    <nd ref="2207224466"/>
+    <nd ref="2207224470"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="69"/>
+  </way>
+  <way id="210645689" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224480"/>
+    <nd ref="2207224498"/>
+    <nd ref="2207224492"/>
+    <nd ref="2207224475"/>
+    <nd ref="2207224480"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="55"/>
+  </way>
+  <way id="210645694" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223862"/>
+    <nd ref="2207223892"/>
+    <nd ref="2207223906"/>
+    <nd ref="2207223864"/>
+    <nd ref="2207223862"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Møllerenga"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="20"/>
+  </way>
+  <way id="210645696" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224165"/>
+    <nd ref="2207224181"/>
+    <nd ref="2207224200"/>
+    <nd ref="2207224186"/>
+    <nd ref="2207224165"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="31"/>
+  </way>
+  <way id="210645697" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224781"/>
+    <nd ref="2207224785"/>
+    <nd ref="2207224789"/>
+    <nd ref="2207224786"/>
+    <nd ref="2207224781"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="116"/>
+  </way>
+  <way id="210645701" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224282"/>
+    <nd ref="2207224296"/>
+    <nd ref="2207224290"/>
+    <nd ref="2207224271"/>
+    <nd ref="2207224282"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="42"/>
+  </way>
+  <way id="210645703" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="26002451">
+    <nd ref="2207224509"/>
+    <nd ref="2207224521"/>
+    <nd ref="2207224513"/>
+    <nd ref="2207224501"/>
+    <nd ref="2207224509"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="78"/>
+  </way>
+  <way id="210645707" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224441"/>
+    <nd ref="2207224462"/>
+    <nd ref="2207224450"/>
+    <nd ref="2207224433"/>
+    <nd ref="2207224441"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="66"/>
+  </way>
+  <way id="210645709" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224389"/>
+    <nd ref="2207224383"/>
+    <nd ref="2207224378"/>
+    <nd ref="2207224382"/>
+    <nd ref="2207224389"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="65"/>
+  </way>
+  <way id="210645716" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224644"/>
+    <nd ref="2207224648"/>
+    <nd ref="2207224660"/>
+    <nd ref="2207224654"/>
+    <nd ref="2207224644"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="63"/>
+  </way>
+  <way id="210645720" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224293"/>
+    <nd ref="2207224298"/>
+    <nd ref="2207224316"/>
+    <nd ref="2207224305"/>
+    <nd ref="2207224293"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="38"/>
+  </way>
+  <way id="210645724" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224347"/>
+    <nd ref="2207224356"/>
+    <nd ref="2207224365"/>
+    <nd ref="2207224359"/>
+    <nd ref="2207224347"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="46"/>
+  </way>
+  <way id="210645725" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224899"/>
+    <nd ref="2207224890"/>
+    <nd ref="2207224873"/>
+    <nd ref="2207224881"/>
+    <nd ref="2207224899"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardhaugen"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="2"/>
+  </way>
+  <way id="210645727" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224604"/>
+    <nd ref="2207224618"/>
+    <nd ref="2207224611"/>
+    <nd ref="2207224590"/>
+    <nd ref="2207224604"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="88"/>
+  </way>
+  <way id="210645731" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224627"/>
+    <nd ref="2207224635"/>
+    <nd ref="2207224640"/>
+    <nd ref="2207224637"/>
+    <nd ref="2207224627"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="90"/>
+  </way>
+  <way id="210645734" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224300"/>
+    <nd ref="2207224323"/>
+    <nd ref="2207224315"/>
+    <nd ref="2207224294"/>
+    <nd ref="2207224300"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="44"/>
+  </way>
+  <way id="210645743" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224469"/>
+    <nd ref="2207224464"/>
+    <nd ref="2207224440"/>
+    <nd ref="2207224449"/>
+    <nd ref="2207224469"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="52"/>
+  </way>
+  <way id="210645748" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224579"/>
+    <nd ref="2207224596"/>
+    <nd ref="2207224614"/>
+    <nd ref="2207224600"/>
+    <nd ref="2207224579"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="86"/>
+  </way>
+  <way id="210645752" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224727"/>
+    <nd ref="2207224741"/>
+    <nd ref="2207224745"/>
+    <nd ref="2207224729"/>
+    <nd ref="2207224727"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="110"/>
+  </way>
+  <way id="210645754" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223939"/>
+    <nd ref="2207223995"/>
+    <nd ref="2207223964"/>
+    <nd ref="2207223926"/>
+    <nd ref="2207223939"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="18"/>
+  </way>
+  <way id="210645758" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224949"/>
+    <nd ref="2207224960"/>
+    <nd ref="2207224953"/>
+    <nd ref="2207224947"/>
+    <nd ref="2207224949"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardhaugen"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="8"/>
+  </way>
+  <way id="210645768" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223630"/>
+    <nd ref="2207223656"/>
+    <nd ref="2207223646"/>
+    <nd ref="2207223619"/>
+    <nd ref="2207223630"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Møllerenga"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="2"/>
+  </way>
+  <way id="210645770" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224792"/>
+    <nd ref="2207224795"/>
+    <nd ref="2207224811"/>
+    <nd ref="2207224803"/>
+    <nd ref="2207224792"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="118"/>
+  </way>
+  <way id="210645772" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224387"/>
+    <nd ref="2207224380"/>
+    <nd ref="2207224386"/>
+    <nd ref="2207224393"/>
+    <nd ref="2207224387"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Sjyveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="38"/>
+  </way>
+  <way id="210645775" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224554"/>
+    <nd ref="2207224575"/>
+    <nd ref="2207224560"/>
+    <nd ref="2207224539"/>
+    <nd ref="2207224554"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="97"/>
+  </way>
+  <way id="210645776" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224025"/>
+    <nd ref="2207224051"/>
+    <nd ref="2207224060"/>
+    <nd ref="2207224046"/>
+    <nd ref="2207224025"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="16"/>
+  </way>
+  <way id="210645778" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223985"/>
+    <nd ref="2207224015"/>
+    <nd ref="2207224005"/>
+    <nd ref="2207223958"/>
+    <nd ref="2207223985"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="13"/>
+  </way>
+  <way id="210645780" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224748"/>
+    <nd ref="2207224730"/>
+    <nd ref="2207224751"/>
+    <nd ref="2207224760"/>
+    <nd ref="2207224748"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="70"/>
+  </way>
+  <way id="210645781" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224418"/>
+    <nd ref="2207224428"/>
+    <nd ref="2207224439"/>
+    <nd ref="2207224432"/>
+    <nd ref="2207224418"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Sjyveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="40"/>
+  </way>
+  <way id="210645784" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224725"/>
+    <nd ref="2207224739"/>
+    <nd ref="2207224746"/>
+    <nd ref="2207224735"/>
+    <nd ref="2207224725"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="106"/>
+  </way>
+  <way id="210645786" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224649"/>
+    <nd ref="2207224655"/>
+    <nd ref="2207224662"/>
+    <nd ref="2207224656"/>
+    <nd ref="2207224649"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="100"/>
+  </way>
+  <way id="210645791" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224211"/>
+    <nd ref="2207224216"/>
+    <nd ref="2207224227"/>
+    <nd ref="2207224217"/>
+    <nd ref="2207224211"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="30"/>
+  </way>
+  <way id="210645792" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224940"/>
+    <nd ref="2207224933"/>
+    <nd ref="2207224937"/>
+    <nd ref="2207224942"/>
+    <nd ref="2207224940"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardhaugen"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="6"/>
+  </way>
+  <way id="210645794" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207225030"/>
+    <nd ref="2207225042"/>
+    <nd ref="2207225051"/>
+    <nd ref="2207225048"/>
+    <nd ref="2207225030"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="132"/>
+  </way>
+  <way id="210645796" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="26002451">
+    <nd ref="2207224869"/>
+    <nd ref="2207224897"/>
+    <nd ref="2207224880"/>
+    <nd ref="2207224862"/>
+    <nd ref="2207224869"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="78"/>
+  </way>
+  <way id="210645800" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224819"/>
+    <nd ref="2207224832"/>
+    <nd ref="2207224840"/>
+    <nd ref="2207224830"/>
+    <nd ref="2207224819"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="79"/>
+  </way>
+  <way id="210645804" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207225010"/>
+    <nd ref="2207225021"/>
+    <nd ref="2207225038"/>
+    <nd ref="2207225027"/>
+    <nd ref="2207225010"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardhaugen"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="10"/>
+  </way>
+  <way id="210645807" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224948"/>
+    <nd ref="2207224961"/>
+    <nd ref="2207224952"/>
+    <nd ref="2207224945"/>
+    <nd ref="2207224948"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardhaugen"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="7"/>
+  </way>
+  <way id="210645809" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224257"/>
+    <nd ref="2207224264"/>
+    <nd ref="2207224286"/>
+    <nd ref="2207224274"/>
+    <nd ref="2207224257"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="42"/>
+  </way>
+  <way id="210645811" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223808"/>
+    <nd ref="2207223821"/>
+    <nd ref="2207223813"/>
+    <nd ref="2207223796"/>
+    <nd ref="2207223808"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="11"/>
+  </way>
+  <way id="210645814" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224404"/>
+    <nd ref="2207224407"/>
+    <nd ref="2207224419"/>
+    <nd ref="2207224412"/>
+    <nd ref="2207224404"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="51"/>
+  </way>
+  <way id="210645818" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224709"/>
+    <nd ref="2207224696"/>
+    <nd ref="2207224704"/>
+    <nd ref="2207224716"/>
+    <nd ref="2207224709"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="66"/>
+  </way>
+  <way id="210645819" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224922"/>
+    <nd ref="2207224929"/>
+    <nd ref="2207224923"/>
+    <nd ref="2207224914"/>
+    <nd ref="2207224922"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="124"/>
+  </way>
+  <way id="210645821" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224488"/>
+    <nd ref="2207224496"/>
+    <nd ref="2207224490"/>
+    <nd ref="2207224482"/>
+    <nd ref="2207224488"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="75"/>
+  </way>
+  <way id="210645822" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223812"/>
+    <nd ref="2207223799"/>
+    <nd ref="2207223831"/>
+    <nd ref="2207223847"/>
+    <nd ref="2207223812"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Møllerenga"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="12"/>
+  </way>
+  <way id="210645823" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224963"/>
+    <nd ref="2207224959"/>
+    <nd ref="2207224965"/>
+    <nd ref="2207224972"/>
+    <nd ref="2369148778"/>
+    <nd ref="2207224979"/>
+    <nd ref="2207224990"/>
+    <nd ref="2207224977"/>
+    <nd ref="2369148776"/>
+    <nd ref="2207224963"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardhaugen"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="9"/>
+  </way>
+  <way id="210645824" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224586"/>
+    <nd ref="2207224599"/>
+    <nd ref="2207224612"/>
+    <nd ref="2207224606"/>
+    <nd ref="2207224586"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="60"/>
+  </way>
+  <way id="210645828" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224283"/>
+    <nd ref="2207224297"/>
+    <nd ref="2207224291"/>
+    <nd ref="2207224272"/>
+    <nd ref="2207224283"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="41"/>
+  </way>
+  <way id="210645834" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224934"/>
+    <nd ref="2207224939"/>
+    <nd ref="2207224931"/>
+    <nd ref="2207224928"/>
+    <nd ref="2207224934"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="82"/>
+  </way>
+  <way id="210645835" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224623"/>
+    <nd ref="2207224617"/>
+    <nd ref="2207224626"/>
+    <nd ref="2207224632"/>
+    <nd ref="2207224623"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="98"/>
+  </way>
+  <way id="210645838" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223925"/>
+    <nd ref="2207223960"/>
+    <nd ref="2207223951"/>
+    <nd ref="2207223908"/>
+    <nd ref="2207223925"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Sjyveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="16"/>
+  </way>
+  <way id="210645842" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223591"/>
+    <nd ref="2207223587"/>
+    <nd ref="2207223582"/>
+    <nd ref="2207223584"/>
+    <nd ref="2207223591"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Gisundveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="12"/>
+  </way>
+  <way id="210645844" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224750"/>
+    <nd ref="2207224758"/>
+    <nd ref="2207224765"/>
+    <nd ref="2207224761"/>
+    <nd ref="2207224750"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="71"/>
+  </way>
+  <way id="210645845" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223844"/>
+    <nd ref="2207223865"/>
+    <nd ref="2207223874"/>
+    <nd ref="2207223860"/>
+    <nd ref="2207223844"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Møllerenga"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="18"/>
+  </way>
+  <way id="210645847" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224263"/>
+    <nd ref="2207224267"/>
+    <nd ref="2207224279"/>
+    <nd ref="2207224269"/>
+    <nd ref="2207224263"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="36"/>
+  </way>
+  <way id="210645848" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224402"/>
+    <nd ref="2207224406"/>
+    <nd ref="2207224422"/>
+    <nd ref="2207224415"/>
+    <nd ref="2207224402"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="50"/>
+  </way>
+  <way id="210645849" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224775"/>
+    <nd ref="2207224762"/>
+    <nd ref="2207224770"/>
+    <nd ref="2207224783"/>
+    <nd ref="2207224775"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="72"/>
+  </way>
+  <way id="210645856" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224133"/>
+    <nd ref="2207224142"/>
+    <nd ref="2207224182"/>
+    <nd ref="2207224167"/>
+    <nd ref="2207224133"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="22"/>
+  </way>
+  <way id="210645861" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223791"/>
+    <nd ref="2207223819"/>
+    <nd ref="2207223817"/>
+    <nd ref="2207223786"/>
+    <nd ref="2207223791"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="16"/>
+  </way>
+  <way id="210645862" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224461"/>
+    <nd ref="2207224444"/>
+    <nd ref="2207224457"/>
+    <nd ref="2207224468"/>
+    <nd ref="2207224461"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Sjyveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="42"/>
+  </way>
+  <way id="210645867" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224913"/>
+    <nd ref="2207224920"/>
+    <nd ref="2207224908"/>
+    <nd ref="2207224898"/>
+    <nd ref="2207224913"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="87"/>
+  </way>
+  <way id="210645869" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224086"/>
+    <nd ref="2207224109"/>
+    <nd ref="2207224105"/>
+    <nd ref="2207224082"/>
+    <nd ref="2207224086"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="18"/>
+  </way>
+  <way id="210645870" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224824"/>
+    <nd ref="2207224833"/>
+    <nd ref="2207224844"/>
+    <nd ref="2207224835"/>
+    <nd ref="2207224824"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="120"/>
+  </way>
+  <way id="210645872" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223689"/>
+    <nd ref="2207223670"/>
+    <nd ref="2207223654"/>
+    <nd ref="2207223663"/>
+    <nd ref="2207223689"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Møllerenga"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="8"/>
+  </way>
+  <way id="210645873" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223989"/>
+    <nd ref="2207224017"/>
+    <nd ref="2207224044"/>
+    <nd ref="2207224008"/>
+    <nd ref="2207223989"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Møllerenga"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="9"/>
+  </way>
+  <way id="210645874" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224421"/>
+    <nd ref="2207224430"/>
+    <nd ref="2207224447"/>
+    <nd ref="2207224438"/>
+    <nd ref="2207224421"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="53"/>
+  </way>
+  <way id="210645875" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224239"/>
+    <nd ref="2207224244"/>
+    <nd ref="2207224250"/>
+    <nd ref="2207224245"/>
+    <nd ref="2207224239"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="39"/>
+  </way>
+  <way id="210645876" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224665"/>
+    <nd ref="2207224653"/>
+    <nd ref="2207224661"/>
+    <nd ref="2207224675"/>
+    <nd ref="2207224665"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="64"/>
+  </way>
+  <way id="210645878" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224489"/>
+    <nd ref="2207224477"/>
+    <nd ref="2207224481"/>
+    <nd ref="2207224495"/>
+    <nd ref="2207224489"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="54"/>
+  </way>
+  <way id="210645880" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224698"/>
+    <nd ref="2207224710"/>
+    <nd ref="2207224714"/>
+    <nd ref="2207224703"/>
+    <nd ref="2207224698"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="104"/>
+  </way>
+  <way id="210645881" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224500"/>
+    <nd ref="2207224507"/>
+    <nd ref="2207224526"/>
+    <nd ref="2207224512"/>
+    <nd ref="2207224500"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Sjyveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="46"/>
+  </way>
+  <way id="210645893" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223624"/>
+    <nd ref="2207223634"/>
+    <nd ref="2207223636"/>
+    <nd ref="2207223652"/>
+    <nd ref="2207223644"/>
+    <nd ref="2207223604"/>
+    <nd ref="2207223624"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="7"/>
+  </way>
+  <way id="210645894" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224369"/>
+    <nd ref="2207224375"/>
+    <nd ref="2207224364"/>
+    <nd ref="2207224352"/>
+    <nd ref="2207224360"/>
+    <nd ref="2207224373"/>
+    <nd ref="2207224369"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="56"/>
+  </way>
+  <way id="210645898" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224270"/>
+    <nd ref="2207224258"/>
+    <nd ref="2207224262"/>
+    <nd ref="2207224265"/>
+    <nd ref="2207224273"/>
+    <nd ref="2207224287"/>
+    <nd ref="2207224278"/>
+    <nd ref="2207224270"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="35"/>
+  </way>
+  <way id="210645899" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224073"/>
+    <nd ref="2207224071"/>
+    <nd ref="2207224063"/>
+    <nd ref="2207224067"/>
+    <nd ref="2207224075"/>
+    <nd ref="2207224080"/>
+    <nd ref="2207224078"/>
+    <nd ref="2207224073"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="25"/>
+  </way>
+  <way id="210645900" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224458"/>
+    <nd ref="2207224451"/>
+    <nd ref="2207224459"/>
+    <nd ref="2207224467"/>
+    <nd ref="2207224471"/>
+    <nd ref="2207224465"/>
+    <nd ref="2207224455"/>
+    <nd ref="2207224458"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="68"/>
+  </way>
+  <way id="210645901" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224839"/>
+    <nd ref="2207224842"/>
+    <nd ref="2207224847"/>
+    <nd ref="2207224837"/>
+    <nd ref="2207224831"/>
+    <nd ref="2207224828"/>
+    <nd ref="2207224834"/>
+    <nd ref="2207224839"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="121"/>
+  </way>
+  <way id="210645902" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224569"/>
+    <nd ref="2207224562"/>
+    <nd ref="2207224551"/>
+    <nd ref="2207224559"/>
+    <nd ref="2207224555"/>
+    <nd ref="2207224567"/>
+    <nd ref="2207224583"/>
+    <nd ref="2207224569"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Sjyveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="48"/>
+  </way>
+  <way id="210645903" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224798"/>
+    <nd ref="2207224810"/>
+    <nd ref="2207224825"/>
+    <nd ref="2207224813"/>
+    <nd ref="2207224809"/>
+    <nd ref="2207224801"/>
+    <nd ref="2207224806"/>
+    <nd ref="2207224798"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="74"/>
+  </way>
+  <way id="210645904" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224630"/>
+    <nd ref="2207224639"/>
+    <nd ref="2207224636"/>
+    <nd ref="2207224629"/>
+    <nd ref="2207224625"/>
+    <nd ref="2207224620"/>
+    <nd ref="2207224622"/>
+    <nd ref="2207224630"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="62"/>
+  </way>
+  <way id="210645907" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223949"/>
+    <nd ref="2207223929"/>
+    <nd ref="2207223941"/>
+    <nd ref="2207223976"/>
+    <nd ref="2207223962"/>
+    <nd ref="2207224003"/>
+    <nd ref="2207223992"/>
+    <nd ref="2207223944"/>
+    <nd ref="2207223949"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="20"/>
+  </way>
+  <way id="210645908" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224204"/>
+    <nd ref="2207224184"/>
+    <nd ref="2207224198"/>
+    <nd ref="2207224205"/>
+    <nd ref="2207224208"/>
+    <nd ref="2207224212"/>
+    <nd ref="2207224209"/>
+    <nd ref="2207224210"/>
+    <nd ref="2207224204"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="28"/>
+  </way>
+  <way id="210645910" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224876"/>
+    <nd ref="2207224879"/>
+    <nd ref="2207224889"/>
+    <nd ref="2207224885"/>
+    <nd ref="2207224870"/>
+    <nd ref="2207224865"/>
+    <nd ref="2207224860"/>
+    <nd ref="2207224867"/>
+    <nd ref="2207224876"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="123"/>
+  </way>
+  <way id="210645911" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224118"/>
+    <nd ref="2207224129"/>
+    <nd ref="2207224136"/>
+    <nd ref="2207224141"/>
+    <nd ref="2207224145"/>
+    <nd ref="2207224143"/>
+    <nd ref="2207224135"/>
+    <nd ref="2207224124"/>
+    <nd ref="2207224118"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="29"/>
+  </way>
+  <way id="210645912" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223753"/>
+    <nd ref="2207223777"/>
+    <nd ref="2207223755"/>
+    <nd ref="2207223731"/>
+    <nd ref="2207223725"/>
+    <nd ref="2207223700"/>
+    <nd ref="2207223719"/>
+    <nd ref="2207223761"/>
+    <nd ref="2207223753"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Møllerenga"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="14"/>
+  </way>
+  <way id="210645913" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223838"/>
+    <nd ref="2207223861"/>
+    <nd ref="2207223840"/>
+    <nd ref="2207223797"/>
+    <nd ref="2207223810"/>
+    <nd ref="2207223824"/>
+    <nd ref="2207223828"/>
+    <nd ref="2207223858"/>
+    <nd ref="2207223838"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Møllerenga"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="16"/>
+  </way>
+  <way id="210645914" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224663"/>
+    <nd ref="2207224659"/>
+    <nd ref="2207224672"/>
+    <nd ref="2207224686"/>
+    <nd ref="2207224671"/>
+    <nd ref="2207224668"/>
+    <nd ref="2207224664"/>
+    <nd ref="2207224658"/>
+    <nd ref="2207224663"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="92"/>
+  </way>
+  <way id="210645915" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224411"/>
+    <nd ref="2207224409"/>
+    <nd ref="2207224405"/>
+    <nd ref="2207224408"/>
+    <nd ref="2207224410"/>
+    <nd ref="2207224413"/>
+    <nd ref="2207224424"/>
+    <nd ref="2207224414"/>
+    <nd ref="2207224411"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="67"/>
+  </way>
+  <way id="210645916" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224523"/>
+    <nd ref="2207224515"/>
+    <nd ref="2207224520"/>
+    <nd ref="2207224530"/>
+    <nd ref="2207224534"/>
+    <nd ref="2207224547"/>
+    <nd ref="2207224531"/>
+    <nd ref="2207224518"/>
+    <nd ref="2207224523"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="56"/>
+  </way>
+  <way id="210645917" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224802"/>
+    <nd ref="2207224805"/>
+    <nd ref="2207224800"/>
+    <nd ref="2207224793"/>
+    <nd ref="2207224794"/>
+    <nd ref="2207224796"/>
+    <nd ref="2207224797"/>
+    <nd ref="2207224804"/>
+    <nd ref="2207224802"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="119"/>
+  </way>
+  <way id="210645918" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223784"/>
+    <nd ref="2207223787"/>
+    <nd ref="2207223815"/>
+    <nd ref="2207223801"/>
+    <nd ref="2207223768"/>
+    <nd ref="2207223779"/>
+    <nd ref="2207223759"/>
+    <nd ref="2207223773"/>
+    <nd ref="2207223784"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Møllerenga"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="3"/>
+  </way>
+  <way id="210645919" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224234"/>
+    <nd ref="2207224235"/>
+    <nd ref="2207224243"/>
+    <nd ref="2207224241"/>
+    <nd ref="2207224237"/>
+    <nd ref="2207224229"/>
+    <nd ref="2207224220"/>
+    <nd ref="2207224228"/>
+    <nd ref="2207224234"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="33"/>
+  </way>
+  <way id="210645920" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224848"/>
+    <nd ref="2207224845"/>
+    <nd ref="2207224841"/>
+    <nd ref="2207224850"/>
+    <nd ref="2207224855"/>
+    <nd ref="2207224851"/>
+    <nd ref="2207224854"/>
+    <nd ref="2207224849"/>
+    <nd ref="2207224848"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="76"/>
+  </way>
+  <way id="210645922" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224344"/>
+    <nd ref="2207224346"/>
+    <nd ref="2207224353"/>
+    <nd ref="2207224350"/>
+    <nd ref="2207224354"/>
+    <nd ref="2207224348"/>
+    <nd ref="2207224336"/>
+    <nd ref="2207224342"/>
+    <nd ref="2207224344"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="63"/>
+  </way>
+  <way id="210645923" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224726"/>
+    <nd ref="2207224728"/>
+    <nd ref="2207224737"/>
+    <nd ref="2207224732"/>
+    <nd ref="2207224724"/>
+    <nd ref="2207224721"/>
+    <nd ref="2207224719"/>
+    <nd ref="2207224722"/>
+    <nd ref="2207224726"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="68"/>
+  </way>
+  <way id="210645925" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223932"/>
+    <nd ref="2207223935"/>
+    <nd ref="2207223957"/>
+    <nd ref="2207223953"/>
+    <nd ref="2207223931"/>
+    <nd ref="2207223927"/>
+    <nd ref="2207223887"/>
+    <nd ref="2207223894"/>
+    <nd ref="2207223932"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="19"/>
+  </way>
+  <way id="210645926" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223691"/>
+    <nd ref="2207223693"/>
+    <nd ref="2207223686"/>
+    <nd ref="2207223684"/>
+    <nd ref="2207223661"/>
+    <nd ref="2207223669"/>
+    <nd ref="2207223682"/>
+    <nd ref="2207223698"/>
+    <nd ref="2207223691"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Møllerenga"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="4"/>
+  </way>
+  <way id="210645928" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224875"/>
+    <nd ref="2207224884"/>
+    <nd ref="2207224882"/>
+    <nd ref="2207224893"/>
+    <nd ref="2207224874"/>
+    <nd ref="2207224861"/>
+    <nd ref="2207224868"/>
+    <nd ref="2207224871"/>
+    <nd ref="2207224875"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="85"/>
+  </way>
+  <way id="210645929" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224329"/>
+    <nd ref="2207224327"/>
+    <nd ref="2207224319"/>
+    <nd ref="2207224325"/>
+    <nd ref="2207224330"/>
+    <nd ref="2207224335"/>
+    <nd ref="2207224345"/>
+    <nd ref="2207224338"/>
+    <nd ref="2207224329"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="43"/>
+  </way>
+  <way id="210645931" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223717"/>
+    <nd ref="2207223720"/>
+    <nd ref="2207223747"/>
+    <nd ref="2207223745"/>
+    <nd ref="2207223771"/>
+    <nd ref="2207223750"/>
+    <nd ref="2207223694"/>
+    <nd ref="2207223701"/>
+    <nd ref="2207223717"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Møllerenga"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="1"/>
+  </way>
+  <way id="210645932" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223903"/>
+    <nd ref="2207223869"/>
+    <nd ref="2207223863"/>
+    <nd ref="2207223897"/>
+    <nd ref="2207223896"/>
+    <nd ref="2207223928"/>
+    <nd ref="2207223933"/>
+    <nd ref="2207223905"/>
+    <nd ref="2207223903"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="21"/>
+  </way>
+  <way id="210645933" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207224238"/>
+    <nd ref="2207224242"/>
+    <nd ref="2207224240"/>
+    <nd ref="2207224249"/>
+    <nd ref="2207224236"/>
+    <nd ref="2207224221"/>
+    <nd ref="2207224230"/>
+    <nd ref="2207224225"/>
+    <nd ref="2207224238"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="32"/>
+  </way>
+  <way id="210645934" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2207223835"/>
+    <nd ref="2207223837"/>
+    <nd ref="2207223883"/>
+    <nd ref="2207223881"/>
+    <nd ref="2207223946"/>
+    <nd ref="2207223937"/>
+    <nd ref="2207223890"/>
+    <nd ref="2207223888"/>
+    <nd ref="2207223872"/>
+    <nd ref="2207223835"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Øverlia"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="10"/>
+  </way>
+  <way id="228885572" version="2" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2375442626"/>
+    <nd ref="2375442623"/>
+    <nd ref="2375442625"/>
+    <nd ref="2375442622"/>
+    <nd ref="2375442624"/>
+    <nd ref="2375442627"/>
+    <nd ref="2375442628"/>
+    <nd ref="2375442626"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Vardnesveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="44"/>
+  </way>
+  <way id="228891138" version="3" timestamp="2017-04-16T01:08:25Z" uid="1710144" user="rubund" changeset="25734947">
+    <nd ref="2375491432"/>
+    <nd ref="2375491429"/>
+    <nd ref="2375491430"/>
+    <nd ref="2375491434"/>
+    <nd ref="2375491432"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:city" v="Gibostad"/>
+    <tag k="addr:street" v="Gisundveien"/>
+    <tag k="addr:postcode" v="9372"/>
+    <tag k="addr:housenumber" v="29"/>
+  </way>
+</osm>
