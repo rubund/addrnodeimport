@@ -18,6 +18,16 @@
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+// TODO:
+//  Import corrections.xml apply - before writing newnodes to sqlite
+//  Apply common fixes (apostrophes etc) - before writing newnodes to sqlite
+//  Check if tag_number is smaller or equal 4,  or smaller than equal 5 and building == 1. Then exact match
+//  If not correct tag_number, it is an additional object not managed by scripts.
+//  Report duplicates
+//  If no exact match found. Change "vei" to "veg" and "veg" to "vei" (lower/upper case) for every and see if any mateches. Then add to changeto
+//  If exact same position, but different data: add to changeto
+//  If near same position, but exact data: add to changeto
+
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
@@ -26,8 +36,21 @@
 #include <libxml/parser.h>
 #include <libxml/tree.h>
 #include <sqlite3.h>
+#include <math.h>
 
 char verbose = 0;
+
+int changetorownumber = 0;
+
+double meter_to_latitude(double meter)
+{
+    return meter / 111111.0; // Crude estimate
+}
+
+double meter_to_longitude(double meter, double latitude)
+{
+    return meter / (111111.0 * cos(latitude*3.141592654/180.0));
+}
 
 static int sql_callback(void *info, int argc, char **argv, char **azColName)
 {
@@ -161,7 +184,57 @@ void has_tag(xmlNode *node, const char **field_names, int ntags, int *cnt_how_ma
     }
 }
 
-void populate_database(xmlNode * a_node, sqlite3 *db, char isway)
+// Fill in the latitude/longitude columns in the existing db table for ways.
+void find_lat_lon_for_ways(xmlNode *a_node, sqlite3 *db)
+{
+    int ret;
+    sqlite3_stmt *stmt;
+    char *querybuffer;
+    xmlChar * text;
+    //char osmid[100];
+    xmlNode *cur_node;
+    xmlNode *child_node;
+    char found;
+    char latitude_str[20];
+    char longitude_str[20];
+    char osmid[100];
+
+    for(cur_node = a_node->children; cur_node; cur_node = cur_node->next){
+        found = 0;
+        if(cur_node->type == XML_ELEMENT_NODE) {
+            text = xmlGetProp(cur_node, "id");
+            if (text == 0) continue;
+            strncpy(osmid,text,99);
+            xmlFree(text);
+            if(strcmp(cur_node->name, "way") == 0) {
+                for(child_node = cur_node->children; child_node ; child_node = child_node->next){
+                    if(child_node->type == XML_ELEMENT_NODE){
+                        if(strcmp(child_node->name,"nd") == 0){
+                            text = xmlGetProp(child_node, "ref");
+                            //printf("Found reference: %s\n", text);
+                            querybuffer = sqlite3_mprintf("select id, osm_id, latitude, longitude from waynodes where osm_id = '%q';", text);
+                            xmlFree(text);
+                            ret = sqlite3_prepare_v2(db, querybuffer, -1, &stmt, 0);
+                            sqlite3_free(querybuffer);
+                            if((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+                                querybuffer = sqlite3_mprintf("update existing set latitude='%q', longitude='%q' where osm_id='%q'", sqlite3_column_text(stmt, 2), sqlite3_column_text(stmt, 3), osmid);
+                                basic_query(db,querybuffer, 0);
+                                sqlite3_free(querybuffer);
+                                found = 1;
+                            }
+                            sqlite3_finalize(stmt);
+                        }
+                    }
+                    if(found) break;
+                }
+            }
+        }
+    }
+
+
+}
+
+void populate_database_existing(xmlNode * a_node, sqlite3 *db, char isway)
 {
 
     xmlNode *cur_node;
@@ -175,25 +248,34 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway)
     char addr_housenumber[100];
     char addr_postcode[10];
     char addr_city[256];
+    char latitude_str[20];
+    char longitude_str[20];
     char hasfound = 0;
     char abandoned = 0;
-    int rowcounter = 0;
+    static int rowcounter = 0;
+    static int rowcounterwaynodes = 0;
     int file_index = 0;
 
     sqlite3_stmt *stmt;
-    basic_query(db,"create table if not exists existing (id int auto_increment primary key not null, file_index int, osm_id bigint, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), isway boolean, tag_number int, building boolean, foundindataset boolean default 0);",0);
+    basic_query(db,"create table if not exists existing (id int auto_increment primary key not null, file_index int, osm_id bigint, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), latitude double, longitude double, isway boolean, tag_number int, building boolean, changeto_id int, foundindataset boolean default 0);",0);
+
+    basic_query(db,"create table if not exists changeto (id int auto_increment primary key not null, change_type varchar(50), existing_id int, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), latitude double, longitude double);",0);
+
+    basic_query(db,"create table if not exists waynodes (id int auto_increment primary key not null, osm_id bigint, latitude double, longitude double);",0);
 
     for(cur_node = a_node->children; cur_node; cur_node = cur_node->next){
         addr_housenumber[0] = 0;
         addr_street[0] = 0;
         addr_postcode[0] = 0;
         addr_city[0] = 0;
+        latitude_str[0] = 0;
+        longitude_str[0] = 0;
         if(cur_node->type == XML_ELEMENT_NODE) {
             text = xmlGetProp(cur_node, "id");
             if (text == 0) continue;
             strncpy(osmid, text, 99);
             xmlFree(text);
-            printf("OSM-ID: %s\n", osmid);
+            //printf("OSM-ID: %s\n", osmid);
             char bool_iscorrecttype;
             if(isway)
                 bool_iscorrecttype = (strcmp(cur_node->name, "way") == 0);
@@ -208,7 +290,8 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway)
                 }
                 if (get_field(cur_node, "addr:street", addr_street, 255)){
                     hasfound = 1;
-                    printf("%s\n", addr_street);
+                    //printf("%s\n", addr_street);
+                    //printf("%s\n", addr_housenumber);
                 }
                 get_field(cur_node, "addr:postcode", addr_postcode, 9);
                 get_field(cur_node, "addr:city", addr_city, 255);
@@ -231,22 +314,302 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway)
                 ignore_tags[idx++] = "wheelchair";
                 int nfound = 0;
                 has_tag(cur_node, ignore_tags, idx, &nfound);
-                printf("nfound: %d\n", nfound);
+                //printf("nfound: %d\n", nfound);
                 tag_number -= nfound;
 
+                if (!isway) { // Only nodes have latitude and longitude on the main XML element
+                    text = xmlGetProp(cur_node, "lat");
+                    strncpy(latitude_str, text, 15);
+                    xmlFree(text);
+                    text = xmlGetProp(cur_node, "lon");
+                    strncpy(longitude_str, text, 15);
+                    xmlFree(text);
+                }
+
                 if(hasfound) {
-                    querybuffer = sqlite3_mprintf("insert into existing (id,file_index,osm_id,addr_housenumber,addr_street,addr_postcode,addr_city,isway,tag_number,building) values (%d,%d,'%q','%q','%q','%q','%q','%d','%d','%d');",rowcounter,file_index,osmid,addr_housenumber,addr_street,addr_postcode,addr_city,(int)isway,tag_number,isbuilding);
+                    querybuffer = sqlite3_mprintf("insert into existing (id,file_index,osm_id,addr_housenumber,addr_street,addr_postcode,addr_city,isway,tag_number,building,latitude,longitude) values (%d,%d,'%q','%q','%q','%q','%q','%d','%d','%d','%q','%q');",rowcounter,file_index,osmid,addr_housenumber,addr_street,addr_postcode,addr_city,(int)isway,tag_number,isbuilding, latitude_str, longitude_str);
                     basic_query(db,querybuffer,0);
                     sqlite3_free(querybuffer);
                     rowcounter++;
                     file_index++;
                 }
             }
+            else if(isway && (strcmp(cur_node->name, "node") == 0)) { // Add single nodes for ways to a separate table
+                text = xmlGetProp(cur_node, "lat");
+                //printf("%s, ", text);
+                strncpy(latitude_str, text, 15);
+                xmlFree(text);
+                text = xmlGetProp(cur_node, "lon");
+                //printf("%s\n", text);
+                strncpy(longitude_str, text, 15);
+                xmlFree(text);
+                querybuffer = sqlite3_mprintf("insert into waynodes (id, osm_id, latitude, longitude) values (%d,'%q','%q','%q');",rowcounterwaynodes, osmid, latitude_str, longitude_str);
+                basic_query(db,querybuffer,0);
+                sqlite3_free(querybuffer);
+                rowcounterwaynodes++;
+            }
         }
     }
 
+    basic_query(db,"create index if not exists file_index_index on existing (file_index ASC);",0);
+    basic_query(db,"create index if not exists addr_street_index on existing (addr_street ASC);",0);
+    basic_query(db,"create index if not exists addr_housenumber_index on existing (addr_housenumber ASC);",0);
+
+    basic_query(db,"create index if not exists osmid_index on waynodes (osm_id ASC);",0);
+
+    if(isway){
+        find_lat_lon_for_ways(a_node, db);
+    }
 }
 
+
+void populate_database_newnodes(xmlNode * a_node, sqlite3 *db)
+{
+    static int rowcounter = 0;
+    xmlNode *cur_node;
+    sqlite3_stmt *stmt;
+    char addr_street[256];
+    char addr_housenumber[100];
+    char addr_postcode[10];
+    char addr_city[256];
+    char latitude_str[20];
+    char longitude_str[20];
+    char *querybuffer;
+
+    xmlChar *text;
+
+    basic_query(db,"create table if not exists newnodes (id int auto_increment primary key not null, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), latitude double, longitude double, foundindataset boolean default 0);",0);
+
+    for(cur_node = a_node->children; cur_node; cur_node = cur_node->next){
+        addr_housenumber[0] = 0;
+        addr_street[0] = 0;
+        addr_postcode[0] = 0;
+        addr_city[0] = 0;
+        latitude_str[0] = 0;
+        longitude_str[0] = 0;
+        if(cur_node->type == XML_ELEMENT_NODE) {
+            text = xmlGetProp(cur_node, "id");
+            if (text == 0) continue;
+            xmlFree(text);
+          // FIXME: Apply corrections and generalized corrections
+            get_field(cur_node, "addr:postcode", addr_postcode, 9);
+            get_field(cur_node, "addr:city", addr_city, 255);
+            get_field(cur_node, "addr:street", addr_street, 255);
+            get_field(cur_node, "addr:housenumber", addr_housenumber, 99);
+            text = xmlGetProp(cur_node, "lat");
+            strncpy(latitude_str, text, 15);
+            xmlFree(text);
+            text = xmlGetProp(cur_node, "lon");
+            strncpy(longitude_str, text, 15);
+            xmlFree(text);
+            //printf("addr:steet: %s\n", addr_street);
+            querybuffer = sqlite3_mprintf("insert into newnodes (id,addr_housenumber,addr_street,addr_postcode,addr_city,latitude,longitude) values (%d,'%q','%q','%q','%q','%q','%q');",rowcounter,addr_housenumber,addr_street,addr_postcode,addr_city, latitude_str, longitude_str);
+            basic_query(db,querybuffer,0);
+            sqlite3_free(querybuffer);
+            rowcounter++;
+        }
+
+    }
+}
+
+
+void match_exact(sqlite3 *db)
+{
+    int ret;
+    sqlite3_stmt *stmt, *stmt2;
+    char *querybuffer;
+    double meter_margin = 40;
+
+    double latitude, latmargin, longitude, lonmargin;
+    latmargin = meter_to_latitude(meter_margin);
+
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude from newnodes;");
+    ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+    sqlite3_free(querybuffer);
+    while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+        latitude = sqlite3_column_double(stmt, 5);
+        longitude = sqlite3_column_double(stmt, 6);
+        lonmargin = meter_to_longitude(meter_margin, latitude);
+        //printf("Iterating: %s\n", sqlite3_column_text(stmt,0));
+        querybuffer = sqlite3_mprintf("select id, osm_id, latitude, longitude from existing where addr_street='%q' and addr_housenumber='%q' and addr_city='%q' and addr_postcode='%q' and foundindataset=0", sqlite3_column_text(stmt, 1),sqlite3_column_text(stmt, 2),sqlite3_column_text(stmt, 3),sqlite3_column_text(stmt, 4));
+        ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt2,0);
+        //printf("querybuffer: %s\n", querybuffer);
+        sqlite3_free(querybuffer);
+        while((ret = sqlite3_step(stmt2)) == SQLITE_ROW){
+            double latex;
+            double longex;
+            latex  = sqlite3_column_double(stmt2, 2);
+            longex = sqlite3_column_double(stmt2, 3);
+            if (latex > (latitude - latmargin) && latex < (latitude + latmargin) && longex > (longitude - lonmargin) && longex < (longitude + lonmargin)) {
+                querybuffer = sqlite3_mprintf("update existing set foundindataset=1 where id='%q'", sqlite3_column_text(stmt2,0));
+                basic_query(db, querybuffer, 0);
+                sqlite3_free(querybuffer);
+                querybuffer = sqlite3_mprintf("update newnodes set foundindataset=1 where id='%q'", sqlite3_column_text(stmt,0));
+                basic_query(db, querybuffer, 0);
+                sqlite3_free(querybuffer);
+            }
+            else {
+                //printf("Warning: The position is not EXACT: %s %s, %s %s (%f %f vs %f %f)\n", sqlite3_column_text(stmt,1), sqlite3_column_text(stmt,2), sqlite3_column_text(stmt,4), sqlite3_column_text(stmt,3), latitude, longitude, latex, longex);
+            }
+        }
+        sqlite3_finalize(stmt2);
+    }
+    sqlite3_finalize(stmt);
+}
+
+void find_exact_data_but_moved_around(sqlite3 *db)
+{
+    int ret;
+    sqlite3_stmt *stmt, *stmt2;
+    char *querybuffer;
+    double meter_margin = 40;
+
+    double latitude, latmargin, longitude, lonmargin;
+    latmargin = meter_to_latitude(meter_margin);
+
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude from newnodes where foundindataset=0;");
+    ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+    sqlite3_free(querybuffer);
+    while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+        latitude = sqlite3_column_double(stmt, 5);
+        longitude = sqlite3_column_double(stmt, 6);
+        lonmargin = meter_to_longitude(meter_margin, latitude);
+        //printf("Iterating: %s\n", sqlite3_column_text(stmt,0));
+        querybuffer = sqlite3_mprintf("select id, osm_id, latitude, longitude from existing where addr_street='%q' and addr_housenumber='%q' and addr_city='%q' and addr_postcode='%q' and foundindataset=0", sqlite3_column_text(stmt, 1),sqlite3_column_text(stmt, 2),sqlite3_column_text(stmt, 3),sqlite3_column_text(stmt, 4));
+        ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt2,0);
+        //printf("querybuffer: %s\n", querybuffer);
+        sqlite3_free(querybuffer);
+        while((ret = sqlite3_step(stmt2)) == SQLITE_ROW){
+            double latex;
+            double longex;
+            latex  = sqlite3_column_double(stmt2, 2);
+            longex = sqlite3_column_double(stmt2, 3);
+            if (latex > (latitude - latmargin) && latex < (latitude + latmargin) && longex > (longitude - lonmargin) && longex < (longitude + lonmargin)) {
+                printf("SHOULD NOT BE ANY HERE!\n");
+            }
+            else {
+                querybuffer = sqlite3_mprintf("update existing set foundindataset=1 where id='%q'", sqlite3_column_text(stmt2,0));
+                basic_query(db, querybuffer, 0);
+                sqlite3_free(querybuffer);
+                querybuffer = sqlite3_mprintf("update newnodes set foundindataset=1 where id='%q'", sqlite3_column_text(stmt,0));
+                basic_query(db, querybuffer, 0);
+                sqlite3_free(querybuffer);
+
+                querybuffer = sqlite3_mprintf("insert into changeto (id, change_type, existing_id, addr_housenumber, addr_street, addr_postcode, addr_city, latitude, longitude) values (%d, 'moved_exact', '%q', NULL, NULL, NULL, NULL, %f, %f)", changetorownumber, sqlite3_column_text(stmt2, 0), latitude, longitude);
+                basic_query(db, querybuffer, 0);
+                sqlite3_free(querybuffer);
+                changetorownumber++;
+                int lastid = sqlite3_last_insert_rowid(db);
+                querybuffer = sqlite3_mprintf("update existing set changeto_id='%d'  where id = '%q'", lastid, sqlite3_column_text(stmt2, 0));
+                basic_query(db, querybuffer, 0);
+                sqlite3_free(querybuffer);
+                //printf("Warning: The position is not EXACT: %s %s, %s %s (%f %f vs %f %f)\n", sqlite3_column_text(stmt,1), sqlite3_column_text(stmt,2), sqlite3_column_text(stmt,4), sqlite3_column_text(stmt,3), latitude, longitude, latex, longex);
+            }
+        }
+        sqlite3_finalize(stmt2);
+    }
+    sqlite3_finalize(stmt);
+}
+
+void print_new_nodes_not_found(sqlite3 *db)
+{
+    int ret;
+    sqlite3_stmt *stmt;
+    char *querybuffer;
+
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode from newnodes where foundindataset = 0;");
+    ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+    sqlite3_free(querybuffer);
+    while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+        printf("%s %s, %s %s\n", sqlite3_column_text(stmt,1), sqlite3_column_text(stmt,2), sqlite3_column_text(stmt,4), sqlite3_column_text(stmt,3));
+    }
+    sqlite3_finalize(stmt);
+}
+
+
+void print_not_yet_matched(sqlite3 *db)
+{
+    int ret;
+    sqlite3_stmt *stmt;
+    char *querybuffer;
+
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode from existing where foundindataset = 0;");
+    ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+    sqlite3_free(querybuffer);
+    while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+        printf("%s %s, %s %s\n", sqlite3_column_text(stmt,1), sqlite3_column_text(stmt,2), sqlite3_column_text(stmt,4), sqlite3_column_text(stmt,3));
+    }
+    sqlite3_finalize(stmt);
+}
+
+
+void print_new_nodes_which_are_not_close_to_any_old_ones(sqlite3 *db, double meter_margin)
+{
+    int ret;
+    sqlite3_stmt *stmt, *stmt2;
+    char *querybuffer;
+    double latitude, latmargin, longitude, lonmargin;
+    char found;
+    latmargin = meter_to_latitude(meter_margin);
+
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude from newnodes where foundindataset = 0;");
+    ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+    sqlite3_free(querybuffer);
+    while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+        found = 0;
+        latitude = sqlite3_column_double(stmt,5);
+        longitude = sqlite3_column_double(stmt,6);
+        lonmargin = meter_to_longitude(meter_margin, latitude);
+        //printf("latitude: %f\n", latitude);
+        querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode from existing where foundindataset = 0 and latitude > '%f' and latitude < '%f' and longitude > '%f' and longitude < '%f';", latitude - latmargin, latitude + latmargin, longitude - lonmargin, longitude + lonmargin);
+        //printf("%s\n", querybuffer);
+        ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt2,0);
+        sqlite3_free(querybuffer);
+        while((ret = sqlite3_step(stmt2)) == SQLITE_ROW){
+            found = 1;
+        }
+        sqlite3_finalize(stmt2);
+
+        if(!found)
+            printf("%s %s, %s %s\n", sqlite3_column_text(stmt,1), sqlite3_column_text(stmt,2), sqlite3_column_text(stmt,4), sqlite3_column_text(stmt,3));
+    }
+    sqlite3_finalize(stmt);
+}
+
+
+void print_new_nodes_and_suggested_existing_nearby(sqlite3 *db, double meter_margin)
+{
+    int ret;
+    sqlite3_stmt *stmt, *stmt2;
+    char *querybuffer;
+    double latitude, latmargin, longitude, lonmargin;
+    char found;
+    latmargin = meter_to_latitude(meter_margin);
+
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude from newnodes where foundindataset = 0;");
+    ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+    sqlite3_free(querybuffer);
+    while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+        found = 0;
+        latitude = sqlite3_column_double(stmt,5);
+        longitude = sqlite3_column_double(stmt,6);
+        lonmargin = meter_to_longitude(meter_margin, latitude);
+        //printf("latitude: %f\n", latitude);
+        querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode from existing where foundindataset = 0 and latitude > '%f' and latitude < '%f' and longitude > '%f' and longitude < '%f';", latitude - latmargin, latitude + latmargin, longitude - lonmargin, longitude + lonmargin);
+        //printf("%s\n", querybuffer);
+        ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt2,0);
+        sqlite3_free(querybuffer);
+        while((ret = sqlite3_step(stmt2)) == SQLITE_ROW){
+            printf("%s %s, %s %s    is close to existing %s %s, %s %s\n", sqlite3_column_text(stmt,1), sqlite3_column_text(stmt,2), sqlite3_column_text(stmt,4), sqlite3_column_text(stmt,3),  sqlite3_column_text(stmt2,1), sqlite3_column_text(stmt2,2), sqlite3_column_text(stmt2,4), sqlite3_column_text(stmt2,3));
+            found = 1;
+        }
+        sqlite3_finalize(stmt2);
+
+        //if(!found)
+        //    printf("%s %s, %s %s\n", sqlite3_column_text(stmt,1), sqlite3_column_text(stmt,2), sqlite3_column_text(stmt,4), sqlite3_column_text(stmt,3));
+    }
+    sqlite3_finalize(stmt);
+}
 
 int main(int argc, char **argv)
 {
@@ -259,6 +622,8 @@ int main(int argc, char **argv)
         return -1;
     }
     char *existing_node_filename = argv[1];
+    char *existing_ways_filename = argv[2];
+    char *new_nodes_filename = argv[3];
 
     LIBXML_TEST_VERSION
     ret = sqlite3_open(":memory:", &db);
@@ -272,6 +637,8 @@ int main(int argc, char **argv)
     }
 
     xmlDoc *doc_existing_nodes = NULL;
+    xmlDoc *doc_existing_ways = NULL;
+    xmlDoc *doc_new_nodes = NULL;
     xmlNode *root_element = NULL;
 
     doc_existing_nodes = xmlReadFile(existing_node_filename, NULL, 0);
@@ -280,5 +647,38 @@ int main(int argc, char **argv)
     }
     root_element = xmlDocGetRootElement(doc_existing_nodes);
 
-    populate_database(root_element, db, 0);
+    populate_database_existing(root_element, db, 0);
+
+
+    doc_existing_ways = xmlReadFile(existing_ways_filename, NULL, 0);
+    if (doc_existing_ways == NULL) {
+        printf("error: could not parse file %s\n", existing_ways_filename);
+    }
+    root_element = xmlDocGetRootElement(doc_existing_ways);
+
+    populate_database_existing(root_element, db, 1);
+
+
+    doc_new_nodes = xmlReadFile(new_nodes_filename, NULL, 0);
+    if (doc_new_nodes == NULL) {
+        printf("error: could not parse file %s\n", new_nodes_filename);
+    }
+    root_element = xmlDocGetRootElement(doc_new_nodes);
+
+    populate_database_newnodes(root_element, db);
+    xmlFreeDoc(doc_new_nodes);
+
+    // Do the actual processing
+    match_exact(db);
+    find_exact_data_but_moved_around(db);
+
+    //print_new_nodes_not_found(db);
+    //print_not_yet_matched(db);
+    //print_new_nodes_which_are_not_close_to_any_old_ones(db, 100);
+    //print_new_nodes_and_suggested_existing_nearby(db, 20);
+
+
+    xmlFreeDoc(doc_existing_nodes);
+    xmlFreeDoc(doc_existing_ways);
+    return 0;
 }
