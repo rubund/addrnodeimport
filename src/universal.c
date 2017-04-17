@@ -167,6 +167,8 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway)
     xmlNode *cur_node;
     xmlNode *field_node;
     xmlChar * text;
+    char *querybuffer;
+
     char osmid[100];
 
     char addr_street[256];
@@ -175,6 +177,8 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway)
     char addr_city[256];
     char hasfound = 0;
     char abandoned = 0;
+    int rowcounter = 0;
+    int file_index = 0;
 
     sqlite3_stmt *stmt;
     basic_query(db,"create table if not exists existing (id int auto_increment primary key not null, file_index int, osm_id bigint, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), isway boolean, tag_number int, building boolean, foundindataset boolean default 0);",0);
@@ -229,6 +233,14 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway)
                 has_tag(cur_node, ignore_tags, idx, &nfound);
                 printf("nfound: %d\n", nfound);
                 tag_number -= nfound;
+
+                if(hasfound) {
+                    querybuffer = sqlite3_mprintf("insert into existing (id,file_index,osm_id,addr_housenumber,addr_street,addr_postcode,addr_city,isway,tag_number,building) values (%d,%d,'%q','%q','%q','%q','%q','%d','%d','%d');",rowcounter,file_index,osmid,addr_housenumber,addr_street,addr_postcode,addr_city,(int)isway,tag_number,isbuilding);
+                    basic_query(db,querybuffer,0);
+                    sqlite3_free(querybuffer);
+                    rowcounter++;
+                    file_index++;
+                }
             }
         }
     }
