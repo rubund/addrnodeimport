@@ -533,7 +533,7 @@ void find_exact_data_but_moved_around(sqlite3 *db)
         longitude = sqlite3_column_double(stmt, 6);
         lonmargin = meter_to_longitude(meter_margin, latitude);
         //printf("Iterating: %s\n", sqlite3_column_text(stmt,0));
-        querybuffer = sqlite3_mprintf("select id, osm_id, latitude, longitude from existing where addr_street='%q' and addr_housenumber='%q' and addr_city='%q' and addr_postcode='%q' and foundindataset=0", sqlite3_column_text(stmt, 1),sqlite3_column_text(stmt, 2),sqlite3_column_text(stmt, 3),sqlite3_column_text(stmt, 4));
+        querybuffer = sqlite3_mprintf("select id, osm_id, latitude, longitude from existing where addr_street='%q' and addr_housenumber='%q' and addr_city='%q' and addr_postcode='%q' and ((tag_number <= 4) or (tag_number <= 5 and building = 1)) and foundindataset=0", sqlite3_column_text(stmt, 1),sqlite3_column_text(stmt, 2),sqlite3_column_text(stmt, 3),sqlite3_column_text(stmt, 4));
         ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt2,0);
         //printf("querybuffer: %s\n", querybuffer);
         sqlite3_free(querybuffer);
@@ -591,7 +591,7 @@ void print_not_yet_matched(sqlite3 *db)
     sqlite3_stmt *stmt;
     char *querybuffer;
 
-    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode from existing where foundindataset = 0;");
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode from existing where foundindataset = 0 and ((tag_number <= 4) or (tag_number <= 5 and building = 1));");
     ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
     sqlite3_free(querybuffer);
     while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
@@ -653,7 +653,7 @@ void print_new_nodes_and_suggested_existing_nearby(sqlite3 *db, double meter_mar
         longitude = sqlite3_column_double(stmt,6);
         lonmargin = meter_to_longitude(meter_margin, latitude);
         //printf("latitude: %f\n", latitude);
-        querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode from existing where foundindataset = 0 and latitude > '%f' and latitude < '%f' and longitude > '%f' and longitude < '%f';", latitude - latmargin, latitude + latmargin, longitude - lonmargin, longitude + lonmargin);
+        querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode from existing where foundindataset = 0 and ((tag_number <= 4) or (tag_number <= 5 and building = 1)) and latitude > '%f' and latitude < '%f' and longitude > '%f' and longitude < '%f';", latitude - latmargin, latitude + latmargin, longitude - lonmargin, longitude + lonmargin);
         //printf("%s\n", querybuffer);
         ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt2,0);
         sqlite3_free(querybuffer);
