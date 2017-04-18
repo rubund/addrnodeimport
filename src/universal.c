@@ -635,6 +635,45 @@ void print_new_nodes_which_are_not_close_to_any_old_ones(sqlite3 *db, double met
 }
 
 
+void add_new_nodes_which_are_not_close_to_any_old_ones(sqlite3 *db, double meter_margin)
+{
+    int ret;
+    sqlite3_stmt *stmt, *stmt2;
+    char *querybuffer;
+    double latitude, latmargin, longitude, lonmargin;
+    char found;
+    latmargin = meter_to_latitude(meter_margin);
+
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude from newnodes where foundindataset = 0;");
+    ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+    sqlite3_free(querybuffer);
+    while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+        found = 0;
+        latitude = sqlite3_column_double(stmt,5);
+        longitude = sqlite3_column_double(stmt,6);
+        lonmargin = meter_to_longitude(meter_margin, latitude);
+        //printf("latitude: %f\n", latitude);
+        querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode from existing where foundindataset = 0 and latitude > '%f' and latitude < '%f' and longitude > '%f' and longitude < '%f';", latitude - latmargin, latitude + latmargin, longitude - lonmargin, longitude + lonmargin);
+        //printf("%s\n", querybuffer);
+        ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt2,0);
+        sqlite3_free(querybuffer);
+        while((ret = sqlite3_step(stmt2)) == SQLITE_ROW){
+            found = 1;
+        }
+        sqlite3_finalize(stmt2);
+
+        if(!found) {
+            //querybuffer = sqlite3_mprintf("update newnodes set foundindataset = 1 where id = '%q'", sqlite3_column_text(stmt, 0)); // FIXME: rename "foundindataset" to "handled"
+            querybuffer = sqlite3_mprintf("update newnodes set foundindataset = 1 where id = %d", sqlite3_column_int(stmt, 0)); // FIXME: rename "foundindataset" to "handled"
+            basic_query(db, querybuffer, 0);
+            sqlite3_free(querybuffer);
+            // FIXME: Actually add to a separate table for adding
+        }
+    }
+    sqlite3_finalize(stmt);
+}
+
+
 void print_new_nodes_and_suggested_existing_nearby(sqlite3 *db, double meter_margin)
 {
     int ret;
@@ -778,10 +817,12 @@ int main(int argc, char **argv)
     match_exact(db);
     find_exact_data_but_moved_around(db);
 
-    //print_new_nodes_not_found(db);
+    add_new_nodes_which_are_not_close_to_any_old_ones(db, 100); // All new nodes which are at least 100 metres from
+                                                                // any existing ones, can be added automatically !
     //print_not_yet_matched(db);
     //print_new_nodes_which_are_not_close_to_any_old_ones(db, 100);
     //print_new_nodes_and_suggested_existing_nearby(db, 20);
+    //print_new_nodes_not_found(db);
 
 
     xmlFreeDoc(doc_existing_nodes);
