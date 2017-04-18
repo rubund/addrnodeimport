@@ -27,6 +27,7 @@
 #include <libxml/tree.h>
 #include <sqlite3.h>
 
+#include "common.h"
 
 char verbose = 0;
 char *xmlfilename1;
@@ -676,39 +677,6 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway)
 
 }
 
-
-void get_corrections(xmlNode * a_node, sqlite3 *db)
-{
-	xmlNode *cur_node = NULL;
-	xmlChar *text;
-	static int rowcounter = 0;
-	char *querybuffer;
-	int ret;
-	sqlite3_stmt *stmt;
-
-	char fromname[256];	
-	char toname[256];	
-
-	basic_query(db,"create table if not exists corrections (id int auto_increment primary key not null, fromname varchar(100), toname varchar(100));",0);
-
-	for(cur_node = a_node->children; cur_node; cur_node = cur_node->next){
-		if(cur_node->type == XML_ELEMENT_NODE && (strcmp(cur_node->name,"spelling") == 0)) {
-			text = xmlGetProp(cur_node, "from");
-			strncpy(fromname,text,255);
-			xmlFree(text);
-			text = xmlGetProp(cur_node, "to");
-			strncpy(toname,text,255);
-			xmlFree(text);
-			querybuffer = sqlite3_mprintf("insert into corrections (id,fromname,toname) values (%d,'%q','%q')",rowcounter,fromname,toname);
-			if(verbose)
-				printf("%s\n",querybuffer);	
-			basic_query(db,querybuffer,0);
-			sqlite3_free(querybuffer);
-			rowcounter++;
-		}
-	}
-	basic_query(db,"create index if not exists fromname_index on corrections (fromname ASC);",0);
-}
 
 
 int parse_cmdline(int argc, char **argv)
