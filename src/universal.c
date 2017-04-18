@@ -368,6 +368,29 @@ void populate_database_existing(xmlNode * a_node, sqlite3 *db, char isway)
     }
 }
 
+void correct_name(sqlite3 *db, char *in, char *out, int out_max_len)
+{
+    char *querybuffer;
+    sqlite3_stmt *stmt;
+    int ret;
+    querybuffer = sqlite3_mprintf("select toname from corrections where fromname='%q';",in);
+    ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+    sqlite3_free(querybuffer);
+    if (ret){
+        fprintf(stderr,"SQL Error");
+        return;
+    }
+    if((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+        if(verbose)
+            fprintf(stdout,"Found correction: %s %s",in, sqlite3_column_text(stmt,0));
+        strncpy(out,sqlite3_column_text(stmt,0),out_max_len-1);
+    }
+    else {
+        strncpy(out,in,out_max_len-1);
+    }
+    sqlite3_finalize(stmt);
+
+}
 
 void populate_database_newnodes(xmlNode * a_node, sqlite3 *db)
 {
@@ -378,6 +401,7 @@ void populate_database_newnodes(xmlNode * a_node, sqlite3 *db)
     char addr_housenumber[100];
     char addr_postcode[10];
     char addr_city[256];
+    char tmp[256];
     char latitude_str[20];
     char longitude_str[20];
     char *querybuffer;
@@ -399,9 +423,12 @@ void populate_database_newnodes(xmlNode * a_node, sqlite3 *db)
             xmlFree(text);
           // FIXME: Apply corrections and generalized corrections
             get_field(cur_node, "addr:postcode", addr_postcode, 9);
-            get_field(cur_node, "addr:city", addr_city, 255);
-            get_field(cur_node, "addr:street", addr_street, 255);
+            get_field(cur_node, "addr:city", tmp, 255);
+            correct_name(db, tmp, addr_city, 255);
+            get_field(cur_node, "addr:street", tmp, 255);
+            correct_name(db, tmp, addr_street, 255);
             get_field(cur_node, "addr:housenumber", addr_housenumber, 99);
+
             text = xmlGetProp(cur_node, "lat");
             strncpy(latitude_str, text, 15);
             xmlFree(text);
@@ -702,12 +729,6 @@ int main(int argc, char **argv)
     populate_database_existing(root_element, db, 1);
 
 
-    doc_new_nodes = xmlReadFile(new_nodes_filename, NULL, 0);
-    if (doc_new_nodes == NULL) {
-        printf("error: could not parse file %s\n", new_nodes_filename);
-    }
-    root_element = xmlDocGetRootElement(doc_new_nodes);
-
 	basic_query(db,"create table if not exists corrections (id int auto_increment primary key not null, fromname varchar(100), toname varchar(100));",0); // Need to create table in any case since it is looked up later
     if(correctionsfilename != NULL) {
 		doc_corrections = xmlReadFile(correctionsfilename,NULL,0);
@@ -717,6 +738,13 @@ int main(int argc, char **argv)
 		root_element = xmlDocGetRootElement(doc_corrections);
 		get_corrections(root_element,db);
     }
+
+    doc_new_nodes = xmlReadFile(new_nodes_filename, NULL, 0);
+    if (doc_new_nodes == NULL) {
+        printf("error: could not parse file %s\n", new_nodes_filename);
+    }
+    root_element = xmlDocGetRootElement(doc_new_nodes);
+
 
     populate_database_newnodes(root_element, db);
     xmlFreeDoc(doc_new_nodes);
