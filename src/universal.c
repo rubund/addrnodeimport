@@ -37,10 +37,16 @@
 #include <libxml/tree.h>
 #include <sqlite3.h>
 #include <math.h>
+#include "common.h"
 
 char verbose = 0;
 
 int changetorownumber = 0;
+
+char *existing_node_filename;
+char *existing_ways_filename;
+char *new_nodes_filename;
+char *correctionsfilename = NULL;
 
 double meter_to_latitude(double meter)
 {
@@ -611,19 +617,55 @@ void print_new_nodes_and_suggested_existing_nearby(sqlite3 *db, double meter_mar
     sqlite3_finalize(stmt);
 }
 
+int parse_cmdline(int argc, char **argv)
+{
+	int s;
+	opterr = 0;
+	while((s = getopt(argc, argv, "vc:")) != -1) {
+		switch (s) {
+			//case 's':
+			//	only_info = 1;
+			//	break;
+			case 'v':
+				verbose = 1;
+				break;
+			case 'c':
+				correctionsfilename = (char*) malloc(strlen(optarg)+1);
+				snprintf(correctionsfilename,strlen(optarg)+1,"%s",optarg);
+				break;
+			case '?':
+				if(optopt == 'c')
+					fprintf(stderr, "Option -%c requires an argument.\n",optopt);
+				else if(isprint(optopt)) 
+					fprintf(stderr, "Unknown option '-%c'.\n",optopt);
+				return -1;
+			default:
+				abort();
+		}
+	}
+
+	if(argc != (optind + 4)){
+        fprintf(stderr, "Usage: %s <existing_nodes.osm> <existing_ways.osm> <new_nodes.osm> <output_dir>\n", argv[0]);
+		return -1;
+	}
+	existing_node_filename = (char*) malloc(strlen(argv[optind])+1);
+	snprintf(existing_node_filename,strlen(argv[optind])+1,"%s",argv[optind]);
+	existing_ways_filename = (char*) malloc(strlen(argv[optind+1])+1);
+	snprintf(existing_ways_filename,strlen(argv[optind+1])+1,"%s",argv[optind+1]);
+	new_nodes_filename = (char*) malloc(strlen(argv[optind+2])+1);
+	snprintf(new_nodes_filename,strlen(argv[optind+2])+1,"%s",argv[optind+2]);
+	return 0;
+}
+
 int main(int argc, char **argv)
 {
     int ret;
 
     sqlite3 *db = NULL;
 
-    if (argc <= 4) {
-        fprintf(stderr, "Usage: %s <existing_nodes.osm> <existing_ways.osm> <new_nodes.osm> <output_dir>\n", argv[0]);
-        return -1;
-    }
-    char *existing_node_filename = argv[1];
-    char *existing_ways_filename = argv[2];
-    char *new_nodes_filename = argv[3];
+	if(parse_cmdline(argc, argv) != 0){
+	 	return -1;
+	}
 
     LIBXML_TEST_VERSION
     ret = sqlite3_open(":memory:", &db);
@@ -639,6 +681,7 @@ int main(int argc, char **argv)
     xmlDoc *doc_existing_nodes = NULL;
     xmlDoc *doc_existing_ways = NULL;
     xmlDoc *doc_new_nodes = NULL;
+    xmlDoc *doc_corrections = NULL;
     xmlNode *root_element = NULL;
 
     doc_existing_nodes = xmlReadFile(existing_node_filename, NULL, 0);
@@ -664,6 +707,16 @@ int main(int argc, char **argv)
         printf("error: could not parse file %s\n", new_nodes_filename);
     }
     root_element = xmlDocGetRootElement(doc_new_nodes);
+
+	basic_query(db,"create table if not exists corrections (id int auto_increment primary key not null, fromname varchar(100), toname varchar(100));",0); // Need to create table in any case since it is looked up later
+    if(correctionsfilename != NULL) {
+		doc_corrections = xmlReadFile(correctionsfilename,NULL,0);
+		if(doc_corrections == NULL) {
+			printf("error: could not parse file %s\n", correctionsfilename);
+		}
+		root_element = xmlDocGetRootElement(doc_corrections);
+		get_corrections(root_element,db);
+    }
 
     populate_database_newnodes(root_element, db);
     xmlFreeDoc(doc_new_nodes);
