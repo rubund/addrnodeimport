@@ -19,11 +19,9 @@
  */
 
 // TODO:
-//  Apply common fixes (apostrophes etc) - before writing newnodes to sqlite
-//  Check if tag_number is smaller or equal 4,  or smaller than equal 5 and building == 1. Then exact match
 //  If not correct tag_number, it is an additional object not managed by scripts.
 //  Report duplicates
-//  If no exact match found. Change "vei" to "veg" and "veg" to "vei" (lower/upper case) for every and see if any mateches. Then add to changeto
+//  If no exact match found. Change "vei" to "veg" and "veg" to "vei" (lower/upper case) for every and see if any matches. Then add to changeto
 //  If exact same position, but different data: add to changeto
 //  If near same position, but exact data: add to changeto
 
@@ -491,7 +489,7 @@ void match_exact(sqlite3 *db)
         longitude = sqlite3_column_double(stmt, 6);
         lonmargin = meter_to_longitude(meter_margin, latitude);
         //printf("Iterating: %s\n", sqlite3_column_text(stmt,0));
-        querybuffer = sqlite3_mprintf("select id, osm_id, latitude, longitude from existing where addr_street='%q' and addr_housenumber='%q' and addr_city='%q' and addr_postcode='%q' and foundindataset=0", sqlite3_column_text(stmt, 1),sqlite3_column_text(stmt, 2),sqlite3_column_text(stmt, 3),sqlite3_column_text(stmt, 4));
+        querybuffer = sqlite3_mprintf("select id, osm_id, latitude, longitude from existing where foundindataset=0 and addr_street='%q' and addr_housenumber='%q' and addr_city='%q' and addr_postcode='%q' and ((tag_number <= 4) or (tag_number <= 5 and building = 1))", sqlite3_column_text(stmt, 1),sqlite3_column_text(stmt, 2),sqlite3_column_text(stmt, 3),sqlite3_column_text(stmt, 4));
         ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt2,0);
         //printf("querybuffer: %s\n", querybuffer);
         sqlite3_free(querybuffer);
