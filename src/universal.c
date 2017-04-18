@@ -533,7 +533,7 @@ void find_exact_data_but_moved_around(sqlite3 *db)
         longitude = sqlite3_column_double(stmt, 6);
         lonmargin = meter_to_longitude(meter_margin, latitude);
         //printf("Iterating: %s\n", sqlite3_column_text(stmt,0));
-        querybuffer = sqlite3_mprintf("select id, osm_id, latitude, longitude from existing where addr_street='%q' and addr_housenumber='%q' and addr_city='%q' and addr_postcode='%q' and ((tag_number <= 4) or (tag_number <= 5 and building = 1)) and foundindataset=0", sqlite3_column_text(stmt, 1),sqlite3_column_text(stmt, 2),sqlite3_column_text(stmt, 3),sqlite3_column_text(stmt, 4));
+        querybuffer = sqlite3_mprintf("select id, osm_id, latitude, longitude from existing where addr_street='%q' and addr_housenumber='%q' and addr_city='%q' and addr_postcode='%q' and ((tag_number <= 4) or (tag_number <= 5 and building = 1)) and foundindataset=0 and isway=0", sqlite3_column_text(stmt, 1),sqlite3_column_text(stmt, 2),sqlite3_column_text(stmt, 3),sqlite3_column_text(stmt, 4));
         ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt2,0);
         //printf("querybuffer: %s\n", querybuffer);
         sqlite3_free(querybuffer);
@@ -565,6 +565,50 @@ void find_exact_data_but_moved_around(sqlite3 *db)
             }
         }
         sqlite3_finalize(stmt2);
+    }
+    sqlite3_finalize(stmt);
+}
+
+
+void find_same_pos_but_new_data(sqlite3 *db)
+{
+    int ret;
+    sqlite3_stmt *stmt, *stmt2;
+    char *querybuffer;
+    double latitude, latmargin, longitude, lonmargin;
+    double meter_margin = 5;
+    latmargin = meter_to_latitude(meter_margin);
+
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude from newnodes where foundindataset = 0;");
+    ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+    sqlite3_free(querybuffer);
+    while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+        latitude = sqlite3_column_double(stmt,5);
+        longitude = sqlite3_column_double(stmt,6);
+        lonmargin = meter_to_longitude(meter_margin, latitude);
+        //printf("latitude: %f\n", latitude);
+        querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode from existing where foundindataset = 0 and latitude > '%f' and latitude < '%f' and longitude > '%f' and longitude < '%f';", latitude - latmargin, latitude + latmargin, longitude - lonmargin, longitude + lonmargin);
+        ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt2,0);
+        sqlite3_free(querybuffer);
+        while((ret = sqlite3_step(stmt2)) == SQLITE_ROW){
+            querybuffer = sqlite3_mprintf("update existing set foundindataset=1 where id='%q'", sqlite3_column_text(stmt2,0));
+            basic_query(db, querybuffer, 0);
+            sqlite3_free(querybuffer);
+            querybuffer = sqlite3_mprintf("update newnodes set foundindataset=1 where id='%q'", sqlite3_column_text(stmt,0));
+            basic_query(db, querybuffer, 0);
+            sqlite3_free(querybuffer);
+
+            querybuffer = sqlite3_mprintf("insert into changeto (id, change_type, existing_id, addr_housenumber, addr_street, addr_postcode, addr_city, latitude, longitude) values (%d, 'samepos_new_data', '%q', '%q', '%q', '%q', '%q', NULL, NULL)", changetorownumber, sqlite3_column_text(stmt2, 0), sqlite3_column_text(stmt,1), sqlite3_column_text(stmt,2), sqlite3_column_text(stmt,3), sqlite3_column_text(stmt,4));
+
+            basic_query(db, querybuffer, 0);
+            sqlite3_free(querybuffer);
+            changetorownumber++;
+            int lastid = sqlite3_last_insert_rowid(db);
+            querybuffer = sqlite3_mprintf("update existing set changeto_id='%d'  where id = '%q'", lastid, sqlite3_column_text(stmt2, 0));
+            basic_query(db, querybuffer, 0);
+            sqlite3_free(querybuffer);
+            break;
+        }
     }
     sqlite3_finalize(stmt);
 }
@@ -816,6 +860,7 @@ int main(int argc, char **argv)
     // Do the actual processing
     match_exact(db);
     find_exact_data_but_moved_around(db);
+    find_same_pos_but_new_data(db);
 
     add_new_nodes_which_are_not_close_to_any_old_ones(db, 100); // All new nodes which are at least 100 metres from
                                                                 // any existing ones, can be added automatically !
