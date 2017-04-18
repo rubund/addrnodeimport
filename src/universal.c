@@ -19,7 +19,6 @@
  */
 
 // TODO:
-//  Import corrections.xml apply - before writing newnodes to sqlite
 //  Apply common fixes (apostrophes etc) - before writing newnodes to sqlite
 //  Check if tag_number is smaller or equal 4,  or smaller than equal 5 and building == 1. Then exact match
 //  If not correct tag_number, it is an additional object not managed by scripts.
@@ -373,6 +372,7 @@ void correct_name(sqlite3 *db, char *in, char *out, int out_max_len)
     char *querybuffer;
     sqlite3_stmt *stmt;
     int ret;
+    char *tmp_int = malloc(out_max_len);
     querybuffer = sqlite3_mprintf("select toname from corrections where fromname='%q';",in);
     ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
     sqlite3_free(querybuffer);
@@ -390,6 +390,33 @@ void correct_name(sqlite3 *db, char *in, char *out, int out_max_len)
     }
     sqlite3_finalize(stmt);
 
+    char *searchres;
+
+    // Replace '' with correct ’
+    searchres = strstr(out, "''");
+    while (searchres != 0){
+        strncpy(tmp_int, out, (searchres - out));
+        strncpy(tmp_int + (searchres - out), "’", 3);
+        strncpy(tmp_int + (searchres - out) + 3, searchres + 2, out_max_len-1-(int)(searchres-out)-2);
+        tmp_int[strlen(out)+1] = 0;
+        strncpy(out,tmp_int,out_max_len-1);
+        printf("Replace apostrophe: %s\n", out);
+        searchres = strstr(out, "''");
+    }
+
+    // Replace ´ with correct ’
+    searchres = strstr(out, "´");
+    while (searchres != 0){
+        strncpy(tmp_int, out, (searchres - out));
+        strncpy(tmp_int + (searchres - out), "’", 3);
+        strncpy(tmp_int + (searchres - out) + 3, searchres + 2, out_max_len-1-(int)(searchres-out)-2);
+        tmp_int[strlen(out)+1] = 0;
+        strncpy(out,tmp_int,out_max_len-1);
+        printf("Replace apostrophe: %s\n", out);
+        searchres = strstr(out, "´");
+    }
+
+    free(tmp_int);
 }
 
 void populate_database_newnodes(xmlNode * a_node, sqlite3 *db)
