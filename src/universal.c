@@ -260,7 +260,7 @@ void populate_database_existing(xmlNode * a_node, sqlite3 *db, char isway)
     int file_index = 0;
 
     sqlite3_stmt *stmt;
-    basic_query(db,"create table if not exists existing (id int auto_increment primary key not null, file_index int, osm_id bigint, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), latitude double, longitude double, isway boolean, tag_number int, building boolean, changeto_id int, foundindataset boolean default 0);",0);
+    basic_query(db,"create table if not exists existing (id int auto_increment primary key not null, file_index int, osm_id bigint, addr_housenumber varchar(10) collate nocase, addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), latitude double, longitude double, isway boolean, tag_number int, building boolean, changeto_id int, foundindataset boolean default 0);",0);
 
     basic_query(db,"create table if not exists changeto (id int auto_increment primary key not null, change_type varchar(50), existing_id int, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), latitude double, longitude double);",0);
 
@@ -433,7 +433,7 @@ void populate_database_newnodes(xmlNode * a_node, sqlite3 *db)
 
     xmlChar *text;
 
-    basic_query(db,"create table if not exists newnodes (id int auto_increment primary key not null, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), latitude double, longitude double, foundindataset boolean default 0);",0);
+    basic_query(db,"create table if not exists newnodes (id int auto_increment primary key not null, addr_housenumber varchar(10) collate nocase, addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), latitude double, longitude double, foundindataset boolean default 0);",0);
 
     for(cur_node = a_node->children; cur_node; cur_node = cur_node->next){
         addr_housenumber[0] = 0;
