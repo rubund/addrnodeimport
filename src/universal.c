@@ -724,7 +724,7 @@ void print_nodes_where_data_will_be_changed(sqlite3 *db) {
     sqlite3_stmt *stmt, *stmt2;
     char *querybuffer;
 
-    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude, existing_id from changeto where change_type='samepos_new_data';");
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude, existing_id from changeto where change_type='samepos_new_data' order by addr_street, addr_housenumber;");
     ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
     sqlite3_free(querybuffer);
     while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
@@ -762,7 +762,7 @@ void dump_osm_nodes_where_data_will_be_changed(sqlite3 *db) {
     char *querybuffer;
     xmlNode *tmp_node;
 
-    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude, existing_id from changeto where change_type='samepos_new_data';");
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude, existing_id from changeto where change_type='samepos_new_data' order by addr_street, addr_housenumber;");
     ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
     sqlite3_free(querybuffer);
     while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
@@ -795,7 +795,7 @@ void print_nodes_where_coordinates_will_be_changed(sqlite3 *db) {
     sqlite3_stmt *stmt, *stmt2;
     char *querybuffer;
 
-    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude, existing_id from changeto where change_type='moved_exact';");
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude, existing_id from changeto where change_type='moved_exact' order by addr_street, addr_housenumber;");
     ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
     sqlite3_free(querybuffer);
     while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
@@ -817,7 +817,7 @@ void dump_osm_nodes_where_coordinates_will_be_changed(sqlite3 *db) {
     char *querybuffer;
     xmlNode *tmp_node;
 
-    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude, existing_id from changeto where change_type='moved_exact';");
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude, existing_id from changeto where change_type='moved_exact' order by addr_street, addr_housenumber;");
     ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
     sqlite3_free(querybuffer);
     while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
@@ -848,7 +848,7 @@ void print_new_nodes_which_will_be_added(sqlite3 *db) {
     sqlite3_stmt *stmt, *stmt2;
     char *querybuffer;
 
-    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude, existing_id from changeto where change_type='new_nodes_far_away';");
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude, existing_id from changeto where change_type='new_nodes_far_away' order by addr_street, addr_housenumber;");
     ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
     sqlite3_free(querybuffer);
     while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
@@ -866,7 +866,7 @@ void dump_new_nodes_which_will_be_added(sqlite3 *db) {
     xmlNode *newNode;
     xmlNode *newTagNode;
 
-    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude, existing_id from changeto where change_type='new_nodes_far_away';");
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude, existing_id from changeto where change_type='new_nodes_far_away' order by addr_street, addr_housenumber;");
     ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
     sqlite3_free(querybuffer);
     while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
