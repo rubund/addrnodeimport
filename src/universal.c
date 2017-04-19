@@ -386,6 +386,7 @@ void populate_database_newnodes(xmlNode * a_node, sqlite3 *db)
     char addr_street[256];
     char addr_housenumber[100];
     char addr_postcode[10];
+    char addr_postcode_tmp[10];
     char addr_city[256];
     char tmp[256];
     char latitude_str[20];
@@ -408,6 +409,12 @@ void populate_database_newnodes(xmlNode * a_node, sqlite3 *db)
             if (text == 0) continue;
             xmlFree(text);
             get_field(cur_node, "addr:postcode", addr_postcode, 9);
+            if(strlen(addr_postcode) == 3){
+                strncpy(addr_postcode_tmp+1,addr_postcode,9);
+                addr_postcode_tmp[0] = '0';
+                strncpy(addr_postcode,addr_postcode_tmp,9);
+            }
+
             get_field(cur_node, "addr:city", tmp, 255);
             correct_name(db, tmp, addr_city, 255);
             get_field(cur_node, "addr:street", tmp, 255);
