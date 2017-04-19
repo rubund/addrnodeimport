@@ -845,6 +845,7 @@ int main(int argc, char **argv)
 		}
 		root_element = xmlDocGetRootElement(doc_corrections);
 		get_corrections(root_element,db);
+        xmlFreeDoc(doc_corrections);
     }
 
     doc_new_nodes = xmlReadFile(new_nodes_filename, NULL, 0);
@@ -869,8 +870,18 @@ int main(int argc, char **argv)
     //print_new_nodes_and_suggested_existing_nearby(db, 20);
     //print_new_nodes_not_found(db);
 
+	sqlite3_close(db);
 
     xmlFreeDoc(doc_existing_nodes);
     xmlFreeDoc(doc_existing_ways);
+
+    xmlCleanupParser();
+
+    free(existing_node_filename);
+    free(existing_ways_filename);
+    free(new_nodes_filename);
+    if(correctionsfilename != NULL)
+        free(correctionsfilename);
+
     return 0;
 }
