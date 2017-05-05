@@ -100,52 +100,6 @@ void basic_query(sqlite3 *db,char *query, void *info)
 	}
 }
 
-xmlNode *get_xml_node(xmlDoc *doc,int index,int isway)
-{
-	xmlNode *tmp_node;
-	xmlChar *text;
-	char hasfound2=0;
-	int i = 0;
-	tmp_node = xmlDocGetRootElement(doc)->children;
-	//char latest[50];
-	//printf("\nId to find: %d\n",foundid_int);
-	//printf("Copy at %d in %d\n",foundid_int, foundisway);
-	while(tmp_node->next != NULL){
-		tmp_node = tmp_node->next;
-		char bool_tmp;
-		if(isway)
-			bool_tmp = (strcmp(tmp_node->name,"way") == 0);
-		else
-			bool_tmp = (strcmp(tmp_node->name,"node") == 0);
-
-		if(tmp_node->type == XML_ELEMENT_NODE && bool_tmp) {
-			//printf("Here\n");
-			xmlNode *tag_node;
-			hasfound2 = 0;
-			for(tag_node = tmp_node->children; tag_node ; tag_node = tag_node->next){
-				if(tag_node->type == XML_ELEMENT_NODE) {
-					text = xmlGetProp(tag_node, "k");
-					if(text != 0){
-						//printf(" found key: %s\n",text);
-						if(strcmp(text,"addr:street") == 0){
-							xmlFree(text);
-							hasfound2 = 1;
-						}
-						else
-							xmlFree(text);
-					}
-				}
-			}
-			if(hasfound2) {
-				if(i==index){
-					break;
-				}
-				i++;	
-			}
-		}
-	}
-	return tmp_node;
-}
 
 void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, sqlite3 *db, xmlDoc *doc_output, xmlDoc *doc_output2, xmlDoc *doc_output3, xmlDoc *doc_output4)
 {
