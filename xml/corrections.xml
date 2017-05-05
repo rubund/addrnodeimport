@@ -78,6 +78,7 @@
 <spelling from="GÅRDSALLéEN" to="Gårdsalléen" />
 <spelling from="VON DER LIPPES GATE" to="Von der Lippes gate" />
 <spelling from="VON ØTKENS VEI" to="Von Øtkens vei" />
+<spelling from="GENERAL VON HOVENS VEI" to="General von Hovens vei" />
 
 <!-- Double foot symbol to no symbol -->
 <spelling from="Christian IV''s vei" to="Christian IVs vei" />
@@ -108,6 +109,7 @@
 <spelling from="Claus Riis'' gate" to="Claus Riis’ gate" />
 <spelling from="Diriks'' gate" to="Diriks’ gate" />
 <spelling from="Elias Blix'' gate" to="Elias Blix’ gate" />
+<spelling from="Elias Blix''s gate" to="Elias Blix’ gate" />
 <spelling from="Ellen Gleditsch'' vei" to="Ellen Gleditsch’ vei" />
 <spelling from="Erling Schiøtz'' vei" to="Erling Schiøtz’ vei" />
 <spelling from="Ernst Sars'' vei" to="Ernst Sars’ vei" />
@@ -241,6 +243,7 @@
 <spelling from="Åge W Owes gate" to="Åge W. Owes gate" />
 
 <!-- Space and full stop in initials. -->
+<spelling from="Edgar B.Schieldrops veg" to="Edgar B. Schieldrops veg" />
 <spelling from="Kr.H.Dahles vei" to="Kr. H. Dahles vei" />
 <spelling from="Th.C.Henriksens gate" to="Th. C. Henriksens gate" />
 <spelling from="Ths.W.Schwartz gate" to="Ths. W. Schwartz’ gate" />
@@ -428,5 +431,8 @@
 <!-- Type of road should be lowercase-->
 <spelling from="P.A. Munchs Gate sør" to="P.A. Munchs gate sør" />
 <spelling from="Gullhaug Torg" to="Gullhaug torg" />
+
+<spelling from="OLe I. Bores veg" to="Ole I. Bores veg" />
+<spelling from="Kommandør T.I. Øgrims plass" to="Kommandør T. I. Øgrims plass" />
 
 </corrections>
