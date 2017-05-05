@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Symbol to use for possessive apostrophe: ’ -->
 <corrections>
-<!-- Symbols to use: ’ -->
+<!-- Wrongly entered or encoded saami characters -->
 <spelling from="Juhána Rásttu? geaidnu" to="Juhána Rásttuš geaidnu" />
 <spelling from="Rá??eviessogeaidnu" to="Ráđđeviessogeaidnu" />
 <spelling from="Stuorragea?gi" to="Stuorrageađgi" />
@@ -53,6 +54,21 @@
 <spelling from="Ájonjarga" to="Ájonjárga" />
 <spelling from="Ánne?johka" to="Ánnešjohka" />
 
+<!-- Non saami wrongly entered symbols or encoding errors-->
+<spelling from="Vilhelm Bjerknesī gate" to="Vilhelm Bjerknes’ gate" />
+<spelling from="Vilhelm Bjerknes´ gate" to="Vilhelm Bjerknes’ gate" />
+<spelling from="Arnold Tranaas´ vei" to="Arnold Tranaas’ vei" />
+<spelling from="Valle alle´" to="Valle allé" />
+<spelling from="Wilhelm Retz` gate" to="Wilhelm Retz’ gate" />
+<spelling from="Langelandsallčen" to="Langelandsalléen" />
+<spelling from="Låkeallčen" to="Låkealléen" />
+<spelling from="Ødegårdsalčen" to="Ødegårdsalléen" />
+<spelling from="Joakim Brevolds allč" to="Joakim Brevolds allé" />
+<spelling from="Storlčvegen" to="Storlevegen" />
+<spelling from="Alle`veien" to="Alléveien" />
+<spelling from="Håkon den VII alle`" to="Håkon den VIIs allé" />
+
+<!-- UPPERCASE to proper case -->
 <spelling from="MAGNUS DEN GODES GATE" to="Magnus den Godes gate" />
 <spelling from="HAAKON DEN GODES VEI" to="Haakon den Godes vei" />
 <spelling from="HÅKON DEN GODES GATE" to="Håkon den Godes gate" />
@@ -63,6 +79,20 @@
 <spelling from="VON DER LIPPES GATE" to="Von der Lippes gate" />
 <spelling from="VON ØTKENS VEI" to="Von Øtkens vei" />
 
+<!-- Double foot symbol to no symbol -->
+<spelling from="Christian IV''s vei" to="Christian IVs vei" />
+<spelling from="Harald Dreyer`s vei" to="Harald Dreyers vei" />
+
+<!-- Remove redundant 'gate' -->
+<spelling from="Halfdan Egedius’ vei gate" to="Halfdan Egedius’ vei" />
+
+<!-- Remove posessive s due to sxc-rule -->
+<spelling from="Elias Blix’s gate" to="Elias Blix’ gate" />
+
+<!-- Double foot symbol to contraction apostrophe. Would be catched by auto correction -->
+<spelling from="Bjønner''n" to="Bjønner’n" />
+
+<!-- Double foot symbol to posessive apostrophe. Candidate for auto correction -->
 <spelling from="Agnes'' veg" to="Agnes’ veg" />
 <spelling from="Alfred Getz'' vei" to="Alfred Getz’ vei" />
 <spelling from="Alfred Hess''s veg" to="Alfred Hess’ veg" />
@@ -73,14 +103,11 @@
 <spelling from="Biskop Gunnerus'' gate" to="Biskop Gunnerus’ gate" />
 <spelling from="Bisp Nikolas'' gate" to="Bisp Nikolas’ gate" />
 <spelling from="Bjarne Ness'' veg" to="Bjarne Ness’ veg" />
-<spelling from="Bjønner''n" to="Bjønner’n" />
 <spelling from="Carl Dons'' veg" to="Carl Dons’ veg" />
-<spelling from="Christian IV''s vei" to="Christian IVs vei" />
 <spelling from="Christian VII''s gate" to="Christian VIIs gate" />
 <spelling from="Claus Riis'' gate" to="Claus Riis’ gate" />
 <spelling from="Diriks'' gate" to="Diriks’ gate" />
 <spelling from="Elias Blix'' gate" to="Elias Blix’ gate" />
-<spelling from="Elias Blix''s gate" to="Elias Blix’ gate" />
 <spelling from="Ellen Gleditsch'' vei" to="Ellen Gleditsch’ vei" />
 <spelling from="Erling Schiøtz'' vei" to="Erling Schiøtz’ vei" />
 <spelling from="Ernst Sars'' vei" to="Ernst Sars’ vei" />
@@ -90,7 +117,6 @@
 <spelling from="Gunnar Randers'' vei" to="Gunnar Randers’ vei" />
 <spelling from="Gørbitz'' gate" to="Gørbitz’ gate" />
 <spelling from="Hals'' gate" to="Hals’ gate" />
-<spelling from="Halfdan Egedius'' vei gate" to="Halfdan Egedius’ vei" />
 <spelling from="Halfdan Egedius'' vei" to="Halfdan Egedius’ vei" />
 <spelling from="Hanna Winsnes'' veg" to="Hanna Winsnes’ veg" />
 <spelling from="Hans Osnes'' veg" to="Hans Osnes’ veg" />
@@ -157,11 +183,7 @@
 <spelling from="Wilhelm Retz'' gate" to="Wilhelm Retz’ gate" />
 <spelling from="Zetlitz'' gate" to="Zetlitz’ gate" />
 
-<spelling from="Vilhelm Bjerknesī gate" to="Vilhelm Bjerknes’ gate" />
-<spelling from="Vilhelm Bjerknes´ gate" to="Vilhelm Bjerknes’ gate" />
-<spelling from="Arnold Tranaas´ vei" to="Arnold Tranaas’ vei" />
-<spelling from="Valle alle´" to="Valle allé" />
-
+<!-- Space after title-->
 <spelling from="Dr.Aamodts veg" to="Dr. Aamodts veg" />
 <spelling from="Dr.Ellertsens vei" to="Dr. Ellertsens vei" />
 <spelling from="Dr.Frostads gate" to="Dr. Frostads gate" />
@@ -179,33 +201,79 @@
 <spelling from="Dr.Randers gate" to="Dr. Randers gate" />
 <spelling from="Dr.Ravns veg" to="Dr. Ravns veg" />
 
+<!-- Similar to above, but not the same-->
+<spelling from="St.Croix gate" to="St. Croix gate" />
+
+<!-- Trim leading and tailing space-->
 <spelling from="Smørbøttaveien " to="Smørbøttaveien" />
 <spelling from="Alderslystvegen " to="Alderslystvegen" />
 <spelling from="Børtveit " to="Børtveit" />
 
+<!-- Missing posessive apostrophe and space-->
 <spelling from="Inger Auflesveg" to="Inger Aufles’ veg" />
-<spelling from="St.Croix gate" to="St. Croix gate" />
 
-<spelling from="A B Aarstens gate" to="A.B. Aarstens gate" />
-<spelling from="A B Vamråksgate" to="A.B. Vamråks gate" />
-<spelling from="Åge W Owes gate" to="Åge W. Owes gate" />
-<spelling from="A G Nordvis gate" to="A.G. Nordvis gate" />
-<spelling from="A J Horgens vei" to="A.J. Horgens vei" />
+<!-- Expanding contracted name-->
+<spelling from="Rich Withs gate" to="Richard Withs gate" />
+
+<!-- Full stop after initals-->
 <spelling from="Anton H Granlis gate" to="Anton H. Granlis gate" />
 <spelling from="Anton H Mysens gate" to="Anton H. Mysens gate" />
-<spelling from="A P Inderhaugs veg" to="A.P. Inderhaugs veg" />
 <spelling from="Arne M Holdens vei" to="Arne M. Holdens vei" />
-<spelling from="B A Løvolds veg" to="B.A. Løvolds veg" />
-<spelling from="C A Larsens vei" to="C.A. Larsens vei" />
 <spelling from="Ch D Kohmanns veg" to="Ch.D. Kohmanns veg" />
-<spelling from="C J Andersens vei" to="C.J. Andersens vei" />
-<spelling from="C O Lunds gate" to="C.O. Lunds gate" />
 <spelling from="Edvard A Bratvolds veg" to="Edvard A. Bratvolds veg" />
-<spelling from="E G Borchs gate" to="E.G. Borchs gate" />
 <spelling from="Elling M Solheims vei" to="Elling M. Solheims vei" />
 <spelling from="Gunnar S Gundersen veg" to="Gunnar S. Gundersen veg" />
 <spelling from="Haakon VII s vei" to="Haakon VIIs vei" />
 <spelling from="Hans M Gystads veg" to="Hans M. Gystads veg" />
+<spelling from="Johs C Liens gate" to="Johs C. Liens gate" />
+<spelling from="Jørgen C Knudsens veg" to="Jørgen C. Knudsens veg" />
+<spelling from="Kommandør T. I. Øgrims plass" to="Kommandør T.I. Øgrims plass" />
+<spelling from="Lensmann J Knudsens vei" to="Lensmann J. Knudsens vei" />
+<spelling from="Major O Laakes veg" to="Major O. Laakes veg" />
+<spelling from="Ole A Rustens veg" to="Ole A. Rustens veg" />
+<spelling from="Ole B Munchs vei" to="Ole B. Munchs vei" />
+<spelling from="Per K Hestetuns veg" to="Per K. Hestetuns veg" />
+<spelling from="Sigbjørn K Tonstad veg" to="Sigbjørn K. Tonstad veg" />
+<spelling from="Søren R Thornæs veg" to="Søren R. Thornæs’ veg" />
+<spelling from="Sverre F Halvorsens vei" to="Sverre F. Halvorsens vei" />
+<spelling from="Sverre K Andersens gate" to="Sverre K. Andersens gate" />
+<spelling from="Thor O Hannevigs vei" to="Thor O. Hannevigs vei" />
+<spelling from="Åge W Owes gate" to="Åge W. Owes gate" />
+
+<!-- Space and full stop in initials. -->
+<spelling from="Kr.H.Dahles vei" to="Kr. H. Dahles vei" />
+<spelling from="Th.C.Henriksens gate" to="Th. C. Henriksens gate" />
+<spelling from="Ths.W.Schwartz gate" to="Ths. W. Schwartz’ gate" />
+<spelling from="Chr Ankers gate" to="Chr. Ankers gate" />
+
+<!-- Full stop in initials. -->
+<spelling from="C Andersens gate" to="C. Andersens gate" />
+<spelling from="E Engebretsens gate" to="E. Engebretsens gate" />
+<spelling from="H Abr Hansens gate" to="H. Abr. Hansens gate" />
+<spelling from="H Nestens veg" to="H. Nestens veg" />
+<spelling from="J Ryddingstads veg" to="J. Ryddingstads veg" />
+<spelling from="K Sundts vei" to="K. Sundts vei" />
+<spelling from="M Jul Halvorsens veg" to="M. Jul Halvorsens veg" />
+<spelling from="M Urdals veg" to="M. Urdals veg" />
+<spelling from="S Bangors vei" to="S. Bangors vei" />
+<spelling from="S Kloumanns alle" to="S. Kloumanns alle" />
+<spelling from="W Grundts gate" to="W. Grundts gate" />
+
+<!--<spelling from="Chr. H. Bloms gate" to="Chr.H. Bloms gate" />-->
+<!--<spelling from="Joh. H. Andresens vei" to="Joh.H. Andresens vei" />-->
+<!--<spelling from="Th. J. Thorsens gate" to="Th.J. Thorsens gate" />-->
+
+<!-- Correcting space and full stop in initials. Candidate for auto correction-->
+<spelling from="A B Aarstens gate" to="A.B. Aarstens gate" />
+<spelling from="A B Vamråksgate" to="A.B. Vamråks gate" />
+<spelling from="A G Nordvis gate" to="A.G. Nordvis gate" />
+<spelling from="A J Horgens vei" to="A.J. Horgens vei" />
+<spelling from="A P Inderhaugs veg" to="A.P. Inderhaugs veg" />
+<spelling from="B A Løvolds veg" to="B.A. Løvolds veg" />
+<spelling from="C A Larsens vei" to="C.A. Larsens vei" />
+<spelling from="C J Andersens vei" to="C.J. Andersens vei" />
+<spelling from="C O Lunds gate" to="C.O. Lunds gate" />
+<spelling from="E G Borchs gate" to="E.G. Borchs gate" />
 <spelling from="H B Haraldsens gate" to="H.B. Haraldsens gate" />
 <spelling from="H F Giævers gate" to="H.F. Giævers gate" />
 <spelling from="H J Kogstads veg" to="H.J. Kogstads veg" />
@@ -217,14 +285,10 @@
 <spelling from="J E Abrahamsens veg" to="J.E. Abrahamsens veg" />
 <spelling from="J E Ekornesvei" to="J.E. Ekornes’ vei" />
 <spelling from="J M Withs gate" to="J.M. Withs gate" />
-<spelling from="Johs C Liens gate" to="Johs C. Liens gate" />
-<spelling from="Jørgen C Knudsens veg" to="Jørgen C. Knudsens veg" />
 <spelling from="J O Rømmesmos vei" to="J.O. Rømmesmos vei" />
 <spelling from="J P Holans gate" to="J.P. Holans gate" />
 <spelling from="K A Torgersens gate" to="K.A. Torgersens gate" />
-<spelling from="Lensmann J Knudsens vei" to="Lensmann J. Knudsens vei" />
 <spelling from="M A Habberstads veg" to="M.A. Habberstads veg" />
-<spelling from="Major O Laakes veg" to="Major O. Laakes veg" />
 <spelling from="M B Landstads gate" to="M.B. Landstads gate" />
 <spelling from="M O Orningsvei" to="M.O. Ornings vei" />
 <spelling from="N C Nielsens gate" to="N.C. Nielsens gate" />
@@ -234,30 +298,21 @@
 <spelling from="O H Holtas gate" to="O.H. Holtas gate" />
 <spelling from="O H Øksendals veg" to="O.H. Øksendals veg" />
 <spelling from="O L Aunes gate" to="O.L. Aunes gate" />
-<spelling from="Ole A Rustens veg" to="Ole A. Rustens veg" />
-<spelling from="Ole B Munchs vei" to="Ole B. Munchs vei" />
 <spelling from="O T Olsens gate" to="O.T. Olsens gate" />
 <spelling from="P A Munchs gate" to="P.A. Munchs gate" />
 <spelling from="P B Kristviks veg" to="P.B. Kristviks veg" />
 <spelling from="P C Bjerckes vei" to="P.C. Bjerckes vei" />
-<spelling from="Per K Hestetuns veg" to="Per K. Hestetuns veg" />
 <spelling from="P G Rodums veg" to="P.G. Rodums veg" />
 <spelling from="P M Røwdesvei" to="P.M. Røwdes vei" />
 <spelling from="P W Nilsens veg" to="P.W. Nilsens veg" />
-<spelling from="Sigbjørn K Tonstad veg" to="Sigbjørn K. Tonstad veg" />
 <spelling from="S M Gundersens gate" to="S.M. Gundersens gate" />
-<spelling from="Søren R Thornæs veg" to="Søren R. Thornæs’ veg" />
-<spelling from="Sverre F Halvorsens vei" to="Sverre F. Halvorsens vei" />
-<spelling from="Sverre K Andersens gate" to="Sverre K. Andersens gate" />
-<spelling from="Thor O Hannevigs vei" to="Thor O. Hannevigs vei" />
-<spelling from="Rich Withs gate" to="Richard Withs gate" />
 
+<!-- Correcting space and full stop in initials. Candidate for auto correction-->
 <spelling from="A. C. Lies gate" to="A.C. Lies gate" />
 <spelling from="A. K. Blix veg" to="A.K. Blix’ veg" />
 <spelling from="C. A. Pihls gate" to="C.A. Pihls gate" />
 <spelling from="C. A. Torstensens vei" to="C.A. Torstensens vei" />
 <spelling from="C. E. Holters vei" to="C.E. Holters vei" />
-<!--<spelling from="Chr. H. Bloms gate" to="Chr.H. Bloms gate" />-->
 <spelling from="C. J. Hambroes veg" to="C.J. Hambroes veg" />
 <spelling from="C. J. Hambros plass" to="C.J. Hambros plass" />
 <spelling from="C. J. Hambros vei" to="C.J. Hambros vei" />
@@ -270,10 +325,8 @@
 <spelling from="H. H. Lingjerdes veg" to="H.H. Lingjerdes veg" />
 <spelling from="J. L. Mowinckels vei" to="J.L. Mowinckels vei" />
 <spelling from="J. M. Uglands vei" to="J.M. Uglands vei" />
-<!--<spelling from="Joh. H. Andresens vei" to="Joh.H. Andresens vei" />-->
 <spelling from="J. R. Wilhelmsens vei" to="J.R. Wilhelmsens vei" />
 <spelling from="K. K. Lien vei" to="K.K. Lien vei" />
-<spelling from="Kommandør T. I. Øgrims plass" to="Kommandør T.I. Øgrims plass" />
 <spelling from="L. P. Wettres vei" to="L.P. Wettres vei" />
 <spelling from="L. T. Aas veg" to="L.T. Aas’ veg" />
 <spelling from="L. W. Hansens gate" to="L.W. Hansens gate" />
@@ -285,9 +338,9 @@
 <spelling from="P. O. Boddings veg" to="P.O. Boddings veg" />
 <spelling from="P. T. Mallings vei" to="P.T. Mallings vei" />
 <spelling from="S. H. Lundhs vei" to="S.H. Lundhs vei" />
-<!--<spelling from="Th. J. Thorsens gate" to="Th.J. Thorsens gate" />-->
 <spelling from="T. J. Storækres gate" to="T.J. Storækres gate" />
 
+<!-- Correcting space and full stop in initials. Candidate for auto correction-->
 <spelling from="A.C.Furuholmens gate" to="A.C. Furuholmens gate" />
 <spelling from="A.P.Alsgaards veg" to="A.P. Alsgaards veg" />
 <spelling from="B.P.Hoels veg" to="B.P. Hoels veg" />
@@ -308,7 +361,6 @@
 <spelling from="J.R.Wiborgs gate" to="J.R. Wiborgs gate" />
 <spelling from="K.G.Meldahls vei" to="K.G. Meldahls vei" />
 <spelling from="K.O.Bjerklis veg" to="K.O. Bjerklis veg" />
-<spelling from="Kr.H.Dahles vei" to="Kr. H. Dahles vei" />
 <spelling from="O.A.Devold-vegen" to="O.A. Devold-vegen" />
 <spelling from="O.A.Hauges vei" to="O.A. Hauges vei" />
 <spelling from="O.A.Hexums veg" to="O.A. Hexums veg" />
@@ -323,23 +375,9 @@
 <spelling from="P.O.Pedersen vei" to="P.O. Pedersen vei" />
 <spelling from="R.M.Andersens vei" to="R.M. Andersens vei" />
 <spelling from="R.M.Olsens veg" to="R.M. Olsens veg" />
-<spelling from="Th.C.Henriksens gate" to="Th. C. Henriksens gate" />
-<spelling from="Ths.W.Schwartz gate" to="Ths. W. Schwartz’ gate" />
 
-<spelling from="C Andersens gate" to="C. Andersens gate" />
-<spelling from="E Engebretsens gate" to="E. Engebretsens gate" />
-<spelling from="H Abr Hansens gate" to="H. Abr. Hansens gate" />
-<spelling from="H Nestens veg" to="H. Nestens veg" />
-<spelling from="J Ryddingstads veg" to="J. Ryddingstads veg" />
-<spelling from="K Sundts vei" to="K. Sundts vei" />
-<spelling from="M Jul Halvorsens veg" to="M. Jul Halvorsens veg" />
-<spelling from="M Urdals veg" to="M. Urdals veg" />
-<spelling from="S Bangors vei" to="S. Bangors vei" />
-<spelling from="S Kloumanns alle" to="S. Kloumanns alle" />
-<spelling from="W Grundts gate" to="W. Grundts gate" />
-
+<!-- expanding shortened way type including removing full stop-->
 <spelling from="Reppenveien." to="Reppenveien" />
-
 <spelling from="Asbjørn Dørumsgards v." to="Asbjørn Dørumsgards veg" />
 <spelling from="Bjørkvn." to="Bjørkvegen" />
 <spelling from="Erikstemmen." to="Erikstemmen" />
@@ -367,37 +405,28 @@
 <spelling from="St Hansvn" to="St. Hansveien" />
 <spelling from="St.Hansvn" to="St. Hansveien" />
 
-<spelling from="Alle`veien" to="Alléveien" />
-<spelling from="Håkon den VII alle`" to="Håkon den VIIs allé" />
-<spelling from="Harald Dreyer`s vei" to="Harald Dreyers vei" />
-<spelling from="Wilhelm Retz` gate" to="Wilhelm Retz’ gate" />
-
-<spelling from="Langelandsallčen" to="Langelandsalléen" />
-<spelling from="Låkeallčen" to="Låkealléen" />
-<spelling from="Ødegårdsalčen" to="Ødegårdsalléen" />
-<spelling from="Storlčvegen" to="Storlevegen" />
-<spelling from="Joakim Brevolds allč" to="Joakim Brevolds allé" />
-
+<!-- missing space -->
 <spelling from="Nordahl Griegsvei" to="Nordahl Griegs vei" />
 <spelling from="Stuhrsvei" to="Stuhrs vei" />
-<spelling from="Peder Sivertsens-vei" to="Peder Sivertsens vei" />
 <spelling from="Klavenessgate" to="Klaveness gate" />
 <spelling from="Egebergsgate" to="Egebergs gate" />
-<spelling from="Chr Ankers gate" to="Chr. Ankers gate" />
 <spelling from="Oscarsgate" to="Oscars gate" />
 <spelling from="Sallinensgate" to="Sallinens gate" />
 <spelling from="Follumsvei" to="Follums vei" />
-<spelling from="Veg 5448" to="Tømmerstien" />
 <spelling from="Søndregate" to="Søndre gate" />
 <spelling from="Østregate" to="Østre gate" />
 <spelling from="Nordregate" to="Nordre gate" />
 <spelling from="Astrupsgate" to="Astrups gate" />
-
 <spelling from="Lodve Langesgate" to="Lodve Langes gate" />
+
+<!-- symbol instead of space -->
+<spelling from="Peder Sivertsens-vei" to="Peder Sivertsens vei" />
+
+<spelling from="Veg 5448" to="Tømmerstien" />
 <spelling from="Rombaksveien-E6" to="Rombaksveien" />
-<spelling from="P.A. Munchs Gate sør" to="P.A. Munchs gate sør" />
 
 <!-- Type of road should be lowercase-->
+<spelling from="P.A. Munchs Gate sør" to="P.A. Munchs gate sør" />
 <spelling from="Gullhaug Torg" to="Gullhaug torg" />
 
 </corrections>
