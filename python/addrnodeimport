@@ -155,6 +155,9 @@ reportcontent = os.popen("getmissingandreport -s -t "+cachedir+"/reports/veivegf
 reportcontent2 = os.popen("fillinpostcode -c /usr/share/addrnodeimport/corrections.xml -o "+cachedir+"/reports/postcodecityfixes_"+munipnumberpadded+".osm -n "+cachedir+"/reports/onlynumber_"+munipnumberpadded+".osm -s /tmp/osm_temp/nodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm "+osmfilename+"").read()
 reportcontent3 = os.popen("findchanged "+cachedir+"/reports/notmatched_"+munipnumberpadded+".osm "+cachedir+"/reports/newnodes_"+munipnumberpadded+".osm "+cachedir+"/reports/changed_"+munipnumberpadded+".osm").read()
 
+os.system("mkdir -p "+cachedir+"/reports/new/"+munipnumberpadded+"/")
+reportcontent4 = os.popen("addrnodeimport_create_change /tmp/osm_temp/nodes_"+munipnumberpadded+".osm /tmp/osm_temp/ways_"+munipnumberpadded+".osm "+osmfilename+" "+cachedir+"/reports/new/"+munipnumberpadded+"/").read()
+os.system("mv "+cachedir+"/reports/new/"+munipnumberpadded+"/changes.osm "+cachedir+"/reports/new/"+munipnumberpadded+"/changes_"+munipnumberpadded+".osm")
 
 reportfile = open(""+cachedir+"/reports/report_"+munipnumberpadded+".txt","w")
 reportfile.write(reportcontent)
@@ -166,4 +169,8 @@ reportfile2.close()
 
 reportfile4 = open(""+cachedir+"/reports/report4_"+munipnumberpadded+".txt","w")
 reportfile4.write(reportcontent3)
+reportfile4.close()
+
+reportfile4 = open(""+cachedir+"/reports/report5_"+munipnumberpadded+".txt","w")
+reportfile4.write(reportcontent4)
 reportfile4.close()

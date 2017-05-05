@@ -110,7 +110,7 @@ echo "source=Kartverket</pre>";
 <br><br>
 <?php
 echo "<table border=1>";
-echo "<tr><th>&nbsp;</th><th>Kommunenr.</th><th>Kommune</th><th>Fullført</th><th>Status</th><th>Oppdatert</th><th>Ansvarlig person</th><th align=\"left\" style=\"padding-left : 30px\">Status / Hva er neste steg?</th></tr>";
+echo "<tr><th>&nbsp;</th><th>Kommunenr.</th><th>Kommune</th><th>Fullført</th><th>Status</th><th>Oppdatert</th><th>Ansvarlig person</th><th>For auto</th><th align=\"left\" style=\"padding-left : 30px\">Status / Hva er neste steg?</th></tr>";
 for($i=0;$i<2100;$i++){
     $kommunenummer = sprintf("%04d",$i);
     $path = sprintf("reports/report_%04d.txt",$i);
@@ -269,8 +269,17 @@ for($i=0;$i<2100;$i++){
         else {
             $pending_update = "<input type=\"button\" onclick=\"request_update('".$i."',0)\" value=\"Oppdater status\"/>";
         }
+        $path = sprintf("reports/report5_%04d.txt",$i);
+        if(file_exists($path)){
+			$linktoreport  = "<a href=\"reports/report5_$kommunenummer.txt\">report.txt</a>";
+			$linktochanges = "<a href=\"reports/new/$kommunenummer/changes_$kommunenummer.osm\">changes.osm</a>";
+		}
+		else {
+			$linktoreport  = "";
+			$linktochanges = "";
+		}
         
-        echo "<tr><td><span id=\"oppdater_$i\">$pending_update</span></td><td>$kommunenummer</td><td>".$nrtonavn[$i]."</td><td align=right>$completeness</td><td>$ledhtml</td><td style=\"padding-left : 20px\">$modtime</td><td style=\"padding-left : 30px\"><span id=\"ansvarlig_$i\">$ansvarlig</span></td><td style=\"padding-left : 30px\">$totalstatus</td></tr>";
+        echo "<tr><td><span id=\"oppdater_$i\">$pending_update</span></td><td>$kommunenummer</td><td>".$nrtonavn[$i]."</td><td align=right>$completeness</td><td>$ledhtml</td><td style=\"padding-left : 20px\">$modtime</td><td style=\"padding-left : 30px\"><span id=\"ansvarlig_$i\">$ansvarlig</span></td><td>$linktoreport<br>$linktochanges</td><td style=\"padding-left : 30px\">$totalstatus</td></tr>";
     }
 }
 echo "</table></body></html>";
