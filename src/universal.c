@@ -577,13 +577,13 @@ void find_exact_data_but_moved_around(sqlite3 *db)
             //    printf("SHOULD NOT BE ANY HERE!\n");
             //}
             //else
+            querybuffer = sqlite3_mprintf("update existing set foundindataset=1 where id='%q'", sqlite3_column_text(stmt2,0));
+            basic_query(db, querybuffer, 0);
+            sqlite3_free(querybuffer);
+            querybuffer = sqlite3_mprintf("update newnodes set foundindataset=1 where id='%q'", sqlite3_column_text(stmt,0));
+            basic_query(db, querybuffer, 0);
+            sqlite3_free(querybuffer);
             if (latex > (latitude - latmargin) && latex < (latitude + latmargin) && longex > (longitude - lonmargin) && longex < (longitude + lonmargin)) {
-                querybuffer = sqlite3_mprintf("update existing set foundindataset=1 where id='%q'", sqlite3_column_text(stmt2,0));
-                basic_query(db, querybuffer, 0);
-                sqlite3_free(querybuffer);
-                querybuffer = sqlite3_mprintf("update newnodes set foundindataset=1 where id='%q'", sqlite3_column_text(stmt,0));
-                basic_query(db, querybuffer, 0);
-                sqlite3_free(querybuffer);
 
                 querybuffer = sqlite3_mprintf("insert into changeto (id, change_type, existing_id, addr_street, addr_housenumber, addr_postcode, addr_city, latitude, longitude) values (%d, 'moved_exact', '%q', NULL, NULL, NULL, NULL, %f, %f)", changetorownumber, sqlite3_column_text(stmt2, 0), latitude, longitude);
                 basic_query(db, querybuffer, 0);
@@ -594,6 +594,16 @@ void find_exact_data_but_moved_around(sqlite3 *db)
                 basic_query(db, querybuffer, 0);
                 sqlite3_free(querybuffer);
                 //printf("Warning: The position is not EXACT: %s %s, %s %s (%f %f vs %f %f)\n", sqlite3_column_text(stmt,1), sqlite3_column_text(stmt,2), sqlite3_column_text(stmt,4), sqlite3_column_text(stmt,3), latitude, longitude, latex, longex);
+            }
+            else {
+                querybuffer = sqlite3_mprintf("insert into changeto (id, change_type, existing_id, addr_street, addr_housenumber, addr_postcode, addr_city, latitude, longitude) values (%d, 'moved_too_far', '%q', NULL, NULL, NULL, NULL, %f, %f)", changetorownumber, sqlite3_column_text(stmt2, 0), latitude, longitude);
+                basic_query(db, querybuffer, 0);
+                sqlite3_free(querybuffer);
+                changetorownumber++;
+                int lastid = sqlite3_last_insert_rowid(db);
+                querybuffer = sqlite3_mprintf("update existing set changeto_id='%d'  where id = '%q'", lastid, sqlite3_column_text(stmt2, 0));
+                basic_query(db, querybuffer, 0);
+                sqlite3_free(querybuffer);
             }
         }
         sqlite3_finalize(stmt2);
@@ -633,13 +643,13 @@ void find_exact_data_but_building(sqlite3 *db)
             //    printf("SHOULD NOT BE ANY HERE!\n");
             //}
             //else
+            querybuffer = sqlite3_mprintf("update existing set foundindataset=1 where id='%q'", sqlite3_column_text(stmt2,0));
+            basic_query(db, querybuffer, 0);
+            sqlite3_free(querybuffer);
+            querybuffer = sqlite3_mprintf("update newnodes set foundindataset=1 where id='%q'", sqlite3_column_text(stmt,0));
+            basic_query(db, querybuffer, 0);
+            sqlite3_free(querybuffer);
             if (latex > (latitude - latmargin) && latex < (latitude + latmargin) && longex > (longitude - lonmargin) && longex < (longitude + lonmargin)) {
-                querybuffer = sqlite3_mprintf("update existing set foundindataset=1 where id='%q'", sqlite3_column_text(stmt2,0));
-                basic_query(db, querybuffer, 0);
-                sqlite3_free(querybuffer);
-                querybuffer = sqlite3_mprintf("update newnodes set foundindataset=1 where id='%q'", sqlite3_column_text(stmt,0));
-                basic_query(db, querybuffer, 0);
-                sqlite3_free(querybuffer);
 
                 //querybuffer = sqlite3_mprintf("insert into changeto (id, change_type, existing_id, addr_street, addr_housenumber, addr_postcode, addr_city, latitude, longitude) values (%d, 'moved_exact', '%q', NULL, NULL, NULL, NULL, %f, %f)", changetorownumber, sqlite3_column_text(stmt2, 0), latitude, longitude);
                 //basic_query(db, querybuffer, 0);
@@ -650,6 +660,16 @@ void find_exact_data_but_building(sqlite3 *db)
                 //basic_query(db, querybuffer, 0);
                 //sqlite3_free(querybuffer);
                 //printf("Warning: The position is not EXACT: %s %s, %s %s (%f %f vs %f %f)\n", sqlite3_column_text(stmt,1), sqlite3_column_text(stmt,2), sqlite3_column_text(stmt,4), sqlite3_column_text(stmt,3), latitude, longitude, latex, longex);
+            }
+            else {
+                querybuffer = sqlite3_mprintf("insert into changeto (id, change_type, existing_id, addr_street, addr_housenumber, addr_postcode, addr_city, latitude, longitude) values (%d, 'building_moved_too_far', '%q', NULL, NULL, NULL, NULL, %f, %f)", changetorownumber, sqlite3_column_text(stmt2, 0), latitude, longitude);
+                basic_query(db, querybuffer, 0);
+                sqlite3_free(querybuffer);
+                changetorownumber++;
+                int lastid = sqlite3_last_insert_rowid(db);
+                querybuffer = sqlite3_mprintf("update existing set changeto_id='%d'  where id = '%q'", lastid, sqlite3_column_text(stmt2, 0));
+                basic_query(db, querybuffer, 0);
+                sqlite3_free(querybuffer);
             }
         }
         sqlite3_finalize(stmt2);
@@ -693,13 +713,13 @@ void find_corrected_data_but_moved_around(sqlite3 *db)
                 //    printf("SHOULD NOT BE ANY HERE!\n");
                 //}
                 //else
+                querybuffer = sqlite3_mprintf("update existing set foundindataset=1 where id='%q'", sqlite3_column_text(stmt2,0));
+                basic_query(db, querybuffer, 0);
+                sqlite3_free(querybuffer);
+                querybuffer = sqlite3_mprintf("update newnodes set foundindataset=1 where id='%q'", sqlite3_column_text(stmt,0));
+                basic_query(db, querybuffer, 0);
+                sqlite3_free(querybuffer);
                 if (latex > (latitude - latmargin) && latex < (latitude + latmargin) && longex > (longitude - lonmargin) && longex < (longitude + lonmargin)) {
-                    querybuffer = sqlite3_mprintf("update existing set foundindataset=1 where id='%q'", sqlite3_column_text(stmt2,0));
-                    basic_query(db, querybuffer, 0);
-                    sqlite3_free(querybuffer);
-                    querybuffer = sqlite3_mprintf("update newnodes set foundindataset=1 where id='%q'", sqlite3_column_text(stmt,0));
-                    basic_query(db, querybuffer, 0);
-                    sqlite3_free(querybuffer);
 
                     querybuffer = sqlite3_mprintf("insert into changeto (id, change_type, existing_id, addr_street, addr_housenumber, addr_postcode, addr_city, latitude, longitude) values (%d, 'moved_exact', '%q', NULL, NULL, NULL, NULL, %f, %f)", changetorownumber, sqlite3_column_text(stmt2, 0), latitude, longitude);
                     basic_query(db, querybuffer, 0);
@@ -710,6 +730,16 @@ void find_corrected_data_but_moved_around(sqlite3 *db)
                     basic_query(db, querybuffer, 0);
                     sqlite3_free(querybuffer);
                     //printf("Warning: The position is not EXACT: %s %s, %s %s (%f %f vs %f %f)\n", sqlite3_column_text(stmt,1), sqlite3_column_text(stmt,2), sqlite3_column_text(stmt,4), sqlite3_column_text(stmt,3), latitude, longitude, latex, longex);
+                }
+                else {
+                    querybuffer = sqlite3_mprintf("insert into changeto (id, change_type, existing_id, addr_street, addr_housenumber, addr_postcode, addr_city, latitude, longitude) values (%d, 'moved_too_far', '%q', NULL, NULL, NULL, NULL, %f, %f)", changetorownumber, sqlite3_column_text(stmt2, 0), latitude, longitude);
+                    basic_query(db, querybuffer, 0);
+                    sqlite3_free(querybuffer);
+                    changetorownumber++;
+                    int lastid = sqlite3_last_insert_rowid(db);
+                    querybuffer = sqlite3_mprintf("update existing set changeto_id='%d'  where id = '%q'", lastid, sqlite3_column_text(stmt2, 0));
+                    basic_query(db, querybuffer, 0);
+                    sqlite3_free(querybuffer);
                 }
             }
             sqlite3_finalize(stmt2);
@@ -1031,6 +1061,46 @@ void dump_osm_nodes_where_coordinates_will_be_changed(sqlite3 *db) {
     sqlite3_finalize(stmt);
 }
 
+void print_nodes_which_have_moved_too_far(sqlite3 *db) {
+    int ret;
+    sqlite3_stmt *stmt, *stmt2;
+    char *querybuffer;
+
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude, existing_id from changeto where change_type='moved_too_far' order by addr_street, addr_housenumber;");
+    ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+    sqlite3_free(querybuffer);
+    while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+        querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude from existing where id=%d;", sqlite3_column_int(stmt, 7));
+        ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt2,0);
+        sqlite3_free(querybuffer);
+        if((ret = sqlite3_step(stmt2)) == SQLITE_ROW){
+            printf("%s %s, %s %s:  %f,%f -> %f,%f\n", sqlite3_column_text(stmt2,1), sqlite3_column_text(stmt2,2), sqlite3_column_text(stmt2,4), sqlite3_column_text(stmt2,3), sqlite3_column_double(stmt2,5), sqlite3_column_double(stmt2,6), sqlite3_column_double(stmt,5), sqlite3_column_double(stmt,6)); 
+        }
+        sqlite3_finalize(stmt2);
+    }
+    sqlite3_finalize(stmt);
+}
+
+void print_buildings_which_are_too_far_away(sqlite3 *db) {
+    int ret;
+    sqlite3_stmt *stmt, *stmt2;
+    char *querybuffer;
+
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude, existing_id from changeto where change_type='building_moved_too_far' order by addr_street, addr_housenumber;");
+    ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+    sqlite3_free(querybuffer);
+    while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+        querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude from existing where id=%d;", sqlite3_column_int(stmt, 7));
+        ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt2,0);
+        sqlite3_free(querybuffer);
+        if((ret = sqlite3_step(stmt2)) == SQLITE_ROW){
+            printf("%s %s, %s %s:  %f,%f -> %f,%f\n", sqlite3_column_text(stmt2,1), sqlite3_column_text(stmt2,2), sqlite3_column_text(stmt2,4), sqlite3_column_text(stmt2,3), sqlite3_column_double(stmt2,5), sqlite3_column_double(stmt2,6), sqlite3_column_double(stmt,5), sqlite3_column_double(stmt,6)); 
+        }
+        sqlite3_finalize(stmt2);
+    }
+    sqlite3_finalize(stmt);
+}
+
 
 void print_new_nodes_which_will_be_added(sqlite3 *db) {
     int ret;
@@ -1247,6 +1317,10 @@ int main(int argc, char **argv)
     print_not_yet_matched(db);
     printf("\nNew nodes which needs manual inspection:\n");
     print_new_nodes_not_found(db);
+    printf("\nNodes with correct existing data which have moved too far. Needs manual inspection:\n");
+    print_nodes_which_have_moved_too_far(db);
+    printf("\nBuildings with correct existing data which have moved too far. Needs manual inspection:\n");
+    print_buildings_which_are_too_far_away(db);
     printf("\nData will be changed:\n");
     print_nodes_where_data_will_be_changed(db);
     printf("\nCoordinates will be changed:\n");
