@@ -359,7 +359,7 @@ void correct_name(sqlite3 *db, char *in, char *out, int out_max_len)
         strncpy(tmp_int + (searchres - out) + 3, searchres + 2, out_max_len-1-(int)(searchres-out)-2);
         tmp_int[strlen(out)+1] = 0;
         strncpy(out,tmp_int,out_max_len-1);
-        printf("Replace apostrophe: %s\n", out);
+        //printf("Replace apostrophe: %s\n", out);
         searchres = strstr(out, "''");
     }
 
@@ -371,7 +371,7 @@ void correct_name(sqlite3 *db, char *in, char *out, int out_max_len)
         strncpy(tmp_int + (searchres - out) + 3, searchres + 2, out_max_len-1-(int)(searchres-out)-2);
         tmp_int[strlen(out)+1] = 0;
         strncpy(out,tmp_int,out_max_len-1);
-        printf("Replace apostrophe: %s\n", out);
+        //printf("Replace apostrophe: %s\n", out);
         searchres = strstr(out, "´");
     }
 
