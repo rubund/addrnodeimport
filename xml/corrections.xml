@@ -399,5 +399,6 @@
 
 <!-- Type of road should be lowercase-->
 <spelling from="Gullhaug Torg" to="Gullhaug torg" />
+<spelling from="Boes Bakke" to="Boes bakke" />
 
 </corrections>
