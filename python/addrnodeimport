@@ -156,7 +156,7 @@ reportcontent2 = os.popen("fillinpostcode -c /usr/share/addrnodeimport/correctio
 reportcontent3 = os.popen("findchanged "+cachedir+"/reports/notmatched_"+munipnumberpadded+".osm "+cachedir+"/reports/newnodes_"+munipnumberpadded+".osm "+cachedir+"/reports/changed_"+munipnumberpadded+".osm").read()
 
 os.system("mkdir -p "+cachedir+"/reports/new/"+munipnumberpadded+"/")
-reportcontent4 = os.popen("addrnodeimport_create_change /tmp/osm_temp/nodes_"+munipnumberpadded+".osm /tmp/osm_temp/ways_"+munipnumberpadded+".osm "+osmfilename+" "+cachedir+"/reports/new/"+munipnumberpadded+"/").read()
+reportcontent4 = os.popen("addrnodeimport_create_change -c /usr/share/addrnodeimport/corrections.xml /tmp/osm_temp/nodes_"+munipnumberpadded+".osm /tmp/osm_temp/ways_"+munipnumberpadded+".osm "+osmfilename+" "+cachedir+"/reports/new/"+munipnumberpadded+"/").read()
 os.system("mv "+cachedir+"/reports/new/"+munipnumberpadded+"/changes.osm "+cachedir+"/reports/new/"+munipnumberpadded+"/changes_"+munipnumberpadded+".osm")
 
 reportfile = open(""+cachedir+"/reports/report_"+munipnumberpadded+".txt","w")
