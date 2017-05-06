@@ -4,9 +4,12 @@ After=mysql.service
 
 [Service]
 ExecStart=/usr/bin/screen -dmS addrnodeimport /usr/bin/python /usr/lib/addrnodeimport/python/update_on_request.py
+ExecStart=/usr/bin/screen -dmS addrnodeimport_upload /usr/bin/python /usr/lib/addrnodeimport/python/upload_on_request_new.py
 ExecStop=/usr/bin/screen -S addrnodeimport -X quit
+ExecStop=/usr/bin/screen -S addrnodeimport_upload -X quit
 User=addrnodeimport
-Type=forking
+Type=oneshot
+RemainAfterExit=1
 
 
 [Install]

@@ -23,4 +23,3 @@ python/kartverketadresser.lua /usr/share/addrnodeimport
 perl/osm2poly.pl /usr/lib/addrnodeimport/perl
 xml/corrections.xml /usr/share/addrnodeimport
 sh/trigger_update.sh /usr/lib/addrnodeimport/sh
-debian/upload_on_request.service /lib/systemd/system/
