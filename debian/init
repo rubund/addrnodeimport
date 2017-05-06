@@ -24,7 +24,7 @@ do_start(){
 
     echo "starting"
     /bin/su addrnodeimport -c "/usr/bin/screen -d -m /usr/lib/addrnodeimport/python/update_on_request.py"
-    /bin/su addrnodeimport -c "/usr/bin/screen -d -m /usr/lib/addrnodeimport/python/upload_on_request.py"
+    /bin/su addrnodeimport -c "/usr/bin/screen -d -m /usr/lib/addrnodeimport/python/upload_on_request_new.py"
 
 }
 
@@ -32,7 +32,7 @@ do_stop(){
 
     echo "stopping"
     ps aux | grep "\-d \-m /usr/lib/addrnodeimport/python/update_on_request.py" | cut -c 10-16 | xargs kill
-    ps aux | grep "\-d \-m /usr/lib/addrnodeimport/python/upload_on_request.py" | cut -c 10-16 | xargs kill
+    ps aux | grep "\-d \-m /usr/lib/addrnodeimport/python/upload_on_request_new.py" | cut -c 10-16 | xargs kill
 }
 
 case "$1" in
