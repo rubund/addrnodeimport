@@ -1,0 +1,7 @@
+
+1. Åpne grensene (osm-filer) for kommuner som er sammenslått i josm (finner inni data/municipality_borders.tar.gz).
+2. Merge grenser. Behold bare en way til slutt.
+3. Lagre i data/osm/$kommunenummer.osm
+4. Sjekk inn
+5. Legg til nytt kommunenummer i python/kommunenummer.py og web/kommunenummer.php
+6. Fjern gamle og legg til nytt i python/update_all.sh
