@@ -52,13 +52,13 @@ munipnumberpadded = "%04d" % (int(munipnumber))
 db = mysql.connector.connect(host="localhost",user=mypasswords.sqldbuser,password=mypasswords.sql,database=mypasswords.sqldbname)
 cursor = db.cursor()
 cursor.execute("set names utf8")
-#cursor.execute("select person from osmimportresp where kommunenummer=\""+str(munipnumber)+"\" and person != 'rubund' and deleted != 1;")
-#rows = cursor.fetchall()
-#if(len(rows) > 0):
-#	print ("Someone else is responsible for this one. Not importing...")
-#	sys.exit()
-#else:
-#	print ("Nobody is responsible for this one")
+cursor.execute("select person from osmimportresp where kommunenummer=\""+str(munipnumber)+"\" and person != 'rubund' and deleted != 1;")
+rows = cursor.fetchall()
+if(len(rows) > 0):
+	print ("Someone else is responsible for this one. Not importing...")
+	sys.exit()
+else:
+	print ("Nobody is responsible for this one")
 
 cursor.execute("select tid from update_requests where kommunenummer=\"%s\" and ferdig=0 and upload=0 order by tid desc limit 1" % (munipnumber,))
 rows = cursor.fetchall()
