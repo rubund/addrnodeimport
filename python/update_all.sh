@@ -207,13 +207,11 @@ wget http://download.geofabrik.de/europe/norway-latest.osm.pbf -O /var/cache/add
 /usr/lib/addrnodeimport/python/doall.py  701
 /usr/lib/addrnodeimport/python/doall.py  702
 /usr/lib/addrnodeimport/python/doall.py  704
-/usr/lib/addrnodeimport/python/doall.py  706
+/usr/lib/addrnodeimport/python/doall.py  710
 /usr/lib/addrnodeimport/python/doall.py  711
 /usr/lib/addrnodeimport/python/doall.py  713
 /usr/lib/addrnodeimport/python/doall.py  714
 /usr/lib/addrnodeimport/python/doall.py  716
-/usr/lib/addrnodeimport/python/doall.py  719
-/usr/lib/addrnodeimport/python/doall.py  720
 /usr/lib/addrnodeimport/python/doall.py  722
 /usr/lib/addrnodeimport/python/doall.py  723
 /usr/lib/addrnodeimport/python/doall.py  1103

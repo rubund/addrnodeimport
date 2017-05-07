@@ -209,6 +209,7 @@ nrtonavn = {
 707 : u"Larvik",
 708 : u"Stavern",
 709 : u"Larvik",
+710 : u"Sandefjord ny",
 711 : u"Strømm",
 711 : u"Svelvik",
 712 : u"Skoger",

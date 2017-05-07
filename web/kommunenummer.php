@@ -209,6 +209,7 @@ $nrtonavn = array(
 707 => "Larvik",
 708 => "Stavern",
 709 => "Larvik",
+710 => "Sandefjord ny",
 711 => "Strømm",
 711 => "Svelvik",
 712 => "Skoger",
