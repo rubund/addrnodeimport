@@ -650,16 +650,14 @@ void find_exact_data_but_building(sqlite3 *db)
             basic_query(db, querybuffer, 0);
             sqlite3_free(querybuffer);
             if (latex > (latitude - latmargin) && latex < (latitude + latmargin) && longex > (longitude - lonmargin) && longex < (longitude + lonmargin)) {
-
-                //querybuffer = sqlite3_mprintf("insert into changeto (id, change_type, existing_id, addr_street, addr_housenumber, addr_postcode, addr_city, latitude, longitude) values (%d, 'moved_exact', '%q', NULL, NULL, NULL, NULL, %f, %f)", changetorownumber, sqlite3_column_text(stmt2, 0), latitude, longitude);
-                //basic_query(db, querybuffer, 0);
-                //sqlite3_free(querybuffer);
-                //changetorownumber++;
-                //int lastid = sqlite3_last_insert_rowid(db);
-                //querybuffer = sqlite3_mprintf("update existing set changeto_id='%d'  where id = '%q'", lastid, sqlite3_column_text(stmt2, 0));
-                //basic_query(db, querybuffer, 0);
-                //sqlite3_free(querybuffer);
-                //printf("Warning: The position is not EXACT: %s %s, %s %s (%f %f vs %f %f)\n", sqlite3_column_text(stmt,1), sqlite3_column_text(stmt,2), sqlite3_column_text(stmt,4), sqlite3_column_text(stmt,3), latitude, longitude, latex, longex);
+                querybuffer = sqlite3_mprintf("insert into changeto (id, change_type, existing_id, addr_street, addr_housenumber, addr_postcode, addr_city, latitude, longitude) values (%d, 'building_moved_exact', '%q', NULL, NULL, NULL, NULL, %f, %f)", changetorownumber, sqlite3_column_text(stmt2, 0), latitude, longitude);
+                basic_query(db, querybuffer, 0);
+                sqlite3_free(querybuffer);
+                changetorownumber++;
+                int lastid = sqlite3_last_insert_rowid(db);
+                querybuffer = sqlite3_mprintf("update existing set changeto_id='%d'  where id = '%q'", lastid, sqlite3_column_text(stmt2, 0));
+                basic_query(db, querybuffer, 0);
+                sqlite3_free(querybuffer);
             }
             else {
                 querybuffer = sqlite3_mprintf("insert into changeto (id, change_type, existing_id, addr_street, addr_housenumber, addr_postcode, addr_city, latitude, longitude) values (%d, 'building_moved_too_far', '%q', NULL, NULL, NULL, NULL, %f, %f)", changetorownumber, sqlite3_column_text(stmt2, 0), latitude, longitude);
