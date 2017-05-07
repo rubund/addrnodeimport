@@ -19,6 +19,7 @@ python/deletenotmatchednodes.py /usr/lib/addrnodeimport/python
 python/donextstep.py /usr/lib/addrnodeimport/python
 python/sosiaddr.py /usr/lib/addrnodeimport/python
 data/municipality_borders.tar.gz /usr/share/addrnodeimport
+data/osm/* /usr/share/addrnodeimport/municipality_borders/
 python/kartverketadresser.lua /usr/share/addrnodeimport
 perl/osm2poly.pl /usr/lib/addrnodeimport/perl
 xml/corrections.xml /usr/share/addrnodeimport

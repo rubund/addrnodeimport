@@ -113,8 +113,12 @@ else:
 		os.system("osmosis --read-pbf file=\"/tmp/osm_temp/nodes.pbf\" --bounding-box bottom="+bottomcoord+" left="+leftcoord+" top="+topcoord+" right="+rightcoord+" --write-xml file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+".osm\"")
 
 if not os.path.isfile(""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm"):
-	os.system("tar -xf /usr/share/addrnodeimport/municipality_borders.tar.gz -C "+cachedir+"")	
-	os.system("mv "+cachedir+"/osm "+cachedir+"/municipality_borders")
+	os.system("mkdir -p "+cachedir+"/municipality_borders/")
+	if os.path.isfile("/usr/share/addrnodeimport/municipality_borders/"+str(munipnumberpadded)+".osm"):
+		os.system("cp /usr/share/addrnodeimport/municipality_borders/"+str(munipnumberpadded)+".osm "+cachedir+"/municipality_borders/")
+	else:
+		os.system("tar -xf /usr/share/addrnodeimport/municipality_borders.tar.gz -C "+cachedir+"")
+		os.system("cp "+cachedir+"/osm/"+str(munipnumberpadded)+".osm "+cachedir+"/municipality_borders/")
 #	alreadyextracted = glob.glob("munip_borders/"+munipnumberpadded+"/"+str(munipnumberpadded)+"*_Adm*.sos")
 #	if alreadyextracted == None or len(alreadyextracted) == 0:
 #		print (alreadyextracted)
