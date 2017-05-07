@@ -5,3 +5,8 @@
 4. Sjekk inn
 5. Legg til nytt kommunenummer i python/kommunenummer.py og web/kommunenummer.php
 6. Fjern gamle og legg til nytt i python/update_all.sh
+
+
+municipality_borders.tar.gz er ikke ment å endres. Dette for å slippe å sløse plass i git-repoet.
+Hvis .osm fil puttes i data/osm/ vil den brukes i stedet for tilsvarende i municipality_borders.tar.gz.
+(/var/cache/municipality_borders/$kommunenummer.osm må slettes før den nye lastes inn)
