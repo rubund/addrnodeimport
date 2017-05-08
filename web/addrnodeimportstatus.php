@@ -247,10 +247,10 @@ for($i=0;$i<2100;$i++){
             $totalstatus .= "<font color=\"red\">Det finnes duplikater ($duplicates stk). Se: <a href=\"reports/duplicates_$kommunenummer.osm\">duplicates.osm</a></font>";
         }
 		else if($notmatched != 0 && $missing != 0 && $automaticchanges != 0){
-            $totalstatus .= "Noen eksisterende adresser har endret seg ($automaticchanges stk). Denne .osm filen fikser dette: <a href=\"reports/changed_$kommunenummer.osm\">changed.osm</a>";
+            $totalstatus .= "<strike>Noen eksisterende adresser har endret seg ($automaticchanges stk). Denne .osm filen fikser dette: <a href=\"reports/changed_$kommunenummer.osm\">changed.osm</a></strike>";
 		}
         else if($notmatched != 0 && $missing != 0){
-            $totalstatus .= "Noen eksisterende noder gjenkjennes ikke ($notmatched stk). Dette må fikses før import. Se: <a href=\"reports/notmatched_$kommunenummer.osm\">notmatched.osm</a> - sammenlign med $linktoosm";
+            $totalstatus .= "<strike>Noen eksisterende noder gjenkjennes ikke ($notmatched stk). Dette må fikses før import. Se: <a href=\"reports/notmatched_$kommunenummer.osm\">notmatched.osm</a> - sammenlign med $linktoosm</strike>";
         }
         else if($notmatched != 0){
             $totalstatus .= "<font color=\"green\">Noen adressenoder i OSM gjenkjennes ikke ($notmatched stk). Det kan hende dette er uproblematisk. Ellers er alle Kartverkets adressenoder i OSM. Se: <a href=\"reports/notmatched_$kommunenummer.osm\">notmatched.osm</a></font>";
