@@ -1338,7 +1338,7 @@ int main(int argc, char **argv)
     //print_new_nodes_and_suggested_existing_nearby(db, 20);
     printf("Not matched existing nodes:\n");
     print_not_yet_matched(db);
-    printf("\nNew nodes which needs manual inspection:\n");
+    printf("\nNew nodes which need manual inspection:\n");
     print_new_nodes_not_found(db);
     printf("\nNodes with correct existing data which have moved too far. Needs manual inspection:\n");
     print_nodes_which_have_moved_too_far(db);
