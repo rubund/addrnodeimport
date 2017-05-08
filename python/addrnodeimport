@@ -162,6 +162,8 @@ reportcontent3 = os.popen("findchanged "+cachedir+"/reports/notmatched_"+munipnu
 os.system("mkdir -p "+cachedir+"/reports/new/"+munipnumberpadded+"/")
 reportcontent4 = os.popen("addrnodeimport_create_change -c /usr/share/addrnodeimport/corrections.xml /tmp/osm_temp/nodes_"+munipnumberpadded+".osm /tmp/osm_temp/ways_"+munipnumberpadded+".osm "+osmfilename+" "+cachedir+"/reports/new/"+munipnumberpadded+"/").read()
 os.system("mv "+cachedir+"/reports/new/"+munipnumberpadded+"/changes.osm "+cachedir+"/reports/new/"+munipnumberpadded+"/changes_"+munipnumberpadded+".osm")
+os.system("mv "+cachedir+"/reports/new/"+munipnumberpadded+"/notmatched_manual.osm "+cachedir+"/reports/new/"+munipnumberpadded+"/notmatched_manual_"+munipnumberpadded+".osm")
+os.system("mv "+cachedir+"/reports/new/"+munipnumberpadded+"/newnodes_manual.osm "+cachedir+"/reports/new/"+munipnumberpadded+"/newnodes_manual_"+munipnumberpadded+".osm")
 
 reportfile = open(""+cachedir+"/reports/report_"+munipnumberpadded+".txt","w")
 reportfile.write(reportcontent)

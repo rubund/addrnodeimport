@@ -62,6 +62,8 @@ char *outdir_path;
 char *correctionsfilename = NULL;
 
 xmlDoc *doc_changes = NULL;
+xmlDoc *doc_notmatched_manual = NULL;
+xmlDoc *doc_newnodes_manual = NULL;
 xmlDoc *doc_existing_nodes = NULL;
 xmlDoc *doc_existing_ways = NULL;
 
@@ -807,6 +809,52 @@ void print_new_nodes_not_found(sqlite3 *db)
     sqlite3_finalize(stmt);
 }
 
+void dump_new_nodes_not_found(sqlite3 *db) {
+    int ret;
+    sqlite3_stmt *stmt, *stmt2;
+    char *querybuffer;
+    char cntBuf[32];
+    xmlNode *newNode;
+    xmlNode *newTagNode;
+
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude from newnodes where foundindataset=0 order by addr_street, addr_housenumber;");
+    ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+    sqlite3_free(querybuffer);
+    while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+        newNode = xmlNewNode(NULL, "node");
+        snprintf(cntBuf, 31, "%d", global_new_node_id);
+        xmlSetProp(newNode, "id", cntBuf);
+        xmlSetProp(newNode, "version", "1");
+        xmlSetProp(newNode, "lat", sqlite3_column_text(stmt,5));
+        xmlSetProp(newNode, "lon", sqlite3_column_text(stmt,6));
+
+        newTagNode = xmlNewNode(NULL, "tag");
+        xmlSetProp(newTagNode, "k", "addr:street");
+        xmlSetProp(newTagNode, "v", sqlite3_column_text(stmt, 1));
+        xmlAddChild(newNode, newTagNode);
+
+        newTagNode = xmlNewNode(NULL, "tag");
+        xmlSetProp(newTagNode, "k", "addr:housenumber");
+        xmlSetProp(newTagNode, "v", sqlite3_column_text(stmt, 2));
+        xmlAddChild(newNode, newTagNode);
+
+        newTagNode = xmlNewNode(NULL, "tag");
+        xmlSetProp(newTagNode, "k", "addr:city");
+        xmlSetProp(newTagNode, "v", sqlite3_column_text(stmt, 3));
+        xmlAddChild(newNode, newTagNode);
+
+        newTagNode = xmlNewNode(NULL, "tag");
+        xmlSetProp(newTagNode, "k", "addr:postcode");
+        xmlSetProp(newTagNode, "v", sqlite3_column_text(stmt, 4));
+        xmlAddChild(newNode, newTagNode);
+
+        xmlNode *root_element = xmlDocGetRootElement(doc_newnodes_manual);
+        xmlAddChild(root_element, newNode);
+        global_new_node_id--;
+    }
+    sqlite3_finalize(stmt);
+}
+
 
 void print_not_yet_matched(sqlite3 *db)
 {
@@ -819,6 +867,33 @@ void print_not_yet_matched(sqlite3 *db)
     sqlite3_free(querybuffer);
     while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
         printf("%s %s, %s %s\n", sqlite3_column_text(stmt,1), sqlite3_column_text(stmt,2), sqlite3_column_text(stmt,4), sqlite3_column_text(stmt,3));
+    }
+    sqlite3_finalize(stmt);
+}
+
+
+void dump_not_yet_matched(sqlite3 *db) {
+    int ret;
+    sqlite3_stmt *stmt;
+    char *querybuffer;
+    xmlNode *tmp_node;
+
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude, isway, file_index from existing where foundindataset = 0 and ((tag_number <= 4) or (tag_number <= 5 and building = 1)) order by addr_street, addr_housenumber;");
+    ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+    sqlite3_free(querybuffer);
+    while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+
+        if(sqlite3_column_int(stmt, 7)) // if isway
+            tmp_node = get_xml_node(doc_existing_ways, sqlite3_column_int(stmt, 8), 1);
+        else
+            tmp_node = get_xml_node(doc_existing_nodes, sqlite3_column_int(stmt, 8), 0);
+        //replace_tag_value(tmp_node, "addr:street", sqlite3_column_text(stmt, 1));
+        //replace_tag_value(tmp_node, "addr:housenumber", sqlite3_column_text(stmt, 2));
+        //replace_tag_value(tmp_node, "addr:city", sqlite3_column_text(stmt, 3));
+        //replace_tag_value(tmp_node, "addr:postcode", sqlite3_column_text(stmt, 4));
+        xmlNode *newNode = xmlCopyNode(tmp_node, 1);
+        xmlNode *root_element = xmlDocGetRootElement(doc_notmatched_manual);
+        xmlAddChild(root_element, newNode);
     }
     sqlite3_finalize(stmt);
 }
@@ -1176,13 +1251,13 @@ void remove_all_subnodes_from_xml(xmlDoc *doc)
     }
 }
 
-void export_changes_osm(char *file_name)
+void export_osm(xmlDoc *doc, char *file_name)
 {
     char fullpath [256];
     strncpy(fullpath, outdir_path, 255);
     strncat(fullpath, "/", 255 - strlen(fullpath));
     strncat(fullpath, file_name, 255 - strlen(fullpath) - 1);
-    xmlSaveFileEnc(fullpath, doc_changes, "UTF-8");
+    xmlSaveFileEnc(fullpath, doc, "UTF-8");
 }
 
 int parse_cmdline(int argc, char **argv)
@@ -1278,6 +1353,8 @@ int main(int argc, char **argv)
     doc_existing_nodes = xmlReadFile(existing_node_filename, NULL, 0);
     remove_all_subnodes_from_xml(doc_existing_nodes);
     doc_changes = doc_existing_nodes;
+    doc_notmatched_manual = xmlCopyDoc(doc_changes,1);
+    doc_newnodes_manual = xmlCopyDoc(doc_changes,1);
     //
 
     doc_existing_nodes = xmlReadFile(existing_node_filename, NULL, 0);
@@ -1330,12 +1407,19 @@ int main(int argc, char **argv)
     dump_osm_nodes_where_data_will_be_changed(db);
     dump_osm_nodes_where_coordinates_will_be_changed(db);
     dump_new_nodes_which_will_be_added(db);
-    export_changes_osm("changes.osm");
+    dump_new_nodes_not_found(db);
+    dump_not_yet_matched(db);
+    export_osm(doc_changes, "changes.osm");
+    export_osm(doc_newnodes_manual, "newnodes_manual.osm");
+    export_osm(doc_notmatched_manual, "notmatched_manual.osm");
 
     sqlite3_close(db);
 
     xmlFreeDoc(doc_existing_nodes);
     xmlFreeDoc(doc_existing_ways);
+    xmlFreeDoc(doc_newnodes_manual);
+    xmlFreeDoc(doc_notmatched_manual);
+    xmlFreeDoc(doc_changes);
 
     xmlCleanupParser();
 
