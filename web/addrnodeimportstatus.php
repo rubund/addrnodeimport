@@ -252,11 +252,11 @@ for($i=0;$i<2100;$i++){
         else if(file_exists("reports/new/$kommunenummer/newnodes_manual_$kommunenummer.osm") && $notmatched != 0 && $missing != 0){
             $totalstatus .= "For manuelt arbeid se: <a href=\"reports/new/$kommunenummer/notmatched_manual_$kommunenummer.osm\">notmatched_manual.osm</a> - sammenlign med <a href=\"reports/new/$kommunenummer/newnodes_manual_$kommunenummer.osm\">newnodes_manual.osm</a>";
         }
-        //else if($notmatched != 0 && $missing != 0){
-        //    $totalstatus .= "<strike>Noen eksisterende adresser har endret seg ($automaticchanges stk). Denne .osm filen fikser dette: <a href=\"reports/changed_$kommunenummer.osm\">changed.osm</a></strike>";
-        //}
+        else if($notmatched != 0 && $missing != 0){
+            $totalstatus .= "<strike>Noen eksisterende noder gjenkjennes ikke ($notmatched stk). Dette må fikses før import. Se: <a href=\"reports/notmatched_$kommunenummer.osm\">notmatched.osm</a> - sammenlign med $linktoosm</strike>";
+        }
         else if($notmatched != 0){
-            $totalstatus .= "<font color=\"green\">Noen adressenoder i OSM gjenkjennes ikke ($notmatched stk). Det kan hende dette er uproblematisk. Ellers er alle Kartverkets adressenoder i OSM. Se: <a href=\"reports/notmatched_$kommunenummer.osm\">notmatched.osm</a></font>";
+            $totalstatus .= "<strike><font color=\"green\">Noen adressenoder i OSM gjenkjennes ikke ($notmatched stk). Det kan hende dette er uproblematisk. Ellers er alle Kartverkets adressenoder i OSM. Se: <a href=\"reports/notmatched_$kommunenummer.osm\">notmatched.osm</a></font></strike>";
         }
         $result = mysql_query("select person,date(tid) from osmimportresp where kommunenummer='".$i."' and deleted != 1 order by tid asc limit 1") or die('Mysql error');
         if ($row = mysql_fetch_array($result, MYSQL_NUM)){
