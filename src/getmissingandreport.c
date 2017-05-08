@@ -173,31 +173,13 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 			int basicnumber=0;
 			if(hasfound) {
 				if(correctionsfilename != NULL){
-					querybuffer = sqlite3_mprintf("select toname from corrections where fromname='%q';",addr_street);
-					ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
-					sqlite3_free(querybuffer);
-					if (ret){
-						fprintf(stderr,"SQL Error");
-						return;
-					}
-					if((ret = sqlite3_step(stmt)) == SQLITE_ROW){
-						if(verbose)
-							fprintf(stdout,"Found correction: %s %s",addr_street, sqlite3_column_text(stmt,0));
-						strncpy(addr_street,sqlite3_column_text(stmt,0),255);
-					}
-					sqlite3_finalize(stmt);	
+					char addr_street_corrected[256];
+					char addr_city_corrected[256];
+					correct_name(db, addr_street, addr_street_corrected, 255);
+					strncpy(addr_street,addr_street_corrected,255);
 
-					querybuffer = sqlite3_mprintf("select toname from corrections where fromname='%q';",addr_city);
-					ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
-					sqlite3_free(querybuffer);
-					if (ret){
-						fprintf(stderr,"SQL Error");
-						return;
-					}
-					if((ret = sqlite3_step(stmt)) == SQLITE_ROW){
-						strncpy(addr_city,sqlite3_column_text(stmt,0),255);
-					}
-					sqlite3_finalize(stmt);	
+					correct_name(db, addr_city, addr_city_corrected, 255);
+					strncpy(addr_city,addr_city_corrected,255);
 				}
 				querybuffer = sqlite3_mprintf("select id,file_index,isway,addr_street,addr_housenumber,addr_postcode,addr_city from existing where addr_street='%q' and lower(addr_housenumber)=lower('%q') and addr_postcode='%q' and addr_city='%q' and ((tag_number <= 4) or (tag_number <= 5 and building = 1))",addr_street,addr_housenumber,addr_postcode,addr_city);
 				exists2 = 0;
@@ -337,55 +319,38 @@ void compare_to_database(xmlDoc *doc_old1, xmlDoc *doc_old2, xmlNode * a_node, s
 					if(outputxmlfilename){
 						newNode = xmlCopyNode(cur_node, 1);
 						if(correctionsfilename != NULL){
-							querybuffer = sqlite3_mprintf("select toname from corrections where toname='%q';",addr_street);
-							ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
-							sqlite3_free(querybuffer);
-							if (ret){
-								fprintf(stderr,"SQL Error");
-								return;
-							}
-							if((ret = sqlite3_step(stmt)) == SQLITE_ROW){
-								xmlNode *sub_tag_node;
-								if(verbose)
-									fprintf(stdout,"Found correction: %s %s",addr_street, sqlite3_column_text(stmt,0));
-								for(sub_tag_node = newNode->children; sub_tag_node ; sub_tag_node = sub_tag_node->next){
-									if(sub_tag_node->type == XML_ELEMENT_NODE) {
-										text = xmlGetProp(sub_tag_node, "k");
-										if(text != 0){
-											if(strcmp(text,"addr:street") == 0){
-												xmlFree(text);
-												xmlSetProp(sub_tag_node, "v", sqlite3_column_text(stmt,0));
-											}
-										}
-									}
-								}
-							}
-							sqlite3_finalize(stmt);	
+							xmlNode *sub_tag_node;
+							char addr_street_corrected[256];
+							char addr_city_corrected[256];
+							correct_name(db, addr_street, addr_street_corrected, 255);
+							strncpy(addr_street,addr_street_corrected,255);
 
-							querybuffer = sqlite3_mprintf("select toname from corrections where toname='%q';",addr_city);
-							ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
-							sqlite3_free(querybuffer);
-							if (ret){
-								fprintf(stderr,"SQL Error");
-								return;
-							}
-							if((ret = sqlite3_step(stmt)) == SQLITE_ROW){
-								xmlNode *sub_tag_node;
-								if(verbose)
-									fprintf(stdout,"Found correction: %s %s",addr_street, sqlite3_column_text(stmt,0));
-								for(sub_tag_node = newNode->children; sub_tag_node ; sub_tag_node = sub_tag_node->next){
-									if(sub_tag_node->type == XML_ELEMENT_NODE) {
-										text = xmlGetProp(sub_tag_node, "k");
-										if(text != 0){
-											if(strcmp(text,"addr:city") == 0){
-												xmlFree(text);
-												xmlSetProp(sub_tag_node, "v", sqlite3_column_text(stmt,0));
-											}
+							for(sub_tag_node = newNode->children; sub_tag_node ; sub_tag_node = sub_tag_node->next){
+								if(sub_tag_node->type == XML_ELEMENT_NODE) {
+									text = xmlGetProp(sub_tag_node, "k");
+									if(text != 0){
+										if(strcmp(text,"addr:street") == 0){
+											xmlFree(text);
+											xmlSetProp(sub_tag_node, "v", addr_street);
 										}
 									}
 								}
 							}
-							sqlite3_finalize(stmt);	
+
+							correct_name(db, addr_city, addr_city_corrected, 255);
+							strncpy(addr_city,addr_city_corrected,255);
+
+							for(sub_tag_node = newNode->children; sub_tag_node ; sub_tag_node = sub_tag_node->next){
+								if(sub_tag_node->type == XML_ELEMENT_NODE) {
+									text = xmlGetProp(sub_tag_node, "k");
+									if(text != 0){
+										if(strcmp(text,"addr:city") == 0){
+											xmlFree(text);
+											xmlSetProp(sub_tag_node, "v", addr_city);
+										}
+									}
+								}
+							}
 						}
 						xmlNode *sub_tag_node;
 						for(sub_tag_node = newNode->children; sub_tag_node ; sub_tag_node = sub_tag_node->next){

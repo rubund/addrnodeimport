@@ -109,3 +109,56 @@ xmlNode *get_xml_node(xmlDoc *doc,int index,int isway)
 	}
 	return tmp_node;
 }
+
+
+void correct_name(sqlite3 *db, char *in, char *out, int out_max_len)
+{
+    char *querybuffer;
+    sqlite3_stmt *stmt;
+    int ret;
+    char *tmp_int = malloc(out_max_len);
+    querybuffer = sqlite3_mprintf("select toname from corrections where fromname='%q';",in);
+    ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+    sqlite3_free(querybuffer);
+    if (ret){
+        fprintf(stderr,"SQL Error");
+        return;
+    }
+    if((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+        //if(verbose)
+        //    fprintf(stdout,"Found correction: %s %s",in, sqlite3_column_text(stmt,0));
+        strncpy(out,sqlite3_column_text(stmt,0),out_max_len-1);
+    }
+    else {
+        strncpy(out,in,out_max_len-1);
+    }
+    sqlite3_finalize(stmt);
+
+    char *searchres;
+
+    // Replace '' with correct ’
+    searchres = strstr(out, "''");
+    while (searchres != 0){
+        strncpy(tmp_int, out, (searchres - out));
+        strncpy(tmp_int + (searchres - out), "’", 3);
+        strncpy(tmp_int + (searchres - out) + 3, searchres + 2, out_max_len-1-(int)(searchres-out)-2);
+        tmp_int[strlen(out)+1] = 0;
+        strncpy(out,tmp_int,out_max_len-1);
+        //printf("Replace apostrophe: %s\n", out);
+        searchres = strstr(out, "''");
+    }
+
+    // Replace ´ with correct ’
+    searchres = strstr(out, "´");
+    while (searchres != 0){
+        strncpy(tmp_int, out, (searchres - out));
+        strncpy(tmp_int + (searchres - out), "’", 3);
+        strncpy(tmp_int + (searchres - out) + 3, searchres + 2, out_max_len-1-(int)(searchres-out)-2);
+        tmp_int[strlen(out)+1] = 0;
+        strncpy(out,tmp_int,out_max_len-1);
+        //printf("Replace apostrophe: %s\n", out);
+        searchres = strstr(out, "´");
+    }
+
+    free(tmp_int);
+}
