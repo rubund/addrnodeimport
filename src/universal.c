@@ -110,8 +110,10 @@ int get_field(xmlNode *node, char *field_name, char *out, int outmaxlen)
             if(strcmp(text, field_name) == 0){
                 xmlFree(text);
                 text = xmlGetProp(field_node, "v");
-                if(out != NULL)
+                if(out != NULL) {
                     strncpy(out, text, outmaxlen);
+                    out[outmaxlen] = 0;
+                }
                 xmlFree(text);
                 return 1;
             }
