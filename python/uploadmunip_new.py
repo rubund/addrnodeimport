@@ -88,18 +88,21 @@ if not os.path.isfile(cachedir+"/reports/new/"+str(munipnumberpadded)+"/changes_
 
 dom1 = parse(cachedir+"/reports/new/"+str(munipnumberpadded)+"/changes_"+str(munipnumberpadded)+".osm")
 mainelement1 = dom1.getElementsByTagName("osm")[0]
-nodes = mainelement1.getElementsByTagName("node")
+nodes = mainelement1.childNodes
 counter = 1
 for node in nodes:
 	if(node.nodeType == 1):
+		if node.tagName != "node" and node.tagName != "way":
+			continue
 		housenumber = ""
 		street      = ""
 		postcode    = ""
 		city        = ""
 		osm_id = node.attributes["id"].value
 		osm_version = node.attributes["version"].value
-		latitude = node.attributes["lat"].value
-		longitude = node.attributes["lon"].value
+		if node.tagName == "node":
+			latitude = node.attributes["lat"].value
+			longitude = node.attributes["lon"].value
 		tags = node.getElementsByTagName("tag")
 		if "action" in node.attributes:
 			action = node.attributes["action"].value
@@ -121,19 +124,34 @@ for node in nodes:
 			#	jtags.append("addr:city" : city)
 			else:
 				jtags[tag.attributes["k"].value] = tag.attributes["v"].value
+		ndlist = []
+		if node.tagName == "way":
+			nds = node.getElementsByTagName("nd")
+			for nd in nds:
+				ndlist.append(nd.attributes["ref"].value)
+
 		if housenumber != "":
+			editnode = {}
 			if action == "modify":
-				editnode = {"id": osm_id , "version" : osm_version , "lat" : latitude, "lon": longitude , "tag": jtags}
+				if node.tagName == "node":
+					editnode = {"id": osm_id , "version" : osm_version , "lat" : latitude, "lon": longitude , "tag": jtags}
+				else:
+					editnode = {"id": osm_id , "version" : osm_version , "tag": jtags, "nd" : ndlist}
 			else:
-				editnode = {"id": -counter , "version" : osm_version , "lat" : latitude, "lon": longitude , "tag": jtags}
-				counter = counter + 1;
+				if node.tagName == "node":
+					editnode = {"id": -counter , "version" : osm_version , "lat" : latitude, "lon": longitude , "tag": jtags}
+					counter = counter + 1;
 			#print (str(latitude)+""+str(longitude)+""+street+" "+housenumber)
 			if action == "modify":
 				print("Modifying")
-				api.NodeUpdate(editnode)
+				if node.tagName == "node":
+					api.NodeUpdate(editnode)
+				else:
+					api.WayUpdate(editnode)
 			else:
-				print("Creating")
-				api.NodeCreate(editnode)
+				if node.tagName == "node":
+					print("Creating")
+					api.NodeCreate(editnode)
 			print (editnode)
 		
 api.ChangesetClose()
