@@ -92,8 +92,10 @@ nodes = mainelement1.childNodes
 counter = 1
 for node in nodes:
 	if(node.nodeType == 1):
-		if node.tagName != "node" and node.tagName != "way":
+		if node.tagName != "node":
 			continue
+		#if node.tagName != "node" and node.tagName != "way":
+		#	continue
 		housenumber = ""
 		street      = ""
 		postcode    = ""
