@@ -981,21 +981,36 @@ void print_nodes_where_data_will_be_changed(sqlite3 *db) {
     sqlite3_finalize(stmt);
 }
 
-void replace_tag_value(xmlNode *node, char *key, const char *new_val)
+int replace_tag_value(xmlNode *node, char *key, const char *new_val)
 {
     xmlChar *text;
     xmlNode *tag_node;
+    int replaced = 0;
     for(tag_node = node->children; tag_node ; tag_node = tag_node->next) {
         if(tag_node->type == XML_ELEMENT_NODE) {
             text = xmlGetProp(tag_node, "k");
             if(text != 0) {
                 if(strcmp(text, key) == 0) {
                     xmlSetProp(tag_node, "v", new_val);
+                    replaced = 1;
                 }
             }
             xmlFree(text);
+            if (replaced)
+                return 1;
         }
     }
+	return 0;
+}
+
+void add_tag(xmlNode *node, char *key, const char *new_val)
+{
+    xmlNode *newTagNode;
+
+    newTagNode = xmlNewNode(NULL, "tag");
+    xmlSetProp(newTagNode, "k", key);
+    xmlSetProp(newTagNode, "v", new_val);
+    xmlAddChild(node, newTagNode);
 }
 
 void dump_osm_nodes_where_data_will_be_changed(sqlite3 *db) {
@@ -1017,10 +1032,14 @@ void dump_osm_nodes_where_data_will_be_changed(sqlite3 *db) {
                 tmp_node = get_xml_node(doc_existing_ways, sqlite3_column_int(stmt2, 8), 1);
             else
                 tmp_node = get_xml_node(doc_existing_nodes, sqlite3_column_int(stmt2, 8), 0);
-            replace_tag_value(tmp_node, "addr:street", sqlite3_column_text(stmt, 1));
-            replace_tag_value(tmp_node, "addr:housenumber", sqlite3_column_text(stmt, 2));
-            replace_tag_value(tmp_node, "addr:city", sqlite3_column_text(stmt, 3));
-            replace_tag_value(tmp_node, "addr:postcode", sqlite3_column_text(stmt, 4));
+            if(!replace_tag_value(tmp_node, "addr:street", sqlite3_column_text(stmt, 1)))
+                add_tag(tmp_node, "addr:street", sqlite3_column_text(stmt, 1));
+            if(!replace_tag_value(tmp_node, "addr:housenumber", sqlite3_column_text(stmt, 2)))
+                add_tag(tmp_node, "addr:housenumber", sqlite3_column_text(stmt, 2));
+            if(!replace_tag_value(tmp_node, "addr:city", sqlite3_column_text(stmt, 3)))
+                add_tag(tmp_node, "addr:city", sqlite3_column_text(stmt, 3));
+            if(!replace_tag_value(tmp_node, "addr:postcode", sqlite3_column_text(stmt, 4)))
+                add_tag(tmp_node, "addr:postcode", sqlite3_column_text(stmt, 4));
             xmlSetProp(tmp_node,"action", "modify");
             xmlNode *newNode = xmlCopyNode(tmp_node, 1);
             xmlNode *root_element = xmlDocGetRootElement(doc_changes);
