@@ -135,13 +135,13 @@ for($i=0;$i<2100;$i++){
         $linktoosm = "";
         if ($missing != 0)
             $linktoosm = "<a href=\"reports/newnodes_$kommunenummer.osm\">newnodes.osm</a>";
-        if ($completeness > 99.5){
+        if ($missing == 0){
             $ledhtml = "<img src=\"greenled.png\" />";
         }
-        elseif ($completeness > 80){
+        elseif ($completeness > 99){
             $ledhtml = "<img src=\"yellowled.png\" />";
         }
-        elseif ($completeness <= 80){
+        else{
             $ledhtml = "<img src=\"redled.png\" />";
         }
         $completeness = sprintf("%2.2f %%",$completeness);
