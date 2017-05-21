@@ -24,7 +24,7 @@ db.close()
 if len(rows) == 0:
 	os.system("/usr/bin/addrnodeimport /var/cache/addrnodeimport/Vegdata_Norge_Adresser_UTM33_SOSI.zip "+sys.argv[1]+" /var/cache/addrnodeimport "+str(mode))
 	os.system("/usr/lib/addrnodeimport/python/updatetime.py "+sys.argv[1]+" "+str(mode)+"")
-	os.system("/usr/lib/addrnodeimport/python/uploadmunip_new.py "+sys.argv[1]+"")
+	#os.system("/usr/lib/addrnodeimport/python/uploadmunip_new.py "+sys.argv[1]+"")
 else:
 	print ("Not doing anything for "+sys.argv[1])
 
