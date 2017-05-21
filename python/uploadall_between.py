@@ -10,14 +10,22 @@ import mysql.connector
 from osmapi import OsmApi
 
 
-if len(sys.argv) != 3:
-	print ("Usage command <fromtime> <totime>")
+if len(sys.argv) != 3 and len(sys.argv) != 4:
+	print ("Usage command <fromtime> <totime> [dryrun]")
 	sys.exit()
 
 cachedir = "/var/cache/addrnodeimport"
 
 fromtime = sys.argv[1]
 totime = sys.argv[2]
+
+if len(sys.argv) == 4:
+	if sys.argv[3] == "1":
+		dryrun = True
+	else:
+		dryrun = False
+else:
+	dryrun = False
 
 #report1 = open(cachedir+"/reports/report_"+str(munipnumberpadded)+".txt","r")
 #content = report1.read()
@@ -73,12 +81,14 @@ print(munipnumbers)
 
 #api = OsmApi(api="api06.dev.openstreetmap.org", username="", password="", changesetauto=True, changesetautotags={"source":"Kartverket"})
 #api = OsmApi(api="api06.dev.openstreetmap.org", username="rubund_import", passwordfile="./password.txt")
-api = OsmApi(api="api.openstreetmap.org", username=mypasswords.osmuser, password=mypasswords.osm)
+if not dryrun:
+	api = OsmApi(api="api.openstreetmap.org", username=mypasswords.osmuser, password=mypasswords.osm)
 #api.NodeGet(123)
 mycomment=u"addr node update Norway"
 #mycomment=u"addr node import municipality number "+munipnumberpadded+", Norway"
 #api.ChangesetCreate({"comment":u"addr node import "+str(sys.argv[2].decode('utf-8')), "source":"Kartverket", "source:date":"2014-08-24"})
-api.ChangesetCreate({"comment": mycomment, "source":"Kartverket", "source:date":"2017-04-25"})
+if not dryrun:
+	api.ChangesetCreate({"comment": mycomment, "source":"Kartverket", "source:date":"2017-04-25"})
 
 
 for munipnumber in munipnumbers:
@@ -162,21 +172,25 @@ for munipnumber in munipnumbers:
 				if action == "modify":
 					print("Modifying")
 					if node.tagName == "node":
-						api.NodeUpdate(editnode)
+						if not dryrun:
+							api.NodeUpdate(editnode)
 					else:
-						api.WayUpdate(editnode)
+						if not dryrun:
+							api.WayUpdate(editnode)
 				else:
 					if node.tagName == "node":
 						print("Creating")
-						api.NodeCreate(editnode)
+						if not dryrun:
+							api.NodeCreate(editnode)
 				print (editnode)
 		atleastone = True
-	if atleastone:
+	if atleastone and not dryrun:
 		cursor.execute("insert into update_requests (kommunenummer, ferdig, ip, upload, tid) values (\"%s\", 1, \"full_upload\", 1, now())" % (munipnumber,))
 		cursor.execute("insert into update_requests (kommunenummer,ip,tid) values ('"+str(munipnumber)+"','full_upload_update_after',addtime(now(),\"0:20:00\"));")
 		db.commit()
 			
-api.ChangesetClose()
+if not dryrun:
+	api.ChangesetClose()
 
 #db = mysql.connector.connect(host="localhost",user=mypasswords.sqldbuser,password=mypasswords.sql,database=mypasswords.sqldbname)
 #cursor = db.cursor()
