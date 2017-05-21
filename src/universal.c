@@ -717,7 +717,7 @@ void find_same_pos_but_new_data(sqlite3 *db)
         longitude = sqlite3_column_double(stmt,6);
         lonmargin = meter_to_longitude(meter_margin, latitude);
         //printf("latitude: %f\n", latitude);
-        querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode from existing where foundindataset = 0 and latitude > '%f' and latitude < '%f' and longitude > '%f' and longitude < '%f' and ((tag_number <= 4) or (tag_number <= 5 and building = 1));", latitude - latmargin, latitude + latmargin, longitude - lonmargin, longitude + lonmargin);
+        querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode from existing where foundindataset = 0 and latitude > '%f' and latitude < '%f' and longitude > '%f' and longitude < '%f' and isway=0 and ((tag_number <= 4) or (tag_number <= 5 and building = 1));", latitude - latmargin, latitude + latmargin, longitude - lonmargin, longitude + lonmargin);
         ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt2,0);
         sqlite3_free(querybuffer);
         while((ret = sqlite3_step(stmt2)) == SQLITE_ROW){
