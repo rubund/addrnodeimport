@@ -80,7 +80,7 @@ api = OsmApi(api="api.openstreetmap.org", username=mypasswords.osmuser, password
 mycomment=u"addr node import "+kommunenummer.nrtonavn[int(munipnumber)]+" kommune"
 #mycomment=u"addr node import municipality number "+munipnumberpadded+", Norway"
 #api.ChangesetCreate({"comment":u"addr node import "+str(sys.argv[2].decode('utf-8')), "source":"Kartverket", "source:date":"2014-08-24"})
-api.ChangesetCreate({"comment": mycomment, "source":"Kartverket", "source:date":"2017-02-23"})
+api.ChangesetCreate({"comment": mycomment, "source":"Kartverket", "source:date":"2017-04-25"})
 
 if not os.path.isfile(cachedir+"/reports/new/"+str(munipnumberpadded)+"/changes_"+str(munipnumberpadded)+".osm"):
 	print("Cannot find file")
