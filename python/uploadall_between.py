@@ -104,6 +104,7 @@ for munipnumber in munipnumbers:
 	mainelement1 = dom1.getElementsByTagName("osm")[0]
 	nodes = mainelement1.childNodes
 	counter = 1
+	atleastone = False
 	for node in nodes:
 		if(node.nodeType == 1):
 			if node.tagName != "node":
@@ -169,9 +170,11 @@ for munipnumber in munipnumbers:
 						print("Creating")
 						api.NodeCreate(editnode)
 				print (editnode)
-	cursor.execute("insert into update_requests (kommunenummer, ferdig, ip, upload, tid) values (\"%s\", 1, \"full_upload\", 1, now())" % (munipnumber,))
-	cursor.execute("insert into update_requests (kommunenummer,ip,tid) values ('"+str(munipnumber)+"','full_upload_update_after',addtime(now(),\"0:20:00\"));")
-	db.commit()
+		atleastone = True
+	if atleastone:
+		cursor.execute("insert into update_requests (kommunenummer, ferdig, ip, upload, tid) values (\"%s\", 1, \"full_upload\", 1, now())" % (munipnumber,))
+		cursor.execute("insert into update_requests (kommunenummer,ip,tid) values ('"+str(munipnumber)+"','full_upload_update_after',addtime(now(),\"0:20:00\"));")
+		db.commit()
 			
 api.ChangesetClose()
 
