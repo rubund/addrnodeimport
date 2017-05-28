@@ -8,6 +8,7 @@ import kommunenummer
 import mypasswords
 import mysql.connector
 from osmapi import OsmApi
+import urllib.request
 
 
 if len(sys.argv) != 3 and len(sys.argv) != 4:
@@ -157,7 +158,23 @@ for munipnumber in munipnumbers:
 				for nd in nds:
 					ndlist.append(nd.attributes["ref"].value)
 
-			if housenumber != "":
+			node_part_of_way = False
+			if action == "modify" or action == "delete":
+				urltocheck = "http://www.openstreetmap.org/api/0.6/node/%s/ways" % osm_id
+				#urltocheck = "http://www.openstreetmap.org/api/0.6/node/3815147164/ways"
+				f = urllib.request.urlopen(urltocheck)
+				xm = parse(f)
+				f.close()
+				topelem = xm.getElementsByTagName("osm")[0]
+				inways = topelem.childNodes
+				for w in inways:
+					if w.nodeType == 1 and w.tagName == "way":
+						node_part_of_way = True
+
+			if node_part_of_way:
+				print("Skip changing node %s since it is part of a way.." % osm_id)
+
+			if housenumber != "" and not node_part_of_way:
 				editnode = {}
 				if action == "modify":
 					if node.tagName == "node":
