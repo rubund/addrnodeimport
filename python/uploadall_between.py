@@ -164,6 +164,9 @@ for munipnumber in munipnumbers:
 						editnode = {"id": osm_id , "version" : osm_version , "lat" : latitude, "lon": longitude , "tag": jtags}
 					else:
 						editnode = {"id": osm_id , "version" : osm_version , "tag": jtags, "nd" : ndlist}
+				elif action == "delete":
+					if node.tagName == "node":
+						editnode = {"id": osm_id , "version" : osm_version , "lat" : latitude, "lon": longitude , "tag": jtags}
 				else:
 					if node.tagName == "node":
 						editnode = {"id": -counter , "version" : osm_version , "lat" : latitude, "lon": longitude , "tag": jtags}
@@ -177,6 +180,11 @@ for munipnumber in munipnumbers:
 					else:
 						if not dryrun:
 							api.WayUpdate(editnode)
+				elif action == "delete":
+					print("Deleting")
+					if node.tagName == "node":
+						if not dryrun:
+							api.NodeDelete(editnode)
 				else:
 					if node.tagName == "node":
 						print("Creating")

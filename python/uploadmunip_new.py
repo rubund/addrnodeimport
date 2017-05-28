@@ -139,6 +139,9 @@ for node in nodes:
 					editnode = {"id": osm_id , "version" : osm_version , "lat" : latitude, "lon": longitude , "tag": jtags}
 				else:
 					editnode = {"id": osm_id , "version" : osm_version , "tag": jtags, "nd" : ndlist}
+			elif action == "delete":
+				if node.tagName == "node":
+					editnode = {"id": osm_id , "version" : osm_version , "lat" : latitude, "lon": longitude , "tag": jtags}
 			else:
 				if node.tagName == "node":
 					editnode = {"id": -counter , "version" : osm_version , "lat" : latitude, "lon": longitude , "tag": jtags}
@@ -150,6 +153,10 @@ for node in nodes:
 					api.NodeUpdate(editnode)
 				else:
 					api.WayUpdate(editnode)
+			elif action == "delete":
+				print("Deleting")
+				if node.tagName == "node":
+					api.NodeDelete(editnode)
 			else:
 				if node.tagName == "node":
 					print("Creating")

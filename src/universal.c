@@ -227,6 +227,7 @@ void populate_database_existing(xmlNode * a_node, sqlite3 *db, char isway)
     char *querybuffer;
 
     char osmid[100];
+    char user[100];
 
     char addr_street[256];
     char addr_housenumber[100];
@@ -241,7 +242,7 @@ void populate_database_existing(xmlNode * a_node, sqlite3 *db, char isway)
     int file_index = 0;
 
     sqlite3_stmt *stmt;
-    basic_query(db,"create table if not exists existing (id int auto_increment primary key not null, file_index int, osm_id bigint, addr_housenumber varchar(10) collate nocase, addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), latitude double, longitude double, isway boolean, tag_number int, building boolean, changeto_id int, foundindataset boolean default 0);",0);
+    basic_query(db,"create table if not exists existing (id int auto_increment primary key not null, file_index int, osm_id bigint, addr_housenumber varchar(10) collate nocase, addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), user varchar(255), latitude double, longitude double, isway boolean, tag_number int, building boolean, changeto_id int, foundindataset boolean default 0);",0);
 
     basic_query(db,"create table if not exists changeto (id int auto_increment primary key not null, change_type varchar(50), existing_id int, addr_housenumber varchar(10), addr_street varchar(255), addr_postcode varchar(10), addr_city varchar(255), latitude double, longitude double);",0);
 
@@ -259,6 +260,12 @@ void populate_database_existing(xmlNode * a_node, sqlite3 *db, char isway)
             if (text == 0) continue;
             strncpy(osmid, text, 99);
             xmlFree(text);
+            osmid[99] = 0;
+            text = xmlGetProp(cur_node, "user");
+            if (text == 0) continue;
+            strncpy(user, text, 99);
+            xmlFree(text);
+            user[99] = 0;
             //printf("OSM-ID: %s\n", osmid);
             char bool_iscorrecttype;
             if(isway)
@@ -295,7 +302,7 @@ void populate_database_existing(xmlNode * a_node, sqlite3 *db, char isway)
                 }
 
                 if(hasfound) {
-                    querybuffer = sqlite3_mprintf("insert into existing (id,file_index,osm_id,addr_housenumber,addr_street,addr_postcode,addr_city,isway,tag_number,building,latitude,longitude) values (%d,%d,'%q','%q','%q','%q','%q','%d','%d','%d','%q','%q');",rowcounter,file_index,osmid,addr_housenumber,addr_street,addr_postcode,addr_city,(int)isway,tag_number,isbuilding, latitude_str, longitude_str);
+                    querybuffer = sqlite3_mprintf("insert into existing (id,file_index,osm_id,addr_housenumber,addr_street,addr_postcode,addr_city,isway,tag_number,building,latitude,longitude,user) values (%d,%d,'%q','%q','%q','%q','%q','%d','%d','%d','%q','%q','%q');",rowcounter,file_index,osmid,addr_housenumber,addr_street,addr_postcode,addr_city,(int)isway,tag_number,isbuilding, latitude_str, longitude_str, user);
                     basic_query(db,querybuffer,0);
                     sqlite3_free(querybuffer);
                     rowcounter++;
@@ -744,6 +751,44 @@ void find_same_pos_but_new_data(sqlite3 *db)
     sqlite3_finalize(stmt);
 }
 
+void delete_old_auto_maintained(sqlite3 *db, double meter_margin)
+{
+    int ret;
+    sqlite3_stmt *stmt, *stmt2;
+    char *querybuffer;
+    double latitude, latmargin, longitude, lonmargin;
+    char found;
+    latmargin = meter_to_latitude(meter_margin);
+
+    querybuffer = sqlite3_mprintf("select id, osm_id, latitude, longitude, addr_street, addr_housenumber, addr_postcode, addr_city from existing where foundindataset=0 and isway=0 and ((tag_number <= 4) or (tag_number <= 5 and building = 1)) and user = \"rubund_import\"");
+    ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+    sqlite3_free(querybuffer);
+    while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+        found = 0;
+        latitude = sqlite3_column_double(stmt,2);
+        longitude = sqlite3_column_double(stmt,3);
+        lonmargin = meter_to_longitude(meter_margin, latitude);
+        querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode from newnodes where foundindataset = 0 and latitude > '%f' and latitude < '%f' and longitude > '%f' and longitude < '%f';", latitude - latmargin, latitude + latmargin, longitude - lonmargin, longitude + lonmargin);
+        ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt2,0);
+        sqlite3_free(querybuffer);
+        while((ret = sqlite3_step(stmt2)) == SQLITE_ROW){
+            found = 1;
+        }
+        sqlite3_finalize(stmt2);
+
+        if(found) {
+            querybuffer = sqlite3_mprintf("update existing set foundindataset = 1 where id = %d", sqlite3_column_int(stmt, 0)); // FIXME: rename "foundindataset" to "handled"
+            basic_query(db, querybuffer, 0);
+            sqlite3_free(querybuffer);
+            querybuffer = sqlite3_mprintf("insert into changeto (id, change_type, existing_id, addr_street, addr_housenumber, addr_postcode, addr_city, latitude, longitude) values (%d, 'delete_node_auto', '%q', '%q', '%q', '%q', '%q', %f, %f)", changetorownumber, sqlite3_column_text(stmt,0), sqlite3_column_text(stmt,4), sqlite3_column_text(stmt,5), sqlite3_column_text(stmt,6), sqlite3_column_text(stmt,7), latitude, longitude);
+            basic_query(db, querybuffer, 0);
+            sqlite3_free(querybuffer);
+            changetorownumber++;
+        }
+    }
+    sqlite3_finalize(stmt);
+}
+
 void print_new_nodes_not_found(sqlite3 *db)
 {
     int ret;
@@ -1000,7 +1045,7 @@ int replace_tag_value(xmlNode *node, char *key, const char *new_val)
                 return 1;
         }
     }
-	return 0;
+    return 0;
 }
 
 void add_tag(xmlNode *node, char *key, const char *new_val)
@@ -1205,6 +1250,48 @@ void dump_new_nodes_which_will_be_added(sqlite3 *db) {
     sqlite3_finalize(stmt);
 }
 
+void print_nodes_which_will_be_deleted(sqlite3 *db) {
+    int ret;
+    sqlite3_stmt *stmt, *stmt2;
+    char *querybuffer;
+
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude, existing_id from changeto where change_type='delete_node_auto' order by addr_street, addr_housenumber, addr_postcode;");
+    ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+    sqlite3_free(querybuffer);
+    while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+        printf("%s %s, %s %s (%f,%f)\n", sqlite3_column_text(stmt,1), sqlite3_column_text(stmt,2), sqlite3_column_text(stmt,4), sqlite3_column_text(stmt,3), sqlite3_column_double(stmt, 5), sqlite3_column_double(stmt,6));
+    }
+    sqlite3_finalize(stmt);
+}
+
+void dump_osm_nodes_which_will_be_deleted(sqlite3 *db) {
+    int ret;
+    sqlite3_stmt *stmt, *stmt2;
+    char *querybuffer;
+    xmlNode *tmp_node;
+
+    querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude, existing_id from changeto where change_type='delete_node_auto' order by addr_street, addr_housenumber;");
+    ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt,0);
+    sqlite3_free(querybuffer);
+    while((ret = sqlite3_step(stmt)) == SQLITE_ROW){
+        querybuffer = sqlite3_mprintf("select id, addr_street, addr_housenumber, addr_city, addr_postcode, latitude, longitude, isway, file_index from existing where id=%d;", sqlite3_column_int(stmt, 7));
+        ret = sqlite3_prepare_v2(db,querybuffer,-1,&stmt2,0);
+        sqlite3_free(querybuffer);
+        if((ret = sqlite3_step(stmt2)) == SQLITE_ROW){
+
+            if(sqlite3_column_int(stmt2, 7)) // if isway
+                tmp_node = get_xml_node(doc_existing_ways, sqlite3_column_int(stmt2, 8), 1);
+            else
+                tmp_node = get_xml_node(doc_existing_nodes, sqlite3_column_int(stmt2, 8), 0);
+            xmlSetProp(tmp_node,"action", "delete");
+            xmlNode *newNode = xmlCopyNode(tmp_node, 1);
+            xmlNode *root_element = xmlDocGetRootElement(doc_changes);
+            xmlAddChild(root_element, newNode);
+        }
+        sqlite3_finalize(stmt2);
+    }
+    sqlite3_finalize(stmt);
+}
 
 void remove_all_subnodes_from_xml(xmlDoc *doc)
 {
@@ -1355,6 +1442,10 @@ int main(int argc, char **argv)
 
     add_new_nodes_which_are_not_close_to_any_old_ones(db, 100); // All new nodes which are at least 100 metres from
                                                                 // any existing ones, can be added automatically !
+
+    delete_old_auto_maintained(db, 100);
+    add_new_nodes_which_are_not_close_to_any_old_ones(db, 100); // All new nodes which are at least 100 metres from
+                                                                // any existing ones, can be added automatically !
     //print_new_nodes_which_are_not_close_to_any_old_ones(db, 100);
     //print_new_nodes_and_suggested_existing_nearby(db, 20);
     printf("Not matched existing nodes:\n");
@@ -1369,6 +1460,8 @@ int main(int argc, char **argv)
     print_nodes_where_data_will_be_changed(db);
     printf("\nCoordinates will be changed:\n");
     print_nodes_where_coordinates_will_be_changed(db);
+    printf("\nNodes to be deleted (last updated by OSM user 'rubund_import'):\n");
+    print_nodes_which_will_be_deleted(db);
     printf("\nNew nodes which will be added:\n");
     print_new_nodes_which_will_be_added(db);
 
@@ -1376,6 +1469,7 @@ int main(int argc, char **argv)
     dump_osm_nodes_where_data_will_be_changed(db);
     dump_osm_nodes_where_coordinates_will_be_changed(db);
     dump_new_nodes_which_will_be_added(db);
+    dump_osm_nodes_which_will_be_deleted(db);
     dump_new_nodes_not_found(db);
     dump_not_yet_matched(db);
     export_osm(doc_changes, "changes.osm");
