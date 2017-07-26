@@ -89,7 +89,7 @@ mycomment=u"addr node update Norway"
 #mycomment=u"addr node import municipality number "+munipnumberpadded+", Norway"
 #api.ChangesetCreate({"comment":u"addr node import "+str(sys.argv[2].decode('utf-8')), "source":"Kartverket", "source:date":"2014-08-24"})
 if not dryrun:
-	api.ChangesetCreate({"comment": mycomment, "source":"Kartverket", "source:date":"2017-04-25"})
+	api.ChangesetCreate({"comment": mycomment, "source":"Kartverket", "source:date":"2017-06-26"})
 
 
 for munipnumber in munipnumbers:

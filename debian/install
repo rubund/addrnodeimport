@@ -24,4 +24,4 @@ python/kartverketadresser.lua /usr/share/addrnodeimport
 perl/osm2poly.pl /usr/lib/addrnodeimport/perl
 xml/corrections.xml /usr/share/addrnodeimport
 sh/trigger_update.sh /usr/lib/addrnodeimport/sh
-python/uploadall_between.py /usr/lib/addrnodeiport/python
+python/uploadall_between.py /usr/lib/addrnodeimport/python
