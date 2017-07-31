@@ -66,6 +66,16 @@ if not os.path.isdir("/tmp/osm_temp"):
 	os.system("mkdir -p /tmp/osm_temp");
 
 
+os.system("rm -rf /var/cache/addrnodeimport/reports/changed_"+munipnumberpadded+".osm")
+os.system("rm -rf /var/cache/addrnodeimport/reports/duplicates_"+munipnumberpadded+".osm")
+os.system("rm -rf /var/cache/addrnodeimport/reports/newnodes_"+munipnumberpadded+".osm")
+os.system("rm -rf /var/cache/addrnodeimport/reports/notmatched_"+munipnumberpadded+".osm")
+os.system("rm -rf /var/cache/addrnodeimport/reports/onlynumber_"+munipnumberpadded+".osm")
+os.system("rm -rf /var/cache/addrnodeimport/reports/otherobjects_"+munipnumberpadded+".osm")
+os.system("rm -rf /var/cache/addrnodeimport/reports/postcodecityfixes_"+munipnumberpadded+".osm")
+os.system("rm -rf /var/cache/addrnodeimport/reports/veivegfixes_"+munipnumberpadded+".osm")
+os.system("rm -rf /var/cache/addrnodeimport/reports/new/"+munipnumberpadded)
+
 boundarea = os.popen("getedges -m 0.01 "+osmfilename).read()
 if network:
 	os.system("rm -rf /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
