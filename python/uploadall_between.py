@@ -173,6 +173,7 @@ for munipnumber in munipnumbers:
 
 			if node_part_of_way:
 				print("Skip changing node %s since it is part of a way.." % osm_id)
+				continue
 
 			if housenumber != "" and not node_part_of_way:
 				editnode = {}
