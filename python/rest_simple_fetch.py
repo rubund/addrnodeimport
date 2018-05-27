@@ -52,12 +52,12 @@ j = r.json()
 if 'adresser' in j:
     for a in j['adresser']:
         current = {}
-        if 'kortadressenavn' in a:
+        if 'adressenavn' in a:
             #print(a['kortadressenavn'], end=" ")
             #print(a['husnr'], end=", ")
             #print(a['postnr'], end=" ")
             #print(a['poststed'], end="\n")
-            current['ADRESSE'] = a['kortadressenavn']
+            current['ADRESSE'] = a['adressenavn']
             current['NUMMER'] = a['husnr']
             current['POSTNUMMER'] = a['postnr']
             current['POSTSTED'] = a['poststed']
