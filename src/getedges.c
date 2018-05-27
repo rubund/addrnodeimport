@@ -49,10 +49,12 @@ void iterate_and_get_elements(xmlNode * a_node)
 			attribute = cur_node->properties;
 			if(verbose)
 				printf("node type: Element, name: %s\n", cur_node->name);
+			if (xmlHasProp(cur_node, "lat") == NULL) continue;
 			text = xmlGetProp(cur_node,"lat");
 			latitude = atof(text);
 			if(verbose)
 				printf("  latitude: %s\n", text);
+			if (xmlHasProp(cur_node, "lon") == NULL) continue;
 			text = xmlGetProp(cur_node,"lon");
 			longitude = atof(text);
 			if(verbose)
