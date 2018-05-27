@@ -89,6 +89,10 @@ txt_munip_filename = "".join([tmpdir, "/", "border.txt"])
 
 subprocess.check_output("perl ./perl/osm2poly.pl %s > %s" % (borderfile, txt_munip_filename), shell=True)
 
+inside_border_filename = "".join([tmpdir, "/", "newnodeswithin.osm"])
+
+subprocess.check_output("osmosis --read-xml enableDateParsing=no file=\"%s\" --bounding-polygon file=\"%s\" --write-xml file=\"%s\"" % (fpo_filename, txt_munip_filename, inside_border_filename), shell=True)
+
 #shutil.rmtree(tmpdir)
 print(tmpdir)
 
