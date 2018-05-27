@@ -72,7 +72,9 @@ if 'adresser' in j:
             poststed = poststed.replace(" I "," i ")
             poststed = poststed.replace(" På "," på ")
             xmlline = xmlline + "\n" + "<tag k=\"addr:city\" v=\"%s\" />" % (poststed)
-            xmlline = xmlline + "\n" + "<tag k=\"addr:street\" v=\"%s\" />" % (current['ADRESSE'])
+            adresse = current['ADRESSE']
+            adresse = adresse.replace("'", "’")
+            xmlline = xmlline + "\n" + "<tag k=\"addr:street\" v=\"%s\" />" % (adresse)
             if 'BOKSTAV' in current:
                 husnummer = "%s%s" % (current['NUMMER'], current['BOKSTAV'])
             else:
