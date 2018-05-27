@@ -11,8 +11,9 @@ import tempfile
 import shutil
 
 borderfile = sys.argv[1]
+output_filename = sys.argv[2]
 
-corners = subprocess.check_output("./src/getedges %s" % (borderfile), shell=True)
+corners = subprocess.check_output("./src/getedges -m 0.01 %s" % (borderfile), shell=True)
 cornersd = corners.decode('utf-8').strip()
 
 m1 = re.compile(r"\(([^,]+),([^,]+),([^,]+),([^,]+)\)")
@@ -32,7 +33,7 @@ austUR=float(matches.group(4))
 cnt = 1
 
 
-antPerSide=100
+antPerSide=1000000
 side=0
 
 tmpdir = tempfile.mkdtemp()
@@ -93,7 +94,8 @@ inside_border_filename = "".join([tmpdir, "/", "newnodeswithin.osm"])
 
 subprocess.check_output("osmosis --read-xml enableDateParsing=no file=\"%s\" --bounding-polygon file=\"%s\" --write-xml file=\"%s\"" % (fpo_filename, txt_munip_filename, inside_border_filename), shell=True)
 
-#shutil.rmtree(tmpdir)
-print(tmpdir)
+os.system("cp \"%s\" \"%s\"" % (inside_border_filename, output_filename))
+
+shutil.rmtree(tmpdir)
 
 #os.system("wget -O test.htm \"http://ws.geonorge.no/AdresseWS/adresse/boundingbox?nordLL=%.3f&austLL=%.3f&nordUR=%.3f&austUR=%.3f&antPerSide=%d&side=%d\"" % (nordLL, austLL, nordUR, austUR, antPerSide, side))
