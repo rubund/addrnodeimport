@@ -61,8 +61,8 @@ if 'adresser' in j:
             current['POSTSTED'] = a['poststed']
             if 'bokstav' in a:
                 current['BOKSTAV'] = a['bokstav']
-            current['lat'] = 0
-            current['lon'] = 0
+            current['lat'] = float(a['nord'])
+            current['lon'] = float(a['aust'])
 
             xmlline = "<node id=\"-%d\" lat=\"%f\" lon=\"%f\" version=\"1\" visible=\"true\">" % (cnt, current['lat'], current['lon'])
             xmlline = xmlline + "\n" + "<tag k=\"addr:postcode\" v=\"%s\" />" % (current['POSTNUMMER'])
