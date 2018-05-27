@@ -7,6 +7,8 @@ import sys
 import subprocess
 import requests
 import json
+import tempfile
+import shutil
 
 borderfile = sys.argv[1]
 
@@ -33,11 +35,16 @@ cnt = 1
 antPerSide=100
 side=0
 
+tmpdir = tempfile.mkdtemp()
+
 r = requests.get("http://ws.geonorge.no/AdresseWS/adresse/boundingbox?nordLL=%.3f&austLL=%.3f&nordUR=%.3f&austUR=%.3f&antPerSide=%d&side=%d" % (nordLL, austLL, nordUR, austUR, antPerSide, side))
 #print(r)
 #print(r.text)
+fpo_filename = "".join([tmpdir, "/", "insquare.osm"])
 
-print("<?xml version=\"1.0\"?>\n<osm version=\"0.6\" upload=\"false\" generator=\"python-script\">\n")
+fpo = open(fpo_filename, "w")
+
+fpo.write("<?xml version=\"1.0\"?>\n<osm version=\"0.6\" upload=\"false\" generator=\"rest-simple-fetch\">\n")
 #print(r.json())
 j = r.json()
 if 'adresser' in j:
@@ -70,9 +77,13 @@ if 'adresser' in j:
                 husnummer = "%s" % (current['NUMMER'])
             xmlline = xmlline + "\n" + "<tag k=\"addr:housenumber\" v=\"%s\" />" % (husnummer)
             xmlline = xmlline + "\n" + "</node>\n"
-            print(xmlline)
+            fpo.write(xmlline)
             cnt = cnt + 1
 
-print("</osm>")
+fpo.write("</osm>")
+
+fpo.close()
+shutil.rmtree(tmpdir)
+print(tmpdir)
 
 #os.system("wget -O test.htm \"http://ws.geonorge.no/AdresseWS/adresse/boundingbox?nordLL=%.3f&austLL=%.3f&nordUR=%.3f&austUR=%.3f&antPerSide=%d&side=%d\"" % (nordLL, austLL, nordUR, austUR, antPerSide, side))
