@@ -18,6 +18,7 @@ python/uploadchanged.py /usr/lib/addrnodeimport/python
 python/deletenotmatchednodes.py /usr/lib/addrnodeimport/python
 python/donextstep.py /usr/lib/addrnodeimport/python
 python/sosiaddr.py /usr/lib/addrnodeimport/python
+python/rest_simple_fetch.py /usr/lib/addrnodeimport/python
 data/municipality_borders.tar.gz /usr/share/addrnodeimport
 data/osm/* /usr/share/addrnodeimport/municipality_borders/
 python/kartverketadresser.lua /usr/share/addrnodeimport

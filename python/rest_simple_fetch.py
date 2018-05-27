@@ -33,7 +33,7 @@ austUR=float(matches.group(4))
 cnt = 1
 
 
-antPerSide=1000000
+antPerSide=10000000
 side=0
 
 tmpdir = tempfile.mkdtemp()
