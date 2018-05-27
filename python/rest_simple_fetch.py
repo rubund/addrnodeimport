@@ -39,6 +39,7 @@ side=0
 tmpdir = tempfile.mkdtemp()
 
 r = requests.get("http://ws.geonorge.no/AdresseWS/adresse/boundingbox?nordLL=%.3f&austLL=%.3f&nordUR=%.3f&austUR=%.3f&antPerSide=%d&side=%d" % (nordLL, austLL, nordUR, austUR, antPerSide, side))
+print("Done requesting over REST API. Status code: %s" % (r.status_code))
 #print(r)
 #print(r.text)
 fpo_filename = "".join([tmpdir, "/", "insquare.osm"])
@@ -85,6 +86,7 @@ fpo.write("</osm>")
 
 fpo.close()
 
+print("Done writing OSM file")
 
 txt_munip_filename = "".join([tmpdir, "/", "border.txt"])
 
@@ -94,7 +96,11 @@ inside_border_filename = "".join([tmpdir, "/", "newnodeswithin.osm"])
 
 subprocess.check_output("osmosis --read-xml enableDateParsing=no file=\"%s\" --bounding-polygon file=\"%s\" --write-xml file=\"%s\"" % (fpo_filename, txt_munip_filename, inside_border_filename), shell=True)
 
+print("Done filtering out nodes outside border")
+
 os.system("cp \"%s\" \"%s\"" % (inside_border_filename, output_filename))
+
+print("Saved to %s" % (output_filename))
 
 shutil.rmtree(tmpdir)
 
