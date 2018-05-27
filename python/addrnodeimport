@@ -38,29 +38,29 @@ topzipfile = sys.argv[1]
 munipnumber = sys.argv[2]
 munipnumberpadded = "%04d" % (int(munipnumber))
 basenametopzipfile = os.path.basename(topzipfile)
-prefix = basenametopzipfile.split('.')[0]
+#prefix = basenametopzipfile.split('.')[0]
 cachedir = sys.argv[3]
 
 apiurl = "http://overpass-api.de/api"
 #apiurl = "http://overpass.osm.rambler.ru/cgi"
 
-if not os.path.isdir(cachedir+"/"+prefix):
-	os.system("unzip "+topzipfile+" -d "+cachedir+"/"+prefix+"")
+#if not os.path.isdir(cachedir+"/"+prefix):
+#	os.system("unzip "+topzipfile+" -d "+cachedir+"/"+prefix+"")
 
-prefix = str(cachedir)+"/"+str(prefix)+"/elveg/adresse"
+#prefix = str(cachedir)+"/"+str(prefix)+"/elveg/adresse"
 
-if not os.path.isfile(prefix+"/"+str(munipnumberpadded)+"adresser.sos"):
-	ret = os.system("cd "+prefix+" ; unzip "+str(munipnumberpadded)+"Adresser.ZIP");
-	if ret != 0:
-		print ("Failed to find this municipality")
-		sys.exit()
+#if not os.path.isfile(prefix+"/"+str(munipnumberpadded)+"adresser.sos"):
+#	ret = os.system("cd "+prefix+" ; unzip "+str(munipnumberpadded)+"Adresser.ZIP");
+#	if ret != 0:
+#		print ("Failed to find this municipality")
+#		sys.exit()
 
-os.system("mv "+prefix+"/*"+str(munipnumberpadded)+"adresser.sos "+prefix+"/"+str(munipnumberpadded)+"adresser.sos")
-os.system("sed -i 's/ANSI/ISO-8859-10/' "+prefix+"/"+str(munipnumberpadded)+"adresser.sos")
+#os.system("mv "+prefix+"/*"+str(munipnumberpadded)+"adresser.sos "+prefix+"/"+str(munipnumberpadded)+"adresser.sos")
+#os.system("sed -i 's/ANSI/ISO-8859-10/' "+prefix+"/"+str(munipnumberpadded)+"adresser.sos")
 #os.system("sosi2osm "+prefix+"/"+str(munipnumberpadded)+"adresser.sos /usr/share/addrnodeimport/kartverketadresser.lua > "+prefix+"/"+str(munipnumberpadded)+"Adresser.osm")
-os.system("/usr/lib/addrnodeimport/python/sosiaddr.py "+prefix+"/"+str(munipnumberpadded)+"adresser.sos > "+prefix+"/"+str(munipnumberpadded)+"Adresser.osm")
+#os.system("/usr/lib/addrnodeimport/python/sosiaddr.py "+prefix+"/"+str(munipnumberpadded)+"adresser.sos > "+prefix+"/"+str(munipnumberpadded)+"Adresser.osm")
 
-osmfilename = prefix+"/"+str(munipnumberpadded)+"Adresser.osm"
+#osmfilename = prefix+"/"+str(munipnumberpadded)+"Adresser.osm"
 
 if not os.path.isdir("/tmp/osm_temp"):
 	os.system("mkdir -p /tmp/osm_temp");
@@ -76,7 +76,10 @@ os.system("rm -rf /var/cache/addrnodeimport/reports/postcodecityfixes_"+munipnum
 os.system("rm -rf /var/cache/addrnodeimport/reports/veivegfixes_"+munipnumberpadded+".osm")
 os.system("rm -rf /var/cache/addrnodeimport/reports/new/"+munipnumberpadded)
 
-boundarea = os.popen("getedges -m 0.01 "+osmfilename).read()
+if os.path.isfile(""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm"):
+	os.system("perl /usr/lib/addrnodeimport/perl/osm2poly.pl "+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm > "+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt")
+
+boundarea = os.popen("getedges -m 0.01 /tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm").read()
 if network:
 	os.system("rm -rf /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
 	os.system("rm -rf /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
@@ -150,30 +153,30 @@ if not os.path.isfile(""+cachedir+"/municipality_borders/"+str(munipnumberpadded
 
 os.system("mkdir -p "+cachedir+"/reports")
 
-if os.path.isfile(""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm"):
-	os.system("perl /usr/lib/addrnodeimport/perl/osm2poly.pl "+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm > "+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt")
+if os.path.isfile(""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt"):
 	os.system("osmosis --read-xml enableDateParsing=no file=\"/tmp/osm_temp/ways_"+munipnumberpadded+".osm\" --bounding-polygon file=\""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/ways_"+munipnumberpadded+"-tmp.osm")
 	os.system("mv /tmp/osm_temp/ways_"+munipnumberpadded+"-tmp.osm /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
 	os.system("osmosis --read-xml enableDateParsing=no file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+".osm\" --bounding-polygon file=\""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp.osm")
 	os.system("mv /tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp.osm /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
-	os.system("osmosis --read-xml enableDateParsing=no file=\""+osmfilename+"\" --bounding-polygon file=\""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm")
-	beforenumber = os.popen("countnodes "+osmfilename+"").read()
+
+	os.system("/usr/lib/addrnodeimport/python/rest_simple_fetch.py \""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm\" \"/tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm\"")
 	afternumber = os.popen("countnodes /tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm").read()
+	beforenumber = afternumber # XXX: Cheat. just to make new REST interface work
 	reportfile3 = open(""+cachedir+"/reports/report3_"+munipnumberpadded+".txt","w")
 	reportfile3.write("Before: "+beforenumber+"After: "+afternumber+"")
 	reportfile3.close()
 
 
 print ("Processing "+munipnumberpadded+"...")
-reportcontent = os.popen("getmissingandreport -s -t "+cachedir+"/reports/veivegfixes_"+munipnumberpadded+".osm -n "+cachedir+"/reports/notmatched_"+munipnumberpadded+".osm -d "+cachedir+"/reports/duplicates_"+munipnumberpadded+".osm -e "+cachedir+"/reports/otherobjects_"+munipnumberpadded+".osm -o "+cachedir+"/reports/newnodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm -c /usr/share/addrnodeimport/corrections.xml  /tmp/osm_temp/nodes_"+munipnumberpadded+".osm "+osmfilename+"").read()
-reportcontent2 = os.popen("fillinpostcode -c /usr/share/addrnodeimport/corrections.xml -o "+cachedir+"/reports/postcodecityfixes_"+munipnumberpadded+".osm -n "+cachedir+"/reports/onlynumber_"+munipnumberpadded+".osm -s /tmp/osm_temp/nodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm "+osmfilename+"").read()
+reportcontent = os.popen("getmissingandreport -s -t "+cachedir+"/reports/veivegfixes_"+munipnumberpadded+".osm -n "+cachedir+"/reports/notmatched_"+munipnumberpadded+".osm -d "+cachedir+"/reports/duplicates_"+munipnumberpadded+".osm -e "+cachedir+"/reports/otherobjects_"+munipnumberpadded+".osm -o "+cachedir+"/reports/newnodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm -c /usr/share/addrnodeimport/corrections.xml  /tmp/osm_temp/nodes_"+munipnumberpadded+".osm \"/tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm\"").read()
+reportcontent2 = os.popen("fillinpostcode -c /usr/share/addrnodeimport/corrections.xml -o "+cachedir+"/reports/postcodecityfixes_"+munipnumberpadded+".osm -n "+cachedir+"/reports/onlynumber_"+munipnumberpadded+".osm -s /tmp/osm_temp/nodes_"+munipnumberpadded+".osm -w /tmp/osm_temp/ways_"+munipnumberpadded+".osm \"/tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm\"").read()
 reportcontent3 = os.popen("findchanged "+cachedir+"/reports/notmatched_"+munipnumberpadded+".osm "+cachedir+"/reports/newnodes_"+munipnumberpadded+".osm "+cachedir+"/reports/changed_"+munipnumberpadded+".osm").read()
 
 os.system("mkdir -p "+cachedir+"/reports/new/"+munipnumberpadded+"/")
 if os.path.isfile("/tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm"):
 	reportcontent4 = os.popen("addrnodeimport_create_change -c /usr/share/addrnodeimport/corrections.xml /tmp/osm_temp/nodes_"+munipnumberpadded+".osm /tmp/osm_temp/ways_"+munipnumberpadded+".osm /tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm "+cachedir+"/reports/new/"+munipnumberpadded+"/").read()
-else:
-	reportcontent4 = os.popen("addrnodeimport_create_change -c /usr/share/addrnodeimport/corrections.xml /tmp/osm_temp/nodes_"+munipnumberpadded+".osm /tmp/osm_temp/ways_"+munipnumberpadded+".osm "+osmfilename+" "+cachedir+"/reports/new/"+munipnumberpadded+"/").read()
+#else:
+#	reportcontent4 = os.popen("addrnodeimport_create_change -c /usr/share/addrnodeimport/corrections.xml /tmp/osm_temp/nodes_"+munipnumberpadded+".osm /tmp/osm_temp/ways_"+munipnumberpadded+".osm "+osmfilename+" "+cachedir+"/reports/new/"+munipnumberpadded+"/").read()
 os.system("mv "+cachedir+"/reports/new/"+munipnumberpadded+"/changes.osm "+cachedir+"/reports/new/"+munipnumberpadded+"/changes_"+munipnumberpadded+".osm")
 os.system("mv "+cachedir+"/reports/new/"+munipnumberpadded+"/notmatched_manual.osm "+cachedir+"/reports/new/"+munipnumberpadded+"/notmatched_manual_"+munipnumberpadded+".osm")
 os.system("mv "+cachedir+"/reports/new/"+munipnumberpadded+"/newnodes_manual.osm "+cachedir+"/reports/new/"+munipnumberpadded+"/newnodes_manual_"+munipnumberpadded+".osm")
