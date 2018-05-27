@@ -83,7 +83,13 @@ if 'adresser' in j:
 fpo.write("</osm>")
 
 fpo.close()
-shutil.rmtree(tmpdir)
+
+
+txt_munip_filename = "".join([tmpdir, "/", "border.txt"])
+
+subprocess.check_output("perl ./perl/osm2poly.pl %s > %s" % (borderfile, txt_munip_filename), shell=True)
+
+#shutil.rmtree(tmpdir)
 print(tmpdir)
 
 #os.system("wget -O test.htm \"http://ws.geonorge.no/AdresseWS/adresse/boundingbox?nordLL=%.3f&austLL=%.3f&nordUR=%.3f&austUR=%.3f&antPerSide=%d&side=%d\"" % (nordLL, austLL, nordUR, austUR, antPerSide, side))
