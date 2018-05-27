@@ -52,6 +52,8 @@ if 'adresser' in j:
             current['NUMMER'] = a['husnr']
             current['POSTNUMMER'] = a['postnr']
             current['POSTSTED'] = a['poststed']
+            if 'bokstav' in a:
+                current['BOKSTAV'] = a['bokstav']
             current['lat'] = 0
             current['lon'] = 0
 
