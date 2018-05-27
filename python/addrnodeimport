@@ -159,7 +159,7 @@ if os.path.isfile(""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".
 	os.system("osmosis --read-xml enableDateParsing=no file=\"/tmp/osm_temp/nodes_"+munipnumberpadded+".osm\" --bounding-polygon file=\""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt\" --write-xml file=/tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp.osm")
 	os.system("mv /tmp/osm_temp/nodes_"+munipnumberpadded+"-tmp.osm /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
 
-	os.system("/usr/bin/rest_simple_fetch.py \""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm\" \"/tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm\"")
+	os.system("/usr/lib/addrnodeimport/python/rest_simple_fetch.py \""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm\" \"/tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm\"")
 	afternumber = os.popen("countnodes /tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm").read()
 	beforenumber = afternumber # XXX: Cheat. just to make new REST interface work
 	reportfile3 = open(""+cachedir+"/reports/report3_"+munipnumberpadded+".txt","w")

@@ -13,7 +13,7 @@ import shutil
 borderfile = sys.argv[1]
 output_filename = sys.argv[2]
 
-corners = subprocess.check_output("./src/getedges -m 0.01 %s" % (borderfile), shell=True)
+corners = subprocess.check_output("getedges -m 0.01 %s" % (borderfile), shell=True)
 cornersd = corners.decode('utf-8').strip()
 
 m1 = re.compile(r"\(([^,]+),([^,]+),([^,]+),([^,]+)\)")
@@ -88,7 +88,7 @@ fpo.close()
 
 txt_munip_filename = "".join([tmpdir, "/", "border.txt"])
 
-subprocess.check_output("perl ./perl/osm2poly.pl %s > %s" % (borderfile, txt_munip_filename), shell=True)
+subprocess.check_output("perl /usr/lib/addrnodeimport/perl/osm2poly.pl %s > %s" % (borderfile, txt_munip_filename), shell=True)
 
 inside_border_filename = "".join([tmpdir, "/", "newnodeswithin.osm"])
 
