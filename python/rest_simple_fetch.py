@@ -1,12 +1,31 @@
 #!/usr/bin/env python3
 
 
+import re
 import os
+import sys
+import subprocess
 
-nordLL=63
-nordUR=64
-austLL=10.2
-austUR=11
+borderfile = sys.argv[1]
+
+corners = subprocess.check_output("./src/getedges %s" % (borderfile), shell=True)
+cornersd = corners.decode('utf-8').strip()
+
+m1 = re.compile(r"\(([^,]+),([^,]+),([^,]+),([^,]+)\)")
+
+matches = m1.match(cornersd)
+
+if matches == None:
+    print("Failed")
+    sys.exit(-1)
+
+print(matches)
+
+nordLL=float(matches.group(1))
+nordUR=float(matches.group(3))
+austLL=float(matches.group(2))
+austUR=float(matches.group(4))
+
 
 antPerSide=20
 side=0
