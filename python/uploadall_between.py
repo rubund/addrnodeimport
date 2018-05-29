@@ -83,7 +83,7 @@ print(munipnumbers)
 #api = OsmApi(api="api06.dev.openstreetmap.org", username="", password="", changesetauto=True, changesetautotags={"source":"Kartverket"})
 #api = OsmApi(api="api06.dev.openstreetmap.org", username="rubund_import", passwordfile="./password.txt")
 if not dryrun:
-	api = OsmApi(api="api.openstreetmap.org", username=mypasswords.osmuser, password=mypasswords.osm)
+	api = OsmApi(username=mypasswords.osmuser, password=mypasswords.osm)
 #api.NodeGet(123)
 mycomment=u"addr node update Norway"
 #mycomment=u"addr node import municipality number "+munipnumberpadded+", Norway"

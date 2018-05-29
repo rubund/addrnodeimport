@@ -75,7 +75,7 @@ db.close()
 
 #api = OsmApi(api="api06.dev.openstreetmap.org", username="", password="", changesetauto=True, changesetautotags={"source":"Kartverket"})
 #api = OsmApi(api="api06.dev.openstreetmap.org", username="rubund_import", passwordfile="./password.txt")
-api = OsmApi(api="api.openstreetmap.org", username=mypasswords.osmuser, password=mypasswords.osm)
+api = OsmApi(username=mypasswords.osmuser, password=mypasswords.osm)
 #api.NodeGet(123)
 mycomment=u"addr node import "+kommunenummer.nrtonavn[int(munipnumber)]+" kommune"
 #mycomment=u"addr node import municipality number "+munipnumberpadded+", Norway"
