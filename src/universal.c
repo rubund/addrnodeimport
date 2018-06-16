@@ -41,6 +41,7 @@ char verbose = 0;
 const char *ignore_tags[] = {             "building:levels"
                                          ,"building:roof:shape"
                                          ,"roof:levels"
+                                         ,"roof:shape"
                                          ,"source"
                                          ,"source:date"
                                          ,"source:addr"

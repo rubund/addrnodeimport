@@ -526,6 +526,10 @@ void populate_database(xmlNode * a_node, sqlite3 *db, char isway)
 							xmlFree(text);
 							tag_number--;
 						}
+						else if(strcmp(text,"roof:shape") == 0){
+							xmlFree(text);
+							tag_number--;
+						}
 						else if(strcmp(text,"roof:levels") == 0){
 							xmlFree(text);
 							tag_number--;
