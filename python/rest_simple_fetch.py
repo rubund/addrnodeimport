@@ -46,6 +46,8 @@ fpo_filename = "".join([tmpdir, "/", "insquare.osm"])
 
 fpo = open(fpo_filename, "w")
 
+written_lut = {}
+
 fpo.write("<?xml version=\"1.0\"?>\n<osm version=\"0.6\" upload=\"false\" generator=\"rest-simple-fetch\">\n")
 #print(r.json())
 j = r.json()
@@ -81,8 +83,34 @@ if 'adresser' in j:
                 husnummer = "%s" % (current['NUMMER'])
             xmlline = xmlline + "\n" + "<tag k=\"addr:housenumber\" v=\"%s\" />" % (husnummer)
             xmlline = xmlline + "\n" + "</node>\n"
-            fpo.write(xmlline)
-            cnt = cnt + 1
+
+            #print("Has: %s" % current)
+            is_duplicate = False
+            if current['ADRESSE'] in written_lut:
+                adresse_current = current['ADRESSE']
+                already_obj = written_lut[adresse_current]
+
+                for i in already_obj:
+                    #print("Looking at: %s" % i)
+                    if current['NUMMER'] == i['NUMMER'] and current['POSTNUMMER'] == i['POSTNUMMER'] and current['POSTSTED'] == i['POSTSTED']:
+                        if 'BOKSTAV' in current:
+                            if 'BOKSTAV' in i and current['BOKSTAV'] == i['BOKSTAV']:
+                                is_duplicate = True
+                                break
+                        else:
+                            if 'BOKSTAV' not in i:
+                                is_duplicate = True
+                                break
+
+
+            if not is_duplicate:
+                if current['ADRESSE'] not in written_lut:
+                    written_lut[current['ADRESSE']] = []
+                written_lut[current['ADRESSE']].append(current)
+                fpo.write(xmlline)
+                cnt = cnt + 1
+            else:
+                print("Found duplicate skipping: %s" % current)
 
 fpo.write("</osm>")
 
