@@ -9,6 +9,7 @@ import requests
 import json
 import tempfile
 import shutil
+import datetime
 
 borderfile = sys.argv[1]
 output_filename = sys.argv[2]
@@ -111,6 +112,8 @@ if 'adresser' in j:
                 cnt = cnt + 1
             else:
                 print("Found duplicate skipping: %s" % current)
+                with open("/tmp/duplicates", "a") as fp:
+                    fp.write("%s: %s\n" % (str(datetime.datetime.today()), current))
 
 fpo.write("</osm>")
 
