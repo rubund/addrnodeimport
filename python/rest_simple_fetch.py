@@ -39,7 +39,9 @@ side=0
 
 tmpdir = tempfile.mkdtemp()
 
-r = requests.get("http://ws.geonorge.no/AdresseWS/adresse/boundingbox?nordLL=%.3f&austLL=%.3f&nordUR=%.3f&austUR=%.3f&antPerSide=%d&side=%d" % (nordLL, austLL, nordUR, austUR, antPerSide, side))
+requesten = "http://ws.geonorge.no/AdresseWS/adresse/boundingbox?nordLL=%.3f&austLL=%.3f&nordUR=%.3f&austUR=%.3f&antPerSide=%d&side=%d" % (nordLL, austLL, nordUR, austUR, antPerSide, side)
+print(requesten)
+r = requests.get(requesten)
 print("Done requesting over REST API. Status code: %s" % (r.status_code))
 #print(r)
 #print(r.text)
