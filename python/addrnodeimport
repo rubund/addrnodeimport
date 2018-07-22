@@ -79,7 +79,7 @@ os.system("rm -rf /var/cache/addrnodeimport/reports/new/"+munipnumberpadded)
 if os.path.isfile(""+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm"):
 	os.system("perl /usr/lib/addrnodeimport/perl/osm2poly.pl "+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm > "+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".txt")
 
-boundarea = os.popen("getedges -m 0.01 /tmp/osm_temp/newnodeswithin_"+munipnumberpadded+"-tmp.osm").read()
+boundarea = os.popen("getedges -m 0.01 "+cachedir+"/municipality_borders/"+str(munipnumberpadded)+".osm").read()
 if network:
 	os.system("rm -rf /tmp/osm_temp/ways_"+munipnumberpadded+".osm")
 	os.system("rm -rf /tmp/osm_temp/nodes_"+munipnumberpadded+".osm")
